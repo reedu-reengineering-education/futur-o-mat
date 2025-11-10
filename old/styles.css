@@ -1,0 +1,1488 @@
+/* Base styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Primary brand color - Violet (refined) */
+  --brand-primary: #61398d; /* Keep existing violet as primary */
+  --brand-primary-light: #8B5FBF; /* Lighter violet for hover states */
+  --brand-primary-dark: #4A2C6A; /* Darker violet for active states */
+
+  /* Accent color - Yellow (reserved for high-value CTAs) */
+  --brand-accent: #F59E0B; /* Amber-500 for primary actions */
+  --brand-accent-light: #FDE68A; /* Amber-200 for hover states */
+  --brand-accent-dark: #D97706; /* Amber-600 for active states */
+
+  /* Desaturated background - Very light violet tint */
+  --background-primary: #FAFAFF; /* Very light violet tint (~5% brand hue) */
+  --background-secondary: #F8F9FF; /* Slightly more violet tint for panels */
+
+  /* Legacy variables for compatibility */
+  --brand-violet: #61398d; /* Keep for existing references */
+  --brand-blue: #F8F9FF; /* Desaturated to light violet tint */
+  --brand-pink: #ea384c; /* Keep but will be used sparingly */
+  --brand-text: #1E293B; /* Darker, more readable text */
+  --white: #ffffff;
+  --black: #000000;
+
+  /* Refined gray scale */
+  --gray-50: #F8FAFC;
+  --gray-100: #F1F5F9;
+  --gray-200: #E2E8F0;
+  --gray-300: #CBD5E1;
+  --gray-400: #94A3B8;
+  --gray-500: #64748B;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1E293B;
+  --gray-900: #0F172A;
+
+  /* Keep yellow for compatibility */
+  --yellow-400: #F59E0B; /* Updated to match accent color */
+
+  /* Consistent border radius system */
+  --radius-sm: 0.375rem; /* 6px - Small elements */
+  --radius-md: 0.75rem; /* 12px - Standard elements */
+  --radius-lg: 1rem; /* 16px - Large surfaces */
+  --radius-xl: 1.5rem; /* 24px - Major containers */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-primary);
+  color: var(--brand-text);
+  line-height: 1.5;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Button System - Consistent affordances throughout the app */
+
+/* Base button styles */
+button {
+  font-family: 'Poppins', sans-serif;
+  border-radius: var(--radius-md); /* Consistent medium radius for all buttons */
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Primary Button - Brand solid (for main CTAs) */
+.btn-primary {
+  background-color: var(--brand-accent);
+  color: var(--brand-primary-dark); /* Dark text for WCAG AA compliance */
+  border: 2px solid var(--brand-accent);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600; /* Bolder text for better contrast */
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-accent-light);
+  border-color: var(--brand-accent-light);
+  color: var(--brand-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:active {
+  background-color: var(--brand-accent-dark);
+  border-color: var(--brand-accent-dark);
+  color: var(--white); /* White text on dark background is fine */
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Secondary Button - Outline (for secondary actions) */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--brand-primary);
+  border: 2px solid var(--brand-primary);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.btn-secondary:hover {
+  background-color: var(--brand-primary);
+  color: var(--white);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:active {
+  background-color: var(--brand-primary-dark);
+  border-color: var(--brand-primary-dark);
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Button sizes */
+.btn-small {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  gap: 0.25rem;
+}
+
+.btn-large {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  gap: 0.5rem;
+}
+
+/* Responsive button sizing */
+@media (min-width: 640px) {
+  .btn-primary, .btn-secondary, .btn-tertiary {
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+  }
+
+  .btn-small {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+  }
+}
+
+#app {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--brand-primary); /* Keep violet for outer background */
+  padding: 0.25rem;
+}
+
+@media (min-width: 640px) {
+  #app {
+    padding: 0.5rem;
+  }
+}
+
+.app-container {
+  width: 100%;
+  max-width: 24rem; /* 384px for mobile */
+  margin: 0 auto;
+  background-color: var(--background-primary); /* Desaturated light violet tint */
+  border-radius: var(--radius-xl); /* Consistent large radius for main container */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 0.5rem); /* Account for app padding */
+  overflow: hidden;
+}
+
+/* Very small screens (iPhone SE and similar) */
+@media (max-width: 320px) and (max-height: 568px) {
+  .app-container {
+    padding: 0.25rem;
+    height: calc(100vh - 0.5rem); /* Keep some margin */
+    min-height: 568px; /* Ensure minimum height for iPhone SE */
+    overflow-y: auto; /* Allow scrolling if needed */
+  }
+}
+
+/* iPhone 15 and similar modern phones */
+@media (min-width: 375px) and (max-width: 430px) and (min-height: 800px) {
+  .app-container {
+    padding: 0.5rem;
+    height: calc(100vh - 1rem); /* More margin for modern phones */
+    max-height: calc(100vh - 1rem);
+    overflow-y: auto; /* Allow scrolling if needed */
+  }
+}
+
+/* Small screens with limited height */
+@media (max-height: 600px) {
+  .app-container {
+    padding: 0.25rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .app-container {
+    height: calc(100vh - 1rem); /* Account for app padding */
+    padding: 1rem;
+    max-width: 33.6rem; /* 40% wider than 24rem (384px → 537.6px) */
+  }
+}
+
+/* Header - Flexible height with min/max constraints for larger text */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 4rem;
+  max-height: 4rem;
+  flex-shrink: 0;
+  /* Remove padding - info button will align with container edge */
+}
+
+/* Very small screens - compact header and layout */
+@media (max-width: 320px) and (max-height: 568px) {
+  .header {
+    min-height: 2.5rem;
+    max-height: 3.5rem;
+    height: clamp(2.5rem, 8vh, 3.5rem);
+    margin-bottom: 0.125rem;
+  }
+
+  /* Compact title sizes */
+  .title-container h1 {
+    font-size: 1rem !important;
+    margin-bottom: 0.125rem !important;
+  }
+ 
+  .title-container p {
+    font-size: 0.90rem !important;
+  }
+  /* Smaller info button */
+  .info-button {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    right: 0.25rem !important;
+    top: 0.25rem !important;
+  }
+
+  .info-button .icon {
+    width: 0.875rem !important;
+    height: 0.875rem !important;
+  }
+
+  /* Compact step navigation */
+  .step-navigation-buttons {
+    margin-bottom: 0.25rem !important;
+  }
+
+  .step-nav-button {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.6875rem !important;
+  }
+}
+
+/* Small height screens - compact header */
+@media (max-height: 600px) {
+  .header {
+    min-height: 3.5rem;
+    max-height: 5rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .header {
+    min-height: 4.5rem;
+    max-height: 7rem;
+  }
+}
+
+.title-container {
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+
+.title-container h1 {
+  font-size: 1.5rem; /* Larger main title */
+  font-weight: 800; /* Bolder weight */
+  color: var(--brand-violet);
+}
+
+@media (min-width: 320px) {
+  .title-container h1 {
+    font-size: 1.5rem; /* Even larger on tablet */
+  }
+}
+
+.title-container p {
+  /* font-size: 1.2rem; /* 0.67x of new h1 size (1/1.5) */
+  color: var(--brand-violet); /* White text with shadow for contrast */
+  font-weight: 400; /* Normal weight, lighter than h1 */
+  font-size: 1.1rem
+}
+
+.info-button {
+  background-color: var(--brand-primary); /* Violet background */
+  border: 1px solid var(--brand-primary); /* Violet border */
+  border-radius: var(--radius-md); /* Consistent radius */
+  color: var(--white); /* White text/icon for contrast */
+  cursor: pointer;
+  position: absolute;
+  right: 0.5rem; /* Align with app-container right edge */
+  top: 0.5rem; /* Position at top of header */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  transition: all 0.2s ease;
+}
+
+.info-button:hover {
+  background-color: var(--brand-primary-dark); /* Darker violet on hover */
+  border-color: var(--brand-primary-dark);
+  color: var(--white); /* Keep white text */
+  transform: scale(1.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
+}
+
+.info-button .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+@media (min-width: 640px) {
+  .info-button {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .info-button .icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+/* Step Container - Takes remaining space after header */
+.step-container {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* Allow flex shrinking */
+}
+
+/* Very small screens - allow overflow for step container */
+@media (max-width: 320px) and (max-height: 568px) {
+  .step-container {
+    overflow: visible; /* Allow content to show */
+    min-height: auto; /* Don't constrain height */
+  }
+}
+
+/* iPhone 15 and similar - ensure proper overflow handling */
+@media (min-width: 375px) and (max-width: 430px) and (min-height: 800px) {
+  .step-container {
+    overflow-y: auto; /* Allow scrolling within step container */
+    min-height: 0; /* Allow flex shrinking */
+  }
+}
+
+.step {
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  padding: 0.5rem;
+  border-radius: var(--radius-lg); /* Consistent large radius for step containers */
+  overflow: hidden;
+  /* Ensure consistent height for all steps */
+  min-height: 0;
+  flex: 1;
+}
+
+/* Very small screens - adjust step constraints */
+@media (max-width: 320px) and (max-height: 568px) {
+  .step {
+    height: auto; /* Don't force 100% height */
+    overflow: visible; /* Allow content to show */
+    padding: 0.25rem; /* Reduce padding */
+  }
+}
+
+/* iPhone 15 and similar - optimize step layout */
+@media (min-width: 375px) and (max-width: 430px) and (min-height: 800px) {
+  .step {
+    height: auto; /* Don't force 100% height */
+    overflow-y: auto; /* Allow scrolling within step */
+    padding: 0.5rem; /* Standard padding */
+    min-height: 0; /* Allow flex shrinking */
+  }
+}
+
+@media (min-width: 640px) {
+  .step {
+    padding: 1rem;
+  }
+}
+
+.step.active {
+  display: flex;
+  /* Force same height for all active steps */
+  height: 100%;
+}
+
+/* Canvas - Flexible height with constraints */
+.canvas-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 8rem;
+  max-height: 20rem;
+  height: clamp(8rem, 35vh, 20rem);
+  flex-shrink: 0;
+  margin-bottom: 0.25rem;
+  position: relative; /* For absolute loading indicator */
+}
+
+/* Very small screens - larger canvas for better avatar visibility */
+@media (max-width: 320px) and (max-height: 568px) {
+  .canvas-container {
+    min-height: 10rem; /* Increased from 6rem */
+    max-height: 16rem; /* Increased from 12rem */
+    margin-bottom: 0.125rem;
+  }
+}
+
+/* Small height screens - compact canvas */
+@media (max-height: 600px) {
+  .canvas-container {
+    min-height: 7rem;
+    max-height: 15rem;
+    margin-bottom: 0.125rem;
+  }
+}
+
+@media (min-width: 375px) {
+  .canvas-container {
+    min-height: 10rem;
+    max-height: 22rem;
+    height: clamp(10rem, 40vh, 22rem);
+  }
+}
+
+/* iPhone 15 and similar - optimize canvas size */
+@media (min-width: 375px) and (max-width: 430px) and (min-height: 800px) {
+  .canvas-container {
+    min-height: 12rem;
+    max-height: 20rem;
+    height: clamp(12rem, 35vh, 20rem);
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .canvas-container {
+    min-height: 12rem;
+    max-height: 25rem;
+    height: clamp(12rem, 45vh, 25rem);
+    margin-bottom: 0.5rem;
+  }
+}
+
+canvas {
+  width: 100%;
+  max-height: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-md); /* Consistent medium radius for canvas */
+}
+
+/* Loading indicator for canvas */
+.loading-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.loading-spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid var(--gray-200);
+  border-top: 3px solid var(--brand-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-indicator p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  text-align: center;
+}
+
+
+
+/* Editor Container - Takes remaining space after canvas (same height for all steps) */
+.editor-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* Ensure consistent height across all steps */
+  min-height: 0; /* Allow flex shrinking */
+  margin-bottom: 0.5rem;
+}
+
+/* Tabs Container with Progress Indicator */
+.tabs-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Tabs with fade-out indicators */
+.category-tabs, .values-tabs {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Fade-out gradients to indicate more tabs */
+.tabs-container::before,
+.tabs-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 8px; /* Account for progress indicator height */
+  width: 40px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Left fade-out gradient */
+.tabs-container::before {
+  left: 0;
+  background: linear-gradient(to right, var(--background-primary), transparent);
+}
+
+/* Right fade-out gradient */
+.tabs-container::after {
+  right: 0;
+  background: linear-gradient(to left, var(--background-primary), transparent);
+}
+
+/* Show fade-out when tabs are scrollable */
+.tabs-container.scrollable-left::before {
+  opacity: 1;
+}
+
+.tabs-container.scrollable-right::after {
+  opacity: 1;
+}
+
+/* Progress Indicator - Replaces scrollbar */
+.progress-indicator {
+  height: 8px;
+  background-color: var(--gray-200);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--brand-primary), var(--brand-accent));
+  border-radius: 3px;
+  width: 10%; /* Start at 1/10 (first tab active) */
+  transition: width 0.3s ease;
+}
+
+/* Tab buttons now use btn-tertiary btn-small classes */
+.tab-button, .values-tab-button {
+  flex: 0 1 auto;
+  min-width: 0;
+  border-top-left-radius: var(--radius-md);
+  border-top-right-radius: var(--radius-md);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  text-decoration: none;
+  background-color: var(--gray-200); /* Darker background for better contrast */
+  color: var(--gray-600); /* Darker text for better contrast */
+  border: 2px solid transparent;
+  border-bottom: none;
+  transition: all 0.2s ease;
+}
+
+.tab-button:hover, .values-tab-button:hover {
+  background-color: var(--gray-300);
+  color: var(--brand-primary);
+  text-decoration: none;
+  transform: translateY(-0.5px); /* Slight lift on hover */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Subtle shadow on hover */
+}
+
+.tab-button.active, .values-tab-button.active {
+  background-color: var(--white);
+  color: var(--brand-primary);
+  text-decoration: none;
+  font-weight: 600; /* Bolder text for active state */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle elevation */
+  transform: translateY(-1px); /* Slight lift effect */
+  position: relative;
+  z-index: 1;
+  border-bottom: none; /* Remove bottom border for active tabs */
+}
+
+/* Parts selector - Fixed height to show exactly one row of parts */
+.parts-selector {
+  background-color: var(--gray-50);
+  flex-shrink: 0;
+  padding: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  /* Fixed height: color selectors + one row of parts + padding */
+  height: calc(4rem + 4rem); /* 6rem for color selectors, 4rem for one row */
+}
+
+/* Values content - Match parts-selector height exactly */
+.values-content {
+  background-color: var(--gray-50);
+  flex-shrink: 0;
+  padding: 0.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  /* Match parts-selector height exactly */
+  height: calc(4rem + 4rem); /* 10rem total */
+}
+
+/* When no color selectors are shown in parts-selector, make values-content match */
+.parts-selector.no-color-selectors ~ .values-content {
+  /* Increase height to match expanded parts-selector */
+  height: calc(0rem + 8rem); /* 14rem total */
+}
+
+/* Very small screens - adjust both consistently */
+@media (max-width: 320px) and (max-height: 568px) {
+  .parts-selector, .values-content {
+    height: calc(3rem + 2.5rem); /* 5.5rem total - consistent for both */
+  }
+  
+  .parts-selector.no-color-selectors ~ .values-content {
+    height: calc(3rem + 5rem); /* 8rem total - expanded for no color selectors */
+  }
+}
+
+/* Small height screens - adjust both consistently */
+@media (max-height: 600px) {
+  .parts-selector, .values-content {
+    height: calc(5rem + 3.5rem); /* 8.5rem total - consistent for both */
+  }
+  
+  .parts-selector.no-color-selectors ~ .values-content {
+    height: calc(5rem + 7rem); /* 12rem total - expanded for no color selectors */
+  }
+}
+
+@media (min-width: 640px) {
+  .parts-selector, .values-content {
+    height: calc(4rem + 8rem); /* 12rem total - consistent for both */
+  }
+  
+  .parts-selector.no-color-selectors ~ .values-content {
+    height: calc(4rem + 8rem); /* 12rem total - expanded for no color selectors */
+  }
+}
+
+/* Skin color selector - Responsive */
+.skin-color-selector {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Very small screens - compact skin selector */
+@media (max-width: 320px) and (max-height: 568px) {
+  .skin-color-selector {
+    margin-bottom: 0.0rem;
+    padding: 0.25rem;
+  }
+}
+
+/* Small height screens - compact skin selector */
+@media (max-height: 600px) {
+  .skin-color-selector {
+    margin-bottom: 0.0rem;
+    padding: 0.375rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .skin-color-selector {
+    margin-bottom: 0.75rem;
+    padding: 0.75rem;
+  }
+}
+
+.skin-color-options {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+/* Very small screens - smaller gaps */
+@media (max-width: 320px) and (max-height: 568px) {
+  .skin-color-options {
+    gap: 0.375rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .skin-color-options {
+    gap: 0.75rem;
+  }
+}
+
+.skin-color-option {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--gray-300); /* Uniform neutral outline */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* Very small screens - smaller color options */
+@media (max-width: 320px) and (max-height: 568px) {
+  .skin-color-option {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .skin-color-option {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+.skin-color-option:hover {
+  border-color: var(--brand-primary);
+  transform: scale(1.05); /* Subtle hover effect */
+}
+
+/* Selection indicator - inner ring instead of size change */
+.skin-color-option.active {
+  border-color: var(--brand-primary);
+}
+
+.skin-color-option.active::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+  border: 2px solid var(--brand-primary);
+  border-radius: 50%;
+  background: transparent;
+}
+
+/* Hair color selector - Responsive */
+.hair-color-selector {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Very small screens - compact hair selector */
+@media (max-width: 320px) and (max-height: 568px) {
+  .hair-color-selector {
+    margin-bottom: 0.0rem;
+    padding: 0.25rem;
+  }
+}
+
+/* Small height screens - compact hair selector */
+@media (max-height: 600px) {
+  .hair-color-selector {
+    margin-bottom: 0.0rem;
+    padding: 0.375rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .hair-color-selector {
+    margin-bottom: 0.75rem;
+    padding: 0.75rem;
+  }
+}
+
+.hair-color-options {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+/* Very small screens - smaller gaps */
+@media (max-width: 320px) and (max-height: 568px) {
+  .hair-color-options {
+    gap: 0.375rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .hair-color-options {
+    gap: 0.75rem;
+  }
+}
+
+.hair-color-option {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--gray-300); /* Uniform neutral outline */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* Very small screens - smaller hair color options */
+@media (max-width: 320px) and (max-height: 568px) {
+  .hair-color-option {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .hair-color-option {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+.hair-color-option:hover {
+  border-color: var(--brand-primary);
+  transform: scale(1.05); /* Subtle hover effect */
+}
+
+/* Selection indicator - inner ring instead of size change */
+.hair-color-option.active {
+  border-color: var(--brand-primary);
+}
+
+.hair-color-option.active::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+  border: 2px solid var(--brand-primary);
+  border-radius: 50%;
+  background: transparent;
+}
+
+/* Special styling for white hair color option */
+.hair-color-option[data-hair-color="white"] {
+  border: 2px solid var(--gray-400); /* Slightly darker border for white */
+}
+
+.hair-color-option[data-hair-color="white"]:hover {
+  border-color: var(--brand-primary);
+}
+
+.hair-color-option[data-hair-color="white"].active {
+  border-color: var(--brand-primary);
+}
+
+.hair-color-option[data-hair-color="white"].active::after {
+  border-color: var(--brand-primary); /* Same inner ring style */
+}
+
+/* Hair remove option (X button for "no hair") */
+.hair-remove-option {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--gray-400);
+  background-color: var(--gray-100);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--gray-600);
+}
+
+/* Very small screens - smaller hair remove option */
+@media (max-width: 320px) and (max-height: 568px) {
+  .hair-remove-option {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .hair-remove-option {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.4rem;
+  }
+}
+
+.hair-remove-option:hover {
+  transform: scale(1.1);
+  border: 3px solid var(--brand-violet);
+  background-color: var(--gray-200);
+  color: var(--brand-violet);
+}
+
+.hair-remove-option.active {
+  border: 4px solid var(--brand-violet);
+  background-color: var(--brand-violet);
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Parts grid - Dynamic height based on color selector visibility */
+.parts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Always 3 items per row */
+  gap: 0.5rem;
+  padding: 0.25rem;
+  overflow-y: auto;
+  flex: 1;
+  align-content: start;
+  /* Default: one row when color selectors are visible */
+  min-height: 4rem;
+}
+/* Values and strengths grids - Use all available space in values-content */
+.values-grid, .properties-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Always 3 items per row */
+  gap: 0.5rem;
+  padding: 0.25rem;
+  overflow-y: auto;
+  flex: 1;
+  align-content: start;
+  /* Use all available space in the values-content container */
+  min-height: 0;
+  /* Ensure smooth scrolling on mobile */
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Very small screens - smaller grid heights */
+@media (max-width: 320px) and (max-height: 568px) {
+  .parts-grid {
+    min-height: 3rem;
+    gap: 0.375rem;
+    padding: 0.125rem;
+  }
+
+  .values-grid, .properties-grid {
+    gap: 0.375rem;
+    padding: 0.125rem;
+    /* Ensure scrolling works on very small screens */
+    max-height: calc(3rem + 2.5rem - 1rem); /* Match container minus padding */
+  }
+}
+
+/* Small height screens - smaller grid heights */
+@media (max-height: 600px) {
+  .parts-grid {
+    min-height: 3.5rem;
+    gap: 0.375rem;
+  }
+
+  .values-grid, .properties-grid {
+    gap: 0.375rem;
+    /* Ensure scrolling works on small height screens */
+    max-height: calc(5rem + 3.5rem - 1rem); /* Match container minus padding */
+  }
+}
+
+@media (min-width: 640px) {
+  .parts-grid {
+    grid-template-columns: repeat(5, 1fr); /* 5 items per row on desktop */
+    min-height: 5rem;
+    gap: 0.75rem;
+  }
+
+  .values-grid, .properties-grid {
+    grid-template-columns: repeat(5, 1fr); /* 5 items per row on desktop */
+    gap: 0.75rem;
+  }
+}
+
+.part-item {
+  cursor: pointer;
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+}
+
+@media (min-width: 375px) {
+  .part-item {
+    height: 60px;
+  }
+}
+
+@media (min-width: 640px) {
+  .part-item {
+    height: 65px;
+  }
+}
+
+/* Desktop: Larger part items for wider app */
+@media (min-width: 1024px) {
+  .part-item {
+    height: 80px; /* Increased for desktop */
+  }
+}
+
+.part-item:hover, .part-item.active {
+  transform: scale(1.05);
+}
+
+.part-item.selected {
+  border-color: var(--brand-accent);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.part-item img {
+  object-fit: contain;
+  height: 100%;
+  width: auto;
+}
+
+/* Add a new class for the thumbnail view in the editor */
+.part-item.thumbnail {
+  position: relative;
+  overflow: hidden;
+}
+
+.part-item.thumbnail img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Style for the cropped thumbnails */
+.cropped-thumbnail {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Values content visibility */
+.values-content {
+  display: none;
+}
+
+.values-content.active {
+  display: flex; /* Use flex to match the main definition */
+}
+
+/* Step navigation buttons - Flexible height with constraints */
+.step-navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.25rem;
+  flex-shrink: 0;
+  height: clamp(2rem, 3vh, 3rem);
+  margin-bottom: 0.5rem;
+}
+
+/* Very small screens - compact navigation */
+@media (max-width: 320px) and (max-height: 568px) {
+  .step-navigation-buttons {
+    margin-top: 0.7rem;
+    min-height: 2rem;
+    max-height: 3rem;
+    height: clamp(2rem, 3vh, 3rem);
+    gap: 0.125rem;
+  }
+}
+
+/* Small height screens - compact navigation */
+@media (max-height: 600px) {
+  .step-navigation-buttons {
+    min-height: 2rem;
+    max-height: 3.5rem;
+    height: clamp(2rem, 3vh, 3.5rem);
+  }
+}
+
+/* Step navigation buttons now use btn-secondary btn-small classes */
+.step-nav-button {
+  flex: 1;
+}
+
+/* Active state for step navigation */
+.step-nav-button.active {
+  background-color: var(--brand-primary);
+  color: var(--white);
+  border-color: var(--brand-primary);
+}
+
+.step-nav-button.active:hover {
+  background-color: var(--brand-primary-light);
+  border-color: var(--brand-primary-light);
+  color: var(--white);
+}
+
+/* Avatar actions - Flexible height with constraints */
+.avatar-actions {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Very small screens - more compact actions to give canvas more room */
+@media (max-width: 320px) and (max-height: 568px) {
+  .avatar-actions {
+    min-height: 3rem; /* Reduced from 4rem */
+    max-height: 4.5rem; /* Reduced from 6rem */
+    height: clamp(3rem, 8vh, 4.5rem); /* Reduced viewport height usage */
+  }
+
+  /* Smaller surprise button */
+  #surpriseButton, #surpriseButtonValues {
+    padding: 0.375rem 0.75rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* Smaller action buttons */
+  .action-buttons {
+    gap: 0.125rem !important;
+  }
+
+  #downloadButton, #downloadButtonValues,
+  #shareButton, #shareButtonValues {
+    padding: 0.375rem 0.5rem !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+/* Small height screens - compact actions */
+@media (max-height: 600px) {
+  .avatar-actions {
+    min-height: 3.5rem;
+    max-height: 6rem;
+    height: clamp(3.5rem, 10vh, 6rem);
+  }
+}
+
+/* iPhone 15 and similar - ensure proper action button spacing */
+@media (min-width: 375px) and (max-width: 430px) and (min-height: 800px) {
+  .avatar-actions {
+    min-height: 4rem;
+    max-height: 5rem;
+    height: clamp(4rem, 12vh, 7rem);
+    flex-shrink: 0; /* Prevent shrinking */
+  }
+}
+
+/* Mobile-specific improvements (below 640px) */
+@media (max-width: 640px) {
+  /* Values grid scrolling improvements */
+  .values-grid, .properties-grid {
+    /* Ensure proper scrolling on mobile */
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    /* Add momentum scrolling for iOS */
+    scroll-behavior: smooth;
+    /* Ensure grid can scroll by limiting max height */
+    max-height: calc(100% - 1rem);
+  }
+
+  /* Ensure values content allows scrolling */
+  .values-content {
+    overflow: hidden; /* Keep container overflow hidden */
+  }
+
+  .values-content.active {
+    display: flex !important; /* Ensure flex display */
+    flex-direction: column;
+  }
+}
+
+/* Surprise button now uses btn-primary btn-large classes */
+#surpriseButton, #surpriseButtonValues {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+/* Desktop/Tablet experience (640px and above) */
+@media (min-width: 640px) {
+  /* Surprise button spacing */
+  #surpriseButton, #surpriseButtonValues {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.25rem;
+}
+
+@media (min-width: 640px) {
+  .action-buttons {
+    gap: 0.5rem;
+  }
+}
+
+/* Action buttons now use btn-secondary and btn-tertiary classes */
+#downloadButton, #downloadButtonValues,
+#shareButton, #shareButtonValues {
+  flex: 1;
+}
+
+/* Dialog */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+.dialog-overlay.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.dialog-content {
+  background-color: var(--white);
+  border-radius: 0.75rem;
+  width: 90vw;
+  max-width: 32rem;
+  position: relative;
+  cursor: default;
+}
+
+/* Adjustments for very small screens (iPhone SE and similar) */
+@media (max-width: 320px) and (max-height: 568px) {
+  .dialog-content {
+    width: 95vw; /* Slightly wider to use more space */
+    max-width: 280px; /* Constrain max width */
+    border-radius: var(--radius-md); /* Smaller radius */
+  }
+
+  .dialog-header {
+    padding: 0.75rem; /* Smaller padding */
+  }
+
+  .dialog-header h2 {
+    font-size: 1rem; /* Smaller title */
+  }
+
+  .close-button {
+    right: 0.125rem; /* Closer to edge */
+    top: 0.125rem; /* Closer to edge */
+    padding: 0.125rem; /* Smaller padding */
+  }
+
+  .close-button .icon {
+    width: 0.6rem; /* Smaller icon */
+    height: 0.6rem; /* Smaller icon */
+  }
+
+  .dialog-body {
+    padding: 0.75rem; /* Smaller padding */
+    font-size: 0.75rem; /* Smaller font size */
+  }
+
+  .dialog-body p {
+    margin-bottom: 0.75rem; /* Smaller margin */
+  }
+
+  .share-preview img {
+    max-width: 100px; /* Smaller image preview */
+  }
+
+  .share-btn {
+    padding: 8px 10px !important; /* Smaller button padding */
+    font-size: 12px !important; /* Smaller button font size */
+  }
+
+  .dialog-body button { /* Copy link button */
+    padding: 8px !important; /* Smaller padding */
+    font-size: 0.75rem !important; /* Smaller font size */
+  }
+}
+
+@media (min-width: 640px) {
+  .dialog-content {
+    border-radius: 1rem;
+  }
+}
+
+.dialog-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.dialog-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.close-button {
+  position: absolute;
+  right: 0.25rem;
+  top: 0.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+@media (min-width: 640px) {
+  .close-button {
+    right: 0.5rem;
+    top: 0.5rem;
+  }
+}
+
+.close-button .icon {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .close-button .icon {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.dialog-body {
+  padding: 1rem;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .dialog-body {
+    font-size: 1rem;
+  }
+}
+
+.dialog-body p {
+  margin-bottom: 1rem;
+}
+
+.dialog-body a {
+  color: #3182ce;
+  text-decoration: none;
+}
+
+.dialog-body a:hover {
+  text-decoration: underline;
+}
+
+/* Scrollbar customization - Clear interactive design */
+.parts-grid::-webkit-scrollbar,
+.values-content::-webkit-scrollbar,
+.values-grid::-webkit-scrollbar,
+.properties-grid::-webkit-scrollbar {
+  width: 8px; /* Thicker track for better visibility */
+}
+
+.parts-grid::-webkit-scrollbar-track,
+.values-content::-webkit-scrollbar-track,
+.values-grid::-webkit-scrollbar-track,
+.properties-grid::-webkit-scrollbar-track {
+  background: var(--gray-200); /* More visible track */
+  border-radius: 4px;
+  border: 1px solid var(--gray-300); /* Clear track boundary */
+}
+
+.parts-grid::-webkit-scrollbar-thumb,
+.values-content::-webkit-scrollbar-thumb,
+.values-grid::-webkit-scrollbar-thumb,
+.properties-grid::-webkit-scrollbar-thumb {
+  background: var(--brand-primary); /* Brand-colored thumb for clarity */
+  border-radius: 4px;
+  border: 1px solid var(--brand-primary-dark); /* Defined thumb boundary */
+  min-height: 20px; /* Minimum thumb size for usability */
+}
+
+.parts-grid::-webkit-scrollbar-thumb:hover,
+.values-content::-webkit-scrollbar-thumb:hover,
+.values-grid::-webkit-scrollbar-thumb:hover,
+.properties-grid::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-primary-light); /* Clear hover feedback */
+  border-color: var(--brand-primary);
+}
+
+.parts-grid::-webkit-scrollbar-thumb:active,
+.values-content::-webkit-scrollbar-thumb:active,
+.values-grid::-webkit-scrollbar-thumb:active,
+.properties-grid::-webkit-scrollbar-thumb:active {
+  background: var(--brand-primary-dark); /* Clear active feedback */
+}
+
+/* Hide scrollbars for tabs - replaced by progress indicator */
+.category-tabs::-webkit-scrollbar,
+.values-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.category-tabs,
+.values-tabs {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  max-height: 4vh;
+}
