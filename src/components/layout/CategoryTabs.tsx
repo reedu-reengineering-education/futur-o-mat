@@ -1,12 +1,11 @@
 /**
  * CategoryTabs Component
  *
- * Displays scrollable category tabs with progress tracking and fade indicators
- * Tracks visited categories and shows visual progress
+ * Displays compact horizontal scrollable category tabs with bottom border indicators
+ * Optimized for the centered card layout with fade indicators at edges
  */
 
 import { useEffect, useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
 import type { Category } from "@/types";
 
 interface CategoryTabsProps {
@@ -25,11 +24,6 @@ export function CategoryTabs({
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [showLeftFade, setShowLeftFade] = useState(false);
   const [showRightFade, setShowRightFade] = useState(false);
-
-  // Calculate progress percentage
-  const progress = Math.round(
-    (visitedCategories.size / categories.length) * 100
-  );
 
   // Check scroll position to show/hide fade indicators
   const checkScroll = () => {
@@ -72,82 +66,64 @@ export function CategoryTabs({
   }, [activeCategory]);
 
   return (
-    <div className="w-full bg-white border-b border-border">
-      <div className="container mx-auto px-2 sm:px-4 py-3 sm:py-4">
-        {/* Progress indicator */}
-        <div className="mb-3 sm:mb-4">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs sm:text-sm font-medium text-muted-foreground">
-              Fortschritt
-            </span>
-            <span className="text-xs sm:text-sm font-semibold text-brand-primary">
-              {progress}%
-            </span>
-          </div>
-          <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-brand-primary transition-all duration-300 ease-out"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
+    <div className="w-full bg-white">
+      {/* Scrollable tabs with fade indicators */}
+      <div className="relative">
+        {/* Left fade indicator */}
+        {showLeftFade && (
+          <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        )}
+
+        {/* Tabs container with momentum scrolling */}
+        <div
+          ref={scrollContainerRef}
+          className="flex gap-0 overflow-x-auto scrollbar-hide scroll-smooth"
+          style={{
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+            WebkitOverflowScrolling: "touch",
+          }}
+        >
+          {categories.map((category) => {
+            const isActive = activeCategory === category.id;
+            const isVisited = visitedCategories.has(category.id);
+
+            return (
+              <button
+                key={category.id}
+                data-category={category.id}
+                onClick={() => onCategoryChange(category.id)}
+                className={`
+                  relative flex-shrink-0 px-3 h-10
+                  text-sm font-medium
+                  transition-all duration-200
+                  touch-manipulation
+                  border-b-3
+                  ${
+                    isActive
+                      ? "text-purple-600 border-b-purple-600"
+                      : isVisited
+                      ? "text-gray-600 border-b-transparent hover:text-purple-500 hover:border-b-purple-300"
+                      : "text-gray-500 border-b-transparent hover:text-gray-700 hover:border-b-gray-300"
+                  }
+                `}
+                style={{
+                  borderBottomWidth: "3px",
+                }}
+              >
+                {category.name}
+                {isVisited && !isActive && (
+                  <span className="absolute top-1 right-1 w-1.5 h-1.5 bg-purple-600 rounded-full" />
+                )}
+              </button>
+            );
+          })}
         </div>
 
-        {/* Scrollable tabs with fade indicators */}
-        <div className="relative -mx-2 sm:mx-0">
-          {/* Left fade indicator - hidden on mobile for edge-to-edge scroll */}
-          {showLeftFade && (
-            <div className="hidden sm:block absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-          )}
-
-          {/* Tabs container with momentum scrolling */}
-          <div
-            ref={scrollContainerRef}
-            className="flex gap-2 overflow-x-auto scrollbar-hide scroll-smooth pb-2 px-2 sm:px-0 touch-scroll snap-x snap-proximity"
-            style={{
-              scrollbarWidth: "none",
-              msOverflowStyle: "none",
-              WebkitOverflowScrolling: "touch",
-            }}
-          >
-            {categories.map((category) => {
-              const isActive = activeCategory === category.id;
-              const isVisited = visitedCategories.has(category.id);
-
-              return (
-                <Button
-                  key={category.id}
-                  data-category={category.id}
-                  onClick={() => onCategoryChange(category.id)}
-                  variant={isActive ? "default" : "outline"}
-                  className={`
-                    relative flex-shrink-0 px-3 sm:px-4 py-2.5 sm:py-2 
-                    text-xs sm:text-sm font-medium
-                    transition-all duration-200
-                    min-h-[44px] snap-start
-                    touch-manipulation
-                    ${
-                      isActive
-                        ? "bg-brand-primary text-white shadow-md scale-105 sm:scale-100"
-                        : isVisited
-                        ? "bg-brand-primary/10 border-brand-primary/30 text-brand-primary active:bg-brand-primary/20"
-                        : "bg-white active:bg-gray-50"
-                    }
-                  `}
-                >
-                  {category.name}
-                  {isVisited && !isActive && (
-                    <span className="absolute -top-1 -right-1 w-2 h-2 bg-brand-accent rounded-full" />
-                  )}
-                </Button>
-              );
-            })}
-          </div>
-
-          {/* Right fade indicator - hidden on mobile for edge-to-edge scroll */}
-          {showRightFade && (
-            <div className="hidden sm:block absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-          )}
-        </div>
+        {/* Right fade indicator */}
+        {showRightFade && (
+          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+        )}
       </div>
     </div>
   );

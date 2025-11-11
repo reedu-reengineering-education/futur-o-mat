@@ -13,7 +13,8 @@ import { StepNavigation, ActionButtons } from "@/components/layout";
 import {
   AvatarCanvas,
   type AvatarCanvasRef,
-} from "@/components/avatar/AvatarCanvas";
+  // ValuesBadges,
+} from "@/components/avatar";
 import { BodyEditor } from "@/components/editors/BodyEditor";
 import { ValuesEditor } from "@/components/editors/ValuesEditor";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
@@ -196,55 +197,57 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-background-primary flex flex-col">
-      {/* Header with title */}
-      <header className="bg-brand-primary text-white py-4 sm:py-6 shadow-lg">
-        <div className="container mx-auto px-4">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center">
-            Futur-O-Mat
-          </h1>
-          <p className="text-sm sm:text-base text-white/90 text-center mt-1">
-            Erstelle deinen persönlichen Avatar
-          </p>
-        </div>
-      </header>
+    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center">
+      <div className="container mx-auto px-4 sm:px-2 py-8 flex items-center justify-center min-h-screen">
+        <div className="w-full max-w-[520px] bg-white rounded-3xl shadow-2xl overflow-hidden">
+          {/* Card content will go here */}
+          <div className="p-6 sm:p-8">
+            {/* Temporary placeholder - will be replaced with CardHeader */}
+            <div className="text-center mb-6">
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
+                Futur-O-Mat
+              </h1>
+              <p className="text-sm sm:text-base text-gray-500 mt-1">
+                Mach dir die Zukunft, wie sie dir gefällt!
+              </p>
+            </div>
 
-      {/* Step Navigation */}
-      <StepNavigation
-        currentStep={currentStep}
-        onStepChange={handleStepChange}
-      />
-
-      {/* Main Content Area */}
-      <main className="flex-1 container mx-auto px-2 sm:px-4 py-4 sm:py-6 pb-20 sm:pb-24">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
-            {/* Avatar Preview - Left side on desktop, top on mobile */}
-            <div className="order-1 lg:order-1">
-              <div className="lg:sticky lg:top-6">
-                <div className="bg-white rounded-lg shadow-lg p-2 sm:p-4">
-                  {renderError && (
-                    <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-                      <p className="text-sm text-red-600">
-                        ⚠️ Fehler beim Rendern: {renderError.message}
-                      </p>
-                    </div>
-                  )}
-                  <AvatarCanvas
-                    ref={avatarCanvasRef}
-                    avatarConfig={avatarConfig}
-                    width={500}
-                    height={600}
-                    className="w-full h-auto"
-                    onRenderComplete={handleRenderComplete}
-                    onRenderError={handleRenderError}
-                  />
+            {/* Avatar Display */}
+            <div className="mb-6 flex flex-col items-center">
+              {renderError && (
+                <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg w-full">
+                  <p className="text-sm text-red-600">
+                    ⚠️ Fehler beim Rendern: {renderError.message}
+                  </p>
                 </div>
+              )}
+              <div className="w-full max-w-[400px] mx-auto relative pt-8">
+                {/* Floating Values/Strengths Badges */}
+                {/* <ValuesBadges avatarConfig={avatarConfig} allParts={allParts} /> */}
+
+                {/* Avatar Canvas */}
+                <AvatarCanvas
+                  ref={avatarCanvasRef}
+                  avatarConfig={avatarConfig}
+                  width={800}
+                  height={960}
+                  className="w-full h-auto rounded-lg"
+                  onRenderComplete={handleRenderComplete}
+                  onRenderError={handleRenderError}
+                />
               </div>
             </div>
 
-            {/* Editor Area - Right side on desktop, bottom on mobile */}
-            <div className="order-2 lg:order-2">
+            {/* Step Navigation - Temporary, will be replaced with ModeTabs */}
+            <div className="mb-6">
+              <StepNavigation
+                currentStep={currentStep}
+                onStepChange={handleStepChange}
+              />
+            </div>
+
+            {/* Editor Area */}
+            <div className="mb-6">
               {currentStep === "body" ? (
                 <BodyEditor
                   avatarConfig={avatarConfig}
@@ -264,18 +267,20 @@ function App() {
                 />
               )}
             </div>
+
+            {/* Action Buttons - Now inside card */}
+            <div className="mt-6">
+              <ActionButtons
+                onSurprise={handleSurprise}
+                onDownload={handleDownload}
+                onShare={handleShare}
+                isDownloading={isDownloading}
+                isSharing={isSharing}
+              />
+            </div>
           </div>
         </div>
-      </main>
-
-      {/* Action Buttons - Fixed at bottom */}
-      <ActionButtons
-        onSurprise={handleSurprise}
-        onDownload={handleDownload}
-        onShare={handleShare}
-        isDownloading={isDownloading}
-        isSharing={isSharing}
-      />
+      </div>
 
       {/* Toast Notifications */}
       <ToastContainer toasts={toasts} onRemove={removeToast} />
