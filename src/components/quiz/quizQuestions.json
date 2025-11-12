@@ -1,0 +1,230 @@
+{
+"questions": [
+    {
+      "id": 1,
+      "question": "Welche der folgenden Eigenschaften ist eine Stärke, die dabei hilft, berufliche Ziele zu erreichen?",
+      "answers": [
+        { "text": "Kritikfähigkeit", "code": "TEAMWORK-A" },
+        { "text": "Unsicherheit", "code": "CAUTION-B" },
+        { "text": "Selbstüberschätzung", "code": "CONFIDENCE-C" },
+        { "text": "Unzuverlässigkeit", "code": "FLEXIBLE-D" }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Wie gehst du mit Herausforderungen um?",
+      "answers": [
+        { "text": "Ich stelle mich ihnen mutig", "code": "COURAGE-A" },
+        { "text": "Ich vermeide sie lieber", "code": "CAUTION-B" },
+        { "text": "Ich bitte andere um Hilfe", "code": "TEAMWORK-C" },
+        { "text": "Ich warte ab", "code": "PATIENCE-D" }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Was motiviert dich am meisten?",
+      "answers": [
+        { "text": "Erfolg und Anerkennung", "code": "AMBITION-A" },
+        { "text": "Harmonie im Team", "code": "TEAMWORK-B" },
+        { "text": "Persönliche Entwicklung", "code": "GROWTH-C" },
+        { "text": "Sicherheit", "code": "STABILITY-D" }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Wie triffst du wichtige Entscheidungen?",
+      "answers": [
+        { "text": "Bauchgefühl", "code": "INTUITION-A" },
+        { "text": "Nach gründlicher Recherche", "code": "ANALYTICAL-B" },
+        { "text": "Ich frage Freunde und Familie", "code": "TEAMWORK-C" },
+        { "text": "Ich wäge Vor- und Nachteile ab", "code": "RATIONAL-D" }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Was ist dir in der Zusammenarbeit am wichtigsten?",
+      "answers": [
+        { "text": "Effizienz", "code": "PRODUCTIVITY-A" },
+        { "text": "Gute Atmosphäre", "code": "HARMONY-B" },
+        { "text": "Kreativität", "code": "CREATIVE-C" },
+        { "text": "Klare Strukturen", "code": "ORGANIZED-D" }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Wie reagierst du auf Kritik?",
+      "answers": [
+        { "text": "Ich nehme sie konstruktiv an", "code": "GROWTH-A" },
+        { "text": "Ich verteidige meine Position", "code": "CONFIDENCE-B" },
+        { "text": "Ich fühle mich angegriffen", "code": "SENSITIVE-C" },
+        { "text": "Ich überlege in Ruhe", "code": "REFLECTIVE-D" }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Was beschreibt deine Arbeitsweise am besten?",
+      "answers": [
+        { "text": "Schnell und spontan", "code": "DYNAMIC-A" },
+        { "text": "Gründlich und detailliert", "code": "PRECISE-B" },
+        { "text": "Kreativ und experimentell", "code": "INNOVATIVE-C" },
+        { "text": "Strukturiert und planvoll", "code": "ORGANIZED-D" }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Wie gehst du mit Stress um?",
+      "answers": [
+        { "text": "Ich bleibe ruhig und fokussiert", "code": "RESILIENT-A" },
+        { "text": "Ich suche Unterstützung", "code": "TEAMWORK-B" },
+        { "text": "Ich mache eine Pause", "code": "BALANCED-C" },
+        { "text": "Ich arbeite härter", "code": "DETERMINED-D" }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Was ist deine größte Stärke?",
+      "answers": [
+        { "text": "Empathie", "code": "EMPATHY-A" },
+        { "text": "Logisches Denken", "code": "LOGICAL-B" },
+        { "text": "Kreativität", "code": "CREATIVE-C" },
+        { "text": "Durchhaltevermögen", "code": "PERSISTENT-D" }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "Wie lernst du am besten?",
+      "answers": [
+        { "text": "Durch praktisches Ausprobieren", "code": "HANDS_ON-A" },
+        { "text": "Durch Lesen und Recherchieren", "code": "THEORETICAL-B" },
+        { "text": "Durch Austausch mit anderen", "code": "SOCIAL-C" },
+        { "text": "Durch Beobachten", "code": "OBSERVANT-D" }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Was treibt dich an, Neues zu lernen?",
+      "answers": [
+        { "text": "Neugier und Wissensdurst", "code": "CURIOUS-A" },
+        { "text": "Karriereziele", "code": "AMBITIOUS-B" },
+        { "text": "Persönliche Erfüllung", "code": "FULFILLMENT-C" },
+        { "text": "Praktischer Nutzen", "code": "PRAGMATIC-D" }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Wie gehst du mit Konflikten um?",
+      "answers": [
+        { "text": "Ich spreche sie direkt an", "code": "DIRECT-A" },
+        { "text": "Ich suche nach Kompromissen", "code": "DIPLOMATIC-B" },
+        { "text": "Ich vermeide sie", "code": "PEACEFUL-C" },
+        { "text": "Ich analysiere die Ursachen", "code": "ANALYTICAL-D" }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Was bedeutet Erfolg für dich?",
+      "answers": [
+        { "text": "Anerkennung und Status", "code": "RECOGNITION-A" },
+        { "text": "Persönliche Zufriedenheit", "code": "CONTENTMENT-B" },
+        { "text": "Positive Wirkung auf andere", "code": "ALTRUISTIC-C" },
+        { "text": "Finanzielle Sicherheit", "code": "SECURE-D" }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "Wie planst du deine Zukunft?",
+      "answers": [
+        { "text": "Mit klaren Zielen und Meilensteinen", "code": "STRATEGIC-A" },
+        { "text": "Flexibel und offen", "code": "ADAPTABLE-B" },
+        { "text": "Ich lasse mich treiben", "code": "SPONTANEOUS-C" },
+        { "text": "Mit Sicherheitsnetz", "code": "CAUTIOUS-D" }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Was schätzt du an dir selbst am meisten?",
+      "answers": [
+        { "text": "Meine Zuverlässigkeit", "code": "RELIABLE-A" },
+        { "text": "Meine Kreativität", "code": "CREATIVE-B" },
+        { "text": "Meine Offenheit", "code": "OPEN_MINDED-C" },
+        { "text": "Meine Entschlossenheit", "code": "DETERMINED-D" }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Wie gehst du mit Veränderungen um?",
+      "answers": [
+        { "text": "Ich begrüße sie als Chance", "code": "OPTIMISTIC-A" },
+        { "text": "Ich brauche Zeit zur Anpassung", "code": "CAUTIOUS-B" },
+        { "text": "Ich suche das Positive darin", "code": "POSITIVE-C" },
+        { "text": "Ich plane sorgfältig", "code": "METHODICAL-D" }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Was ist dir im Leben am wichtigsten?",
+      "answers": [
+        { "text": "Freiheit und Unabhängigkeit", "code": "INDEPENDENT-A" },
+        { "text": "Beziehungen und Gemeinschaft", "code": "CONNECTED-B" },
+        { "text": "Selbstverwirklichung", "code": "SELF_ACTUALIZED-C" },
+        { "text": "Stabilität und Sicherheit", "code": "STABLE-D" }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Wie würden dich deine Freunde beschreiben?",
+      "answers": [
+        { "text": "Als verlässlichen Fels", "code": "DEPENDABLE-A" },
+        { "text": "Als kreativen Kopf", "code": "IMAGINATIVE-B" },
+        { "text": "Als guten Zuhörer", "code": "EMPATHETIC-C" },
+        { "text": "Als Problemlöser", "code": "SOLUTION_ORIENTED-D" }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "Was gibt dir Energie?",
+      "answers": [
+        { "text": "Zeit mit anderen Menschen", "code": "SOCIAL-A" },
+        { "text": "Zeit für mich allein", "code": "INTROSPECTIVE-B" },
+        { "text": "Neue Erfahrungen", "code": "ADVENTUROUS-C" },
+        { "text": "Bekannte Routinen", "code": "CONSISTENT-D" }
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Wie siehst du deine Zukunft?",
+      "answers": [
+        { "text": "Voller Möglichkeiten", "code": "HOPEFUL-A" },
+        { "text": "Mit realistischen Erwartungen", "code": "REALISTIC-B" },
+        { "text": "Als Abenteuer", "code": "EXCITED-C" },
+        { "text": "Gut geplant und vorbereitet", "code": "PREPARED-D" }
+      ]
+    }
+  ],
+  "evaluation": {
+    "strengths": {
+      "TEAMWORK": "Teamfähigkeit",
+      "COURAGE": "Mut",
+      "GROWTH": "Lernbereitschaft",
+      "CREATIVE": "Kreativität",
+      "RESILIENT": "Resilienz",
+      "EMPATHY": "Empathie",
+      "ANALYTICAL": "Analytisches Denken",
+      "ORGANIZED": "Organisation",
+      "ADAPTABLE": "Anpassungsfähigkeit",
+      "DETERMINED": "Entschlossenheit"
+    },
+    "values": {
+      "HARMONY": "Harmonie",
+      "AMBITION": "Ehrgeiz",
+      "STABILITY": "Stabilität",
+      "INNOVATION": "Innovation",
+      "INDEPENDENCE": "Unabhängigkeit",
+      "CONNECTION": "Verbundenheit",
+      "GROWTH": "Wachstum",
+      "SECURITY": "Sicherheit",
+      "FREEDOM": "Freiheit",
+      "ACHIEVEMENT": "Leistung"
+    }
+  }
+}

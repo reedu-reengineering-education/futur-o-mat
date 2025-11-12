@@ -132,13 +132,6 @@ export function BodyEditor({
         multiSelect={isMultiSelect}
         category={activeCategory}
       />
-
-      {/* Helper text */}
-      <div className="text-center text-xs sm:text-sm text-muted-foreground pb-4 px-2">
-        {isMultiSelect
-          ? "Du kannst mehrere Teile auswählen"
-          : "Wähle ein Teil aus"}
-      </div>
     </div>
   );
 }

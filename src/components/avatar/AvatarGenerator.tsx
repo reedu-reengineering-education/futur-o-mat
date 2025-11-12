@@ -6,27 +6,19 @@
  * Handles step navigation between body and values editors
  */
 
+import { Button } from "@/components/ui/button"
 import { useState, useEffect, useCallback, useRef } from "react";
-import type { Step } from "@/types";
 import { useAvatarState, useAvatarParts, useUrlState, useToast } from "@/hooks";
-import { StepNavigation, ActionButtons } from "@/components/layout";
-import {
-  AvatarCanvas,
-  type AvatarCanvasRef,
-  // ValuesBadges,
-} from "@/components/avatar";
+import { AvatarCanvas, type AvatarCanvasRef } from "@/components/avatar";
 import { BodyEditor } from "@/components/editors/BodyEditor";
-import { ValuesEditor } from "@/components/editors/ValuesEditor";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
-import { ToastContainer } from "@/components/Toast";
+import { ToastContainer } from "@/components/Toast"
+import {Link } from "@tanstack/react-router";
 
 function AvatarGenerator() {
 
   // Global state management
-  const [currentStep, setCurrentStep] = useState<Step>("body");
-  const [isSharing, setIsSharing] = useState(false);
-  const [isDownloading, setIsDownloading] = useState(false);
-  const [renderError, setRenderError] = useState<Error | null>(null);
+   const [renderError, setRenderError] = useState<Error | null>(null);
 
   // Toast notifications
   const { toasts, showToast, removeToast } = useToast();
@@ -80,10 +72,44 @@ function AvatarGenerator() {
     generateRandom(allParts);
   }, [allParts, decodeState, setAvatarConfig, generateRandom]);
 
-  // Handle step change
-  const handleStepChange = useCallback((step: Step) => {
-    setCurrentStep(step);
-  }, []);
+
+  const saveAvatarFace = useCallback(() => {
+  if (avatarCanvasRef.current) {
+    try {
+      // Hol das Canvas-Element
+      const canvas = avatarCanvasRef.current.getCanvas();
+      if (canvas) {
+        // Erstelle ein neues Canvas nur für das Gesicht (oberer Teil)
+        const faceCanvas = document.createElement('canvas');
+        const faceCtx = faceCanvas.getContext('2d');
+        
+        // Setze die Größe für das Gesicht (z.B. obere 30% des Avatars)
+        faceCanvas.width = 200;
+        faceCanvas.height = 200;
+        
+        if (faceCtx) {
+          // Zeichne nur den oberen Teil (Gesicht) des Avatars
+          // Passe die Koordinaten an deine Avatar-Proportionen an
+          faceCtx.drawImage(
+            canvas,
+            0, 0, canvas.width, canvas.height * 0.25, // Quellbereich (obere 25%)
+            0, 0, 200, 200 // Zielbereich
+          );
+          
+          // Konvertiere zu Base64
+          const faceImage = faceCanvas.toDataURL('image/png');
+          
+          // Speichere in localStorage
+          localStorage.setItem('avatarFaceImage', faceImage);
+          
+          console.log('Avatar-Gesicht gespeichert!');
+        }
+      }
+    } catch (error) {
+      console.error('Fehler beim Speichern des Avatar-Gesichts:', error);
+    }
+  }
+}, [avatarCanvasRef]);
 
   // Handle render error
   const handleRenderError = useCallback(
@@ -100,69 +126,14 @@ function AvatarGenerator() {
     setRenderError(null);
   }, []);
 
-  // Handle random avatar generation
+   // --- Auskommentiert: Zufallsknopf ---
   const handleSurprise = useCallback(() => {
     if (allParts.length > 0) {
       generateRandom(allParts);
     }
   }, [allParts, generateRandom]);
 
-  // Handle avatar download
-  const handleDownload = useCallback(() => {
-    if (avatarCanvasRef.current) {
-      setIsDownloading(true);
-      setRenderError(null);
-      try {
-        avatarCanvasRef.current.downloadImage();
-        showToast("Avatar erfolgreich heruntergeladen!", "success");
-      } catch (error) {
-        console.error("Failed to download avatar:", error);
-        const err =
-          error instanceof Error ? error : new Error("Download fehlgeschlagen");
-        setRenderError(err);
-        showToast(
-          "Download fehlgeschlagen. Bitte versuche es erneut.",
-          "error"
-        );
-      } finally {
-        // Reset downloading state after a short delay
-        setTimeout(() => setIsDownloading(false), 1000);
-      }
-    }
-  }, [showToast]);
-
-  // Handle avatar sharing
-  const handleShare = useCallback(async () => {
-    setIsSharing(true);
-    setRenderError(null);
-    try {
-      const encodedState = encodeState(avatarConfig);
-      const shareUrl = `${window.location.origin}${window.location.pathname}?state=${encodedState}`;
-
-      // Try to use Web Share API if available
-      if (navigator.share) {
-        await navigator.share({
-          title: "Mein Futur-O-Mat Avatar",
-          text: "Schau dir meinen Avatar an!",
-          url: shareUrl,
-        });
-        showToast("Avatar erfolgreich geteilt!", "success");
-      } else {
-        // Fallback: copy to clipboard
-        await navigator.clipboard.writeText(shareUrl);
-        showToast("Link wurde in die Zwischenablage kopiert!", "success");
-      }
-    } catch (error) {
-      console.error("Failed to share:", error);
-      // Only show error if it's not a user cancellation
-      if (error instanceof Error && error.name !== "AbortError") {
-        setRenderError(error);
-        showToast("Teilen fehlgeschlagen. Bitte versuche es erneut.", "error");
-      }
-    } finally {
-      setIsSharing(false);
-    }
-  }, [avatarConfig, encodeState, showToast]);
+ 
 
   // Show loading state
   if (partsLoading) {
@@ -201,9 +172,7 @@ function AvatarGenerator() {
     <div className="min-h-screen bg-gradient-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center">
       <div className="container mx-auto px-4 sm:px-2 py-8 flex items-center justify-center min-h-screen">
         <div className="w-full max-w-[520px] bg-white rounded-3xl shadow-2xl overflow-hidden">
-          {/* Card content will go here */}
           <div className="p-6 sm:p-8">
-            {/* Temporary placeholder - will be replaced with CardHeader */}
             <div className="text-center mb-6">
               <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
                 Futur-O-Mat
@@ -211,6 +180,7 @@ function AvatarGenerator() {
               <p className="text-sm sm:text-base text-gray-500 mt-1">
                 Mach dir die Zukunft, wie sie dir gefällt!
               </p>
+              {/* Hier Platz für Zufall und Info button */}
             </div>
 
             {/* Avatar Display */}
@@ -223,10 +193,6 @@ function AvatarGenerator() {
                 </div>
               )}
               <div className="w-full max-w-[400px] mx-auto relative pt-8">
-                {/* Floating Values/Strengths Badges */}
-                {/* <ValuesBadges avatarConfig={avatarConfig} allParts={allParts} /> */}
-
-                {/* Avatar Canvas */}
                 <AvatarCanvas
                   ref={avatarCanvasRef}
                   avatarConfig={avatarConfig}
@@ -239,46 +205,31 @@ function AvatarGenerator() {
               </div>
             </div>
 
-            {/* Step Navigation - Temporary, will be replaced with ModeTabs */}
-            <div className="mb-6">
-              <StepNavigation
-                currentStep={currentStep}
-                onStepChange={handleStepChange}
-              />
-            </div>
-
             {/* Editor Area */}
             <div className="mb-6">
-              {currentStep === "body" ? (
-                <BodyEditor
-                  avatarConfig={avatarConfig}
-                  allParts={allParts}
-                  onUpdatePart={updatePart}
-                  onToggleItem={toggleItem}
-                  onSetSkinTone={setSkinTone}
-                  onSetHairColor={setHairColor}
-                  onSetBreastOption={setBreastOption}
-                  onRemoveHair={removeHair}
-                />
-              ) : (
-                <ValuesEditor
-                  avatarConfig={avatarConfig}
-                  allParts={allParts}
-                  onUpdatePart={updatePart}
-                />
-              )}
-            </div>
-
-            {/* Action Buttons - Now inside card */}
-            <div className="mt-6">
-              <ActionButtons
-                onSurprise={handleSurprise}
-                onDownload={handleDownload}
-                onShare={handleShare}
-                isDownloading={isDownloading}
-                isSharing={isSharing}
+              <BodyEditor
+                avatarConfig={avatarConfig}
+                allParts={allParts}
+                onUpdatePart={updatePart}
+                onToggleItem={toggleItem}
+                onSetSkinTone={setSkinTone}
+                onSetHairColor={setHairColor}
+                onSetBreastOption={setBreastOption}
+                onRemoveHair={removeHair}
               />
             </div>
+
+ 
+             <div className="bg-white rounded-2xl p-1 relative absolute bottom-4 right-4 flex gap-65">
+                <Button variant="outline" onClick={handleSurprise}>
+                 Zufall
+               </Button>
+      
+              <Button asChild variant="outline" onClick={saveAvatarFace}>
+              <Link to="/quiz/$questionId">Weiter zum Quiz</Link>
+              </Button>
+            </div>
+
           </div>
         </div>
       </div>

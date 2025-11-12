@@ -5,5 +5,5 @@ export const Route = createFileRoute('/commitmentCall')({
 })
 
 function RouteComponent() {
-  return <div>Hello "/commitmentCall"!</div>
+return 
 }

@@ -1,4 +1,4 @@
-import AvatarGenerator from '@/AvatarGenerator'
+import AvatarGenerator from '@/components/avatar/AvatarGenerator'
 import { createLazyFileRoute } from '@tanstack/react-router'
 
 export const Route = createLazyFileRoute('/')({
@@ -6,7 +6,7 @@ export const Route = createLazyFileRoute('/')({
 })
 
 function RouteComponent() {
-  return <AvatarGenerator> 
-    
+return  <AvatarGenerator> 
+
   </AvatarGenerator>
 }
