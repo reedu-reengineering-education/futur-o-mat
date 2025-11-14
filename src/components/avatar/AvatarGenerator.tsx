@@ -6,19 +6,18 @@
  * Handles step navigation between body and values editors
  */
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useAvatarState, useAvatarParts, useUrlState, useToast } from "@/hooks";
 import { AvatarCanvas, type AvatarCanvasRef } from "@/components/avatar";
 import { BodyEditor } from "@/components/editors/BodyEditor";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
-import { ToastContainer } from "@/components/Toast"
-import {Link } from "@tanstack/react-router";
+import { ToastContainer } from "@/components/Toast";
+import { Link } from "@tanstack/react-router";
 
 function AvatarGenerator() {
-
   // Global state management
-   const [renderError, setRenderError] = useState<Error | null>(null);
+  const [renderError, setRenderError] = useState<Error | null>(null);
 
   // Toast notifications
   const { toasts, showToast, removeToast } = useToast();
@@ -47,7 +46,7 @@ function AvatarGenerator() {
   } = useAvatarParts();
 
   // URL state management for sharing
-  const { encodeState, decodeState } = useUrlState();
+  const { decodeState } = useUrlState();
 
   // Load avatar from URL on mount or generate random avatar
   useEffect(() => {
@@ -68,48 +67,68 @@ function AvatarGenerator() {
       }
     }
 
-    // Generate random avatar if no URL state or if decoding failed
     generateRandom(allParts);
   }, [allParts, decodeState, setAvatarConfig, generateRandom]);
 
-
   const saveAvatarFace = useCallback(() => {
-  if (avatarCanvasRef.current) {
-    try {
-      // Hol das Canvas-Element
+    if (avatarCanvasRef.current) {
       const canvas = avatarCanvasRef.current.getCanvas();
       if (canvas) {
-        // Erstelle ein neues Canvas nur für das Gesicht (oberer Teil)
-        const faceCanvas = document.createElement('canvas');
-        const faceCtx = faceCanvas.getContext('2d');
-        
-        // Setze die Größe für das Gesicht (z.B. obere 30% des Avatars)
+        const faceCanvas = document.createElement("canvas");
+        const faceCtx = faceCanvas.getContext("2d");
+
         faceCanvas.width = 200;
         faceCanvas.height = 200;
-        
+
         if (faceCtx) {
-          // Zeichne nur den oberen Teil (Gesicht) des Avatars
-          // Passe die Koordinaten an deine Avatar-Proportionen an
           faceCtx.drawImage(
             canvas,
-            0, 0, canvas.width, canvas.height * 0.25, // Quellbereich (obere 25%)
-            0, 0, 200, 200 // Zielbereich
+            0,
+            0,
+            canvas.width,
+            canvas.height * 0.5,
+            0,
+            0,
+            200,
+            200
           );
-          
-          // Konvertiere zu Base64
-          const faceImage = faceCanvas.toDataURL('image/png');
-          
-          // Speichere in localStorage
-          localStorage.setItem('avatarFaceImage', faceImage);
-          
-          console.log('Avatar-Gesicht gespeichert!');
+
+          const faceImage = faceCanvas.toDataURL("image/png");
+          localStorage.setItem("avatarFaceImage", faceImage);
         }
       }
-    } catch (error) {
-      console.error('Fehler beim Speichern des Avatar-Gesichts:', error);
     }
-  }
-}, [avatarCanvasRef]);
+  }, []);
+
+  const saveAvatarBody = useCallback(() => {
+    if (avatarCanvasRef.current) {
+      const canvas = avatarCanvasRef.current.getCanvas();
+      if (canvas) {
+        const bodyCanvas = document.createElement("canvas");
+        const bodyCtx = bodyCanvas.getContext("2d");
+
+        bodyCanvas.width = 250;
+        bodyCanvas.height = 250;
+
+        if (bodyCtx) {
+          bodyCtx.drawImage(
+            canvas,
+            0,
+            0,
+            canvas.width,
+            canvas.height * 0.99,
+            0,
+            0,
+            200,
+            300
+          );
+
+          const bodyImage = bodyCanvas.toDataURL("image/png");
+          localStorage.setItem("avatarImage", bodyImage);
+        }
+      }
+    }
+  }, []);
 
   // Handle render error
   const handleRenderError = useCallback(
@@ -126,14 +145,12 @@ function AvatarGenerator() {
     setRenderError(null);
   }, []);
 
-   // --- Auskommentiert: Zufallsknopf ---
+  // --- Auskommentiert: Zufallsknopf ---
   const handleSurprise = useCallback(() => {
     if (allParts.length > 0) {
       generateRandom(allParts);
     }
   }, [allParts, generateRandom]);
-
- 
 
   // Show loading state
   if (partsLoading) {
@@ -180,7 +197,7 @@ function AvatarGenerator() {
               <p className="text-sm sm:text-base text-gray-500 mt-1">
                 Mach dir die Zukunft, wie sie dir gefällt!
               </p>
-              {/* Hier Platz für Zufall und Info button */}
+              {/* Hier Platz Info button */}
             </div>
 
             {/* Avatar Display */}
@@ -219,17 +236,22 @@ function AvatarGenerator() {
               />
             </div>
 
- 
-             <div className="bg-white rounded-2xl p-1 relative absolute bottom-4 right-4 flex gap-65">
-                <Button variant="outline" onClick={handleSurprise}>
-                 Zufall
-               </Button>
-      
-              <Button asChild variant="outline" onClick={saveAvatarFace}>
-              <Link to="/quiz/$questionId">Weiter zum Quiz</Link>
+            <div className="bg-white rounded-2xl p-1 relative absolute bottom-4 right-4 flex gap-65">
+              <Button variant="outline" onClick={handleSurprise}>
+                Zufall
               </Button>
-            </div>
 
+              <Link
+                to={`/quiz/$questionId`}
+                onClick={() => {
+                  saveAvatarFace();
+                  saveAvatarBody();
+                }}
+                className="inline-block bg-purple-600 hover:bg-purple-700 text-white rounded-2xl text-sm font-medium px-6 py-2 shadow-lg transition-all"
+              >
+                Weiter zum Quiz
+              </Link>
+            </div>
           </div>
         </div>
       </div>

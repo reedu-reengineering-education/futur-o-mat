@@ -1,0 +1,550 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Wenn mir jemand von seinen Problemen erzählt,",
+      "answers": [
+        {
+          "text": "zeige ich mein Mitgefühl",
+          "value": "Harmonie",
+          "strength": "Empathie"
+        },
+        {
+          "text": "erkläre ich, was jetzt zu tun ist",
+          "value": "Leistung",
+          "strength": "Projektmanagement und strategisches Handeln"
+        },
+        {
+          "text": "versuche ich, den/die andere/n aufzuheitern",
+          "value": "Genuss",
+          "strength": "Humor"
+        },
+        {
+          "text": "höre ich zu und frage nach",
+          "value": "Gemeinsinn",
+          "strength": "Kommunikationsfähigkeit"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "In der Zukunft",
+      "answers": [
+        {
+          "text": "arbeite ich mit anderen zusammen",
+          "value": "Partizipation",
+          "strength": "Teamfähigkeit und Netzwerken"
+        },
+        {
+          "text": "setze ich meine vielen Ideen um",
+          "value": "Innovation",
+          "strength": "Kreativität und Flexibilität"
+        },
+        {
+          "text": "verbessere ich ein kleines bisschen die Welt",
+          "value": "Gerechtigkeitssinn",
+          "strength": "Verantwortungsbewusstsein"
+        },
+        {
+          "text": "unterteile ich große Projekte in Aufgaben",
+          "value": "Konformität",
+          "strength": "Projektmanagement und strategisches Handeln"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Andere würden über mich sagen,",
+      "answers": [
+        {
+          "text": "dass ich lustig bin",
+          "value": "Harmonie",
+          "strength": "Humor"
+        },
+        {
+          "text": "dass ich schlau bin",
+          "value": "Leistung",
+          "strength": "Kritisches Denken"
+        },
+        {
+          "text": "dass ich mutig bin",
+          "value": "Abenteuer",
+          "strength": "Mut zur Veränderung, Advocacy-Arbeit"
+        },
+        {
+          "text": "dass ich kreativ bin",
+          "value": "Vielfalt",
+          "strength": "Kreativität und Flexibilität"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Bei Gruppenaufgaben",
+      "answers": [
+        {
+          "text": "gebe ich jedem eine Chance, sich zu beteiligen",
+          "value": "Partizipation",
+          "strength": "Teamfähigkeit und Netzwerken"
+        },
+        {
+          "text": "mache ich einen Plan, was zu tun ist",
+          "value": "Leistung",
+          "strength": "Projektmanagement und strategisches Handeln"
+        },
+        {
+          "text": "trage ich das Ergebnis vor",
+          "value": "Selbstbestimmung",
+          "strength": "Kommunikationsfähigkeit"
+        },
+        {
+          "text": "sage ich, was ich schon alles zu dem Thema weiß",
+          "value": "Tradition",
+          "strength": "Lern- und Bildungskompetenz"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "In meiner Freizeit",
+      "answers": [
+        {
+          "text": "lerne ich gerne Neues",
+          "value": "Leistung",
+          "strength": "Lern- und Bildungskompetenz"
+        },
+        {
+          "text": "erlebe ich gerne etwas Aufregendes",
+          "value": "Abenteuer",
+          "strength": "Mut zur Veränderung, Advocacy-Arbeit"
+        },
+        {
+          "text": "mache ich das, was ich schon richtig gut kann",
+          "value": "Konformität",
+          "strength": "Ausdauer und Resilienz"
+        },
+        {
+          "text": "übe ich an etwas, was mich herausfordert",
+          "value": "Leistung",
+          "strength": "Ausdauer und Resilienz"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "Wenn etwas schwierig wird, (z. B. Hausaufgaben, Sport etc.)",
+      "answers": [
+        {
+          "text": "bleibe ich dran und schaffe es trotzdem",
+          "value": "Leistung",
+          "strength": "Ausdauer und Resilienz"
+        },
+        {
+          "text": "wäge ich ab, ob es sich lohnt weiter zu machen",
+          "value": "Systemisches Denken und Urteilsvermögen",
+          "strength": "Kritisches Denken"
+        },
+        {
+          "text": "bleibe ich ruhig und sage mir, dass es wichtig ist",
+          "value": "Ethikbewusstsein",
+          "strength": "Verantwortungsbewusstsein"
+        },
+        {
+          "text": "mache ich lieber etwas, was ich besonders gut kann",
+          "value": "Sicherheit",
+          "strength": "Selbstbestimmung"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "Ich bin gut darin,",
+      "answers": [
+        {
+          "text": "Gutes und Schlechtes abzuwägen, bevor ich eine Entscheidung treffe",
+          "value": "Ethikbewusstsein",
+          "strength": "Systemisches Denken und Urteilsvermögen"
+        },
+        {
+          "text": "mit jedem ins Gespräch zu kommen",
+          "value": "Partizipation",
+          "strength": "Kommunikationsfähigkeit"
+        },
+        {
+          "text": "zu verstehen, wie andere fühlen und sich verhalten",
+          "value": "Harmonie",
+          "strength": "Empathie"
+        },
+        {
+          "text": "andere zum Lächeln oder Lachen zu bringen",
+          "value": "Harmonie",
+          "strength": "Humor"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "Ich bin eine Person",
+      "answers": [
+        {
+          "text": "auf die man sich verlassen kann",
+          "value": "Sicherheit",
+          "strength": "Verantwortungsbewusstsein"
+        },
+        {
+          "text": "die zu ihrer Gruppe hält",
+          "value": "Gemeinsinn",
+          "strength": "Teamfähigkeit und Netzwerken"
+        },
+        {
+          "text": "die alles schaffen kann",
+          "value": "Leistung",
+          "strength": "Ausdauer und Resilienz"
+        },
+        {
+          "text": "die etwas macht, auch wenn sie Angst hat",
+          "value": "Abenteuer",
+          "strength": "Mut zur Veränderung, Advocacy-Arbeit"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Freunde/Freundinnen fragen mich, wenn",
+      "answers": [
+        {
+          "text": "sie Rat für eine Entscheidung brauchen",
+          "value": "Gerechtigkeitssinn",
+          "strength": "Systemisches Denken und Urteilsvermögen"
+        },
+        {
+          "text": "sie jemanden brauchen, der zuhört und versteht",
+          "value": "Harmonie",
+          "strength": "Empathie"
+        },
+        {
+          "text": "sie Hilfe bei etwas brauchen, wo ich ein Profi bin",
+          "value": "Leistung",
+          "strength": "Lern- und Bildungskompetenz"
+        },
+        {
+          "text": "sie ungewöhnliche Ideen brauchen",
+          "value": "Vielfalt",
+          "strength": "Kreativität und Flexibilität"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "Mir ist es wichtig,",
+      "answers": [
+        {
+          "text": "mich an Regeln zu halten und das Richtige zu tun",
+          "value": "Ethikbewusstsein",
+          "strength": "Verantwortungsbewusstsein"
+        },
+        {
+          "text": "meine eigenen Entscheidungen zu treffen",
+          "value": "Selbstbestimmung",
+          "strength": "Kritisches Denken"
+        },
+        {
+          "text": "die Werte und Traditionen meiner Familie zu leben",
+          "value": "Tradition",
+          "strength": "Verantwortungsbewusstsein"
+        },
+        {
+          "text": "das Leben auf jede Art zu genießen",
+          "value": "Genuss",
+          "strength": "Humor"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "question": "Bei Gruppenarbeiten ist mir wichtig, dass",
+      "answers": [
+        {
+          "text": "wir erfüllen, was die Lehrkraft vorgegeben hat",
+          "value": "Konformität",
+          "strength": "Verantwortungsbewusstsein"
+        },
+        {
+          "text": "ich zeige, wie gut ich bin",
+          "value": "Leistung",
+          "strength": "Selbstbestimmung"
+        },
+        {
+          "text": "wir uns gut verstehen und unterstützen",
+          "value": "Harmonie",
+          "strength": "Teamfähigkeit und Netzwerken"
+        },
+        {
+          "text": "ich entscheide, wer welche Aufgaben übernimmt",
+          "value": "Macht",
+          "strength": "Projektmanagement und strategisches Handeln"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "question": "Wenn ich an die Welt denke, wünsche ich mir",
+      "answers": [
+        {
+          "text": "mehr Offenheit füreinander",
+          "value": "Vielfalt",
+          "strength": "Empathie"
+        },
+        {
+          "text": "mehr Sicherheit/Schutz für alle",
+          "value": "Sicherheit",
+          "strength": "Verantwortungsbewusstsein"
+        },
+        {
+          "text": "mehr Hilfsbereitschaft untereinander",
+          "value": "Gemeinsinn",
+          "strength": "Teamfähigkeit und Netzwerken"
+        },
+        {
+          "text": "mehr Bewusstsein für die Natur",
+          "value": "Nachhaltigkeit",
+          "strength": "Kritisches Denken"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "question": "Im Umgang mit anderen ist mir wichtig,",
+      "answers": [
+        {
+          "text": "dass die anderen auf mich hören und tun, was ich sage",
+          "value": "Macht",
+          "strength": "Projektmanagement und strategisches Handeln"
+        },
+        {
+          "text": "dass alle sich äußern und einbringen",
+          "value": "Partizipation",
+          "strength": "Kommunikationsfähigkeit"
+        },
+        {
+          "text": "dass ich gut dastehe und gemocht werde",
+          "value": "Harmonie",
+          "strength": "Empathie"
+        },
+        {
+          "text": "dass wir offen und ehrlich miteinander sprechen",
+          "value": "Transparenz",
+          "strength": "Kommunikationsfähigkeit"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "question": "In der Zukunft möchte ich",
+      "answers": [
+        {
+          "text": "so leben, wie meine Eltern es mir vorleben",
+          "value": "Tradition",
+          "strength": "Verantwortungsbewusstsein"
+        },
+        {
+          "text": "viele Abenteuer erleben und Risiken eingehen",
+          "value": "Abenteuer",
+          "strength": "Mut zur Veränderung, Advocacy-Arbeit"
+        },
+        {
+          "text": "etwas machen, was die Welt bewahrt",
+          "value": "Nachhaltigkeit",
+          "strength": "Kritisches Denken"
+        },
+        {
+          "text": "ein sicheres und gesundes Leben führen",
+          "value": "Sicherheit",
+          "strength": "Ausdauer und Resilienz"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "question": "Mir ist es wichtig,",
+      "answers": [
+        {
+          "text": "reich zu sein",
+          "value": "Leistung",
+          "strength": "Projektmanagement und strategisches Handeln"
+        },
+        {
+          "text": "beliebt zu sein",
+          "value": "Harmonie",
+          "strength": "Empathie"
+        },
+        {
+          "text": "fröhlich zu sein",
+          "value": "Genuss",
+          "strength": "Humor"
+        },
+        {
+          "text": "erfolgreich zu sein",
+          "value": "Leistung",
+          "strength": "Ausdauer und Resilienz"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "question": "Bei meinen Freunden/Freundinnen hoffe ich,",
+      "answers": [
+        {
+          "text": "dass keine/r hinter meinem Rücken etwas macht",
+          "value": "Sicherheit",
+          "strength": "Verantwortungsbewusstsein"
+        },
+        {
+          "text": "dass keine/r mich vor allen anderen beleidigt",
+          "value": "Gerechtigkeitssinn",
+          "strength": "Konfliktmanagement"
+        },
+        {
+          "text": "dass keine/r mich ausschließt, weil ich eine andere Meinung habe",
+          "value": "Vielfalt",
+          "strength": "Empathie"
+        },
+        {
+          "text": "das keine/r mich im Stich lässt, wenn ich Hilfe brauche",
+          "value": "Gemeinsinn",
+          "strength": "Teamfähigkeit und Netzwerken"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "question": "Ich werde mich gut fühlen, wenn",
+      "answers": [
+        {
+          "text": "ich meine Ziele erreiche und etwas aus mir mache",
+          "value": "Leistung",
+          "strength": "Ausdauer und Resilienz"
+        },
+        {
+          "text": "ich die Natur schütze und nachhaltig lebe",
+          "value": "Nachhaltigkeit",
+          "strength": "Kritisches Denken"
+        },
+        {
+          "text": "ich mache, was von mir erwartet wird",
+          "value": "Konformität",
+          "strength": "Verantwortungsbewusstsein"
+        },
+        {
+          "text": "ich mich für soziale Gerechtigkeit einsetze",
+          "value": "Gerechtigkeitssinn",
+          "strength": "Mut zur Veränderung, Advocacy-Arbeit"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "question": "Andere sollen in mir eine Person sehen, die",
+      "answers": [
+        {
+          "text": "die mutig ist und Herausforderungen sucht",
+          "value": "Abenteuer",
+          "strength": "Mut zur Veränderung, Advocacy-Arbeit"
+        },
+        {
+          "text": "ihre Meinung unabhängig von anderen entwickelt",
+          "value": "Selbstbestimmung",
+          "strength": "Kritisches Denken"
+        },
+        {
+          "text": "Feste und Rituale ihrer Kultur/Familie/Religion lebt",
+          "value": "Tradition",
+          "strength": "Verantwortungsbewusstsein"
+        },
+        {
+          "text": "die ehrlich ist und Verantwortung für ihr Handeln übernimmt",
+          "value": "Ethikbewusstsein",
+          "strength": "Verantwortungsbewusstsein"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "question": "In Freundschaften ist mir wichtig,",
+      "answers": [
+        {
+          "text": "dass wir Neues und Aufregendes zusammen erleben",
+          "value": "Abenteuer",
+          "strength": "Kreativität und Flexibilität"
+        },
+        {
+          "text": "dass wir schätzen, dass wir verschieden sind",
+          "value": "Vielfalt",
+          "strength": "Empathie"
+        },
+        {
+          "text": "dass wir einfach Spaß haben",
+          "value": "Genuss",
+          "strength": "Humor"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "question": "Mir ist es wichtig,",
+      "answers": [
+        {
+          "text": "mich in der Gesellschaft zu engagieren",
+          "value": "Gemeinsinn",
+          "strength": "Mut zur Veränderung, Advocacy-Arbeit"
+        },
+        {
+          "text": "nach meinen Zielen und Überzeugungen zu handeln",
+          "value": "Selbstbestimmung",
+          "strength": "Verantwortungsbewusstsein"
+        },
+        {
+          "text": "mich und andere vor Schwierigkeiten zu schützen",
+          "value": "Sicherheit",
+          "strength": "Konfliktmanagement"
+        }
+      ]
+    }
+  ],
+  "values": {
+    "SENSEOFJUSTICE": "Gemeinsinn / Gerechtigkeitssinn / Ethikbewusstsein",
+    "SUSTAINABILITY": "Nachhaltigkeit",
+    "HARMONY": "Harmonie",
+    "DIVERSITY": "Vielfalt",
+    "PARTICIPATION": "Partizipation",
+    "Transparenz": "Transparenz",
+    "POWER": "Macht",
+    "PERFORMANCE": "Leistung",
+    "ENJOYMENT": "Genuss",
+    "ADVENTURE": "Abenteuer",
+    "SELFDETERMINATION": "Selbstbestimmung",
+    "SAFETY": "Sicherheit",
+    "TRADTION": "Tradition",
+    "CONFORMITY": "Konformität"
+  },
+  "strenght": {
+    "strengths": {
+      "EMPATHY": "Empathie",
+      "JUDGMENT": "Systemisches Denken und Urteilsvermögen",
+      "EDUCATIONALCOMPETENCE": "Lern- und Bildungskompetenz",
+      "TEAMWORK": "Teamfähigkeit und Netzwerken",
+      "PROJECTMANAGEMENT": "Projektmanagement und strategisches Handeln",
+      "CONFLICMANAGEMENT": "Konfliktmanagement",
+      "INNOVATION": "Innovations- und Problemlösefähigkeit",
+      "COURAGETOCHANGE": "Mut zur Veränderung, Advocacy-Arbeit",
+      "CREATIVITY": "Kreativität und Flexibilität",
+      "CRITICALTHINKING": "Kritisches Denken",
+      "COMMUNICATIONSKILLS": "Kommunikationsfähigkeit ",
+      "RESPONSIBILITY": "Verantwortungsbewusstsein ",
+      "HUMOR": "Humor",
+      "PERSEVERANCE": "Ausdauer und Resilienz",
+      "DIGITALSKILLS": "Digitale Kompetenzen",
+      "ATHLETIC": "Sportlichkeit"
+    }
+  }
+}

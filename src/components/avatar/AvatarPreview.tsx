@@ -15,7 +15,7 @@
 //  * AvatarPreview component wraps AvatarCanvas with download functionality
 //  * Provides a simple interface for displaying and downloading avatars
 //  */
- export function AvatarPreview() {}
+export function AvatarPreview() {}
 //   avatarConfig,
 //   width = 800,
 //   height = 1200,
