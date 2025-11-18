@@ -4,6 +4,7 @@ import { Link } from "@tanstack/react-router";
 import rawQuizData from "./quizData.json";
 import { VALUE_TO_PART_ID, STRENGTH_TO_PART_ID } from "./Values";
 import allParts from "@/assets/avatar_parts_manifest.json";
+import { Button } from "../ui/button";
 
 interface QuizAnswer {
   value: string;
@@ -149,7 +150,7 @@ export default function Quiz() {
     const results = getResultsWithParts();
 
     return (
-      <div className="min-h-screen bg-linear-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center">
+      <div className="min-h-screen bg-primary flex items-center justify-center">
         <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">
           <div className="relative w-full max-w-[520px] bg-white rounded-3xl shadow-xl overflow-hidden p-8">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
@@ -173,7 +174,7 @@ export default function Quiz() {
                     />
 
                     {results?.valuePart && (
-                      <div className="absolute -top-4 -left-4 w-12 h-12 bg-white rounded-full shadow-lg border-2 border-purple-500 overflow-hidden flex items-center justify-center">
+                      <div className="absolute -top-4 -left-4 w-12 h-12 bg-white rounded-full shadow-lg border-2 border-primary overflow-hidden flex items-center justify-center">
                         <img
                           src={"/" + results.valuePart.src}
                           alt="Value Badge"
@@ -183,7 +184,7 @@ export default function Quiz() {
                     )}
 
                     {results?.strengthPart && (
-                      <div className="absolute -top-4 -right-4 w-12 h-12 bg-white rounded-full shadow-lg border-2 border-purple-500 overflow-hidden flex items-center justify-center">
+                      <div className="absolute -top-4 -right-4 w-12 h-12 bg-white rounded-full shadow-lg border-2 border-primary overflow-hidden flex items-center justify-center">
                         <img
                           src={"/" + results.strengthPart.src}
                           alt="Strength Badge"
@@ -198,10 +199,10 @@ export default function Quiz() {
 
             <div className="flex justify-end mt-8">
               <Link
-                to="/quiz/result"
+                to="/quiz-result"
                 className="inline-block bg-purple-600 hover:bg-purple-700 text-white rounded-2xl text-sm font-medium px-6 py-2 shadow-lg transition-all"
               >
-                Weiter zum Ergebnis
+                <Button>Weiter zum Ergebnis</Button>
               </Link>
             </div>
           </div>
@@ -212,7 +213,7 @@ export default function Quiz() {
 
   // QUIZ-ANSICHT
   return (
-    <div className="min-h-screen bg-linear-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center">
+    <div className="min-h-screen bg-primary flex items-center justify-center">
       <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">
         <div className="w-full max-w-[520px] bg-white rounded-3xl shadow-2xl overflow-hidden">
           <div className="p-8 flex flex-col justify-between min-h-[850px]">
@@ -247,7 +248,7 @@ export default function Quiz() {
                   >
                     <span className="text-gray-700">{answer.text}</span>
                     <span
-                      className={`w-6 h-6 rounded-full border-2 shrink-0 ${isSelected ? "bg-purple-600 border-purple-600" : "border-gray-300 bg-white"}`}
+                      className={`w-6 h-6 rounded-full border-2 shrink-0 ${isSelected ? "bg-primary border-primary" : "border-gray-300 bg-white"}`}
                     >
                       {isSelected && (
                         <svg
@@ -282,13 +283,9 @@ export default function Quiz() {
               })}
             </div>
 
-            <button
-              onClick={handleNext}
-              disabled={selected === null}
-              className={`w-full flex items-center justify-center gap-3 px-6 py-3 rounded-2xl text-lg font-semibold transition-all ${selected !== null ? "bg-purple-600 text-white hover:bg-purple-700 shadow-lg" : "bg-gray-200 text-gray-400 cursor-not-allowed"}`}
-            >
+            <Button onClick={handleNext} disabled={selected === null}>
               {!isLastQuestion ? "Nächste Frage" : "Zum Ergebnis ✓"}
-            </button>
+            </Button>
           </div>
         </div>
       </div>

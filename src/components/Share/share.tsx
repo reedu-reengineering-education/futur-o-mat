@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { AvatarPreview } from "./AvatarPreview"; // Die neue Komponente
 import type { AvatarConfig } from "../../types"; // Dein AvatarConfig Type
+import { Button } from "../ui/button";
+import { Link } from "@tanstack/react-router";
 
 export function Share() {
   const [wimmelbild, setWimmelbild] = useState<string>("");
@@ -74,7 +76,7 @@ export function Share() {
 
   // Haupt-Share-Seite mit 6 Buttons
   return (
-    <div className="min-h-screen bg-linear-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center">
+    <div className="min-h-screen bg-primary flex items-center justify-center">
       <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">
         <div className="relative w-full max-w-[520px] bg-white rounded-3xl shadow-xl overflow-hidden p-8">
           <div className="flex flex-col gap-6">
@@ -115,61 +117,51 @@ export function Share() {
             {/* Buttons Grid - Mobile optimiert */}
             <div className="grid grid-cols-2 gap-3 relative z-10">
               {/* Teilen Button */}
-              <button
+              <Button
                 onClick={handleShare}
-                className="bg-white/80 hover:bg-purple-500 hover:text-white border border-gray-200 text-gray-700 rounded-xl py-3 px-4 font-semibold shadow-md transition-all duration-200 flex flex-col items-center justify-center gap-1"
               >
-                <span className="text-xl"></span>
-                <span className="text-sm">Teilen</span>
-              </button>
+               Teilen
+              </Button>
 
               {/* Download Button */}
-              <button
+              <Button
                 onClick={handleDownload}
-                className="bg-white/80 hover:bg-purple-500 hover:text-white border border-gray-200 text-gray-700 rounded-xl py-3 px-4 font-semibold shadow-md transition-all duration-200 flex flex-col items-center justify-center gap-1"
-              >
-                <span className="text-xl"></span>
-                <span className="text-sm">Download</span>
-              </button>
+              >Download
+              </Button>
 
               {/* Weitere Quiz */}
-              <button className="bg-white/80 hover:bg-purple-500 hover:text-white border border-gray-200 text-gray-700 rounded-xl py-3 px-4 font-semibold shadow-md transition-all duration-200 flex flex-col items-center justify-center gap-1">
-                <span className="text-xl"></span>
-                <span className="text-sm">Weitere Quiz</span>
-              </button>
+              <Button>Weitere Quiz
+              </Button>
 
               {/* SDG Wimmelbild */}
-              <a
-                href="https://www.germanwatch.org/de/das-sdg-wimmelbild-zukunft"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white/80 hover:bg-purple-500 hover:text-white border border-gray-200 text-gray-700 rounded-xl py-3 px-4 font-semibold shadow-md transition-all duration-200 flex flex-col items-center justify-center gap-1 text-center"
+              <Link 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                to="https://www.germanwatch.org/de/das-sdg-wimmelbild-zukunft"
+                className="w-full"
               >
-                <span className="text-xl"></span>
-                <span className="text-sm">SDG Wimmelbild</span>
-              </a>
+                <Button className="w-full">SDG Wimmelbild</Button>
+              </Link>
 
               {/* Handabdruck */}
-              <a
-                href="https://www.handabdruck.eu/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white/80 hover:bg-purple-500 hover:text-white border border-gray-200 text-gray-700 rounded-xl py-3 px-4 font-semibold shadow-md transition-all duration-200 flex flex-col items-center justify-center gap-1 text-center"
+              <Link 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                to="https://www.handabdruck.eu/"
+                className="w-full"
               >
-                <span className="text-xl"></span>
-                <span className="text-sm">Handabdruck</span>
-              </a>
+                <Button className="w-full">Handabdruck</Button>
+              </Link>
 
               {/* Germanwatch */}
-              <a
-                href="https://www.germanwatch.org/de"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white/80 hover:bg-purple-500 hover:text-white border border-gray-200 text-gray-700 rounded-xl py-3 px-4 font-semibold shadow-md transition-all duration-200 flex flex-col items-center justify-center gap-1 text-center"
+              <Link 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                to="https://www.germanwatch.org/de"
+                className="w-full"
               >
-                <span className="text-xl"></span>
-                <span className="text-sm">Germanwatch</span>
-              </a>
+                <Button className="w-full">Germanwatch</Button>
+              </Link>
             </div>
 
             {/* Additional Info */}

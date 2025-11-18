@@ -6,6 +6,7 @@
  */
 
 import { Component, type ReactNode } from "react";
+import { Button } from "./ui/button";
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -65,18 +66,16 @@ export class ErrorBoundary extends Component<
                 "Ein unerwarteter Fehler ist aufgetreten."}
             </p>
             <div className="flex gap-3 justify-center">
-              <button
+              <Button
                 onClick={this.handleReset}
-                className="px-6 py-3 bg-brand-primary text-white rounded-lg font-semibold hover:bg-brand-primary-dark transition-colors"
               >
                 Erneut versuchen
-              </button>
-              <button
+              </Button>
+              <Button
                 onClick={() => window.location.reload()}
-                className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
-              >
+                variant="outline">
                 Seite neu laden
-              </button>
+              </Button>
             </div>
           </div>
         </div>

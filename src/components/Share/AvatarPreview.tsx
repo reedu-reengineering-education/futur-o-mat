@@ -57,18 +57,19 @@ export function AvatarPreview({
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center">
+    <div className="min-h-screen bg-primary flex items-center justify-center">
       <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">
         <div className="relative w-full max-w-[520px] bg-white rounded-3xl shadow-xl overflow-hidden p-8">
           <div className="flex flex-col gap-6">
             {/* Back Button */}
             {onBack && (
-              <button
+              <Button
                 onClick={onBack}
-                className="absolute top-4 left-4 z-20 text-gray-500 hover:text-gray-700"
+                variant="ghost"
+
               >
                 ← Zurück
-              </button>
+              </Button>
             )}
 
             {/* Wimmelbild als Hintergrund */}
@@ -121,7 +122,6 @@ export function AvatarPreview({
               {showDownloadButton && (
                 <Button
                   onClick={handleDownload}
-                  className="bg-white/80 hover:bg-purple-500 hover:text-white border border-gray-200 text-gray-700 rounded-xl py-3 font-semibold shadow-md transition-all duration-200"
                 >
                   Download Avatar
                 </Button>
@@ -130,7 +130,6 @@ export function AvatarPreview({
               {showShareButton && (
                 <Button
                   onClick={handleShare}
-                  className="bg-white/80 hover:bg-purple-500 hover:text-white border border-gray-200 text-gray-700 rounded-xl py-3 font-semibold shadow-md transition-all duration-200"
                 >
                   {copied ? "✓ Link kopiert!" : "Link teilen"}
                 </Button>
