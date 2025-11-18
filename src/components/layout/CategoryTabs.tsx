@@ -101,9 +101,9 @@ export function CategoryTabs({
                   border-b-3
                   ${
                     isActive
-                      ? "text-purple-600 border-b-purple-600"
+                      ? "text-primary border-b-primary"
                       : isVisited
-                      ? "text-gray-600 border-b-transparent hover:text-purple-500 hover:border-b-purple-300"
+                      ? "text-gray-600 border-b-transparent hover:text-primary hover:border-b-primary"
                       : "text-gray-500 border-b-transparent hover:text-gray-700 hover:border-b-gray-300"
                   }
                 `}
@@ -112,9 +112,6 @@ export function CategoryTabs({
                 }}
               >
                 {category.name}
-                {isVisited && !isActive && (
-                  <span className="absolute top-1 right-1 w-1.5 h-1.5 bg-purple-600 rounded-full" />
-                )}
               </button>
             );
           })}

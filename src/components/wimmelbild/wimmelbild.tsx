@@ -2,6 +2,7 @@
 
 import { Link } from "@tanstack/react-router";
 import React, { useState, useEffect } from "react";
+import { Button } from "../ui/button";
 
 interface WimmelbildImage {
   id: string;
@@ -50,7 +51,7 @@ const Wimmelbild: React.FC<WimmelbildProps> = ({ images }) => {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-primary flex items-center justify-center p-4">
       <div className="container mx-auto flex items-center justify-center min-h-screen">
         <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-xl overflow-hidden p-8">
           {/* Hauptinhalt */}
@@ -111,9 +112,10 @@ const Wimmelbild: React.FC<WimmelbildProps> = ({ images }) => {
               <Link
                 to="/commitmentCall"
                 onClick={handleSaveSelection}
-                className="w-full bg-purple-500 text-white py-4 rounded-xl font-semibold hover:bg-purple-600 transition-colors text-lg shadow-lg mt-4"
               >
+                <Button disabled={!selectedImage} >
                 Auswählen
+                </Button>
               </Link>
             )}
 

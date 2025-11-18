@@ -174,19 +174,19 @@ function AvatarGenerator() {
             Die Avatar-Teile konnten nicht geladen werden. Bitte versuche es
             später erneut.
           </p>
-          <button
+          <Button
             onClick={() => window.location.reload()}
-            className="px-6 py-3 bg-brand-primary text-white rounded-lg font-semibold hover:bg-brand-primary-dark transition-colors"
+            variant="outline"
           >
             Neu laden
-          </button>
+          </Button>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center">
+    <div className="min-h-screen bg-primary flex items-center justify-center">
       <div className="container mx-auto px-4 sm:px-2 py-8 flex items-center justify-center min-h-screen">
         <div className="w-full max-w-[520px] bg-white rounded-3xl shadow-2xl overflow-hidden">
           <div className="p-6 sm:p-8">
@@ -237,7 +237,7 @@ function AvatarGenerator() {
             </div>
 
             <div className="bg-white rounded-2xl p-1 relative absolute bottom-4 right-4 flex gap-65">
-              <Button variant="outline" onClick={handleSurprise}>
+              <Button variant="secondary" onClick={handleSurprise}>
                 Zufall
               </Button>
 
@@ -247,9 +247,10 @@ function AvatarGenerator() {
                   saveAvatarFace();
                   saveAvatarBody();
                 }}
-                className="inline-block bg-purple-600 hover:bg-purple-700 text-white rounded-2xl text-sm font-medium px-6 py-2 shadow-lg transition-all"
               >
+                <Button>
                 Weiter zum Quiz
+                </Button>
               </Link>
             </div>
           </div>

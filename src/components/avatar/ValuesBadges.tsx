@@ -64,7 +64,7 @@ export function ValuesBadges({
       {selectedBadges.map((badge) => (
         <div
           key={badge.id}
-          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white shadow-lg border-2 border-purple-500 overflow-hidden flex items-center justify-center transition-transform duration-300 hover:scale-110"
+          className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white shadow-lg border-2 border-primary overflow-hidden flex items-center justify-center transition-transform duration-300 hover:scale-110"
           title={badge.type === "value" ? "Wert" : "Stärke"}
         >
           <img

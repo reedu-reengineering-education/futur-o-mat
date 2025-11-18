@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { X } from "lucide-react";
+import { Button } from "../ui/button";
 
 interface AvatarPart {
   id: string;
@@ -51,7 +52,7 @@ export function QuizResult() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-primary flex items-center justify-center p-4">
       <div className="w-full max-w-[520px] bg-white rounded-3xl shadow-xl p-8">
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
           Dein Ergebnis
@@ -125,12 +126,12 @@ export function QuizResult() {
               className="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl relative"
               onClick={(e) => e.stopPropagation()}
             >
-              <button
+              <Button
                 onClick={() => setSelectedBadge(null)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+                variant={"ghost"}
               >
                 <X size={24} />
-              </button>
+              </Button>
 
               {selectedBadge.part && (
                 <div className="flex justify-center mb-4">
@@ -167,12 +168,11 @@ export function QuizResult() {
                     "Beschreibung folgt..."}
               </p>
 
-              <button
+              <Button
                 onClick={() => setSelectedBadge(null)}
-                className="w-full bg-purple-600 hover:bg-purple-700 text-white rounded-xl py-2 font-medium transition-colors"
               >
                 Verstanden
-              </button>
+              </Button>
             </div>
           </div>
         )}
@@ -181,9 +181,10 @@ export function QuizResult() {
         <div className="flex justify-center mt-8">
           <Link
             to="/wimmelbild" // Später deine Wimmelbild-Route
-            className="inline-block bg-green-600 hover:bg-green-700 text-white rounded-2xl text-sm font-medium px-6 py-2 shadow-lg transition-all"
           >
+            <Button>
             Zum Wimmelbild
+            </Button>
           </Link>
         </div>
       </div>
