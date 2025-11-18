@@ -27,7 +27,7 @@ export function useAvatarState(
 
   // Single-select categories (only one part can be selected)
   const singleSelectCategories = useMemo(
-    () => ["head", "bodytype", "shoes", "brust", "hair", "values", "strengths"],
+    () => ["head", "bodytype", "shoes", "brust", "hair"],
     []
   );
 

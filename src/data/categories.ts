@@ -38,9 +38,9 @@ export const ALL_CATEGORIES: Category[] = [
  * Skin tone options with display names
  */
 export const SKIN_TONES = [
-  { id: "Hell", name: "Hell", color: "#f5d5c0" },
-  { id: "Braun", name: "Braun", color: "#c68642" },
-  { id: "Dunkel", name: "Dunkel", color: "#8d5524" },
+  { id: "Hell", color: "#f5d5c0" },
+  { id: "Braun", color: "#c68642" },
+  { id: "Dunkel", color: "#8d5524" },
 ] as const;
 
 /**
@@ -72,7 +72,7 @@ export const BODY_TYPES = [
 export const DEFAULT_AVATAR_CONFIG = {
   selectedParts: {},
   selectedItems: [],
-  skinTone: "Hell",
+  skinTone: "Dunkel",
   hairColor: "brunette",
   brustAnsatz: false,
 };
@@ -90,6 +90,4 @@ export const RENDER_ORDER = [
   "shoes",
   "accessoires",
   "handicap",
-  "values",
-  "strengths",
 ] as const;

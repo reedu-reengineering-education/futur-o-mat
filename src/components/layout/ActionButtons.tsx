@@ -1,9 +1,11 @@
+
+export function ActionButtons(){}
 /**
  * ActionButtons Component
  *
  * Provides action buttons for avatar operations: surprise (random), download, and share
  * Uses shadcn/ui components with consistent styling and loading states
- */
+
 
 import { Button } from "@/components/ui/button";
 
@@ -26,14 +28,14 @@ export function ActionButtons({
     <div className="w-full bg-white border-t border-border fixed bottom-0 left-0 right-0 shadow-lg z-50 safe-area-inset-bottom">
       <div className="container mx-auto px-2 sm:px-4 py-2 sm:py-4">
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 max-w-2xl mx-auto">
-          {/* Surprise button */}
+         
           <Button
             onClick={onSurprise}
             variant="outline"
-            className="flex-1 h-12 sm:h-12 font-semibold text-brand-primary border-brand-primary active:bg-brand-primary active:text-white transition-colors touch-manipulation text-sm sm:text-base"
+            className="flex-1 h-12 sm:h-12 font-semibold text-brand-primary border-brand-primary active:bg-brand-primary active:text-white transition-colors touch-manipulation text-sm sm:text-base" //Zufallbox
           >
             <svg
-              className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2"
+              className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-Si" //Smily
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -42,14 +44,13 @@ export function ActionButtons({
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
-                d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" //Smily
               />
             </svg>
             <span className="hidden xs:inline">Überraschung!</span>
             <span className="xs:hidden">Zufall</span>
           </Button>
 
-          {/* Download button */}
           <Button
             onClick={onDownload}
             disabled={isDownloading}
@@ -80,7 +81,6 @@ export function ActionButtons({
             )}
           </Button>
 
-          {/* Share button */}
           <Button
             onClick={onShare}
             disabled={isSharing}
@@ -115,3 +115,4 @@ export function ActionButtons({
     </div>
   );
 }
+ */

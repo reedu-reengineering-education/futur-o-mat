@@ -1,111 +1,106 @@
-/**
- * ValuesEditor Component
- *
- * Values and strengths selection interface for "Wie bist du?" (How are you?) step
- * Handles tab switching between values and strengths
- * Integrates with avatar rendering system
- */
+// /** */
 
-import { useState, useCallback } from "react";
-import type { AvatarConfig, AvatarPart } from "@/types";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { PartsGrid } from "@/components/layout";
-import { useAvatarParts } from "@/hooks";
 
-interface ValuesEditorProps {
-  avatarConfig: AvatarConfig;
-  allParts: AvatarPart[];
-  onUpdatePart: (part: AvatarPart) => void;
-}
+// import { useState, useCallback } from "react";
+// import type { AvatarConfig, AvatarPart } from "@/types";
+// import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+// import { PartsGrid } from "@/components/layout";
+// import { useAvatarParts } from "@/hooks";
 
-export function ValuesEditor({
-  avatarConfig,
-  onUpdatePart,
-}: ValuesEditorProps) {
-  const [activeTab, setActiveTab] = useState<string>("values");
+// interface ValuesEditorProps {
+//   avatarConfig: AvatarConfig;
+//   allParts: AvatarPart[];
+//   onUpdatePart: (part: AvatarPart) => void;
+// }
 
-  // Get filtered parts for values
-  const { parts: valuesParts } = useAvatarParts({
-    category: "values",
-  });
+// export function ValuesEditor({
+//   avatarConfig,
+//   onUpdatePart,
+// }: ValuesEditorProps) {
+//   const [activeTab, setActiveTab] = useState<string>("values");
 
-  // Get filtered parts for strengths
-  const { parts: strengthsParts } = useAvatarParts({
-    category: "strengths",
-  });
+//   // Get filtered parts for values
+//   const { parts: valuesParts } = useAvatarParts({
+//     category: "values",
+//   });
 
-  // Handle part selection (single select for both categories)
-  const handlePartSelect = useCallback(
-    (part: AvatarPart) => {
-      onUpdatePart(part);
-    },
-    [onUpdatePart]
-  );
+//   // Get filtered parts for strengths
+//   const { parts: strengthsParts } = useAvatarParts({
+//     category: "strengths",
+//   });
 
-  return (
-    <div className="space-y-4 sm:space-y-6">
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-2 h-auto bg-white">
-          <TabsTrigger
-            value="values"
-            className="py-2.5 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm md:text-base font-semibold data-[state=active]:bg-brand-primary data-[state=active]:text-white touch-manipulation min-h-[44px]"
-          >
-            <span className="hidden xs:inline">Das ist dir wichtig!</span>
-            <span className="xs:hidden">Werte</span>
-          </TabsTrigger>
-          <TabsTrigger
-            value="strengths"
-            className="py-2.5 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm md:text-base font-semibold data-[state=active]:bg-brand-primary data-[state=active]:text-white touch-manipulation min-h-[44px]"
-          >
-            <span className="hidden xs:inline">Das kannst du gut!</span>
-            <span className="xs:hidden">Stärken</span>
-          </TabsTrigger>
-        </TabsList>
+//   // Handle part selection (single select for both categories)
+//   const handlePartSelect = useCallback(
+//     (part: AvatarPart) => {
+//       onUpdatePart(part);
+//     },
+//     [onUpdatePart]
+//   );
 
-        <TabsContent value="values" className="mt-4 sm:mt-6">
-          <div className="space-y-3 sm:space-y-4">
-            <div className="text-center px-2">
-              <h3 className="text-base sm:text-lg font-semibold text-brand-primary mb-1 sm:mb-2">
-                Wähle einen Wert
-              </h3>
-              <p className="text-xs sm:text-sm text-muted-foreground">
-                Was ist dir im Leben besonders wichtig?
-              </p>
-            </div>
+//   return (
+//     <div className="space-y-4 sm:space-y-6">
+//       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+//         <TabsList className="grid w-full grid-cols-2 h-auto bg-white">
+//           <TabsTrigger
+//             value="values"
+//             className="py-2.5 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm md:text-base font-semibold data-[state=active]:bg-brand-primary data-[state=active]:text-white touch-manipulation min-h-[44px]"
+//           >
+//             <span className="hidden xs:inline">Das ist dir wichtig!</span>
+//             <span className="xs:hidden">Werte</span>
+//           </TabsTrigger>
+//           <TabsTrigger
+//             value="strengths"
+//             className="py-2.5 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm md:text-base font-semibold data-[state=active]:bg-brand-primary data-[state=active]:text-white touch-manipulation min-h-[44px]"
+//           >
+//             <span className="hidden xs:inline">Das kannst du gut!</span>
+//             <span className="xs:hidden">Stärken</span>
+//           </TabsTrigger>
+//         </TabsList>
 
-            <PartsGrid
-              parts={valuesParts}
-              selectedParts={avatarConfig.selectedParts}
-              selectedItems={avatarConfig.selectedItems}
-              onPartSelect={handlePartSelect}
-              multiSelect={false}
-              category="values"
-            />
-          </div>
-        </TabsContent>
+//         <TabsContent value="values" className="mt-4 sm:mt-6">
+//           <div className="space-y-3 sm:space-y-4">
+//             <div className="text-center px-2">
+//               <h3 className="text-base sm:text-lg font-semibold text-brand-primary mb-1 sm:mb-2">
+//                 Wähle einen Wert
+//               </h3>
+//               <p className="text-xs sm:text-sm text-muted-foreground">
+//                 Was ist dir im Leben besonders wichtig?
+//               </p>
+//             </div>
 
-        <TabsContent value="strengths" className="mt-4 sm:mt-6">
-          <div className="space-y-3 sm:space-y-4">
-            <div className="text-center px-2">
-              <h3 className="text-base sm:text-lg font-semibold text-brand-primary mb-1 sm:mb-2">
-                Wähle eine Stärke
-              </h3>
-              <p className="text-xs sm:text-sm text-muted-foreground">
-                Was kannst du besonders gut?
-              </p>
-            </div>
+//             <PartsGrid
+//               parts={valuesParts}
+//               selectedParts={avatarConfig.selectedParts}
+//               selectedItems={avatarConfig.selectedItems}
+//               onPartSelect={handlePartSelect}
+//               multiSelect={false}
+//               category="values"
+//             />
+//           </div>
+//         </TabsContent>
 
-            <PartsGrid
-              parts={strengthsParts}
-              selectedParts={avatarConfig.selectedParts}
-              selectedItems={avatarConfig.selectedItems}
-              onPartSelect={handlePartSelect}
-              multiSelect={false}
-              category="strengths"
-            />
-          </div>
-        </TabsContent>
-      </Tabs>
-    </div>
-  );
-}
+//         <TabsContent value="strengths" className="mt-4 sm:mt-6">
+//           <div className="space-y-3 sm:space-y-4">
+//             <div className="text-center px-2">
+//               <h3 className="text-base sm:text-lg font-semibold text-brand-primary mb-1 sm:mb-2">
+//                 Wähle eine Stärke
+//               </h3>
+//               <p className="text-xs sm:text-sm text-muted-foreground">
+//                 Was kannst du besonders gut?
+//               </p>
+//             </div>
+
+//             <PartsGrid
+//               parts={strengthsParts}
+//               selectedParts={avatarConfig.selectedParts}
+//               selectedItems={avatarConfig.selectedItems}
+//               onPartSelect={handlePartSelect}
+//               multiSelect={false}
+//               category="strengths"
+//             />
+//           </div>
+//         </TabsContent>
+//       </Tabs>
+//     </div>
+//   );
+// }
