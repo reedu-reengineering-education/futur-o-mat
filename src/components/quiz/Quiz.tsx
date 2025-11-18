@@ -26,13 +26,6 @@ interface QuizData {
   questions: Question[];
 }
 
-interface AvatarPart {
-  id: string;
-  src: string;
-  category: string;
-  name?: string;
-}
-
 // interface QuizProps {
 //   allParts?: AvatarPart[];
 //   onComplete?: (valuePartId: string, strengthPartId: string) => void;
@@ -156,7 +149,7 @@ export default function Quiz() {
     const results = getResultsWithParts();
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center">
+      <div className="min-h-screen bg-linear-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center">
         <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">
           <div className="relative w-full max-w-[520px] bg-white rounded-3xl shadow-xl overflow-hidden p-8">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
@@ -219,7 +212,7 @@ export default function Quiz() {
 
   // QUIZ-ANSICHT
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center">
+    <div className="min-h-screen bg-linear-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center">
       <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">
         <div className="w-full max-w-[520px] bg-white rounded-3xl shadow-2xl overflow-hidden">
           <div className="p-8 flex flex-col justify-between min-h-[850px]">
@@ -254,7 +247,7 @@ export default function Quiz() {
                   >
                     <span className="text-gray-700">{answer.text}</span>
                     <span
-                      className={`w-6 h-6 rounded-full border-2 flex-shrink-0 ${isSelected ? "bg-purple-600 border-purple-600" : "border-gray-300 bg-white"}`}
+                      className={`w-6 h-6 rounded-full border-2 shrink-0 ${isSelected ? "bg-purple-600 border-purple-600" : "border-gray-300 bg-white"}`}
                     >
                       {isSelected && (
                         <svg

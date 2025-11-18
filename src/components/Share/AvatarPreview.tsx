@@ -57,7 +57,7 @@ export function AvatarPreview({
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center">
+    <div className="min-h-screen bg-linear-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center">
       <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">
         <div className="relative w-full max-w-[520px] bg-white rounded-3xl shadow-xl overflow-hidden p-8">
           <div className="flex flex-col gap-6">

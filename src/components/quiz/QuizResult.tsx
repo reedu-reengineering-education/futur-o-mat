@@ -51,7 +51,7 @@ export function QuizResult() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-linear-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center p-4">
       <div className="w-full max-w-[520px] bg-white rounded-3xl shadow-xl p-8">
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
           Dein Ergebnis

@@ -50,7 +50,7 @@ const Wimmelbild: React.FC<WimmelbildProps> = ({ images }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-linear-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center p-4">
       <div className="container mx-auto flex items-center justify-center min-h-screen">
         <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-xl overflow-hidden p-8">
           {/* Hauptinhalt */}
@@ -87,7 +87,7 @@ const Wimmelbild: React.FC<WimmelbildProps> = ({ images }) => {
                 {images.map((image) => (
                   <button
                     key={image.id}
-                    className={`flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 transition-all ${
+                    className={`shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 transition-all ${
                       selectedImage?.id === image.id
                         ? "border-purple-500 ring-4 ring-purple-200 scale-110"
                         : savedImageId === image.id
