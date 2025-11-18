@@ -1,4 +1,4 @@
 export { AvatarCanvas } from "./AvatarCanvas";
 export type { AvatarCanvasRef } from "./AvatarCanvas";
-export { AvatarPreview } from "./AvatarPreview";
+export { AvatarPreview } from "../Share/AvatarPreview";
 export { ValuesBadges } from "./ValuesBadges";

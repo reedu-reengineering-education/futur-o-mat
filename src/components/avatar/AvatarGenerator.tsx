@@ -107,8 +107,8 @@ function AvatarGenerator() {
         const bodyCanvas = document.createElement("canvas");
         const bodyCtx = bodyCanvas.getContext("2d");
 
-        bodyCanvas.width = 250;
-        bodyCanvas.height = 250;
+        bodyCanvas.width = 200;
+        bodyCanvas.height = 200;
 
         if (bodyCtx) {
           bodyCtx.drawImage(
@@ -116,7 +116,7 @@ function AvatarGenerator() {
             0,
             0,
             canvas.width,
-            canvas.height * 0.99,
+            canvas.height * 1.6,
             0,
             0,
             200,
@@ -242,7 +242,7 @@ function AvatarGenerator() {
               </Button>
 
               <Link
-                to={`/quiz/$questionId`}
+                to={`/quizInformations`}
                 onClick={() => {
                   saveAvatarFace();
                   saveAvatarBody();

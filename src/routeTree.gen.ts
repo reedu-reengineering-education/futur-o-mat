@@ -12,6 +12,8 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ShareRouteImport } from './routes/share'
+import { Route as QuizResultRouteImport } from './routes/quizResult'
+import { Route as QuizInformationsRouteImport } from './routes/quizInformations'
 import { Route as CommitmentCallRouteImport } from './routes/commitmentCall'
 import { Route as AvatarRouteImport } from './routes/avatar'
 import { Route as QuizQuestionIdRouteImport } from './routes/quiz/$questionId'
@@ -21,6 +23,16 @@ const IndexLazyRouteImport = createFileRoute('/')()
 const ShareRoute = ShareRouteImport.update({
   id: '/share',
   path: '/share',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuizResultRoute = QuizResultRouteImport.update({
+  id: '/quizResult',
+  path: '/quizResult',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuizInformationsRoute = QuizInformationsRouteImport.update({
+  id: '/quizInformations',
+  path: '/quizInformations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CommitmentCallRoute = CommitmentCallRouteImport.update({
@@ -48,6 +60,8 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/avatar': typeof AvatarRoute
   '/commitmentCall': typeof CommitmentCallRoute
+  '/quizInformations': typeof QuizInformationsRoute
+  '/quizResult': typeof QuizResultRoute
   '/share': typeof ShareRoute
   '/quiz/$questionId': typeof QuizQuestionIdRoute
 }
@@ -55,6 +69,8 @@ export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/avatar': typeof AvatarRoute
   '/commitmentCall': typeof CommitmentCallRoute
+  '/quizInformations': typeof QuizInformationsRoute
+  '/quizResult': typeof QuizResultRoute
   '/share': typeof ShareRoute
   '/quiz/$questionId': typeof QuizQuestionIdRoute
 }
@@ -63,6 +79,8 @@ export interface FileRoutesById {
   '/': typeof IndexLazyRoute
   '/avatar': typeof AvatarRoute
   '/commitmentCall': typeof CommitmentCallRoute
+  '/quizInformations': typeof QuizInformationsRoute
+  '/quizResult': typeof QuizResultRoute
   '/share': typeof ShareRoute
   '/quiz/$questionId': typeof QuizQuestionIdRoute
 }
@@ -72,15 +90,26 @@ export interface FileRouteTypes {
     | '/'
     | '/avatar'
     | '/commitmentCall'
+    | '/quizInformations'
+    | '/quizResult'
     | '/share'
     | '/quiz/$questionId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/avatar' | '/commitmentCall' | '/share' | '/quiz/$questionId'
+  to:
+    | '/'
+    | '/avatar'
+    | '/commitmentCall'
+    | '/quizInformations'
+    | '/quizResult'
+    | '/share'
+    | '/quiz/$questionId'
   id:
     | '__root__'
     | '/'
     | '/avatar'
     | '/commitmentCall'
+    | '/quizInformations'
+    | '/quizResult'
     | '/share'
     | '/quiz/$questionId'
   fileRoutesById: FileRoutesById
@@ -89,6 +118,8 @@ export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   AvatarRoute: typeof AvatarRoute
   CommitmentCallRoute: typeof CommitmentCallRoute
+  QuizInformationsRoute: typeof QuizInformationsRoute
+  QuizResultRoute: typeof QuizResultRoute
   ShareRoute: typeof ShareRoute
   QuizQuestionIdRoute: typeof QuizQuestionIdRoute
 }
@@ -100,6 +131,20 @@ declare module '@tanstack/react-router' {
       path: '/share'
       fullPath: '/share'
       preLoaderRoute: typeof ShareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quizResult': {
+      id: '/quizResult'
+      path: '/quizResult'
+      fullPath: '/quizResult'
+      preLoaderRoute: typeof QuizResultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quizInformations': {
+      id: '/quizInformations'
+      path: '/quizInformations'
+      fullPath: '/quizInformations'
+      preLoaderRoute: typeof QuizInformationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/commitmentCall': {
@@ -137,6 +182,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   AvatarRoute: AvatarRoute,
   CommitmentCallRoute: CommitmentCallRoute,
+  QuizInformationsRoute: QuizInformationsRoute,
+  QuizResultRoute: QuizResultRoute,
   ShareRoute: ShareRoute,
   QuizQuestionIdRoute: QuizQuestionIdRoute,
 }
