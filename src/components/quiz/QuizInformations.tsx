@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
+import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
+import Layout from "../layout";
 
 export function QuizInformation() {
   const [avatarBody, setAvatarBody] = useState<string>("");
@@ -11,9 +13,10 @@ export function QuizInformation() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-primary flex items-center justify-center">
-      <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">
-        <div className="relative w-full max-w-[520px] bg-white rounded-3xl shadow-xl overflow-hidden p-8">
+    <Layout>
+      <Card className="max-w-md">
+        <CardHeader></CardHeader>
+        <CardContent>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="flex-1 text-gray-700 leading-relaxed space-y-4 text-base">
               <p>
@@ -40,18 +43,13 @@ export function QuizInformation() {
               </div>
             )}
           </div>
-          <div className="flex justify-end mt-8">
-            <Link
-              to={`/quiz/$questionId`}
-            >
-              <Button>
-
-              Weiter zum Quiz
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </div>
+        </CardContent>
+        <CardFooter className="flex justify-end">
+          <Link to={`/quiz/$questionId`}>
+            <Button>Weiter zum Quiz</Button>
+          </Link>
+        </CardFooter>
+      </Card>
+    </Layout>
   );
 }
