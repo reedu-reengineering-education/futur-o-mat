@@ -3,6 +3,7 @@ import { Star } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import rawQuizData from "./quizData.json";
 import { VALUE_TO_PART_ID, STRENGTH_TO_PART_ID } from "./Values";
+import allParts from "@/assets/avatar_parts_manifest.json";
 
 interface QuizAnswer {
   value: string;
@@ -32,12 +33,12 @@ interface AvatarPart {
   name?: string;
 }
 
-interface QuizProps {
-  allParts?: AvatarPart[];
-  onComplete?: (valuePartId: string, strengthPartId: string) => void;
-}
+// interface QuizProps {
+//   allParts?: AvatarPart[];
+//   onComplete?: (valuePartId: string, strengthPartId: string) => void;
+// }
 
-export default function Quiz({ allParts = [], onComplete }: QuizProps) {
+export default function Quiz() {
   const [quizData] = useState<QuizData>(rawQuizData as unknown as QuizData);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
@@ -137,8 +138,6 @@ export default function Quiz({ allParts = [], onComplete }: QuizProps) {
     };
 
     localStorage.setItem("quizResults", JSON.stringify(results));
-
-    if (onComplete) onComplete(valuePartId, strengthPartId);
   };
 
   const getResultsWithParts = () => {
@@ -183,7 +182,7 @@ export default function Quiz({ allParts = [], onComplete }: QuizProps) {
                     {results?.valuePart && (
                       <div className="absolute -top-4 -left-4 w-12 h-12 bg-white rounded-full shadow-lg border-2 border-purple-500 overflow-hidden flex items-center justify-center">
                         <img
-                          src={results.valuePart.src}
+                          src={"/" + results.valuePart.src}
                           alt="Value Badge"
                           className="w-full h-full object-cover"
                         />
@@ -193,7 +192,7 @@ export default function Quiz({ allParts = [], onComplete }: QuizProps) {
                     {results?.strengthPart && (
                       <div className="absolute -top-4 -right-4 w-12 h-12 bg-white rounded-full shadow-lg border-2 border-purple-500 overflow-hidden flex items-center justify-center">
                         <img
-                          src={results.strengthPart.src}
+                          src={"/" + results.strengthPart.src}
                           alt="Strength Badge"
                           className="w-full h-full object-cover"
                         />

@@ -1,9 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router'
+import CommitmentCall from "@/components/commitmentCall/commitmentCall";
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/commitmentCall')({
-  component: RouteComponent,
-})
-
-function RouteComponent() {
-return 
-}
+export const Route = createFileRoute("/commitmentCall")({
+  component: CommitmentCall,
+});

@@ -11,6 +11,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WimmelbildRouteImport } from './routes/wimmelbild'
 import { Route as ShareRouteImport } from './routes/share'
 import { Route as QuizResultRouteImport } from './routes/quizResult'
 import { Route as QuizInformationsRouteImport } from './routes/quizInformations'
@@ -20,6 +21,11 @@ import { Route as QuizQuestionIdRouteImport } from './routes/quiz/$questionId'
 
 const IndexLazyRouteImport = createFileRoute('/')()
 
+const WimmelbildRoute = WimmelbildRouteImport.update({
+  id: '/wimmelbild',
+  path: '/wimmelbild',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShareRoute = ShareRouteImport.update({
   id: '/share',
   path: '/share',
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/quizInformations': typeof QuizInformationsRoute
   '/quizResult': typeof QuizResultRoute
   '/share': typeof ShareRoute
+  '/wimmelbild': typeof WimmelbildRoute
   '/quiz/$questionId': typeof QuizQuestionIdRoute
 }
 export interface FileRoutesByTo {
@@ -72,6 +79,7 @@ export interface FileRoutesByTo {
   '/quizInformations': typeof QuizInformationsRoute
   '/quizResult': typeof QuizResultRoute
   '/share': typeof ShareRoute
+  '/wimmelbild': typeof WimmelbildRoute
   '/quiz/$questionId': typeof QuizQuestionIdRoute
 }
 export interface FileRoutesById {
@@ -82,6 +90,7 @@ export interface FileRoutesById {
   '/quizInformations': typeof QuizInformationsRoute
   '/quizResult': typeof QuizResultRoute
   '/share': typeof ShareRoute
+  '/wimmelbild': typeof WimmelbildRoute
   '/quiz/$questionId': typeof QuizQuestionIdRoute
 }
 export interface FileRouteTypes {
@@ -93,6 +102,7 @@ export interface FileRouteTypes {
     | '/quizInformations'
     | '/quizResult'
     | '/share'
+    | '/wimmelbild'
     | '/quiz/$questionId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -102,6 +112,7 @@ export interface FileRouteTypes {
     | '/quizInformations'
     | '/quizResult'
     | '/share'
+    | '/wimmelbild'
     | '/quiz/$questionId'
   id:
     | '__root__'
@@ -111,6 +122,7 @@ export interface FileRouteTypes {
     | '/quizInformations'
     | '/quizResult'
     | '/share'
+    | '/wimmelbild'
     | '/quiz/$questionId'
   fileRoutesById: FileRoutesById
 }
@@ -121,11 +133,19 @@ export interface RootRouteChildren {
   QuizInformationsRoute: typeof QuizInformationsRoute
   QuizResultRoute: typeof QuizResultRoute
   ShareRoute: typeof ShareRoute
+  WimmelbildRoute: typeof WimmelbildRoute
   QuizQuestionIdRoute: typeof QuizQuestionIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/wimmelbild': {
+      id: '/wimmelbild'
+      path: '/wimmelbild'
+      fullPath: '/wimmelbild'
+      preLoaderRoute: typeof WimmelbildRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/share': {
       id: '/share'
       path: '/share'
@@ -185,6 +205,7 @@ const rootRouteChildren: RootRouteChildren = {
   QuizInformationsRoute: QuizInformationsRoute,
   QuizResultRoute: QuizResultRoute,
   ShareRoute: ShareRoute,
+  WimmelbildRoute: WimmelbildRoute,
   QuizQuestionIdRoute: QuizQuestionIdRoute,
 }
 export const routeTree = rootRouteImport

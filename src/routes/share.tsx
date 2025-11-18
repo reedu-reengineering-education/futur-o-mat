@@ -1,9 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router'
+import Share from "@/components/Share/share";
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/share')({
-  component: RouteComponent,
-})
-
-function RouteComponent() {
-  return <div>Hello "/share"!</div>
-}
+export const Route = createFileRoute("/share")({
+  component: Share,
+});
