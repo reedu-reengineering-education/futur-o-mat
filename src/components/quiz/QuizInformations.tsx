@@ -41,7 +41,7 @@ export function QuizInformation() {
           </div>
           <div className="flex justify-end mt-8">
             <Link
-              to={`/quiz/$questionId`}
+              to={`/quiz`}
               className="inline-block bg-purple-600 hover:bg-purple-700 text-white rounded-2xl text-sm font-medium px-6 py-2 shadow-lg transition-all"
             >
               Weiter zum Quiz

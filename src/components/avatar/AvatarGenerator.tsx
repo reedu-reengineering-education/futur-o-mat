@@ -242,7 +242,7 @@ function AvatarGenerator() {
               </Button>
 
               <Link
-                to={`/quizInformations`}
+                to={`/quiz/informations`}
                 onClick={() => {
                   saveAvatarFace();
                   saveAvatarBody();

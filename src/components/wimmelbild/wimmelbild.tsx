@@ -109,7 +109,7 @@ const Wimmelbild: React.FC<WimmelbildProps> = ({ images }) => {
             {/* Auswählen Button */}
             {selectedImage && selectedImage.id !== savedImageId && (
               <Link
-                to="/commitmentCall"
+                to="/commitment/call"
                 onClick={handleSaveSelection}
                 className="w-full bg-purple-500 text-white py-4 rounded-xl font-semibold hover:bg-purple-600 transition-colors text-lg shadow-lg mt-4"
               >
