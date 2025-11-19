@@ -210,15 +210,17 @@ function AvatarGenerator() {
           <CardAction>
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="ghost">
+                <Button variant="ghost" size={"icon"}>
                   <InfoIcon className="h-4 w-4" />
                 </Button>
               </DialogTrigger>
               <DialogContent>
-                <DialogTitle>Edit profile</DialogTitle>
+                <DialogTitle>Blablabla</DialogTitle>
                 <DialogDescription>
-                  Make changes to your profile here. Click save when you&apos;re
-                  done.
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Magni ut delectus corrupti rerum consequuntur alias labore in
+                  rem nisi? Quae nam ab id dolorum dicta quo accusantium magni
+                  eum debitis.
                 </DialogDescription>
               </DialogContent>
             </Dialog>
@@ -249,10 +251,9 @@ function AvatarGenerator() {
           </div>
 
           {/* Editor Area */}
-          <Button
-            size={"sm"}
-            onClick={handleSurprise}
-          >
+          <Button 
+            size={"sm"} 
+            onClick={handleSurprise}>
             <Sparkles /> Zufall
           </Button>
           <BodyEditor
