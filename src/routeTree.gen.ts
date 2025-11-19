@@ -13,12 +13,11 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WimmelbildRouteImport } from './routes/wimmelbild'
 import { Route as ShareRouteImport } from './routes/share'
+import { Route as QuizResultRouteImport } from './routes/quiz-result'
+import { Route as QuizQuestionsRouteImport } from './routes/quiz-questions'
 import { Route as QuizInformationsRouteImport } from './routes/quiz-informations'
-import { Route as QuizRouteImport } from './routes/quiz'
+import { Route as CommitmentCallRouteImport } from './routes/commitment-call'
 import { Route as AvatarRouteImport } from './routes/avatar'
-import { Route as QuizResultRouteImport } from './routes/quiz/result'
-import { Route as QuizInformationsRouteImport } from './routes/quiz/informations'
-import { Route as CommitmentCallRouteImport } from './routes/commitment/call'
 
 const IndexLazyRouteImport = createFileRoute('/')()
 
@@ -32,14 +31,24 @@ const ShareRoute = ShareRouteImport.update({
   path: '/share',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QuizResultRoute = QuizResultRouteImport.update({
+  id: '/quiz-result',
+  path: '/quiz-result',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuizQuestionsRoute = QuizQuestionsRouteImport.update({
+  id: '/quiz-questions',
+  path: '/quiz-questions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const QuizInformationsRoute = QuizInformationsRouteImport.update({
   id: '/quiz-informations',
   path: '/quiz-informations',
   getParentRoute: () => rootRouteImport,
 } as any)
-const QuizRoute = QuizRouteImport.update({
-  id: '/quiz',
-  path: '/quiz',
+const CommitmentCallRoute = CommitmentCallRouteImport.update({
+  id: '/commitment-call',
+  path: '/commitment-call',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AvatarRoute = AvatarRouteImport.update({
@@ -52,100 +61,80 @@ const IndexLazyRoute = IndexLazyRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
-const QuizResultRoute = QuizResultRouteImport.update({
-  id: '/result',
-  path: '/result',
-  getParentRoute: () => QuizRoute,
-} as any)
-const QuizInformationsRoute = QuizInformationsRouteImport.update({
-  id: '/informations',
-  path: '/informations',
-  getParentRoute: () => QuizRoute,
-} as any)
-const CommitmentCallRoute = CommitmentCallRouteImport.update({
-  id: '/commitment/call',
-  path: '/commitment/call',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/avatar': typeof AvatarRoute
-  '/quiz': typeof QuizRouteWithChildren
+  '/commitment-call': typeof CommitmentCallRoute
   '/quiz-informations': typeof QuizInformationsRoute
+  '/quiz-questions': typeof QuizQuestionsRoute
+  '/quiz-result': typeof QuizResultRoute
   '/share': typeof ShareRoute
   '/wimmelbild': typeof WimmelbildRoute
-  '/commitment/call': typeof CommitmentCallRoute
-  '/quiz/informations': typeof QuizInformationsRoute
-  '/quiz/result': typeof QuizResultRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/avatar': typeof AvatarRoute
-  '/quiz': typeof QuizRouteWithChildren
+  '/commitment-call': typeof CommitmentCallRoute
   '/quiz-informations': typeof QuizInformationsRoute
+  '/quiz-questions': typeof QuizQuestionsRoute
+  '/quiz-result': typeof QuizResultRoute
   '/share': typeof ShareRoute
   '/wimmelbild': typeof WimmelbildRoute
-  '/commitment/call': typeof CommitmentCallRoute
-  '/quiz/informations': typeof QuizInformationsRoute
-  '/quiz/result': typeof QuizResultRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexLazyRoute
   '/avatar': typeof AvatarRoute
-  '/quiz': typeof QuizRouteWithChildren
+  '/commitment-call': typeof CommitmentCallRoute
   '/quiz-informations': typeof QuizInformationsRoute
+  '/quiz-questions': typeof QuizQuestionsRoute
+  '/quiz-result': typeof QuizResultRoute
   '/share': typeof ShareRoute
   '/wimmelbild': typeof WimmelbildRoute
-  '/commitment/call': typeof CommitmentCallRoute
-  '/quiz/informations': typeof QuizInformationsRoute
-  '/quiz/result': typeof QuizResultRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/avatar'
-    | '/quiz'
+    | '/commitment-call'
     | '/quiz-informations'
+    | '/quiz-questions'
+    | '/quiz-result'
     | '/share'
     | '/wimmelbild'
-    | '/commitment/call'
-    | '/quiz/informations'
-    | '/quiz/result'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/avatar'
-    | '/quiz'
+    | '/commitment-call'
     | '/quiz-informations'
+    | '/quiz-questions'
+    | '/quiz-result'
     | '/share'
     | '/wimmelbild'
-    | '/commitment/call'
-    | '/quiz/informations'
-    | '/quiz/result'
   id:
     | '__root__'
     | '/'
     | '/avatar'
-    | '/quiz'
+    | '/commitment-call'
     | '/quiz-informations'
+    | '/quiz-questions'
+    | '/quiz-result'
     | '/share'
     | '/wimmelbild'
-    | '/commitment/call'
-    | '/quiz/informations'
-    | '/quiz/result'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   AvatarRoute: typeof AvatarRoute
-  QuizRoute: typeof QuizRouteWithChildren
+  CommitmentCallRoute: typeof CommitmentCallRoute
   QuizInformationsRoute: typeof QuizInformationsRoute
+  QuizQuestionsRoute: typeof QuizQuestionsRoute
+  QuizResultRoute: typeof QuizResultRoute
   ShareRoute: typeof ShareRoute
   WimmelbildRoute: typeof WimmelbildRoute
-  CommitmentCallRoute: typeof CommitmentCallRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -164,6 +153,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShareRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/quiz-result': {
+      id: '/quiz-result'
+      path: '/quiz-result'
+      fullPath: '/quiz-result'
+      preLoaderRoute: typeof QuizResultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quiz-questions': {
+      id: '/quiz-questions'
+      path: '/quiz-questions'
+      fullPath: '/quiz-questions'
+      preLoaderRoute: typeof QuizQuestionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/quiz-informations': {
       id: '/quiz-informations'
       path: '/quiz-informations'
@@ -171,11 +174,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QuizInformationsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/quiz': {
-      id: '/quiz'
-      path: '/quiz'
-      fullPath: '/quiz'
-      preLoaderRoute: typeof QuizRouteImport
+    '/commitment-call': {
+      id: '/commitment-call'
+      path: '/commitment-call'
+      fullPath: '/commitment-call'
+      preLoaderRoute: typeof CommitmentCallRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/avatar': {
@@ -192,50 +195,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/quiz/result': {
-      id: '/quiz/result'
-      path: '/result'
-      fullPath: '/quiz/result'
-      preLoaderRoute: typeof QuizResultRouteImport
-      parentRoute: typeof QuizRoute
-    }
-    '/quiz/informations': {
-      id: '/quiz/informations'
-      path: '/informations'
-      fullPath: '/quiz/informations'
-      preLoaderRoute: typeof QuizInformationsRouteImport
-      parentRoute: typeof QuizRoute
-    }
-    '/commitment/call': {
-      id: '/commitment/call'
-      path: '/commitment/call'
-      fullPath: '/commitment/call'
-      preLoaderRoute: typeof CommitmentCallRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
-
-interface QuizRouteChildren {
-  QuizInformationsRoute: typeof QuizInformationsRoute
-  QuizResultRoute: typeof QuizResultRoute
-}
-
-const QuizRouteChildren: QuizRouteChildren = {
-  QuizInformationsRoute: QuizInformationsRoute,
-  QuizResultRoute: QuizResultRoute,
-}
-
-const QuizRouteWithChildren = QuizRoute._addFileChildren(QuizRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   AvatarRoute: AvatarRoute,
-  QuizRoute: QuizRouteWithChildren,
+  CommitmentCallRoute: CommitmentCallRoute,
   QuizInformationsRoute: QuizInformationsRoute,
+  QuizQuestionsRoute: QuizQuestionsRoute,
+  QuizResultRoute: QuizResultRoute,
   ShareRoute: ShareRoute,
   WimmelbildRoute: WimmelbildRoute,
-  CommitmentCallRoute: CommitmentCallRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

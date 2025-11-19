@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+// components/quiz/Quiz.tsx
+import { useState, useEffect, useRef } from "react";
 import { Star } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import rawQuizData from "./quizData.json";
 import { VALUE_TO_PART_ID, STRENGTH_TO_PART_ID } from "./Values";
 import allParts from "@/assets/avatar_parts_manifest.json";
 import { Button } from "../ui/button";
+import { AvatarManager } from "../avatar/avatarManager";
+import { useAvatarState } from "@/hooks";
 
 interface QuizAnswer {
   value: string;
@@ -27,12 +30,7 @@ interface QuizData {
   questions: Question[];
 }
 
-// interface QuizProps {
-//   allParts?: AvatarPart[];
-//   onComplete?: (valuePartId: string, strengthPartId: string) => void;
-// }
-
-export default function Quiz() {
+export default function QuizQuestions() {
   const [quizData] = useState<QuizData>(rawQuizData as unknown as QuizData);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
@@ -40,6 +38,10 @@ export default function Quiz() {
   const [avatarBody, setAvatarBody] = useState<string>("");
   const [answers, setAnswers] = useState<QuizAnswer[]>([]);
   const [showResult, setShowResult] = useState(false);
+  const [quizResults, setQuizResults] = useState<any>(null);
+  const hasSetResults = useRef(false);
+
+  const { avatarConfig } = useAvatarState();
 
   useEffect(() => {
     const savedFace = localStorage.getItem("avatarFaceImage");
@@ -70,7 +72,6 @@ export default function Quiz() {
         setSelected(null);
       } else {
         calculateAndSaveResults(updatedAnswers);
-        setShowResult(true);
       }
     }
   };
@@ -105,109 +106,95 @@ export default function Quiz() {
     const valuePart = allParts.find((p) => p.id === valuePartId) || null;
     const strengthPart = allParts.find((p) => p.id === strengthPartId) || null;
 
-    const savedAvatarConfig = localStorage.getItem("avatarConfig");
-    let avatarConfig = savedAvatarConfig
-      ? JSON.parse(savedAvatarConfig)
-      : {
-          selectedParts: {},
-          selectedItems: [],
-          skinTone: "default",
-          hairColor: "default",
-          brustAnsatz: false,
-        };
-
-    avatarConfig.selectedParts.values = valuePartId;
-    avatarConfig.selectedParts.strengths = strengthPartId;
-
-    localStorage.setItem("avatarConfig", JSON.stringify(avatarConfig));
-
     const results = {
       valueKey: selectedValue,
       strengthKey: selectedStrength,
-      valuePartId,
-      strengthPartId,
       valuePart,
       strengthPart,
-      avatarConfig,
     };
 
     localStorage.setItem("quizResults", JSON.stringify(results));
-  };
-
-  const getResultsWithParts = () => {
-    const saved = localStorage.getItem("quizResults");
-    if (!saved) return null;
-    const results = JSON.parse(saved);
-    return {
-      ...results,
-      valuePart: results.valuePart,
-      strengthPart: results.strengthPart,
-    };
+    setQuizResults(results);
+    setShowResult(true);
   };
 
   // ERGEBNIS-ANSICHT
-  if (showResult) {
-    const results = getResultsWithParts();
-
+  if (showResult && quizResults) {
     return (
-      <div className="min-h-screen bg-primary flex items-center justify-center">
-        <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">
-          <div className="relative w-full max-w-[520px] bg-white rounded-3xl shadow-xl overflow-hidden p-8">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-              <div className="flex-1 text-gray-700 leading-relaxed space-y-4 text-base">
-                <p>
-                  <strong>{results?.valueKey}</strong>: Dein ausgewählter Wert
-                </p>
-                <p>
-                  <strong>{results?.strengthKey}</strong>: Deine ausgewählte
-                  Stärke
-                </p>
-              </div>
+      <AvatarManager avatarConfig={avatarConfig}>
+        {({
+          setQuizResults: saveResults,
+        }: {
+          setQuizResults: (results: any) => void;
+        }) => {
+          // ✅ useEffect verwenden um Endlosschleife zu vermeiden
+          useEffect(() => {
+            if (!hasSetResults.current && quizResults) {
+              saveResults(quizResults);
+              hasSetResults.current = true;
+            }
+          }, [quizResults, saveResults]);
 
-              <div className="relative flex justify-center">
-                {avatarBody && (
-                  <div className="relative">
-                    <img
-                      src={avatarBody}
-                      alt="Avatar"
-                      className="w-40 h-40 object-cover rounded-2xl border-2 border-purple-300"
-                    />
+          return (
+            <div className="min-h-screen bg-primary flex items-center justify-center">
+              <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">
+                <div className="relative w-full max-w-[520px] bg-white rounded-3xl shadow-xl overflow-hidden p-8">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                    <div className="flex-1 text-gray-700 leading-relaxed space-y-4 text-base">
+                      <p>
+                        <strong>{quizResults.valueKey}</strong>: Dein
+                        ausgewählter Wert
+                      </p>
+                      <p>
+                        <strong>{quizResults.strengthKey}</strong>: Deine
+                        ausgewählte Stärke
+                      </p>
+                    </div>
 
-                    {results?.valuePart && (
-                      <div className="absolute -top-4 -left-4 w-12 h-12 bg-white rounded-full shadow-lg border-2 border-primary overflow-hidden flex items-center justify-center">
-                        <img
-                          src={"/" + results.valuePart.src}
-                          alt="Value Badge"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    )}
+                    <div className="relative flex justify-center">
+                      {avatarBody && (
+                        <div className="relative">
+                          <img
+                            src={avatarBody}
+                            alt="Avatar"
+                            className="w-40 h-40 object-cover rounded-2xl border-2 border-purple-300"
+                          />
 
-                    {results?.strengthPart && (
-                      <div className="absolute -top-4 -right-4 w-12 h-12 bg-white rounded-full shadow-lg border-2 border-primary overflow-hidden flex items-center justify-center">
-                        <img
-                          src={"/" + results.strengthPart.src}
-                          alt="Strength Badge"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    )}
+                          {quizResults.valuePart && (
+                            <div className="absolute -top-4 -left-4 w-12 h-12 bg-white rounded-full shadow-lg border-2 border-primary overflow-hidden flex items-center justify-center">
+                              <img
+                                src={"/" + quizResults.valuePart.src}
+                                alt="Value Badge"
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                          )}
+
+                          {quizResults.strengthPart && (
+                            <div className="absolute -top-4 -right-4 w-12 h-12 bg-white rounded-full shadow-lg border-2 border-primary overflow-hidden flex items-center justify-center">
+                              <img
+                                src={"/" + quizResults.strengthPart.src}
+                                alt="Strength Badge"
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                )}
+
+                  <div className="flex justify-end mt-8">
+                    <Link to="/quiz-result">
+                      <Button>Weiter zum Ergebnis</Button>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
-
-            <div className="flex justify-end mt-8">
-              <Link
-                to="/quiz-result"
-                className="inline-block bg-purple-600 hover:bg-purple-700 text-white rounded-2xl text-sm font-medium px-6 py-2 shadow-lg transition-all"
-              >
-                <Button>Weiter zum Ergebnis</Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
+          );
+        }}
+      </AvatarManager>
     );
   }
 

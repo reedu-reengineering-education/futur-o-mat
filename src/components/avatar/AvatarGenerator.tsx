@@ -32,6 +32,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
+import { AvatarManager } from "./avatarManager";
 
 function AvatarGenerator() {
   // Global state management
@@ -68,6 +69,8 @@ function AvatarGenerator() {
 
   // Load avatar from URL on mount or generate random avatar
   useEffect(() => {
+    localStorage.clear();
+
     if (allParts.length === 0) return;
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -87,66 +90,6 @@ function AvatarGenerator() {
 
     generateRandom(allParts);
   }, [allParts, decodeState, setAvatarConfig, generateRandom]);
-
-  const saveAvatarFace = useCallback(() => {
-    if (avatarCanvasRef.current) {
-      const canvas = avatarCanvasRef.current.getCanvas();
-      if (canvas) {
-        const faceCanvas = document.createElement("canvas");
-        const faceCtx = faceCanvas.getContext("2d");
-
-        faceCanvas.width = 200;
-        faceCanvas.height = 200;
-
-        if (faceCtx) {
-          faceCtx.drawImage(
-            canvas,
-            0,
-            0,
-            canvas.width,
-            canvas.height * 0.5,
-            0,
-            0,
-            200,
-            200
-          );
-
-          const faceImage = faceCanvas.toDataURL("image/png");
-          localStorage.setItem("avatarFaceImage", faceImage);
-        }
-      }
-    }
-  }, []);
-
-  const saveAvatarBody = useCallback(() => {
-    if (avatarCanvasRef.current) {
-      const canvas = avatarCanvasRef.current.getCanvas();
-      if (canvas) {
-        const bodyCanvas = document.createElement("canvas");
-        const bodyCtx = bodyCanvas.getContext("2d");
-
-        bodyCanvas.width = 200;
-        bodyCanvas.height = 200;
-
-        if (bodyCtx) {
-          bodyCtx.drawImage(
-            canvas,
-            0,
-            0,
-            canvas.width,
-            canvas.height * 1.6,
-            0,
-            0,
-            200,
-            300
-          );
-
-          const bodyImage = bodyCanvas.toDataURL("image/png");
-          localStorage.setItem("avatarImage", bodyImage);
-        }
-      }
-    }
-  }, []);
 
   // Handle render error
   const handleRenderError = useCallback(
@@ -200,87 +143,91 @@ function AvatarGenerator() {
   }
 
   return (
-    <Layout>
-      <Card className="max-w-md">
-        <CardHeader>
-          <CardTitle>Futur-O-Mat</CardTitle>
-          <CardDescription>
-            Mach dir die Zukunft, wie sie dir gefällt!
-          </CardDescription>
-          <CardAction>
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button variant="ghost" size={"icon"}>
-                  <InfoIcon className="h-4 w-4" />
-                </Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogTitle>Blablabla</DialogTitle>
-                <DialogDescription>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Magni ut delectus corrupti rerum consequuntur alias labore in
-                  rem nisi? Quae nam ab id dolorum dicta quo accusantium magni
-                  eum debitis.
-                </DialogDescription>
-              </DialogContent>
-            </Dialog>
-          </CardAction>
-        </CardHeader>
-        <CardContent className="grid gap-4">
-          {/* Avatar Display */}
-          <div className="mb-6 flex flex-col items-center">
-            {renderError && (
-              <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg w-full">
-                <p className="text-sm text-red-600">
-                  ⚠️ Fehler beim Rendern: {renderError.message}
-                </p>
+    <AvatarManager avatarConfig={avatarConfig}>
+      {({ saveAvatarFace, saveAvatarBody }) => (
+        <Layout>
+          <Card className="max-w-md">
+            <CardHeader>
+              <CardTitle>Futur-O-Mat</CardTitle>
+              <CardDescription>
+                Mach dir die Zukunft, wie sie dir gefällt!
+              </CardDescription>
+              <CardAction>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="ghost" size={"icon"}>
+                      <InfoIcon className="h-4 w-4" />
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogTitle>Blablabla</DialogTitle>
+                    <DialogDescription>
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                      Magni ut delectus corrupti rerum consequuntur alias labore
+                      in rem nisi? Quae nam ab id dolorum dicta quo accusantium
+                      magni eum debitis.
+                    </DialogDescription>
+                  </DialogContent>
+                </Dialog>
+              </CardAction>
+            </CardHeader>
+            <CardContent className="grid gap-4">
+              {/* Avatar Display */}
+              <div className="mb-6 flex flex-col items-center">
+                {renderError && (
+                  <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg w-full">
+                    <p className="text-sm text-red-600">
+                      ⚠️ Fehler beim Rendern: {renderError.message}
+                    </p>
+                  </div>
+                )}
+
+                <div className="w-full max-w-sm mx-auto relative pt-8">
+                  <AvatarCanvas
+                    ref={avatarCanvasRef}
+                    avatarConfig={avatarConfig}
+                    width={800}
+                    height={960}
+                    className="w-full h-auto rounded-lg"
+                    onRenderComplete={handleRenderComplete}
+                    onRenderError={handleRenderError}
+                  />
+                </div>
               </div>
-            )}
 
-            <div className="w-full max-w-sm mx-auto relative pt-8">
-              <AvatarCanvas
-                ref={avatarCanvasRef}
+              {/* Editor Area */}
+              <Button size={"sm"} onClick={handleSurprise}>
+                <Sparkles /> Zufall
+              </Button>
+              <BodyEditor
                 avatarConfig={avatarConfig}
-                width={800}
-                height={960}
-                className="w-full h-auto rounded-lg"
-                onRenderComplete={handleRenderComplete}
-                onRenderError={handleRenderError}
+                allParts={allParts}
+                onUpdatePart={updatePart}
+                onToggleItem={toggleItem}
+                onSetSkinTone={setSkinTone}
+                onSetHairColor={setHairColor}
+                onSetBreastOption={setBreastOption}
+                onRemoveHair={removeHair}
               />
-            </div>
-          </div>
+            </CardContent>
+            <CardFooter className="justify-end">
+              <Link
+                to={`/quiz-informations`}
+                onClick={() => {
+                  saveAvatarFace();
+                  saveAvatarBody();
+                }}
+              >
+                <Button>Weiter zum Quiz</Button>
+              </Link>
+            </CardFooter>
+          </Card>
 
-          {/* Editor Area */}
-          <Button size={"sm"} onClick={handleSurprise}>
-            <Sparkles /> Zufall
-          </Button>
-          <BodyEditor
-            avatarConfig={avatarConfig}
-            allParts={allParts}
-            onUpdatePart={updatePart}
-            onToggleItem={toggleItem}
-            onSetSkinTone={setSkinTone}
-            onSetHairColor={setHairColor}
-            onSetBreastOption={setBreastOption}
-            onRemoveHair={removeHair}
-          />
-        </CardContent>
-        <CardFooter className="justify-end">
-          <Link
-            to={`/quiz-informations`}
-            onClick={() => {
-              saveAvatarFace();
-              saveAvatarBody();
-            }}
-          >
-            <Button>Weiter zum Quiz</Button>
-          </Link>
-        </CardFooter>
-      </Card>
-
-      {/* Toast Notifications */}
-      <ToastContainer toasts={toasts} onRemove={removeToast} />
-    </Layout>
+          {/* Toast Notifications */}
+          <ToastContainer toasts={toasts} onRemove={removeToast} />
+        </Layout>
+      )}
+    </AvatarManager>
   );
 }
 
