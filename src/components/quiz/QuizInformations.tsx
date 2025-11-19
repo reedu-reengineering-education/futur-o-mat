@@ -1,8 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Button } from "../ui/button";
-import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
+
 import Layout from "../layout";
+import { Button } from "../ui/button";
+import { Card, CardContent, CardFooter } from "../ui/card";
 
 export function QuizInformation() {
   const [avatarBody, setAvatarBody] = useState<string>("");
@@ -15,7 +16,6 @@ export function QuizInformation() {
   return (
     <Layout>
       <Card className="max-w-md">
-        <CardHeader></CardHeader>
         <CardContent>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="flex-1 text-gray-700 leading-relaxed space-y-4 text-base">
