@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { Button } from "../ui/button";
 
 export function CommitmentCall() {
   const [avatarBody, setAvatarBody] = useState<string>("");
@@ -35,7 +36,7 @@ export function CommitmentCall() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center">
+    <div className="min-h-screen bg-primary flex items-center justify-center">
       <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">
         <div className="relative w-full max-w-[520px] bg-white rounded-3xl shadow-xl overflow-hidden p-8">
           <div className="flex flex-col gap-6">
@@ -43,7 +44,7 @@ export function CommitmentCall() {
             <div className="flex flex-col md:flex-row gap-6 items-start">
               {/* VIEL größerer Avatar mit Hintergrund */}
               <div className="shrink-0">
-                <div className="relative w-64 h-64 rounded-2xl overflow-hidden border-4 border-purple-500 shadow-lg ">
+                <div className="relative w-64 h-64 rounded-2xl overflow-hidden border-4 border-primary shadow-lg ">
                   {wimmelbild && (
                     <img
                       src={wimmelbild}
@@ -96,9 +97,10 @@ export function CommitmentCall() {
           <div className="flex justify-end mt-8">
             <Link
               to="/share"
-              className="inline-block bg-purple-600 hover:bg-purple-700 text-white rounded-2xl text-sm font-medium px-6 py-2 shadow-lg transition-all"
             >
+              <Button>
               weiter
+              </Button>
             </Link>
           </div>
         </div>

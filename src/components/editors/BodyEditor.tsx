@@ -9,8 +9,10 @@
 import { useState, useCallback, useMemo } from "react";
 import type { AvatarConfig, AvatarPart } from "@/types";
 import { BODY_CATEGORIES } from "@/data/categories";
-import { CategoryTabs, ColorSelector, PartsGrid } from "@/components/layout";
 import { useAvatarParts } from "@/hooks";
+import { CategoryTabs } from "./CategoryTabs";
+import { ColorSelector } from "./ColorSelector";
+import { PartsGrid } from "./PartsGrid";
 
 interface BodyEditorProps {
   avatarConfig: AvatarConfig;

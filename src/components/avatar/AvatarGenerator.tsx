@@ -14,6 +14,24 @@ import { BodyEditor } from "@/components/editors/BodyEditor";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
 import { ToastContainer } from "@/components/Toast";
 import { Link } from "@tanstack/react-router";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  CardAction,
+} from "../ui/card";
+import { InfoIcon, Sparkles } from "lucide-react";
+import Layout from "../layout";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
 
 function AvatarGenerator() {
   // Global state management
@@ -145,7 +163,6 @@ function AvatarGenerator() {
     setRenderError(null);
   }, []);
 
-  // --- Auskommentiert: Zufallsknopf ---
   const handleSurprise = useCallback(() => {
     if (allParts.length > 0) {
       generateRandom(allParts);
@@ -174,91 +191,98 @@ function AvatarGenerator() {
             Die Avatar-Teile konnten nicht geladen werden. Bitte versuche es
             später erneut.
           </p>
-          <button
-            onClick={() => window.location.reload()}
-            className="px-6 py-3 bg-brand-primary text-white rounded-lg font-semibold hover:bg-brand-primary-dark transition-colors"
-          >
+          <Button onClick={() => window.location.reload()} variant="outline">
             Neu laden
-          </button>
+          </Button>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-purple-500 to-purple-700 flex items-center justify-center">
-      <div className="container mx-auto px-4 sm:px-2 py-8 flex items-center justify-center min-h-screen">
-        <div className="w-full max-w-[520px] bg-white rounded-3xl shadow-2xl overflow-hidden">
-          <div className="p-6 sm:p-8">
-            <div className="text-center mb-6">
-              <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
-                Futur-O-Mat
-              </h1>
-              <p className="text-sm sm:text-base text-gray-500 mt-1">
-                Mach dir die Zukunft, wie sie dir gefällt!
-              </p>
-              {/* Hier Platz Info button */}
-            </div>
-
-            {/* Avatar Display */}
-            <div className="mb-6 flex flex-col items-center">
-              {renderError && (
-                <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg w-full">
-                  <p className="text-sm text-red-600">
-                    ⚠️ Fehler beim Rendern: {renderError.message}
-                  </p>
-                </div>
-              )}
-              <div className="w-full max-w-[400px] mx-auto relative pt-8">
-                <AvatarCanvas
-                  ref={avatarCanvasRef}
-                  avatarConfig={avatarConfig}
-                  width={800}
-                  height={960}
-                  className="w-full h-auto rounded-lg"
-                  onRenderComplete={handleRenderComplete}
-                  onRenderError={handleRenderError}
-                />
+    <Layout>
+      <Card className="max-w-md">
+        <CardHeader>
+          <CardTitle>Futur-O-Mat</CardTitle>
+          <CardDescription>
+            Mach dir die Zukunft, wie sie dir gefällt!
+          </CardDescription>
+          <CardAction>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="ghost" size={"icon"}>
+                  <InfoIcon className="h-4 w-4" />
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogTitle>Blablabla</DialogTitle>
+                <DialogDescription>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Magni ut delectus corrupti rerum consequuntur alias labore in
+                  rem nisi? Quae nam ab id dolorum dicta quo accusantium magni
+                  eum debitis.
+                </DialogDescription>
+              </DialogContent>
+            </Dialog>
+          </CardAction>
+        </CardHeader>
+        <CardContent className="grid gap-4">
+          {/* Avatar Display */}
+          <div className="mb-6 flex flex-col items-center">
+            {renderError && (
+              <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg w-full">
+                <p className="text-sm text-red-600">
+                  ⚠️ Fehler beim Rendern: {renderError.message}
+                </p>
               </div>
-            </div>
+            )}
 
-            {/* Editor Area */}
-            <div className="mb-6">
-              <BodyEditor
+            <div className="w-full max-w-sm mx-auto relative pt-8">
+              <AvatarCanvas
+                ref={avatarCanvasRef}
                 avatarConfig={avatarConfig}
-                allParts={allParts}
-                onUpdatePart={updatePart}
-                onToggleItem={toggleItem}
-                onSetSkinTone={setSkinTone}
-                onSetHairColor={setHairColor}
-                onSetBreastOption={setBreastOption}
-                onRemoveHair={removeHair}
+                width={800}
+                height={960}
+                className="w-full h-auto rounded-lg"
+                onRenderComplete={handleRenderComplete}
+                onRenderError={handleRenderError}
               />
             </div>
-
-            <div className="bg-white rounded-2xl p-1 relative absolute bottom-4 right-4 flex gap-65">
-              <Button variant="outline" onClick={handleSurprise}>
-                Zufall
-              </Button>
-
-              <Link
-                to={`/quizInformations`}
-                onClick={() => {
-                  saveAvatarFace();
-                  saveAvatarBody();
-                }}
-                className="inline-block bg-purple-600 hover:bg-purple-700 text-white rounded-2xl text-sm font-medium px-6 py-2 shadow-lg transition-all"
-              >
-                Weiter zum Quiz
-              </Link>
-            </div>
           </div>
-        </div>
-      </div>
+
+          {/* Editor Area */}
+          <Button 
+            size={"sm"} 
+            onClick={handleSurprise}>
+            <Sparkles /> Zufall
+          </Button>
+          <BodyEditor
+            avatarConfig={avatarConfig}
+            allParts={allParts}
+            onUpdatePart={updatePart}
+            onToggleItem={toggleItem}
+            onSetSkinTone={setSkinTone}
+            onSetHairColor={setHairColor}
+            onSetBreastOption={setBreastOption}
+            onRemoveHair={removeHair}
+          />
+        </CardContent>
+        <CardFooter className="justify-end">
+          <Link
+            to={`/quizInformations`}
+            onClick={() => {
+              saveAvatarFace();
+              saveAvatarBody();
+            }}
+          >
+            <Button>Weiter zum Quiz</Button>
+          </Link>
+        </CardFooter>
+      </Card>
 
       {/* Toast Notifications */}
       <ToastContainer toasts={toasts} onRemove={removeToast} />
-    </div>
+    </Layout>
   );
 }
 
