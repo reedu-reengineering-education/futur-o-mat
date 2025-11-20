@@ -3,6 +3,14 @@ import { Link } from "@tanstack/react-router";
 import { Button } from "../ui/button";
 import { AvatarManager } from "../avatar/avatarManager";
 import { useAvatarState } from "@/hooks";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../ui/card";
+import Layout from "../layout";
 
 export function QuizResult() {
   const { avatarConfig } = useAvatarState();
@@ -20,49 +28,56 @@ export function QuizResult() {
         const results = getQuizResults();
 
         return (
-          <div className="min-h-screen bg-primary flex items-center justify-center p-4">
-            <div className="w-full max-w-[520px] bg-white rounded-3xl shadow-xl p-8">
-              <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-                Dein Ergebnis
-              </h2>
-
-              <div className="relative flex justify-center mb-8">
-                {finalAvatar ? (
-                  <div className="relative inline-block">
+          <Layout>
+            <Card className="max-w-md">
+              <CardHeader className="text-center">
+                <CardTitle className="text-2xl">Dein Ergebnis</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {/* Avatar Bild */}
+                <div className="flex justify-center">
+                  {finalAvatar ? (
                     <img
                       src={finalAvatar}
                       alt="Avatar mit Werten und Stärken"
                       className="w-60 h-60 object-cover rounded-2xl"
                     />
-                  </div>
-                ) : (
-                  <div className="w-60 h-60 bg-gray-100 rounded-full flex items-center justify-center">
-                    <span className="text-8xl">🙂</span>
-                  </div>
-                )}
-              </div>
+                  ) : (
+                    <div className="w-60 h-60 bg-gray-100 rounded-full flex items-center justify-center">
+                      <span className="text-8xl">🙂</span>
+                    </div>
+                  )}
+                </div>
 
-              <div className="text-center text-gray-600 mb-6">
-                <p>Deine Werte und Stärken sind jetzt Teil deines Avatars!</p>
+                {/* Ergebnisse */}
                 {results && (
-                  <div className="mt-4 text-sm">
-                    <p>
-                      <strong>Dein Wert:</strong> {results.valueKey}
-                    </p>
-                    <p>
-                      <strong>Deine Stärke:</strong> {results.strengthKey}
-                    </p>
+                  <div className="text-center space-y-4">
+                    <div>
+                      <p className="font-semibold text-gray-600 text-sm mb-1">
+                        Dein Wert
+                      </p>
+                      <p className="text-lg font-medium text-purple-600">
+                        {results.valueKey}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-gray-600 text-sm mb-1">
+                        Deine Stärke
+                      </p>
+                      <p className="text-lg font-medium text-purple-600">
+                        {results.strengthKey}
+                      </p>
+                    </div>
                   </div>
                 )}
-              </div>
-
-              <div className="flex justify-center mt-8">
+              </CardContent>
+              <CardFooter className="justify-center">
                 <Link to="/wimmelbild">
-                  <Button>Zum Wimmelbild</Button>
+                  <Button size="lg">Zum Wimmelbild</Button>
                 </Link>
-              </div>
-            </div>
-          </div>
+              </CardFooter>
+            </Card>
+          </Layout>
         );
       }}
     </AvatarManager>

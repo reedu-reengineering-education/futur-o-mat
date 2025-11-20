@@ -44,9 +44,6 @@ const Wimmelbild: React.FC<WimmelbildProps> = ({ images }) => {
     if (selectedImage) {
       localStorage.setItem("selectedWimmelbild", selectedImage.id);
       setSavedImageId(selectedImage.id);
-
-      // Optional: Erfolgsmeldung anzeigen
-      alert(`${selectedImage.title} wurde ausgewählt!`);
     }
   };
 

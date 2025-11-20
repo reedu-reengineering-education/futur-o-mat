@@ -1,6 +1,5 @@
-// components/quiz/Quiz.tsx
 import { useState, useEffect, useRef } from "react";
-import { Star } from "lucide-react";
+import { Star, InfoIcon } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import rawQuizData from "./quizData.json";
 import { VALUE_TO_PART_ID, STRENGTH_TO_PART_ID } from "./Values";
@@ -8,6 +7,21 @@ import allParts from "@/assets/avatar_parts_manifest.json";
 import { Button } from "../ui/button";
 import { AvatarManager } from "../avatar/avatarManager";
 import { useAvatarState } from "@/hooks";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTrigger,
+} from "../ui/dialog";
+import Layout from "../layout";
 
 interface QuizAnswer {
   value: string;
@@ -30,7 +44,7 @@ interface QuizData {
   questions: Question[];
 }
 
-export default function QuizQuestions() {
+export default function Quiz() {
   const [quizData] = useState<QuizData>(rawQuizData as unknown as QuizData);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
@@ -127,7 +141,6 @@ export default function QuizQuestions() {
         }: {
           setQuizResults: (results: any) => void;
         }) => {
-          // ✅ useEffect verwenden um Endlosschleife zu vermeiden
           useEffect(() => {
             if (!hasSetResults.current && quizResults) {
               saveResults(quizResults);
@@ -136,62 +149,53 @@ export default function QuizQuestions() {
           }, [quizResults, saveResults]);
 
           return (
-            <div className="min-h-screen bg-primary flex items-center justify-center">
-              <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">
-                <div className="relative w-full max-w-[520px] bg-white rounded-3xl shadow-xl overflow-hidden p-8">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                    <div className="flex-1 text-gray-700 leading-relaxed space-y-4 text-base">
-                      <p>
-                        <strong>{quizResults.valueKey}</strong>: Dein
-                        ausgewählter Wert
-                      </p>
-                      <p>
-                        <strong>{quizResults.strengthKey}</strong>: Deine
-                        ausgewählte Stärke
-                      </p>
-                    </div>
-
-                    <div className="relative flex justify-center">
+            <Layout>
+              <Card className="max-w-md">
+                <CardHeader>
+                  <CardTitle>Quiz abgeschlossen!</CardTitle>
+                  <CardDescription>Hier sind deine Ergebnisse</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="flex flex-col items-center gap-6">
+                    {/* Avatar ohne Kreise */}
+                    <div className="flex justify-center">
                       {avatarBody && (
-                        <div className="relative">
-                          <img
-                            src={avatarBody}
-                            alt="Avatar"
-                            className="w-40 h-40 object-cover rounded-2xl border-2 border-purple-300"
-                          />
-
-                          {quizResults.valuePart && (
-                            <div className="absolute -top-4 -left-4 w-12 h-12 bg-white rounded-full shadow-lg border-2 border-primary overflow-hidden flex items-center justify-center">
-                              <img
-                                src={"/" + quizResults.valuePart.src}
-                                alt="Value Badge"
-                                className="w-full h-full object-cover"
-                              />
-                            </div>
-                          )}
-
-                          {quizResults.strengthPart && (
-                            <div className="absolute -top-4 -right-4 w-12 h-12 bg-white rounded-full shadow-lg border-2 border-primary overflow-hidden flex items-center justify-center">
-                              <img
-                                src={"/" + quizResults.strengthPart.src}
-                                alt="Strength Badge"
-                                className="w-full h-full object-cover"
-                              />
-                            </div>
-                          )}
-                        </div>
+                        <img
+                          src={avatarBody}
+                          alt="Avatar"
+                          className="w-40 h-40 object-cover rounded-2xl"
+                        />
                       )}
                     </div>
-                  </div>
 
-                  <div className="flex justify-end mt-8">
-                    <Link to="/quiz-result">
-                      <Button>Weiter zum Ergebnis</Button>
-                    </Link>
+                    {/* Ergebnisse ohne Kasten */}
+                    <div className="text-center space-y-4">
+                      <div>
+                        <p className="font-semibold text-gray-800">
+                          Dein Wert:
+                        </p>
+                        <p className="text-lg text-purple-600">
+                          {quizResults.valueKey}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-800">
+                          Deine Stärke:
+                        </p>
+                        <p className="text-lg text-purple-600">
+                          {quizResults.strengthKey}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
+                </CardContent>
+                <CardFooter className="justify-end">
+                  <Link to="/quiz/result">
+                    <Button>Weiter zum Ergebnis</Button>
+                  </Link>
+                </CardFooter>
+              </Card>
+            </Layout>
           );
         }}
       </AvatarManager>
@@ -200,82 +204,117 @@ export default function QuizQuestions() {
 
   // QUIZ-ANSICHT
   return (
-    <div className="min-h-screen bg-primary flex items-center justify-center">
-      <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">
-        <div className="w-full max-w-[520px] bg-white rounded-3xl shadow-2xl overflow-hidden">
-          <div className="p-8 flex flex-col justify-between min-h-[850px]">
-            <div className="flex justify-center mb-6">
-              <div className="relative w-24 h-24 rounded-full bg-gray-100 shadow-md flex items-center justify-center">
-                {avatarFace ? (
-                  <img
-                    src={avatarFace}
-                    alt="Avatar Gesicht"
-                    className="w-full h-full object-cover rounded-full"
-                  />
-                ) : (
-                  <span className="text-5xl">🙂</span>
-                )}
-              </div>
-            </div>
-
-            <div className="bg-gray-50 p-6 rounded-2xl shadow-sm mb-6 flex items-center justify-center min-h-[120px]">
-              <p className="text-lg font-medium text-center text-gray-800">
-                {question.question}
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-4 mb-8">
-              {question.answers.map((answer, i) => {
-                const isSelected = selected === i;
-                return (
-                  <button
-                    key={i}
-                    onClick={() => setSelected(i)}
-                    className={`flex justify-between items-center text-left p-4 rounded-2xl border-2 transition-all text-base sm:text-lg ${isSelected ? "border-purple-600 bg-purple-50" : "border-gray-200 bg-white hover:border-purple-300"}`}
-                  >
-                    <span className="text-gray-700">{answer.text}</span>
-                    <span
-                      className={`w-6 h-6 rounded-full border-2 shrink-0 ${isSelected ? "bg-primary border-primary" : "border-gray-300 bg-white"}`}
-                    >
-                      {isSelected && (
-                        <svg
-                          className="w-full h-full text-white"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                        >
-                          <path
-                            d="M5 13l4 4L19 7"
-                            stroke="currentColor"
-                            strokeWidth="3"
-                            strokeLinecap="round"
-                          />
-                        </svg>
-                      )}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-
-            <div className="mb-6 flex justify-center flex-wrap gap-1">
-              {Array.from({ length: 10 }).map((_, i) => {
-                const filledStars = Math.floor((currentQuestion + 1) / 2);
-                return (
-                  <Star
-                    key={i}
-                    size={22}
-                    className={`transition-colors ${i < filledStars ? "text-yellow-400 fill-yellow-400" : "text-gray-300"}`}
-                  />
-                );
-              })}
-            </div>
-
-            <Button onClick={handleNext} disabled={selected === null}>
-              {!isLastQuestion ? "Nächste Frage" : "Zum Ergebnis ✓"}
-            </Button>
+    <Layout>
+      <Card className="max-w-md">
+        <CardHeader>
+          <div className="flex justify-between items-center">
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="ghost" size={"icon"}>
+                  <InfoIcon className="h-4 w-4" />
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogDescription>
+                  Ergänze die Sätze mit dem Satzende, das am besten zu dir
+                  passt. Du kannst nur eine der Antwort-Möglichkeiten auswählen.
+                  Überlege nicht zu lange, entscheide aus dem Bauch heraus. Auch
+                  wenn alle Antworten zu dir passen oder keine ganz zutrifft,
+                  wähle das aus, was dich am meisten anspricht.
+                </DialogDescription>
+              </DialogContent>
+            </Dialog>
           </div>
-        </div>
-      </div>
-    </div>
+        </CardHeader>
+        <CardContent className="space-y-6 min-h-[500px] flex flex-col">
+          {/* Avatar Gesicht - Feste Position */}
+          <div className="flex justify-center shrink-0">
+            <div className="relative w-24 h-24 rounded-full bg-gray-100 shadow-md flex items-center justify-center">
+              {avatarFace ? (
+                <img
+                  src={avatarFace}
+                  alt="Avatar Gesicht"
+                  className="w-full h-full object-cover rounded-full"
+                />
+              ) : (
+                <span className="text-5xl">🙂</span>
+              )}
+            </div>
+          </div>
+
+          {/* Frage - Feste Höhe */}
+          <div className="bg-gray-50 p-6 rounded-2xl shadow-sm flex items-center justify-center min-h-[120px] max-h-[120px] overflow-y-auto shrink-0">
+            <p className="text-lg font-medium text-center text-gray-800">
+              {question.question}
+            </p>
+          </div>
+
+          {/* Antworten - Flexible Höhe */}
+          <div className="flex flex-col gap-4 flex-1">
+            {question.answers.map((answer, i) => {
+              const isSelected = selected === i;
+              return (
+                <button
+                  key={i}
+                  onClick={() => setSelected(i)}
+                  className={`flex justify-between items-center text-left p-4 rounded-2xl border-2 transition-all text-base sm:text-lg ${
+                    isSelected
+                      ? "border-purple-600 bg-purple-50"
+                      : "border-gray-200 bg-white hover:border-purple-300"
+                  }`}
+                >
+                  <span className="text-gray-700">{answer.text}</span>
+                  <span
+                    className={`w-6 h-6 rounded-full border-2 shrink-0 ${
+                      isSelected
+                        ? "bg-primary border-primary"
+                        : "border-gray-300 bg-white"
+                    }`}
+                  >
+                    {isSelected && (
+                      <svg
+                        className="w-full h-full text-white"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path
+                          d="M5 13l4 4L19 7"
+                          stroke="currentColor"
+                          strokeWidth="3"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                    )}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Fortschritts-Sterne - Feste Position */}
+          <div className="flex justify-center flex-wrap gap-1 shrink-0">
+            {Array.from({ length: 10 }).map((_, i) => {
+              const filledStars = Math.floor((currentQuestion + 1) / 2);
+              return (
+                <Star
+                  key={i}
+                  size={22}
+                  className={`transition-colors ${
+                    i < filledStars
+                      ? "text-yellow-400 fill-yellow-400"
+                      : "text-gray-300"
+                  }`}
+                />
+              );
+            })}
+          </div>
+        </CardContent>
+        <CardFooter className="justify-end shrink-0">
+          <Button onClick={handleNext} disabled={selected === null}>
+            {!isLastQuestion ? "Nächste Frage" : "Zum Ergebnis ✓"}
+          </Button>
+        </CardFooter>
+      </Card>
+    </Layout>
   );
 }

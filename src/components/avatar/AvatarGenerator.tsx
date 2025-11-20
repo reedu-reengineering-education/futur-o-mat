@@ -160,12 +160,13 @@ function AvatarGenerator() {
                     </Button>
                   </DialogTrigger>
                   <DialogContent>
-                    <DialogTitle>Blablabla</DialogTitle>
+                    <DialogTitle>Deine Zukunft, in deinem Style! </DialogTitle>
                     <DialogDescription>
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Magni ut delectus corrupti rerum consequuntur alias labore
-                      in rem nisi? Quae nam ab id dolorum dicta quo accusantium
-                      magni eum debitis.
+                      Mit dem Futur-O-Mat kannst du deinen Avatar bauen und die
+                      Welt nach deinen Vorstellungen gestalten. Probier's aus
+                      und finde raus, was du bewegen kannst! Die Webseite
+                      basiert auf der Idee des Handabdrucks von Germanwatch.
+                      Mehr Infos zum Futur-O-Mat findest du hier.
                     </DialogDescription>
                   </DialogContent>
                 </Dialog>
@@ -212,7 +213,7 @@ function AvatarGenerator() {
             </CardContent>
             <CardFooter className="justify-end">
               <Link
-                to={`/quiz-informations`}
+                to={`/quiz/information`}
                 onClick={() => {
                   saveAvatarFace();
                   saveAvatarBody();

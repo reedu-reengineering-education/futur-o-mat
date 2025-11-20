@@ -37,26 +37,60 @@ export function AvatarManager({ avatarConfig, children }: AvatarManagerProps) {
 
   // Avatar-Bild speichern (VOR dem Quiz)
   const saveAvatarImage = useCallback(
-    (canvas: HTMLCanvasElement, key: string, cropHeight: number) => {
+    (canvas: HTMLCanvasElement, key: string, type: "face" | "body") => {
       const tempCanvas = document.createElement("canvas");
       const ctx = tempCanvas.getContext("2d");
 
-      tempCanvas.width = 200;
-      tempCanvas.height = 200;
+      if (type === "face") {
+        // Gesicht: Zentriert, quadratisch
+        tempCanvas.width = 100;
+        tempCanvas.height = 200;
+
+        if (ctx) {
+          // Gesicht in der Mitte des Canvas (ca. 30-40% von oben)
+          const faceSize = 400; // Größe des Gesichtsbereichs
+          const faceX = (canvas.width - faceSize) / 2; // Zentriert
+          const faceY = canvas.height * 0.18; // 30% von oben
+
+          ctx.drawImage(
+            canvas,
+            faceX,
+            faceY, // Start im Original
+            faceSize,
+            faceSize, // Größe im Original
+            0,
+            50, // Start im Ziel
+            100,
+            200 // Größe im Ziel
+          );
+        }
+      } else {
+        // Ganzkörper: Mit etwas Rand
+        tempCanvas.width = 225;
+        tempCanvas.height = 285;
+
+        if (ctx) {
+          // Avatar mit Rand (ca. 10% Rand auf jeder Seite)
+          const marginX = canvas.width * 0.05; // 10% Rand links/rechts
+          const marginY = canvas.height * 0.05; // 5% Rand oben/unten
+          const cropWidth = canvas.width - marginX * 2;
+          const cropHeight = canvas.height - marginY * 2;
+
+          ctx.drawImage(
+            canvas,
+            marginX,
+            marginY, // Start mit Rand
+            cropWidth,
+            cropHeight, // Größe mit Rand
+            0,
+            20, // Start im Ziel
+            210,
+            210 // Ziel-Größe
+          );
+        }
+      }
 
       if (ctx) {
-        ctx.drawImage(
-          canvas,
-          0,
-          0,
-          canvas.width,
-          canvas.height * cropHeight,
-          0,
-          0,
-          200,
-          200
-        );
-
         const image = tempCanvas.toDataURL("image/png");
         localStorage.setItem(key, image);
         return image;
@@ -69,7 +103,7 @@ export function AvatarManager({ avatarConfig, children }: AvatarManagerProps) {
   const saveAvatarFace = useCallback(() => {
     const canvas = document.querySelector("canvas");
     if (canvas) {
-      return saveAvatarImage(canvas, "avatarFaceImage", 0.5);
+      return saveAvatarImage(canvas, "avatarFaceImage", "face");
     }
     return null;
   }, [saveAvatarImage]);
@@ -77,7 +111,7 @@ export function AvatarManager({ avatarConfig, children }: AvatarManagerProps) {
   const saveAvatarBody = useCallback(() => {
     const canvas = document.querySelector("canvas");
     if (canvas) {
-      return saveAvatarImage(canvas, "avatarImage", 1.6);
+      return saveAvatarImage(canvas, "avatarImage", "body");
     }
     return null;
   }, [saveAvatarImage]);

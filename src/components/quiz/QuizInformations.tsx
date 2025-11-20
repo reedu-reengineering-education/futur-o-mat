@@ -20,17 +20,10 @@ export function QuizInformation() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="flex-1 text-gray-700 leading-relaxed space-y-4 text-base">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Sagittis porttitor leo diam.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Sagittis porttitor leo diam. Lorem ipsum dolor sit amet.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Sagittis porttitor leo diam. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit.
+                Finde jetzt heraus, was dir richtig gut liegt und was dir
+                wirklich wichtig ist. Dafür gibt es ein kurzes Quiz mit 20
+                Fragen. Am Ende ist dein Avatar mit deinen Stärken und Werten
+                ausgestattet und bereit die Welt zu gestalten.
               </p>
             </div>
             {avatarBody && (
@@ -45,7 +38,7 @@ export function QuizInformation() {
           </div>
         </CardContent>
         <CardFooter className="flex justify-end">
-          <Link to={`/quiz-questions`}>
+          <Link to={`/quiz/questions`}>
             <Button>Weiter zum Quiz</Button>
           </Link>
         </CardFooter>
