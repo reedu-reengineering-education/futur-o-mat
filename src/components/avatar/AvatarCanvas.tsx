@@ -8,9 +8,13 @@ import type { AvatarConfig } from "../../types";
 import { RENDER_ORDER } from "../../data/categories";
 import { useAvatarParts } from "../../hooks/useAvatarParts";
 import { cn } from "@/lib/utils";
+import { useQuizState } from "@/hooks/useQuizState";
+import { STRENGTH_TO_PART_ID, VALUE_TO_PART_ID } from "../quiz/Values";
 
 interface AvatarCanvasProps extends CanvasHTMLAttributes<HTMLCanvasElement> {
   avatarConfig: AvatarConfig;
+  showStrengh?: boolean;
+  showValue?: boolean;
 }
 
 /**
@@ -19,6 +23,8 @@ interface AvatarCanvasProps extends CanvasHTMLAttributes<HTMLCanvasElement> {
  */
 export default function AvatarCanvas({
   avatarConfig,
+  showStrengh = false,
+  showValue = false,
   width = 800,
   height = 960,
   className = "",
@@ -28,6 +34,8 @@ export default function AvatarCanvas({
   const renderRequestRef = useRef<number>(0);
   // const { generateFilename, downloadCanvas } = useAvatarDownload();
   const { allParts } = useAvatarParts();
+
+  const { result: quizResult } = useQuizState();
 
   /**
    * Load a single image and cache it
@@ -68,6 +76,22 @@ export default function AvatarCanvas({
       partMap.set(part.id, part.src);
     });
 
+    if (showValue && quizResult?.valueKey) {
+      const partId = VALUE_TO_PART_ID[quizResult.valueKey];
+      const src = partMap.get(partId);
+      if (src) {
+        sources.push(src);
+      }
+    }
+
+    if (showStrengh && quizResult?.strengthKey) {
+      const partId = STRENGTH_TO_PART_ID[quizResult.strengthKey];
+      const src = partMap.get(partId);
+      if (src) {
+        sources.push(src);
+      }
+    }
+
     // Add selected parts in render order
     for (const category of RENDER_ORDER) {
       const partId = avatarConfig.selectedParts[category];
@@ -88,7 +112,7 @@ export default function AvatarCanvas({
     }
 
     return sources;
-  }, [avatarConfig, allParts]);
+  }, [avatarConfig, allParts, showStrengh, showValue, quizResult]);
 
   /**
    * Render the avatar on the canvas
