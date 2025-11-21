@@ -34,7 +34,7 @@ interface QuizData {
   questions: Question[];
 }
 
-interface QuizResult {
+export interface QuizResult {
   valueKey: string;
   strengthKey: string;
 }
@@ -47,6 +47,7 @@ interface UseQuizStateReturn {
   setAnswers: (answers: QuizAnswer[]) => void;
   resetQuiz: () => void;
   result: QuizResult | null;
+  setResult: (result: QuizResult) => void;
   calculateResult: () => void;
 }
 
@@ -107,6 +108,7 @@ export const useQuizState = create<UseQuizStateReturn>()(
         answers: [],
       })),
     result: null,
+    setResult: (result: QuizResult) => set(() => ({ result })),
     calculateResult: () =>
       set(() => ({
         result: calculateQuizResult(useQuizState.getState().answers),

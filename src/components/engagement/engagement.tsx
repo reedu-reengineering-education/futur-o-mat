@@ -5,12 +5,12 @@ import { useWimmelbildState } from "@/hooks/useWimmelbildState";
 import { Card, CardContent, CardFooter } from "../ui/card";
 import Layout from "../layout";
 import AvatarCanvas from "../avatar/AvatarCanvas";
+import { useQuizState } from "@/hooks/useQuizState";
 
 export function Engagement() {
   const { avatarConfig } = useAvatarState();
   const { image: wimmelbild } = useWimmelbildState();
-
-  console.log(avatarConfig);
+  const { result: quizResult } = useQuizState();
 
   return (
     <Layout>
@@ -27,6 +27,7 @@ export function Engagement() {
             {avatarConfig && (
               <AvatarCanvas
                 avatarConfig={avatarConfig}
+                quizResult={quizResult ?? undefined}
                 className="h-full absolute"
                 showStrengh
                 showValue

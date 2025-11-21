@@ -2,9 +2,5 @@ import { QuizInformation } from "@/components/quiz/QuizInformations";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/quiz/information")({
-  component: RouteComponent,
+  component: QuizInformation,
 });
-
-function RouteComponent() {
-  return <QuizInformation />;
-}

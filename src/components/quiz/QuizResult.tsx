@@ -28,6 +28,7 @@ export function QuizResult() {
           <div className="flex justify-center">
             <AvatarCanvas
               avatarConfig={avatarConfig}
+              quizResult={result ?? undefined}
               showStrengh
               showValue
               className="w-60"

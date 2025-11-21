@@ -3,26 +3,28 @@ import {
   useRef,
   useCallback,
   type CanvasHTMLAttributes,
+  useImperativeHandle,
+  type Ref,
 } from "react";
 import type { AvatarConfig } from "../../types";
 import { RENDER_ORDER } from "../../data/categories";
 import { useAvatarParts } from "../../hooks/useAvatarParts";
 import { cn } from "@/lib/utils";
-import { useQuizState } from "@/hooks/useQuizState";
+import { type QuizResult } from "@/hooks/useQuizState";
 import { STRENGTH_TO_PART_ID, VALUE_TO_PART_ID } from "../quiz/Values";
 
 interface AvatarCanvasProps extends CanvasHTMLAttributes<HTMLCanvasElement> {
   avatarConfig: AvatarConfig;
+  quizResult?: QuizResult;
   showStrengh?: boolean;
   showValue?: boolean;
+  ref?: Ref<HTMLCanvasElement>; // ← expose ref to parent
 }
 
-/**
- * AvatarCanvas component renders the composed avatar using HTML5 Canvas
- * Handles image loading, layer composition, and proper rendering order
- */
 export default function AvatarCanvas({
+  ref: externalRef,
   avatarConfig,
+  quizResult,
   showStrengh = false,
   showValue = false,
   width = 800,
@@ -31,13 +33,14 @@ export default function AvatarCanvas({
   ...props
 }: AvatarCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  // Sync internal ref → external ref
+  useImperativeHandle(externalRef, () => canvasRef.current!, []);
+
   const imageCache = useRef<Map<string, HTMLImageElement>>(new Map());
   const renderRequestRef = useRef<number>(0);
   // const { generateFilename, downloadCanvas } = useAvatarDownload();
   const { allParts } = useAvatarParts();
-
-  const { result: quizResult } = useQuizState();
-
   /**
    * Load a single image and cache it
    */
@@ -77,22 +80,6 @@ export default function AvatarCanvas({
       partMap.set(part.id, part.src);
     });
 
-    if (showValue && quizResult?.valueKey) {
-      const partId = VALUE_TO_PART_ID[quizResult.valueKey];
-      const src = partMap.get(partId);
-      if (src) {
-        sources.push(src);
-      }
-    }
-
-    if (showStrengh && quizResult?.strengthKey) {
-      const partId = STRENGTH_TO_PART_ID[quizResult.strengthKey];
-      const src = partMap.get(partId);
-      if (src) {
-        sources.push(src);
-      }
-    }
-
     // Add selected parts in render order
     for (const category of RENDER_ORDER) {
       const partId = avatarConfig.selectedParts[category];
@@ -107,6 +94,22 @@ export default function AvatarCanvas({
     // Add multi-select items (accessories, face features, etc.)
     for (const itemId of avatarConfig.selectedItems) {
       const src = partMap.get(itemId);
+      if (src) {
+        sources.push(src);
+      }
+    }
+
+    if (showValue && quizResult?.valueKey) {
+      const partId = VALUE_TO_PART_ID[quizResult.valueKey];
+      const src = partMap.get(partId);
+      if (src) {
+        sources.push(src);
+      }
+    }
+
+    if (showStrengh && quizResult?.strengthKey) {
+      const partId = STRENGTH_TO_PART_ID[quizResult.strengthKey];
+      const src = partMap.get(partId);
       if (src) {
         sources.push(src);
       }

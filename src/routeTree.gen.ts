@@ -8,27 +8,20 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createFileRoute } from '@tanstack/react-router'
-
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WimmelbildRouteImport } from './routes/wimmelbild'
-import { Route as ShareRouteImport } from './routes/share'
 import { Route as EngagementRouteImport } from './routes/engagement'
 import { Route as AvatarRouteImport } from './routes/avatar'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as ShareIndexRouteImport } from './routes/share.index'
+import { Route as ShareShareStateRouteImport } from './routes/share.$shareState'
 import { Route as QuizResultRouteImport } from './routes/quiz.result'
 import { Route as QuizQuestionsRouteImport } from './routes/quiz.questions'
 import { Route as QuizInformationRouteImport } from './routes/quiz.information'
 
-const IndexLazyRouteImport = createFileRoute('/')()
-
 const WimmelbildRoute = WimmelbildRouteImport.update({
   id: '/wimmelbild',
   path: '/wimmelbild',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ShareRoute = ShareRouteImport.update({
-  id: '/share',
-  path: '/share',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EngagementRoute = EngagementRouteImport.update({
@@ -41,11 +34,21 @@ const AvatarRoute = AvatarRouteImport.update({
   path: '/avatar',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexLazyRoute = IndexLazyRouteImport.update({
+const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+} as any)
+const ShareIndexRoute = ShareIndexRouteImport.update({
+  id: '/share/',
+  path: '/share/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShareShareStateRoute = ShareShareStateRouteImport.update({
+  id: '/share/$shareState',
+  path: '/share/$shareState',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const QuizResultRoute = QuizResultRouteImport.update({
   id: '/quiz/result',
   path: '/quiz/result',
@@ -63,35 +66,38 @@ const QuizInformationRoute = QuizInformationRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexLazyRoute
+  '/': typeof IndexRoute
   '/avatar': typeof AvatarRoute
   '/engagement': typeof EngagementRoute
-  '/share': typeof ShareRoute
   '/wimmelbild': typeof WimmelbildRoute
   '/quiz/information': typeof QuizInformationRoute
   '/quiz/questions': typeof QuizQuestionsRoute
   '/quiz/result': typeof QuizResultRoute
+  '/share/$shareState': typeof ShareShareStateRoute
+  '/share': typeof ShareIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexLazyRoute
+  '/': typeof IndexRoute
   '/avatar': typeof AvatarRoute
   '/engagement': typeof EngagementRoute
-  '/share': typeof ShareRoute
   '/wimmelbild': typeof WimmelbildRoute
   '/quiz/information': typeof QuizInformationRoute
   '/quiz/questions': typeof QuizQuestionsRoute
   '/quiz/result': typeof QuizResultRoute
+  '/share/$shareState': typeof ShareShareStateRoute
+  '/share': typeof ShareIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexLazyRoute
+  '/': typeof IndexRoute
   '/avatar': typeof AvatarRoute
   '/engagement': typeof EngagementRoute
-  '/share': typeof ShareRoute
   '/wimmelbild': typeof WimmelbildRoute
   '/quiz/information': typeof QuizInformationRoute
   '/quiz/questions': typeof QuizQuestionsRoute
   '/quiz/result': typeof QuizResultRoute
+  '/share/$shareState': typeof ShareShareStateRoute
+  '/share/': typeof ShareIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -99,42 +105,46 @@ export interface FileRouteTypes {
     | '/'
     | '/avatar'
     | '/engagement'
-    | '/share'
     | '/wimmelbild'
     | '/quiz/information'
     | '/quiz/questions'
     | '/quiz/result'
+    | '/share/$shareState'
+    | '/share'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/avatar'
     | '/engagement'
-    | '/share'
     | '/wimmelbild'
     | '/quiz/information'
     | '/quiz/questions'
     | '/quiz/result'
+    | '/share/$shareState'
+    | '/share'
   id:
     | '__root__'
     | '/'
     | '/avatar'
     | '/engagement'
-    | '/share'
     | '/wimmelbild'
     | '/quiz/information'
     | '/quiz/questions'
     | '/quiz/result'
+    | '/share/$shareState'
+    | '/share/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexLazyRoute: typeof IndexLazyRoute
+  IndexRoute: typeof IndexRoute
   AvatarRoute: typeof AvatarRoute
   EngagementRoute: typeof EngagementRoute
-  ShareRoute: typeof ShareRoute
   WimmelbildRoute: typeof WimmelbildRoute
   QuizInformationRoute: typeof QuizInformationRoute
   QuizQuestionsRoute: typeof QuizQuestionsRoute
   QuizResultRoute: typeof QuizResultRoute
+  ShareShareStateRoute: typeof ShareShareStateRoute
+  ShareIndexRoute: typeof ShareIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -144,13 +154,6 @@ declare module '@tanstack/react-router' {
       path: '/wimmelbild'
       fullPath: '/wimmelbild'
       preLoaderRoute: typeof WimmelbildRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/share': {
-      id: '/share'
-      path: '/share'
-      fullPath: '/share'
-      preLoaderRoute: typeof ShareRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/engagement': {
@@ -171,7 +174,21 @@ declare module '@tanstack/react-router' {
       id: '/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexLazyRouteImport
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/share/': {
+      id: '/share/'
+      path: '/share'
+      fullPath: '/share'
+      preLoaderRoute: typeof ShareIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/share/$shareState': {
+      id: '/share/$shareState'
+      path: '/share/$shareState'
+      fullPath: '/share/$shareState'
+      preLoaderRoute: typeof ShareShareStateRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/quiz/result': {
@@ -199,14 +216,15 @@ declare module '@tanstack/react-router' {
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexLazyRoute: IndexLazyRoute,
+  IndexRoute: IndexRoute,
   AvatarRoute: AvatarRoute,
   EngagementRoute: EngagementRoute,
-  ShareRoute: ShareRoute,
   WimmelbildRoute: WimmelbildRoute,
   QuizInformationRoute: QuizInformationRoute,
   QuizQuestionsRoute: QuizQuestionsRoute,
   QuizResultRoute: QuizResultRoute,
+  ShareShareStateRoute: ShareShareStateRoute,
+  ShareIndexRoute: ShareIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
