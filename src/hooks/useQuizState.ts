@@ -7,6 +7,11 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import rawQuizData from "@/components/quiz/quizData.json";
+import rawQuizDataDebug from "@/components/quiz/quizData.debug.json";
+
+// Use debug data in development mode
+const isDevelopment = import.meta.env.DEV;
+const quizData = isDevelopment ? rawQuizDataDebug : rawQuizData;
 
 export interface QuizAnswer {
   value: string;
@@ -86,11 +91,11 @@ const calculateQuizResult = (allAnswers: QuizAnswer[]) => {
 
 export const useQuizState = create<UseQuizStateReturn>()(
   devtools<UseQuizStateReturn>((set) => ({
-    questions: (rawQuizData as unknown as QuizData).questions,
+    questions: (quizData as unknown as QuizData).questions,
     getCurrentQuestion: (index: number) =>
-      (rawQuizData as unknown as QuizData).questions[index],
+      (quizData as unknown as QuizData).questions[index],
     isLastQuestion: (index: number) =>
-      index === (rawQuizData as unknown as QuizData).questions.length - 1,
+      index === (quizData as unknown as QuizData).questions.length - 1,
     answers: [],
     setAnswers: (answers: QuizAnswer[]) =>
       set(() => ({
