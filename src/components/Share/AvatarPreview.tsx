@@ -1,8 +1,8 @@
 // AvatarPreview.tsx
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import type { AvatarConfig } from "../../types";
 import { Button } from "../ui/button";
-import { AvatarCanvas, type AvatarCanvasRef } from "../avatar/AvatarCanvas";
+import AvatarCanvas from "../avatar/AvatarCanvas";
 
 interface AvatarPreviewProps {
   avatarConfig: AvatarConfig;
@@ -23,7 +23,6 @@ export function AvatarPreview({
   onBack,
   className = "",
 }: AvatarPreviewProps) {
-  const canvasRef = useRef<AvatarCanvasRef>(null);
   const [wimmelbild, setWimmelbild] = useState<string>("");
   const [copied, setCopied] = useState(false);
 
@@ -42,7 +41,7 @@ export function AvatarPreview({
   }, []);
 
   const handleDownload = () => {
-    canvasRef.current?.downloadImage();
+    // canvasRef.current?.downloadImage();
   };
 
   const handleShare = async () => {
@@ -63,11 +62,7 @@ export function AvatarPreview({
           <div className="flex flex-col gap-6">
             {/* Back Button */}
             {onBack && (
-              <Button
-                onClick={onBack}
-                variant="ghost"
-
-              >
+              <Button onClick={onBack} variant="ghost">
                 ← Zurück
               </Button>
             )}
@@ -97,7 +92,6 @@ export function AvatarPreview({
                 className={`rounded-2xl overflow-hidden shadow-2xl border-4 border-purple-500 ${className}`}
               >
                 <AvatarCanvas
-                  ref={canvasRef}
                   avatarConfig={avatarConfig}
                   width={width}
                   height={height}
@@ -120,17 +114,11 @@ export function AvatarPreview({
             {/* Action Buttons */}
             <div className="flex flex-col gap-3 relative z-10">
               {showDownloadButton && (
-                <Button
-                  onClick={handleDownload}
-                >
-                  Download Avatar
-                </Button>
+                <Button onClick={handleDownload}>Download Avatar</Button>
               )}
 
               {showShareButton && (
-                <Button
-                  onClick={handleShare}
-                >
+                <Button onClick={handleShare}>
                   {copied ? "✓ Link kopiert!" : "Link teilen"}
                 </Button>
               )}

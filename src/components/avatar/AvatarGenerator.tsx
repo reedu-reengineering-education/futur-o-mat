@@ -7,9 +7,8 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useEffect, useCallback } from "react";
 import { useAvatarState, useAvatarParts, useUrlState, useToast } from "@/hooks";
-import { AvatarCanvas, type AvatarCanvasRef } from "@/components/avatar";
 import { BodyEditor } from "@/components/editors/BodyEditor";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
 import { ToastContainer } from "@/components/Toast";
@@ -23,7 +22,7 @@ import {
   CardTitle,
   CardAction,
 } from "../ui/card";
-import { InfoIcon, Sparkles } from "lucide-react";
+import { ArrowRightIcon, InfoIcon, Sparkles } from "lucide-react";
 import Layout from "../layout";
 import {
   Dialog,
@@ -33,16 +32,11 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import { AvatarManager } from "./avatarManager";
+import AvatarCanvas from "./AvatarCanvas";
 
 function AvatarGenerator() {
-  // Global state management
-  const [renderError, setRenderError] = useState<Error | null>(null);
-
   // Toast notifications
-  const { toasts, showToast, removeToast } = useToast();
-
-  // Ref for avatar canvas to trigger download
-  const avatarCanvasRef = useRef<AvatarCanvasRef>(null);
+  const { toasts, removeToast } = useToast();
 
   // Avatar state management
   const {
@@ -90,21 +84,6 @@ function AvatarGenerator() {
 
     generateRandom(allParts);
   }, [allParts, decodeState, setAvatarConfig, generateRandom]);
-
-  // Handle render error
-  const handleRenderError = useCallback(
-    (error: Error) => {
-      console.error("Avatar render error:", error);
-      setRenderError(error);
-      showToast("Fehler beim Rendern des Avatars", "error");
-    },
-    [showToast]
-  );
-
-  // Handle render complete
-  const handleRenderComplete = useCallback(() => {
-    setRenderError(null);
-  }, []);
 
   const handleSurprise = useCallback(() => {
     if (allParts.length > 0) {
@@ -175,23 +154,12 @@ function AvatarGenerator() {
             <CardContent className="grid gap-4">
               {/* Avatar Display */}
               <div className="mb-6 flex flex-col items-center">
-                {renderError && (
-                  <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg w-full">
-                    <p className="text-sm text-red-600">
-                      ⚠️ Fehler beim Rendern: {renderError.message}
-                    </p>
-                  </div>
-                )}
-
                 <div className="w-full max-w-sm mx-auto relative pt-8">
                   <AvatarCanvas
-                    ref={avatarCanvasRef}
                     avatarConfig={avatarConfig}
                     width={800}
                     height={960}
                     className="w-full h-auto rounded-lg"
-                    onRenderComplete={handleRenderComplete}
-                    onRenderError={handleRenderError}
                   />
                 </div>
               </div>
@@ -219,7 +187,9 @@ function AvatarGenerator() {
                   saveAvatarBody();
                 }}
               >
-                <Button>Weiter zum Quiz</Button>
+                <Button>
+                  Weiter zum Quiz <ArrowRightIcon />
+                </Button>
               </Link>
             </CardFooter>
           </Card>
