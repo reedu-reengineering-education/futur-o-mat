@@ -28,6 +28,7 @@ export default function AvatarCanvas({
   width = 800,
   height = 960,
   className = "",
+  ...props
 }: AvatarCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const imageCache = useRef<Map<string, HTMLImageElement>>(new Map());
@@ -223,6 +224,7 @@ export default function AvatarCanvas({
       width={width}
       height={height}
       className={cn("max-w-full h-auto", className)}
+      {...props}
     />
   );
 }

@@ -13,7 +13,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WimmelbildRouteImport } from './routes/wimmelbild'
 import { Route as ShareRouteImport } from './routes/share'
-import { Route as CommitmentCallRouteImport } from './routes/commitment-call'
+import { Route as EngagementRouteImport } from './routes/engagement'
 import { Route as AvatarRouteImport } from './routes/avatar'
 import { Route as QuizResultRouteImport } from './routes/quiz.result'
 import { Route as QuizQuestionsRouteImport } from './routes/quiz.questions'
@@ -31,9 +31,9 @@ const ShareRoute = ShareRouteImport.update({
   path: '/share',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CommitmentCallRoute = CommitmentCallRouteImport.update({
-  id: '/commitment-call',
-  path: '/commitment-call',
+const EngagementRoute = EngagementRouteImport.update({
+  id: '/engagement',
+  path: '/engagement',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AvatarRoute = AvatarRouteImport.update({
@@ -65,7 +65,7 @@ const QuizInformationRoute = QuizInformationRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/avatar': typeof AvatarRoute
-  '/commitment-call': typeof CommitmentCallRoute
+  '/engagement': typeof EngagementRoute
   '/share': typeof ShareRoute
   '/wimmelbild': typeof WimmelbildRoute
   '/quiz/information': typeof QuizInformationRoute
@@ -75,7 +75,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/avatar': typeof AvatarRoute
-  '/commitment-call': typeof CommitmentCallRoute
+  '/engagement': typeof EngagementRoute
   '/share': typeof ShareRoute
   '/wimmelbild': typeof WimmelbildRoute
   '/quiz/information': typeof QuizInformationRoute
@@ -86,7 +86,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexLazyRoute
   '/avatar': typeof AvatarRoute
-  '/commitment-call': typeof CommitmentCallRoute
+  '/engagement': typeof EngagementRoute
   '/share': typeof ShareRoute
   '/wimmelbild': typeof WimmelbildRoute
   '/quiz/information': typeof QuizInformationRoute
@@ -98,7 +98,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/avatar'
-    | '/commitment-call'
+    | '/engagement'
     | '/share'
     | '/wimmelbild'
     | '/quiz/information'
@@ -108,7 +108,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/avatar'
-    | '/commitment-call'
+    | '/engagement'
     | '/share'
     | '/wimmelbild'
     | '/quiz/information'
@@ -118,7 +118,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/avatar'
-    | '/commitment-call'
+    | '/engagement'
     | '/share'
     | '/wimmelbild'
     | '/quiz/information'
@@ -129,7 +129,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   AvatarRoute: typeof AvatarRoute
-  CommitmentCallRoute: typeof CommitmentCallRoute
+  EngagementRoute: typeof EngagementRoute
   ShareRoute: typeof ShareRoute
   WimmelbildRoute: typeof WimmelbildRoute
   QuizInformationRoute: typeof QuizInformationRoute
@@ -153,11 +153,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShareRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/commitment-call': {
-      id: '/commitment-call'
-      path: '/commitment-call'
-      fullPath: '/commitment-call'
-      preLoaderRoute: typeof CommitmentCallRouteImport
+    '/engagement': {
+      id: '/engagement'
+      path: '/engagement'
+      fullPath: '/engagement'
+      preLoaderRoute: typeof EngagementRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/avatar': {
@@ -201,7 +201,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   AvatarRoute: AvatarRoute,
-  CommitmentCallRoute: CommitmentCallRoute,
+  EngagementRoute: EngagementRoute,
   ShareRoute: ShareRoute,
   WimmelbildRoute: WimmelbildRoute,
   QuizInformationRoute: QuizInformationRoute,

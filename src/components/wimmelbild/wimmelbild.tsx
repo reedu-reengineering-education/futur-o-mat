@@ -88,7 +88,7 @@ const Wimmelbild: React.FC<WimmelbildProps> = ({ images }) => {
           </div>
 
           <CardFooter className="flex justify-end mt-4">
-            <Link to="/commitment-call">
+            <Link to="/engagement">
               <Button disabled={!image}>Auswählen</Button>
             </Link>
           </CardFooter>
