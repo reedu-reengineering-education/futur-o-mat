@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { Star, InfoIcon, CheckCircle, Circle } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "../ui/button";
-import { useAvatarState } from "@/hooks";
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 import Layout from "../layout";
 import AvatarCanvas from "../avatar/AvatarCanvas";
 import { useQuizState, type QuizAnswer } from "@/hooks/useQuizState";
+import useAvatarState from "@/hooks/useAvatarState";
 
 export default function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);

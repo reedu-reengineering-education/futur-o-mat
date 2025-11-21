@@ -23,5 +23,5 @@ export const useWimmelbildState = create<UseWimmelbildStateReturn>()(
   devtools<UseWimmelbildStateReturn>((set) => ({
     image: null,
     setImage: (image) => set({ image }),
-  }))
+  })),
 );

@@ -1,6 +1,6 @@
 // components/avatar/avatarManager.tsx
+import type { AvatarConfig, AvatarPart } from "@/types/avatar";
 import { useCallback, useEffect, useState } from "react";
-import type { AvatarConfig, AvatarPart } from "@/types";
 
 interface AvatarManagerProps {
   avatarConfig: AvatarConfig;

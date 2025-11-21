@@ -5,10 +5,10 @@
  * Handles single and multi-select part selection with visual feedback
  */
 
-import type { AvatarPart } from "@/types";
 import { Card } from "../ui/card";
 import { cn } from "@/lib/utils";
 import PartsImage from "./PartsImage";
+import type { AvatarPart } from "@/types/avatar";
 
 interface PartsGridProps {
   parts: AvatarPart[];

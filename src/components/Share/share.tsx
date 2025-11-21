@@ -10,13 +10,14 @@ import {
   CardTitle,
 } from "../ui/card";
 import AvatarCanvas from "../avatar/AvatarCanvas";
-import { useAvatarDownload, useAvatarState } from "@/hooks";
 import { DownloadIcon, Share2Icon } from "lucide-react";
 import { useRef } from "react";
 import { useShare } from "@/hooks/useShare";
 import { useQuizState } from "@/hooks/useQuizState";
+import useAvatarState from "@/hooks/useAvatarState";
+import { useAvatarDownload } from "@/hooks/useAvatarDownload";
 
-export function Share() {
+export default function Share() {
   const { avatarConfig } = useAvatarState();
   const { result } = useQuizState();
   const { image: wimmelbild } = useWimmelbildState();
@@ -138,5 +139,3 @@ export function Share() {
     </Layout>
   );
 }
-
-export default Share;

@@ -6,12 +6,12 @@ import {
   useImperativeHandle,
   type Ref,
 } from "react";
-import type { AvatarConfig } from "../../types";
 import { RENDER_ORDER } from "../../data/categories";
 import { useAvatarParts } from "../../hooks/useAvatarParts";
 import { cn } from "@/lib/utils";
 import { type QuizResult } from "@/hooks/useQuizState";
 import { STRENGTH_TO_PART_ID, VALUE_TO_PART_ID } from "../quiz/Values";
+import type { AvatarConfig } from "@/types/avatar";
 
 interface AvatarCanvasProps extends CanvasHTMLAttributes<HTMLCanvasElement> {
   avatarConfig: AvatarConfig;

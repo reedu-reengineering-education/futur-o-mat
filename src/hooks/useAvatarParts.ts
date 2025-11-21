@@ -22,7 +22,7 @@ interface UseAvatarPartsReturn {
  * Handles loading states, error conditions, and filtering by various criteria
  */
 export function useAvatarParts(
-  options: UseAvatarPartsOptions = {}
+  options: UseAvatarPartsOptions = {},
 ): UseAvatarPartsReturn {
   const { category, skinTone, hairColor, bodyType } = options;
 
@@ -81,7 +81,7 @@ export function useAvatarParts(
 
         // Check if part has no hair color indicator (universal items like Käppi, Kopftuch, Beanie)
         const hasNoHairColorIndicator = !hairColors.some(
-          (color) => part.id.includes(color) || part.src.includes(color)
+          (color) => part.id.includes(color) || part.src.includes(color),
         );
 
         return matchesHairColor || hasNoHairColorIndicator;
@@ -102,7 +102,7 @@ export function useAvatarParts(
         const hasNoBodyTypeIndicator = !bodyTypes.some(
           (type) =>
             part.id.toLowerCase().includes(type.toLowerCase()) ||
-            part.src.toLowerCase().includes(type.toLowerCase())
+            part.src.toLowerCase().includes(type.toLowerCase()),
         );
 
         return matchesBodyType || hasNoBodyTypeIndicator;

@@ -1,7 +1,7 @@
 import { useEffect, useRef, type ImgHTMLAttributes } from "react";
 
 function findVisibleBounds(
-  imageData: ImageData
+  imageData: ImageData,
 ): { left: number; top: number; width: number; height: number } | null {
   const { width, height, data } = imageData;
   let minX = width,
@@ -60,7 +60,7 @@ export default function PartsImage(props: ImgHTMLAttributes<HTMLImageElement>) {
         0,
         0,
         tempCanvas.width,
-        tempCanvas.height
+        tempCanvas.height,
       );
       const bounds = findVisibleBounds(imageData);
 
@@ -81,7 +81,7 @@ export default function PartsImage(props: ImgHTMLAttributes<HTMLImageElement>) {
           0,
           0,
           bounds.width,
-          bounds.height
+          bounds.height,
         );
 
         // Replace image source with cropped image

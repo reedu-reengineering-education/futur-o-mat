@@ -8,7 +8,6 @@
 
 import { Button } from "@/components/ui/button";
 import { useEffect, useCallback } from "react";
-import { useAvatarState, useAvatarParts } from "@/hooks";
 import { BodyEditor } from "@/components/editors/BodyEditor";
 import { Link } from "@tanstack/react-router";
 import {
@@ -31,6 +30,8 @@ import {
 } from "../ui/dialog";
 import { AvatarManager } from "./avatarManager";
 import AvatarCanvas from "./AvatarCanvas";
+import useAvatarState from "@/hooks/useAvatarState";
+import { useAvatarParts } from "@/hooks/useAvatarParts";
 
 function AvatarGenerator() {
   // Avatar state management

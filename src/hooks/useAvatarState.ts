@@ -20,7 +20,7 @@ const multiSelectCategories = ["face", "clothes", "accessoires", "handicap"];
 
 const clone = <T>(v: T): T => JSON.parse(JSON.stringify(v));
 
-export const useAvatarState = create<UseAvatarStateReturn>(
+const useAvatarState = create<UseAvatarStateReturn>(
   (
     set: (
       partial:

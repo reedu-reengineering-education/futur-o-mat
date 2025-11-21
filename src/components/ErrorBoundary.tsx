@@ -66,14 +66,11 @@ export class ErrorBoundary extends Component<
                 "Ein unerwarteter Fehler ist aufgetreten."}
             </p>
             <div className="flex gap-3 justify-center">
-              <Button
-                onClick={this.handleReset}
-              >
-                Erneut versuchen
-              </Button>
+              <Button onClick={this.handleReset}>Erneut versuchen</Button>
               <Button
                 onClick={() => window.location.reload()}
-                variant="outline">
+                variant="outline"
+              >
                 Seite neu laden
               </Button>
             </div>

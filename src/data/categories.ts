@@ -2,7 +2,7 @@
  * Category configuration constants for avatar customization
  */
 
-import type { Category } from "../types";
+import type { Category } from "@/types/avatar";
 
 /**
  * Body customization categories for "Wer bist du?" (Who are you?) step

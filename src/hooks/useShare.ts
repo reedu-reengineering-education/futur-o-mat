@@ -104,7 +104,7 @@ export function useShare(): UseShareReturn {
         return null;
       }
     },
-    []
+    [],
   );
 
   return {

@@ -27,7 +27,7 @@ export async function loadAvatarParts(): Promise<AvatarPart[]> {
  */
 export function filterPartsByCategory(
   parts: AvatarPart[],
-  category: string
+  category: string,
 ): AvatarPart[] {
   return parts.filter((part) => part.category === category);
 }

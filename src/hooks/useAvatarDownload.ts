@@ -1,5 +1,5 @@
+import type { AvatarConfig } from "@/types/avatar";
 import { useCallback } from "react";
-import type { AvatarConfig } from "../types";
 
 interface UseAvatarDownloadReturn {
   generateFilename: (config: AvatarConfig) => string;

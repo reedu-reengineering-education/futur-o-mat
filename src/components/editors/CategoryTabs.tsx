@@ -5,9 +5,9 @@
  * center-scroll-to-active behavior, and left/right fade indicators.
  */
 
-import type { Category } from "@/types";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
+import type { Category } from "@/types/avatar";
 
 interface CategoryTabsProps {
   categories: Category[];

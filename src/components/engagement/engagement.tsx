@@ -1,13 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { Button } from "../ui/button";
-import { useAvatarState } from "@/hooks";
 import { useWimmelbildState } from "@/hooks/useWimmelbildState";
 import { Card, CardContent, CardFooter } from "../ui/card";
 import Layout from "../layout";
 import AvatarCanvas from "../avatar/AvatarCanvas";
 import { useQuizState } from "@/hooks/useQuizState";
+import useAvatarState from "@/hooks/useAvatarState";
 
-export function Engagement() {
+export default function Engagement() {
   const { avatarConfig } = useAvatarState();
   const { image: wimmelbild } = useWimmelbildState();
   const { result: quizResult } = useQuizState();
@@ -72,5 +72,3 @@ export function Engagement() {
     </Layout>
   );
 }
-
-export default Engagement;

@@ -47,7 +47,7 @@ export function ColorSelector({
                     min-w-[60px] sm:min-w-[70px]
                     ${isSelected ? "scale-110" : "active:scale-105"}
                   `}
-                  aria-label={`${label}: ${colorOption.name}`}
+                  aria-label={`${label}: ${colorOption.id}`}
                   aria-pressed={isSelected}
                 >
                   {/* Color circle - larger touch target on mobile */}
@@ -62,21 +62,6 @@ export function ColorSelector({
                     `}
                     style={{ backgroundColor: colorOption.color }}
                   />
-
-                  {/* Color name */}
-                  <span
-                    className={`
-                      text-[10px] sm:text-xs font-medium transition-colors duration-200
-                      text-center leading-tight
-                      ${
-                        isSelected
-                          ? "text-brand-primary"
-                          : "text-gray-600 group-active:text-brand-primary"
-                      }
-                    `}
-                  >
-                    {colorOption.name}
-                  </span>
 
                   {/* Selection indicator */}
                   {isSelected && (

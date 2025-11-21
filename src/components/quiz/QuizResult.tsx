@@ -1,7 +1,6 @@
 // components/quiz/QuizResult.tsx
 import { Link } from "@tanstack/react-router";
 import { Button } from "../ui/button";
-import { useAvatarState } from "@/hooks";
 import {
   Card,
   CardContent,
@@ -12,6 +11,7 @@ import {
 import Layout from "../layout";
 import { useQuizState } from "@/hooks/useQuizState";
 import AvatarCanvas from "../avatar/AvatarCanvas";
+import useAvatarState from "@/hooks/useAvatarState";
 
 export function QuizResult() {
   const { avatarConfig } = useAvatarState();

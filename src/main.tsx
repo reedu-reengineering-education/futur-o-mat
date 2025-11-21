@@ -15,5 +15,5 @@ createRoot(document.getElementById("root")!).render(
     <ErrorBoundary>
       <RouterProvider router={router} />
     </ErrorBoundary>
-  </StrictMode>
+  </StrictMode>,
 );

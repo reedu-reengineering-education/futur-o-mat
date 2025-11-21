@@ -7,12 +7,12 @@
  */
 
 import { useState, useCallback, useMemo } from "react";
-import type { AvatarConfig, AvatarPart } from "@/types";
 import { BODY_CATEGORIES } from "@/data/categories";
-import { useAvatarParts } from "@/hooks";
 import { CategoryTabs } from "./CategoryTabs";
 import { ColorSelector } from "./ColorSelector";
 import { PartsGrid } from "./PartsGrid";
+import type { AvatarConfig, AvatarPart } from "@/types/avatar";
+import { useAvatarParts } from "@/hooks/useAvatarParts";
 
 interface BodyEditorProps {
   avatarConfig: AvatarConfig;

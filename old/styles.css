@@ -1,43 +1,43 @@
 /* Base styles */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 :root {
   /* Primary brand color - Violet (refined) */
   --brand-primary: #61398d; /* Keep existing violet as primary */
-  --brand-primary-light: #8B5FBF; /* Lighter violet for hover states */
-  --brand-primary-dark: #4A2C6A; /* Darker violet for active states */
+  --brand-primary-light: #8b5fbf; /* Lighter violet for hover states */
+  --brand-primary-dark: #4a2c6a; /* Darker violet for active states */
 
   /* Accent color - Yellow (reserved for high-value CTAs) */
-  --brand-accent: #F59E0B; /* Amber-500 for primary actions */
-  --brand-accent-light: #FDE68A; /* Amber-200 for hover states */
-  --brand-accent-dark: #D97706; /* Amber-600 for active states */
+  --brand-accent: #f59e0b; /* Amber-500 for primary actions */
+  --brand-accent-light: #fde68a; /* Amber-200 for hover states */
+  --brand-accent-dark: #d97706; /* Amber-600 for active states */
 
   /* Desaturated background - Very light violet tint */
-  --background-primary: #FAFAFF; /* Very light violet tint (~5% brand hue) */
-  --background-secondary: #F8F9FF; /* Slightly more violet tint for panels */
+  --background-primary: #fafaff; /* Very light violet tint (~5% brand hue) */
+  --background-secondary: #f8f9ff; /* Slightly more violet tint for panels */
 
   /* Legacy variables for compatibility */
   --brand-violet: #61398d; /* Keep for existing references */
-  --brand-blue: #F8F9FF; /* Desaturated to light violet tint */
+  --brand-blue: #f8f9ff; /* Desaturated to light violet tint */
   --brand-pink: #ea384c; /* Keep but will be used sparingly */
-  --brand-text: #1E293B; /* Darker, more readable text */
+  --brand-text: #1e293b; /* Darker, more readable text */
   --white: #ffffff;
   --black: #000000;
 
   /* Refined gray scale */
-  --gray-50: #F8FAFC;
-  --gray-100: #F1F5F9;
-  --gray-200: #E2E8F0;
-  --gray-300: #CBD5E1;
-  --gray-400: #94A3B8;
-  --gray-500: #64748B;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
   --gray-600: #475569;
   --gray-700: #334155;
-  --gray-800: #1E293B;
-  --gray-900: #0F172A;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
 
   /* Keep yellow for compatibility */
-  --yellow-400: #F59E0B; /* Updated to match accent color */
+  --yellow-400: #f59e0b; /* Updated to match accent color */
 
   /* Consistent border radius system */
   --radius-sm: 0.375rem; /* 6px - Small elements */
@@ -53,7 +53,7 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: var(--background-primary);
   color: var(--brand-text);
   line-height: 1.5;
@@ -67,8 +67,10 @@ body {
 
 /* Base button styles */
 button {
-  font-family: 'Poppins', sans-serif;
-  border-radius: var(--radius-md); /* Consistent medium radius for all buttons */
+  font-family: "Poppins", sans-serif;
+  border-radius: var(
+    --radius-md
+  ); /* Consistent medium radius for all buttons */
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -143,7 +145,9 @@ button {
 
 /* Responsive button sizing */
 @media (min-width: 640px) {
-  .btn-primary, .btn-secondary, .btn-tertiary {
+  .btn-primary,
+  .btn-secondary,
+  .btn-tertiary {
     padding: 0.75rem 1.25rem;
     font-size: 1rem;
   }
@@ -180,9 +184,15 @@ button {
   width: 100%;
   max-width: 24rem; /* 384px for mobile */
   margin: 0 auto;
-  background-color: var(--background-primary); /* Desaturated light violet tint */
-  border-radius: var(--radius-xl); /* Consistent large radius for main container */
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  background-color: var(
+    --background-primary
+  ); /* Desaturated light violet tint */
+  border-radius: var(
+    --radius-xl
+  ); /* Consistent large radius for main container */
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -251,9 +261,9 @@ button {
     font-size: 1rem !important;
     margin-bottom: 0.125rem !important;
   }
- 
+
   .title-container p {
-    font-size: 0.90rem !important;
+    font-size: 0.9rem !important;
   }
   /* Smaller info button */
   .info-button {
@@ -316,7 +326,7 @@ button {
   /* font-size: 1.2rem; /* 0.67x of new h1 size (1/1.5) */
   color: var(--brand-violet); /* White text with shadow for contrast */
   font-weight: 400; /* Normal weight, lighter than h1 */
-  font-size: 1.1rem
+  font-size: 1.1rem;
 }
 
 .info-button {
@@ -391,7 +401,9 @@ button {
   flex-direction: column;
   height: 100%;
   padding: 0.5rem;
-  border-radius: var(--radius-lg); /* Consistent large radius for step containers */
+  border-radius: var(
+    --radius-lg
+  ); /* Consistent large radius for step containers */
   overflow: hidden;
   /* Ensure consistent height for all steps */
   min-height: 0;
@@ -521,8 +533,12 @@ canvas {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loading-indicator p {
@@ -531,8 +547,6 @@ canvas {
   color: var(--gray-600);
   text-align: center;
 }
-
-
 
 /* Editor Container - Takes remaining space after canvas (same height for all steps) */
 .editor-container {
@@ -555,7 +569,8 @@ canvas {
 }
 
 /* Tabs with fade-out indicators */
-.category-tabs, .values-tabs {
+.category-tabs,
+.values-tabs {
   display: flex;
   width: 100%;
   overflow-x: auto;
@@ -566,7 +581,7 @@ canvas {
 /* Fade-out gradients to indicate more tabs */
 .tabs-container::before,
 .tabs-container::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   bottom: 8px; /* Account for progress indicator height */
@@ -615,7 +630,8 @@ canvas {
 }
 
 /* Tab buttons now use btn-tertiary btn-small classes */
-.tab-button, .values-tab-button {
+.tab-button,
+.values-tab-button {
   flex: 0 1 auto;
   min-width: 0;
   border-top-left-radius: var(--radius-md);
@@ -630,7 +646,8 @@ canvas {
   transition: all 0.2s ease;
 }
 
-.tab-button:hover, .values-tab-button:hover {
+.tab-button:hover,
+.values-tab-button:hover {
   background-color: var(--gray-300);
   color: var(--brand-primary);
   text-decoration: none;
@@ -638,7 +655,8 @@ canvas {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Subtle shadow on hover */
 }
 
-.tab-button.active, .values-tab-button.active {
+.tab-button.active,
+.values-tab-button.active {
   background-color: var(--white);
   color: var(--brand-primary);
   text-decoration: none;
@@ -682,33 +700,42 @@ canvas {
 
 /* Very small screens - adjust both consistently */
 @media (max-width: 320px) and (max-height: 568px) {
-  .parts-selector, .values-content {
+  .parts-selector,
+  .values-content {
     height: calc(3rem + 2.5rem); /* 5.5rem total - consistent for both */
   }
-  
+
   .parts-selector.no-color-selectors ~ .values-content {
-    height: calc(3rem + 5rem); /* 8rem total - expanded for no color selectors */
+    height: calc(
+      3rem + 5rem
+    ); /* 8rem total - expanded for no color selectors */
   }
 }
 
 /* Small height screens - adjust both consistently */
 @media (max-height: 600px) {
-  .parts-selector, .values-content {
+  .parts-selector,
+  .values-content {
     height: calc(5rem + 3.5rem); /* 8.5rem total - consistent for both */
   }
-  
+
   .parts-selector.no-color-selectors ~ .values-content {
-    height: calc(5rem + 7rem); /* 12rem total - expanded for no color selectors */
+    height: calc(
+      5rem + 7rem
+    ); /* 12rem total - expanded for no color selectors */
   }
 }
 
 @media (min-width: 640px) {
-  .parts-selector, .values-content {
+  .parts-selector,
+  .values-content {
     height: calc(4rem + 8rem); /* 12rem total - consistent for both */
   }
-  
+
   .parts-selector.no-color-selectors ~ .values-content {
-    height: calc(4rem + 8rem); /* 12rem total - expanded for no color selectors */
+    height: calc(
+      4rem + 8rem
+    ); /* 12rem total - expanded for no color selectors */
   }
 }
 
@@ -722,7 +749,7 @@ canvas {
 /* Very small screens - compact skin selector */
 @media (max-width: 320px) and (max-height: 568px) {
   .skin-color-selector {
-    margin-bottom: 0.0rem;
+    margin-bottom: 0rem;
     padding: 0.25rem;
   }
 }
@@ -730,7 +757,7 @@ canvas {
 /* Small height screens - compact skin selector */
 @media (max-height: 600px) {
   .skin-color-selector {
-    margin-bottom: 0.0rem;
+    margin-bottom: 0rem;
     padding: 0.375rem;
   }
 }
@@ -797,7 +824,7 @@ canvas {
 }
 
 .skin-color-option.active::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -819,7 +846,7 @@ canvas {
 /* Very small screens - compact hair selector */
 @media (max-width: 320px) and (max-height: 568px) {
   .hair-color-selector {
-    margin-bottom: 0.0rem;
+    margin-bottom: 0rem;
     padding: 0.25rem;
   }
 }
@@ -827,7 +854,7 @@ canvas {
 /* Small height screens - compact hair selector */
 @media (max-height: 600px) {
   .hair-color-selector {
-    margin-bottom: 0.0rem;
+    margin-bottom: 0rem;
     padding: 0.375rem;
   }
 }
@@ -894,7 +921,7 @@ canvas {
 }
 
 .hair-color-option.active::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -985,7 +1012,8 @@ canvas {
   min-height: 4rem;
 }
 /* Values and strengths grids - Use all available space in values-content */
-.values-grid, .properties-grid {
+.values-grid,
+.properties-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Always 3 items per row */
   gap: 0.5rem;
@@ -1008,7 +1036,8 @@ canvas {
     padding: 0.125rem;
   }
 
-  .values-grid, .properties-grid {
+  .values-grid,
+  .properties-grid {
     gap: 0.375rem;
     padding: 0.125rem;
     /* Ensure scrolling works on very small screens */
@@ -1023,7 +1052,8 @@ canvas {
     gap: 0.375rem;
   }
 
-  .values-grid, .properties-grid {
+  .values-grid,
+  .properties-grid {
     gap: 0.375rem;
     /* Ensure scrolling works on small height screens */
     max-height: calc(5rem + 3.5rem - 1rem); /* Match container minus padding */
@@ -1037,7 +1067,8 @@ canvas {
     gap: 0.75rem;
   }
 
-  .values-grid, .properties-grid {
+  .values-grid,
+  .properties-grid {
     grid-template-columns: repeat(5, 1fr); /* 5 items per row on desktop */
     gap: 0.75rem;
   }
@@ -1074,13 +1105,16 @@ canvas {
   }
 }
 
-.part-item:hover, .part-item.active {
+.part-item:hover,
+.part-item.active {
   transform: scale(1.05);
 }
 
 .part-item.selected {
   border-color: var(--brand-accent);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .part-item img {
@@ -1190,7 +1224,8 @@ canvas {
   }
 
   /* Smaller surprise button */
-  #surpriseButton, #surpriseButtonValues {
+  #surpriseButton,
+  #surpriseButtonValues {
     padding: 0.375rem 0.75rem !important;
     font-size: 0.75rem !important;
   }
@@ -1200,8 +1235,10 @@ canvas {
     gap: 0.125rem !important;
   }
 
-  #downloadButton, #downloadButtonValues,
-  #shareButton, #shareButtonValues {
+  #downloadButton,
+  #downloadButtonValues,
+  #shareButton,
+  #shareButtonValues {
     padding: 0.375rem 0.5rem !important;
     font-size: 0.75rem !important;
   }
@@ -1229,7 +1266,8 @@ canvas {
 /* Mobile-specific improvements (below 640px) */
 @media (max-width: 640px) {
   /* Values grid scrolling improvements */
-  .values-grid, .properties-grid {
+  .values-grid,
+  .properties-grid {
     /* Ensure proper scrolling on mobile */
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch;
@@ -1251,7 +1289,8 @@ canvas {
 }
 
 /* Surprise button now uses btn-primary btn-large classes */
-#surpriseButton, #surpriseButtonValues {
+#surpriseButton,
+#surpriseButtonValues {
   width: 100%;
   margin-bottom: 0.5rem;
 }
@@ -1259,7 +1298,8 @@ canvas {
 /* Desktop/Tablet experience (640px and above) */
 @media (min-width: 640px) {
   /* Surprise button spacing */
-  #surpriseButton, #surpriseButtonValues {
+  #surpriseButton,
+  #surpriseButtonValues {
     margin-bottom: 0.5rem;
   }
 }
@@ -1276,8 +1316,10 @@ canvas {
 }
 
 /* Action buttons now use btn-secondary and btn-tertiary classes */
-#downloadButton, #downloadButtonValues,
-#shareButton, #shareButtonValues {
+#downloadButton,
+#downloadButtonValues,
+#shareButton,
+#shareButtonValues {
   flex: 1;
 }
 
@@ -1295,7 +1337,9 @@ canvas {
   z-index: 50;
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.2s, visibility 0.2s;
+  transition:
+    opacity 0.2s,
+    visibility 0.2s;
 }
 
 .dialog-overlay.active {
@@ -1357,7 +1401,8 @@ canvas {
     font-size: 12px !important; /* Smaller button font size */
   }
 
-  .dialog-body button { /* Copy link button */
+  .dialog-body button {
+    /* Copy link button */
     padding: 8px !important; /* Smaller padding */
     font-size: 0.75rem !important; /* Smaller font size */
   }
