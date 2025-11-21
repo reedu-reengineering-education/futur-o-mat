@@ -8,10 +8,8 @@
 
 import { Button } from "@/components/ui/button";
 import { useEffect, useCallback } from "react";
-import { useAvatarState, useAvatarParts, useUrlState, useToast } from "@/hooks";
+import { useAvatarState, useAvatarParts } from "@/hooks";
 import { BodyEditor } from "@/components/editors/BodyEditor";
-import { LoadingSpinner } from "@/components/LoadingSpinner";
-import { ToastContainer } from "@/components/Toast";
 import { Link } from "@tanstack/react-router";
 import {
   Card,
@@ -35,9 +33,6 @@ import { AvatarManager } from "./avatarManager";
 import AvatarCanvas from "./AvatarCanvas";
 
 function AvatarGenerator() {
-  // Toast notifications
-  const { toasts, removeToast } = useToast();
-
   // Avatar state management
   const {
     avatarConfig,
@@ -48,42 +43,11 @@ function AvatarGenerator() {
     setBreastOption,
     removeHair,
     generateRandom,
-    setAvatarConfig,
+    // setAvatarConfig,
   } = useAvatarState();
 
   // Load avatar parts
-  const {
-    allParts,
-    loading: partsLoading,
-    error: partsError,
-  } = useAvatarParts();
-
-  // URL state management for sharing
-  const { decodeState } = useUrlState();
-
-  // Load avatar from URL on mount or generate random avatar
-  useEffect(() => {
-    localStorage.clear();
-
-    if (allParts.length === 0) return;
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const stateParam = urlParams.get("state");
-
-    if (stateParam) {
-      try {
-        const decodedConfig = decodeState(stateParam);
-        if (decodedConfig) {
-          setAvatarConfig(decodedConfig);
-          return;
-        }
-      } catch (error) {
-        console.error("Failed to decode URL state:", error);
-      }
-    }
-
-    generateRandom(allParts);
-  }, [allParts, decodeState, setAvatarConfig, generateRandom]);
+  const { allParts } = useAvatarParts();
 
   const handleSurprise = useCallback(() => {
     if (allParts.length > 0) {
@@ -91,35 +55,12 @@ function AvatarGenerator() {
     }
   }, [allParts, generateRandom]);
 
-  // Show loading state
-  if (partsLoading) {
-    return (
-      <div className="min-h-screen bg-background-primary flex items-center justify-center">
-        <LoadingSpinner size="lg" message="Lade Avatar-Teile..." />
-      </div>
-    );
-  }
-
-  // Show error state
-  if (partsError) {
-    return (
-      <div className="min-h-screen bg-background-primary flex items-center justify-center p-4">
-        <div className="max-w-md text-center space-y-4">
-          <div className="text-6xl">⚠️</div>
-          <h1 className="text-2xl font-bold text-brand-primary">
-            Fehler beim Laden
-          </h1>
-          <p className="text-muted-foreground">
-            Die Avatar-Teile konnten nicht geladen werden. Bitte versuche es
-            später erneut.
-          </p>
-          <Button onClick={() => window.location.reload()} variant="outline">
-            Neu laden
-          </Button>
-        </div>
-      </div>
-    );
-  }
+  /**
+   * Generate a random avatar on initial load
+   */
+  useEffect(() => {
+    handleSurprise();
+  }, [handleSurprise]);
 
   return (
     <AvatarManager avatarConfig={avatarConfig}>
@@ -193,9 +134,6 @@ function AvatarGenerator() {
               </Link>
             </CardFooter>
           </Card>
-
-          {/* Toast Notifications */}
-          <ToastContainer toasts={toasts} onRemove={removeToast} />
         </Layout>
       )}
     </AvatarManager>

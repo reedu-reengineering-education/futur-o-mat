@@ -7,6 +7,7 @@ import {
 import type { AvatarConfig } from "../../types";
 import { RENDER_ORDER } from "../../data/categories";
 import { useAvatarParts } from "../../hooks/useAvatarParts";
+import { cn } from "@/lib/utils";
 
 interface AvatarCanvasProps extends CanvasHTMLAttributes<HTMLCanvasElement> {
   avatarConfig: AvatarConfig;
@@ -19,7 +20,7 @@ interface AvatarCanvasProps extends CanvasHTMLAttributes<HTMLCanvasElement> {
 export default function AvatarCanvas({
   avatarConfig,
   width = 800,
-  height = 1200,
+  height = 960,
   className = "",
 }: AvatarCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -197,8 +198,7 @@ export default function AvatarCanvas({
       ref={canvasRef}
       width={width}
       height={height}
-      className={className}
-      style={{ maxWidth: "100%", height: "auto" }}
+      className={cn("max-w-full h-auto", className)}
     />
   );
 }

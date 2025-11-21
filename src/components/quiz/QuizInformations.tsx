@@ -22,12 +22,7 @@ export function QuizInformation() {
         <CardContent className="grid gap-4">
           {avatarBody && (
             <div className="flex justify-center">
-              <AvatarCanvas
-                avatarConfig={avatarBody}
-                width={240}
-                height={300}
-                className="w-60"
-              />
+              <AvatarCanvas avatarConfig={avatarBody} className="w-60" />
             </div>
           )}
           <p>
