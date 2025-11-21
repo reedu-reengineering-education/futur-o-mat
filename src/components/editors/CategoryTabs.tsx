@@ -5,7 +5,6 @@
  * center-scroll-to-active behavior, and left/right fade indicators.
  */
 
-import { useEffect, useRef, useState } from "react";
 import type { Category } from "@/types";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
