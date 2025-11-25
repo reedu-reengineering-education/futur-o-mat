@@ -11,7 +11,7 @@ import {
 } from "../ui/card";
 import AvatarCanvas from "../avatar/AvatarCanvas";
 import { DownloadIcon, Share2Icon } from "lucide-react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useShare } from "@/hooks/useShare";
 import { useQuizState } from "@/hooks/useQuizState";
 import useAvatarState from "@/hooks/useAvatarState";
@@ -24,32 +24,38 @@ import {
   DialogTitle,
 } from "../ui/dialog";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { isMobileDevice } from "@/utils/mobileOptimizations";
 
 export default function Share() {
   const { avatarConfig } = useAvatarState();
   const { result } = useQuizState();
   const { image: wimmelbild } = useWimmelbildState();
   const { handleDownload } = useAvatarDownload();
+  const { encodeState } = useShare();
 
   const [showUrlDialog, setShowUrlDialog] = useState(false);
-
   const [showTooltip, setShowTooltip] = useState<boolean>(false);
+
+  const [shareUrl, setShareUrl] = useState<string>("");
+
+  useEffect(() => {
+    if (avatarConfig && result && wimmelbild) {
+      const encodedState = encodeState({
+        avatar: avatarConfig,
+        result: result,
+        wimmelbild: wimmelbild,
+      });
+      setShareUrl(`${window.location.origin}/share/${encodedState}`);
+    }
+  }, [avatarConfig, encodeState, result, wimmelbild]);
 
   const onCopyLink = () => {
     setShowTooltip(true);
-    navigator.clipboard.writeText(
-      `${window.location.origin}/share/${encodeState({
-        avatar: avatarConfig!,
-        result: result!,
-        wimmelbild: wimmelbild!,
-      })}`
-    );
+    navigator.clipboard.writeText(shareUrl);
     setTimeout(() => setShowTooltip(false), 2000);
   };
 
   const ref = useRef<HTMLCanvasElement>(null);
-
-  const { encodeState } = useShare();
 
   const onDownload = () => {
     if (ref.current) {
@@ -71,11 +77,7 @@ export default function Share() {
             <input
               type="text"
               readOnly
-              value={`${window.location.origin}/share/${encodeState({
-                avatar: avatarConfig!,
-                result: result!,
-                wimmelbild: wimmelbild!,
-              })}`}
+              value={shareUrl}
               className="w-full p-2 border rounded"
               onFocus={(e) => e.target.select()}
             />
@@ -134,14 +136,9 @@ export default function Share() {
             {/* Teilen Button */}
             <Button
               onClick={() => {
-                const encodedState = encodeState({
-                  avatar: avatarConfig,
-                  result: result!,
-                  wimmelbild: wimmelbild!,
-                });
-                const shareUrl = `${window.location.origin}/share/${encodedState}`;
+                if (!shareUrl) return;
 
-                if (navigator.share) {
+                if (isMobileDevice() && navigator.share) {
                   navigator
                     .share({
                       title: "Mein Futur-o-mat Avatar",
