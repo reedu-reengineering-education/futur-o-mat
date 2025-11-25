@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
-
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -47,6 +45,7 @@ body,
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.702 0.183 293.541);
+  --font-sans: Poppins, ui-sans-serif, sans-serif, system-ui;
 }
 
 .dark {
