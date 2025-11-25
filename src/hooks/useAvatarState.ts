@@ -9,6 +9,7 @@ interface UseAvatarStateReturn {
   setSkinTone: (skinTone: string) => void;
   setHairColor: (hairColor: string) => void;
   setBreastOption: (enabled: boolean) => void;
+  removeBrust: () => void;
   removeHair: () => void;
   generateRandom: (allParts: AvatarPart[]) => void;
   resetAvatar: () => void;
@@ -61,6 +62,7 @@ const useAvatarState = create<UseAvatarStateReturn>(
         avatarConfig: {
           ...state.avatarConfig,
           skinTone,
+          selectedParts: { ...state.avatarConfig.selectedParts },
         },
       }));
     },
@@ -91,6 +93,20 @@ const useAvatarState = create<UseAvatarStateReturn>(
           avatarConfig: {
             ...state.avatarConfig,
             selectedParts: newSelectedParts,
+          },
+        };
+      });
+    },
+
+    removeBrust: () => {
+      set((state) => {
+        const newSelectedParts = { ...state.avatarConfig.selectedParts };
+        delete newSelectedParts.brust;
+        return {
+          avatarConfig: {
+            ...state.avatarConfig,
+            selectedParts: newSelectedParts,
+            brustAnsatz: false,
           },
         };
       });

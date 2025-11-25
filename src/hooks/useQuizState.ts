@@ -62,12 +62,12 @@ const calculateQuizResult = (allAnswers: QuizAnswer[]) => {
 
   const maxValueCount = Math.max(...Object.values(valueCount));
   const topValues = Object.keys(valueCount).filter(
-    (v) => valueCount[v] === maxValueCount,
+    (v) => valueCount[v] === maxValueCount
   );
 
   const maxStrengthCount = Math.max(...Object.values(strengthCount));
   const topStrengths = Object.keys(strengthCount).filter(
-    (s) => strengthCount[s] === maxStrengthCount,
+    (s) => strengthCount[s] === maxStrengthCount
   );
 
   const selectedValue = topValues[Math.floor(Math.random() * topValues.length)];
@@ -113,5 +113,5 @@ export const useQuizState = create<UseQuizStateReturn>()(
       set(() => ({
         result: calculateQuizResult(useQuizState.getState().answers),
       })),
-  })),
+  }))
 );

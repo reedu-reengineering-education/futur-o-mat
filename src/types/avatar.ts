@@ -9,9 +9,9 @@ export interface AvatarPart {
   id: string;
   src: string;
   category: string;
-  skinTone?: string;
-  hairColor?: string;
-  bodyType?: string;
+  skinTone: string;
+  hairColor: string;
+  bodyType: string;
 }
 
 /**

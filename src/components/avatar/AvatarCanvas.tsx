@@ -6,7 +6,7 @@ import {
   useImperativeHandle,
   type Ref,
 } from "react";
-import { RENDER_ORDER } from "../../data/categories";
+import { LAST_RENDER, RENDER_ORDER } from "../../data/categories";
 import { useAvatarParts } from "../../hooks/useAvatarParts";
 import { cn } from "@/lib/utils";
 import { type QuizResult } from "@/hooks/useQuizState";
@@ -33,6 +33,7 @@ export default function AvatarCanvas({
   ...props
 }: AvatarCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const previousSkinTone = useRef(avatarConfig.skinTone);
 
   // Sync internal ref → external ref
   useImperativeHandle(externalRef, () => canvasRef.current!, []);
@@ -48,6 +49,7 @@ export default function AvatarCanvas({
     return new Promise((resolve, reject) => {
       // Check cache first
       if (imageCache.current.has(src)) {
+        //    console.log(imageCache.current.has(src));
         resolve(imageCache.current.get(src)!);
         return;
       }
@@ -59,7 +61,7 @@ export default function AvatarCanvas({
         imageCache.current.set(src, img);
         resolve(img);
       };
-
+      //   console.log(img);
       img.onerror = () => {
         reject(new Error(`Failed to load image: ${src}`));
       };
@@ -84,7 +86,9 @@ export default function AvatarCanvas({
     for (const category of RENDER_ORDER) {
       const partId = avatarConfig.selectedParts[category];
       if (partId) {
+        console.log(partId);
         const src = partMap.get(partId);
+        console.log(src);
         if (src) {
           sources.push(src);
         }
@@ -95,7 +99,20 @@ export default function AvatarCanvas({
     for (const itemId of avatarConfig.selectedItems) {
       const src = partMap.get(itemId);
       if (src) {
+        console.log(src);
         sources.push(src);
+      }
+    }
+
+    for (const category of LAST_RENDER) {
+      const partId = avatarConfig.selectedParts[category];
+      if (partId) {
+        console.log(partId);
+        const src = partMap.get(partId);
+        console.log(src);
+        if (src) {
+          sources.push(src);
+        }
       }
     }
 
@@ -140,6 +157,7 @@ export default function AvatarCanvas({
 
       // Get all image sources to render
       const imageSources = getImageSources();
+      console.log(imageSources);
 
       if (imageSources.length === 0) {
         return;
@@ -169,57 +187,22 @@ export default function AvatarCanvas({
     }
   }, [width, height, getImageSources, loadImage]);
 
-  // /**
-  //  * Download the canvas as a PNG image with proper filename
-  //  */
-  // const downloadImage = useCallback(
-  //   (filename?: string) => {
-  //     const canvas = canvasRef.current;
-  //     if (!canvas) {
-  //       console.error("Canvas not available for download");
-  //       return;
-  //     }
-
-  //     try {
-  //       // Generate filename if not provided
-  //       const finalFilename = filename || generateFilename(avatarConfig);
-  //       downloadCanvas(canvas, finalFilename);
-  //     } catch (error) {
-  //       console.error("Failed to download image:", error);
-  //       onRenderError?.(
-  //         error instanceof Error ? error : new Error("Download failed")
-  //       );
-  //     }
-  //   },
-  //   [avatarConfig, generateFilename, downloadCanvas, onRenderError]
-  // );
-
-  // /**
-  //  * Get canvas data URL for sharing or preview
-  //  */
-  // const getCanvasDataUrl = useCallback((): string | null => {
-  //   const canvas = canvasRef.current;
-  //   if (!canvas) return null;
-
-  //   try {
-  //     return canvas.toDataURL("image/png");
-  //   } catch (error) {
-  //     console.error("Failed to get canvas data URL:", error);
-  //     return null;
-  //   }
-  // }, []);
-
-  // /**
-  //  * Get the canvas element directly
-  //  */
-  // const getCanvas = useCallback((): HTMLCanvasElement | null => {
-  //   return canvasRef.current;
-  // }, []);
-
-  // Re-render when avatar config changes
   useEffect(() => {
     renderAvatar();
   }, [renderAvatar]);
+
+  useEffect(() => {
+    if (previousSkinTone.current !== avatarConfig.skinTone) {
+      console.log(
+        "🎨 Hautfarbe geändert - leere Image Cache",
+        avatarConfig.skinTone
+      );
+      imageCache.current.clear(); // Cache leeren
+      previousSkinTone.current = avatarConfig.skinTone;
+      renderRequestRef;
+      console.log("Request zum Renden:", renderRequestRef);
+    }
+  }, [avatarConfig.skinTone, renderAvatar]);
 
   return (
     <canvas

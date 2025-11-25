@@ -42,6 +42,7 @@ function AvatarGenerator() {
     setSkinTone,
     setHairColor,
     setBreastOption,
+    removeBrust,
     removeHair,
     generateRandom,
     // setAvatarConfig,
@@ -118,6 +119,7 @@ function AvatarGenerator() {
                 onSetSkinTone={setSkinTone}
                 onSetHairColor={setHairColor}
                 onSetBreastOption={setBreastOption}
+                onRemoveBrust={removeBrust}
                 onRemoveHair={removeHair}
               />
             </CardContent>

@@ -82,12 +82,14 @@ export const DEFAULT_AVATAR_CONFIG = {
  */
 export const RENDER_ORDER = [
   "bodytype",
-  "brust",
   "head",
   "face",
   "hair",
   "clothes",
+  "brust",
   "shoes",
   "accessoires",
   "handicap",
 ] as const;
+
+export const LAST_RENDER = ["brust", "accessoires"] as const;
