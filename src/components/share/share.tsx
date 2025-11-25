@@ -11,17 +11,41 @@ import {
 } from "../ui/card";
 import AvatarCanvas from "../avatar/AvatarCanvas";
 import { DownloadIcon, Share2Icon } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useShare } from "@/hooks/useShare";
 import { useQuizState } from "@/hooks/useQuizState";
 import useAvatarState from "@/hooks/useAvatarState";
 import { useAvatarDownload } from "@/hooks/useAvatarDownload";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "../ui/dialog";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 export default function Share() {
   const { avatarConfig } = useAvatarState();
   const { result } = useQuizState();
   const { image: wimmelbild } = useWimmelbildState();
   const { handleDownload } = useAvatarDownload();
+
+  const [showUrlDialog, setShowUrlDialog] = useState(false);
+
+  const [showTooltip, setShowTooltip] = useState<boolean>(false);
+
+  const onCopyLink = () => {
+    setShowTooltip(true);
+    navigator.clipboard.writeText(
+      `${window.location.origin}/share/${encodeState({
+        avatar: avatarConfig!,
+        result: result!,
+        wimmelbild: wimmelbild!,
+      })}`
+    );
+    setTimeout(() => setShowTooltip(false), 2000);
+  };
 
   const ref = useRef<HTMLCanvasElement>(null);
 
@@ -35,6 +59,45 @@ export default function Share() {
 
   return (
     <Layout>
+      {showUrlDialog && (
+        <Dialog open={showUrlDialog} onOpenChange={setShowUrlDialog}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Teilen Link</DialogTitle>
+              <DialogDescription>
+                Kopiere den folgenden Link, um deinen Avatar zu teilen:
+              </DialogDescription>
+            </DialogHeader>
+            <input
+              type="text"
+              readOnly
+              value={`${window.location.origin}/share/${encodeState({
+                avatar: avatarConfig!,
+                result: result!,
+                wimmelbild: wimmelbild!,
+              })}`}
+              className="w-full p-2 border rounded"
+              onFocus={(e) => e.target.select()}
+            />
+            <Tooltip open={showTooltip} onOpenChange={setShowTooltip}>
+              <TooltipTrigger className="h-0"></TooltipTrigger>
+              <Button
+                onClick={() => {
+                  onCopyLink();
+                }}
+                onMouseOver={() => {
+                  setShowTooltip(false);
+                }}
+              >
+                Link kopieren
+              </Button>
+              <TooltipContent>
+                Den Link wurde in die Zwischenablage kopiert.
+              </TooltipContent>
+            </Tooltip>
+          </DialogContent>
+        </Dialog>
+      )}
       <Card className="w-md relative overflow-hidden">
         {/* Wimmelbild als Hintergrund */}
         {wimmelbild && (
@@ -87,7 +150,7 @@ export default function Share() {
                     })
                     .catch((error) => console.error("Error sharing", error));
                 } else {
-                  // TODO: create dialog with shareUrl to copy
+                  setShowUrlDialog(true);
                 }
               }}
             >
