@@ -28,7 +28,7 @@ export function QuizInformation() {
         <CardFooter className="flex justify-end">
           <Link to={`/quiz/questions`}>
             <Button>
-              Weiter zum Quiz <ArrowRight />
+              Finde heraus, was du gut kannst <ArrowRight />
             </Button>
           </Link>
         </CardFooter>

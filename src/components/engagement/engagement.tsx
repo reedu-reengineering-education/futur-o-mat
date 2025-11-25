@@ -64,7 +64,7 @@ export default function Engagement() {
         </CardContent>
         <CardFooter className="flex justify-end">
           <Link to="/share">
-            <Button>weiter</Button>
+            <Button>Und nun?</Button>
           </Link>
         </CardFooter>
       </Card>

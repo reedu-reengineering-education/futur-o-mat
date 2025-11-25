@@ -59,7 +59,7 @@ export function QuizResult() {
         </CardContent>
         <CardFooter className="flex justify-end">
           <Link to="/wimmelbild">
-            <Button size="lg">Zum Wimmelbild</Button>
+            <Button size="lg">Gehe weiter zu deinem Herzensthema</Button>
           </Link>
         </CardFooter>
       </Card>

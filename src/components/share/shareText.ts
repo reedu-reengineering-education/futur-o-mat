@@ -5,32 +5,32 @@ export const VALUE_SHARE: Record<
   SINN_FUR_GEMEINSCHAFT: {
     title: "Gemeinsinn",
     description:
-      "Bring Menschen zusammen, die verschiedene Dinge gut können. Pflege langfristige Beziehungen durch Verlässlichkeit und Interesse. Überlege, wer welche Stärken hat und sich wie einbringen kann. Gemeinsam könnt ihr Ideen für eure Herzensthemen entwickeln.",
+      "Ich bringe Menschen zusammen, die verschiedene Dinge gut können und pflege langfristige Beziehungen durch Verlässlichkeit und Interesse. Hierfür reflektiere ich, wer welche Stärken hat und sich wie einbringen kann. Gemeinsam können wir Ideen für unsere Herzensthemen entwickeln.",
   },
   NACHHALTIGKEIT: {
     title: "Nachhaltigkeit",
     description:
-      "Orientiere deine Entscheidungen und dein Handeln daran, dass sie der Erde guttun und hinterfrage Strukturen, die nachhaltiges Handeln erschweren. So trägst du dazu bei, unsere Ressourcen zu schonen und die Umwelt zu schützen. Damit stärkst du eine lebenswerte Zukunft für dich und andere.",
+      "Meine Entscheidungen und mein Handeln orientiere ich daran, dass sie der Erde guttun und hinterfrage Strukturen, die nachhaltiges Handeln erschweren. So trage ich dazu bei, unsere Ressourcen zu schonen und die Umwelt zu schützen. Damit stärke ich eine lebenswerte Zkunft für mich und andere.",
   },
   FURSORGE: {
     title: "Fürsorge",
     description:
-      "Kümmere dich bewusst um Menschen und Dinge, die dir wichtig sind. Sieh vor allem dann hin, wenn jemand Unterstützung braucht, und sei da. Du baust Vertrauen auf und stärkst Beziehungen. So schaffst du ein Umfeld, in dem sich andere sicher fühlen und Harmonie enstehen kann.",
+      "Ich kümmere mich bewusst um Menschen und Dinge, die mir wichtig sind und sehe vor allem dann hin, wenn jemand Unterstützung braucht, und bin da. Ich baue Vertrauen auf und stärke Beziehungen. So schaffe ich ein Umfeld, in dem sich andere sicher fühlen und Harmonie enstehen kann.",
   },
   VIELFALT: {
     title: "Vielfalt",
     description:
-      "Lass andere so sein, wie sie sind. Öffne dich für neue Perspektiven, feiere die Unterschiede und lerne davon. So kannst du Brücken bauen zwischen Kulturen und Menschen und förderst gegenseitigen Respekt.",
+      "Alle Menschen sind gut, wie sie sind. Ich öffne mich für neue Perspektiven, feiere die Unterschiede und lerne davon. So kann ich Brücken bauen zwischen Kulturen und Menschen und fördere gegenseitigen Respekt.",
   },
   TRANSPARENZ: {
     title: "Transparenz",
     description:
-      "Sprich klar aus, was du denkst und tust. Teile Informationen offen und setze dich auch dafür ein, dass andere das tun. Gemeinsam könnt ihr Vertrauen und Zusammenarbeit fördern. So schafft ihr eine starke und verantwortungsvolle Gemeinschaft.",
+      "Ich spreche klar aus, was ich denke und tue. Informationen teile ich offen und setze mich auch dafür ein, dass andere das tun. Gemeinsam können wir Vertrauen und Zusammenarbeit fördern. So schaffen wir eine starke und verantwortungsvolle Gemeinschaft.",
   },
   MACHT: {
     title: "Macht",
     description:
-      "Steh zu deiner Stärke und setze sie verantwortungsvoll ein. Wenn du deinen Einfluss nutzt, um Positives zu bewirken, kannst du Veränderungen anstoßen und andere inspirieren. Damit gewinnst du Respekt und förderst auch bei anderen eine klare Haltung.",
+      "Ich stehe zu meiner Stärke und setze sie verantwortungsvoll ein. Wenn ich meinen Einfluss nutze, um Positives zu bewirken, kann ich Veränderungen anstoßen und andere inspirieren. Damit gewinne ich Respekt und fördere auch bei anderen eine klare Haltung.",
   },
   LEISTUNG: {
     title: "Leistung",
@@ -40,37 +40,37 @@ export const VALUE_SHARE: Record<
   GENUSS: {
     title: "Genuss",
     description:
-      "Nimm dir Zeit, die kleinen Momente im Leben bewusst wahrzunehmen und gönn dir Pausen. So stärkst du dein Wohlbefinden und deine Lebensfreude. Lass auch andere daran teilhaben. Gemeinsam bleibt ihr ausgeglichen und motiviert und könnt Kraft sammeln für eure nächsten Aufgaben.",
+      "Ich nehme mir Zeit, die kleinen Momente im Leben bewusst wahrzunehmen und gönne mir Pausen. So stärke ich mein Wohlbefinden und meine Lebensfreude. Auch andere lasse ich daran teilhaben. Gemeinsam bleiben wir ausgeglichen und motiviert und können Kraft sammeln für unsere nächsten Aufgaben.",
   },
   ABENTEUER: {
     title: "Abenteuer",
     description:
-      "Trau dich, Neues auszuprobieren und deine Komfortzone zu verlassen. Such das Unbekannte und wachse daran. Du entdeckst dadurch neue Möglichkeiten und erweiterst deinen Horizont. Mit den gesammelten Erfahrungen kannst du mutig ins nächste Abenteuer starten.",
+      "Ich traue mich, Neues auszuprobieren und meine Komfortzone zu verlassen, suche das Unbekannte und wachse daran. Dadurch entdecke ich neue Möglichkeiten und erweitere meinen Horizont. Mit den gesammelten Erfahrungen kann ich mutig ins nächste Abenteuer starten.",
   },
   SELBSTBESTIMMUNG: {
     title: "Selbstbestimmung",
     description:
-      "Triff deine eigenen Entscheidungen und steh dazu. Wenn du dein Leben nach deinen Regeln gestaltest, gewinnst du Freiheit und Selbstvertrauen. Du baust ein Leben, das zu dir passt und kannst anderen ein Vorbild sein.",
+      "Ich treffe meine eigenen Entscheidungen und stehe dazu. Wenn ich mein Leben nach meinen Regeln gestalte, gewinne ich Freiheit und Selbstvertrauen. Ich baue mir ein Leben auf, das zu mir passt und kann anderen ein Vorbild sein.",
   },
   SICHERHEIT: {
     title: "Sicherheit",
     description:
-      "Schaffe für dich und die Menschen um dich herum ein Umfeld, in dem sich alle geschützt fühlen. Vorausschauendes Handeln fördert Stabilität und innere Ruhe – bei dir und anderen. Du minimierst Risiken und sorgst für Verlässlichkeit. Das ist wichtig in einer Welt, die sich immer schneller dreht.",
+      "Ich schaffe für mich und die Menschen um mich herum ein Umfeld, in dem sich alle geschützt fühlen. Vorausschauendes Handeln fördert Stabilität und innere Ruhe – bei mir und anderen. So minimiere ich Risiken und sorge für Verlässlichkeit. Das ist wichtig in einer Welt, die sich immer schneller dreht.",
   },
   TRADITION: {
     title: "Tradition",
     description:
-      "Bewahre, was dich mit deiner Geschichte verbindet. Unterhalte dich mit anderen über das, was euch verbindet. Wenn ihr eure gemeinsame Identität stärkt, fördert ihr auch eine solidarische Gemeinschaft. Ihr könnt Rituale pflegen, die euch Halt geben und eure Werte weitergeben.",
+      "Ich bewahre, was mich mit meiner Geschichte verbindet und unterhalte mich mit anderen über das, was uns verbindet. Wenn wir unsere gemeinsame Identität stärken, fördern wir auch eine solidarische Gemeinschaft. Wir können Rituale pflegen, die uns Halt geben und unsere Werte weitergeben.",
   },
   KONFORMITAET: {
     title: "Konformität (Angepasstheit)",
     description:
-      "Respektiere die Regeln der Gemeinschaft, in der du dich bewegst. Indem du dich an gemeinsame Regeln hältst, förderst du Zusammenhalt und Ordnung. Wenn du mit anderen Menschen ein gemeinsames Ziel verfolgst, erleichterst du damit die Kooperation und vermeidest Konflikte.",
+      "Ich respektiere die Regeln der Gemeinschaft, in der ich mich bewege. Dadurch fördere ich zusammenhalt und Ordnung. Wenn ich mit anderen ein gemeinsames Ziel verfolge, erleichtere ich damit die Kooperation und vermeide Konflikte",
   },
   ANERKENNUNG: {
     title: "Anerkennung",
     description:
-      "Zeig deine Stärken und Werte, damit andere sie sehen können. Du erhältst dafür Wertschätzung und stärkst dein Selbstbewusstsein. Wenn du diese Fähigkeit mit anderen teilst, baust du Motivation auf und ihr entwickelt Vertrauen. Das ist die Basis, um ein gemeinsames Ziel zu erreichen.",
+      "Ich zeige meine Stärken und Werte, damit andere sie sehen können.  Dafür erhalte ich Wertschätzung und das stärkt mein Selbstbewusstsein. Wenn ich diese Fähigkeit mit anderen teile, baue ich Motivation auf und wir entwickeln Vertrauen. Das ist die Basis, um ein gemeinsames Ziel zu erreichen.",
   },
 };
 
@@ -81,62 +81,62 @@ export const STRENGTH_SHARE: Record<
   EMPATHIE: {
     title: "Empathie",
     description:
-      "Übe dich darin, Gefühle und Bedürfnisse deiner Mitmenschen zu erkennen und unterstütze sie aktiv dabei, ihre Stärken zu zeigen und sich weiterzuentwickeln. Empathie ist die Basis für Solidarität und soziale Gerechtigkeit. Du schaffst damit Brücken zwischen Kulturen, Meinungen und Lebenswelten.",
+      "Ich übe mich darin, Gefühle und Bedürfnisse meiner Mitmenschen zu erkennen und unterstütze sie aktiv dabei, ihre Stärken zu zeigen und sich weiterzuenwickeln. Empathie ist die Basis für Solidarität und Gerechtigkeit. Ich schaffe damit Brücken zwischen Kulturen, Meinungen und Lebenswelten.",
   },
   URTEILSVERMOGEN: {
     title: "Urteilsvermögen",
     description:
-      "Betrachte Situationen aus verschiedenen Perspektiven und frage dich: „Was steckt dahinter? Triff Entscheidungen möglichst erst, wenn du das Ganze überblickt hast. Alle werden von deinen Analysen profitieren, denn sie fördern differenzierte Kommunikation, Fairness und verantwortungsvolles Handeln.",
+      "Ich betrachte Situationen aus verschiedenen Perspektiven und frage mich: „Was steckt dahinter? Entscheidungen treffe ich möglichst erst, wenn ich das Ganze überblickt habe. Andere können von meinen Analysen profitieren, denn sie fördern differenzierte Kommunikation, Fairness und verantwortungsvolles Handeln.",
   },
   WISSEN: {
     title: "Wissen",
     description:
-      "Nimm dir regelmäßig Zeit, etwas Neues zu lernen und teile dein Wissen mit anderen – z.B. in Gesprächen oder Posts. Dein Wissen kann andere ermutigen, selbst aktiv zu werden. Gemeinsames Lernen führt oft zu neuen Ideen und Wissensaustausch schafft ein Gefühl von Zusammenhalt.",
+      "Ich nehme mir regelmäßig Zeit, etwas Neues zu lernen und teile mein Wissen mit anderen – z.B. in Gesprächen oder Posts. mein Wissen kann andere ermutigen, selbst aktiv zu werden. Gemeinsames Lernen führt oft zu neuen Ideen und Wissensaustausch schafft ein Gefühl von Zusammenhalt.",
   },
   TEAMFAEHIGKEIT: {
     title: "Teamfähigkeit und Netzwerken",
     description:
-      "Sei  eine verlässliche Person in deinem Team und zeige Interesse. Dadurch baust du langfristig stabile Beziehungen auf. Wenn ihr eure unterschiedlichen Stärken gemeinsam für ein Projekt nutzt, das euch wichtig ist, seid ihr umso kraftvoller.",
+      "Ich bin eine verlässliche Person in meinem Team und zeige Interesse. Dadurch baue ich langfristig stabile Beziehungen auf. Wenn wir unsere unterschiedlichen Stärken gemeinsam für ein Projekt nutzt, das uns wichtig ist, sind wir umso kraftvoller.",
   },
   STRATEGISCHES_HANDELN: {
     title: "Strategisches Handeln",
     description:
-      "Behalte das große Ganze im Blick – auch bei Rückschlägen. Zerlege große Ziele in kleine, machbare Schritte und verteile Aufgaben klar und fair. Du trägst dazu bei, dass ihr gut und strukturiert auf ein Ziel hin arbeitet. Langfristig gibt es dadurch stabile Lösungen.",
+      "Ich behalte das große Ganze im Blick – auch bei Rückschlägen. Zerlege große Ziele in kleine, machbare Schritte und verteile Aufgaben klar und fair. Ich trage dazu bei, dass wir gut und strukturiert auf ein Ziel hin arbeiten. Langfristig gibt es dadurch stabile Lösungen.",
   },
   Mut: {
     title: "Mut",
     description:
-      "Stehe zu deiner Meinung, auch wenn sie nicht populär ist. Du hilfst damit auch anderen, Ängste zu überwinden und entschlossen zu Handeln. Hör dennoch auf das Feedback deiner Mitmenschen und nutze Herausforderungen um dich und deine Ideen weiter zu entwickeln. ",
+      "Stehe zu deiner Meinung, auch wenn sie nicht populär ist. Du hilfst damit auch anderen Ängste zu überwinden und entschlossen zu Handeln. Hör dennoch auf das Feedback deiner Mitmenschen und nutze Herausforderungen um dich und deine Ideen weiter zu entwickeln. ",
   },
   KREATIVITAET: {
     title: "Kreativität",
     description:
-      "Erlaube dir, ungewöhnlich zu denken, auch wenn deine Idee nicht sofort passend scheint. Probiere regelmäßig neue Materialien oder Methoden aus und überlege bei Herausforderungen: „Was wäre ein interessanter Weg?“ Damit inspirierst du dein Umfeld dazu, gemeinsam kreative Lösungen zu entwickeln.",
+      "Ich erlaube mir ungewöhnlich zu denken, auch wenn meine Idee nicht sofort passend scheint. Regelmäßig probiere ich neue Materialien oder Methoden aus und überlege bei Herausforderungen: „Was wäre ein interessanter Weg?“ Damit inspiriere ich mein Umfeld dazu, gemeinsam kreative Lösungen zu entwickeln.",
   },
 
   KOMMUNIKATIONSFAEHIGKEIT: {
     title: "Kommunikations Fähigkeit",
     description:
-      "Sprich mit deinen Freund:innen und deiner Familie über deine und ihre Ideen. Höre aktiv zu und stelle offene Fragen. Bleib auch in hitzigen Gesprächen ruhig, wertschätzend und verbindend. Damit förderst du Verständnis und schaffst einen guten Austausch, bei dem alle dabei sein und mitmischen können.",
+      "Ich spreche mit meinen Freund:innen und meiner Familie über meine und ihre Ideen, höre aktiv zu und stelle offene Fragen. Auch in hitzigen Gesprächen beibe ich ruhig, wertschätzend und verbindend. Damit fördere ich Verständnis und schaffe einen guten Austausch, bei dem alle dabei sein und mitmischen können.",
   },
   VERANTWORTUNGSBEWUSSTSEIN: {
     title: "Verantwortungsbewusstsein",
     description:
-      "Handle bewusst und diszipliniert, nicht impulsiv. Übernimm Verantwortung – für Aufgaben, sowie deine Aussagen und Handlungen. Damit ziehst du auch andere Menschen mit und motivierst sie zum Mitmachen. Deine Verlässlichkeit und deine Sorgfalt fördern nachhaltiges, soziales und gerechtes Handeln.",
+      "Ich handle bewusst und diszipliniert, nicht impulsiv. Übernehme Verantwortung – für Aufgaben, sowie mdeine Aussagen und Handlungen. Damit ziehe ich auch andere Menschen mit und motivierst sie zum Mitmachen. Meine Verlässlichkeit und Sorgfalt fördern nachhaltiges, soziales und gerechtes Handeln.",
   },
   HUMOR: {
     title: "Humor",
     description:
-      "Nimm die Dinge, die passieren, nicht schwer, sondern sieh darin auch die lustigen und absurden Momente. Du sorgst dafür, dass Menschen sich entspannen und Lebensfreude entwickeln können. Damit schaffst du langfristig auch stabile Beziehungen und verbindest Menschen miteinander, die dir wichtig sind.",
+      "Ich nehme die Dinge, die passieren, nicht schwer, sondern sehe darin auch die lustigen und absurden Momente. So sorge ich dafür, dass Menschen sich entspannen und Lebensfreude entwickeln können. Damit schaffe ich langfristig auch stabile Beziehungen und verbinde Menschen miteinander, die mir wichtig sind.",
   },
   AUSDAUER: {
     title: "Ausdauer",
     description:
-      "Wenn du dir etwas vorgenommen hast, bleib dran. Du kannst das! Deine Motivation und Disziplin sind ein Vorbild für andere und deine innere Stärke ist besonders hilfreich, wenn Menschen um dich herum in Krisen stecken. Achte aber auch darauf, dass du genügend Zeit für Entspannung hast.",
+      "Wenn ich mir etwas vorgenommen habe, bleibe ich dran. Meine Motivation und Disziplin sind ein Vorbild für andere und meine innere Stärke ist besonders hilfreich, wenn Menschen um mich herum in Krisen stecken. Ich achte aber auch darauf, dass ich genügend Zeit für Entspannung habe.",
   },
   KOMPETENZ: {
     title: "Kompentenz",
     description:
-      "Vertrau auf deine Fähigkeiten und sei selbstbewusst, wenn du dich gut auskennst. Braucht jemand einen Rat in diesem Bereich, kannst du der Person zur Seite stehen und dein Wissen weitergeben. Du kannst dein Wissen auch nutzen, um dich dort einzubringen, wo wichtige Entscheidungen getroffen werden.",
+      "Ich vertraue auf meine Fähigkeiten und bin selbstbewusst, wenn ich mich gut auskenne. Braucht jemand einen Rat in diesem Bereich, kann ich der Person zur Seite stehen und mein Wissen weitergeben. Mein Wissen kann ich auch nutzen, um mich dort einzubringen, wo wichtige Entscheidungen getroffen werden.",
   },
 };

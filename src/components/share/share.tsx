@@ -11,160 +11,26 @@ import {
 } from "../ui/card";
 import AvatarCanvas from "../avatar/AvatarCanvas";
 import { DownloadIcon, Share2Icon } from "lucide-react";
-import { useCallback, useRef } from "react";
+import { useRef } from "react";
 import { useShare } from "@/hooks/useShare";
 import { useQuizState } from "@/hooks/useQuizState";
 import useAvatarState from "@/hooks/useAvatarState";
-// ENTFERNEN: import { useAvatarDownload } from "@/hooks/useAvatarDownload"; // Dieser Hook existiert nicht
-import { STRENGTH_SHARE, VALUE_SHARE } from "./shareText";
+import { useAvatarDownload } from "@/hooks/useAvatarDownload";
 
 export default function Share() {
   const { avatarConfig } = useAvatarState();
   const { result } = useQuizState();
   const { image: wimmelbild } = useWimmelbildState();
+  const { handleDownload } = useAvatarDownload();
 
-  const valueKey = result?.valueKey;
-  const strengthKey = result?.strengthKey;
-
-  const valueShare = valueKey ? VALUE_SHARE[valueKey] : null;
-  const strengthShare = strengthKey ? STRENGTH_SHARE[strengthKey] : null;
-
-  // ENTFERNEN: const { downloadCanvas } = useAvatarDownload(); // Nicht vorhanden
   const ref = useRef<HTMLCanvasElement>(null);
 
   const { encodeState } = useShare();
 
-  // Erweiterte Download-Funktion
-  const handleDownload = useCallback(() => {
-    if (!ref.current) return;
-
-    // Neuen Canvas für erweiterten Download erstellen
-    const downloadCanvas = document.createElement("canvas");
-    const ctx = downloadCanvas.getContext("2d");
-    if (!ctx) return;
-
-    // Layout für Download - breiter für Text neben Avatar
-    downloadCanvas.width = 1000; // Breiter für Text + Avatar
-    downloadCanvas.height = 800;
-
-    // Weißer Hintergrund
-    ctx.fillStyle = "white";
-    ctx.fillRect(0, 0, downloadCanvas.width, downloadCanvas.height);
-
-    // Avatar auf der linken Seite
-    const avatarWidth = 400;
-    const avatarHeight = 480;
-    const avatarX = 50;
-    const avatarY = 100;
-
-    ctx.drawImage(ref.current, avatarX, avatarY, avatarWidth, avatarHeight);
-
-    // Text auf der rechten Seite
-    const textX = 500; // Start nach dem Avatar
-    const textY = 120;
-    const maxWidth = 400; // Maximale Textbreite
-
-    ctx.fillStyle = "#1f2937";
-    ctx.font = "bold 20px Arial"; // Etwas kleiner
-    ctx.textAlign = "left";
-
-    const titleLines = [
-      "Meine Werte und Stärken sind meine",
-      "Superkräfte. Mach mit und teile",
-      "deine Ergebnisse - gemeinsam sind",
-      "wir noch stärker!",
-    ];
-
-    let currentY = textY;
-    titleLines.forEach((line) => {
-      ctx.fillText(line, textX, currentY);
-      currentY += 28; // Zeilenabstand
-    });
-
-    // Value Text
-    if (valueShare?.description) {
-      ctx.font = "16px Arial";
-      ctx.fillStyle = "#4b5563";
-      wrapText(ctx, valueShare.description, textX, textY + 40, maxWidth, 20);
+  const onDownload = () => {
+    if (ref.current) {
+      handleDownload(ref.current);
     }
-
-    // Trennlinie zeichnen
-    const lineY = textY + 180;
-    ctx.strokeStyle = "#d1d5db";
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(textX, lineY);
-    ctx.lineTo(textX + maxWidth, lineY);
-    ctx.stroke();
-
-    // Strength Text unter der Linie
-    if (strengthShare?.description) {
-      ctx.font = "16px Arial";
-      ctx.fillStyle = "#4b5563";
-      wrapText(ctx, strengthShare.description, textX, lineY + 30, maxWidth, 20);
-    }
-
-    // Wimmelbild unten
-    if (wimmelbild && "source" in wimmelbild) {
-      const wimmelImg = new Image();
-      wimmelImg.crossOrigin = "anonymous";
-      wimmelImg.onload = () => {
-        const wimmelHeight = 150;
-        const wimmelY = downloadCanvas.height - wimmelHeight - 30;
-
-        ctx.globalAlpha = 0.2;
-        ctx.drawImage(
-          wimmelImg,
-          50,
-          wimmelY,
-          downloadCanvas.width - 100,
-          wimmelHeight
-        );
-        ctx.globalAlpha = 1.0;
-
-        // Download auslösen
-        const link = document.createElement("a");
-        link.download = `mein-futur-o-mat-${Date.now()}.png`;
-        link.href = downloadCanvas.toDataURL("image/png");
-        link.click();
-      };
-      wimmelImg.src = wimmelbild.source;
-    } else {
-      // Fallback falls kein Wimmelbild
-      const link = document.createElement("a");
-      link.download = `mein-futur-o-mat-${Date.now()}.png`;
-      link.href = downloadCanvas.toDataURL("image/png");
-      link.click();
-    }
-  }, [wimmelbild, valueShare, strengthShare]);
-
-  // Hilfsfunktion für Textumbruch
-  const wrapText = (
-    ctx: CanvasRenderingContext2D,
-    text: string,
-    x: number,
-    y: number,
-    maxWidth: number,
-    lineHeight: number
-  ) => {
-    const words = text.split(" ");
-    let line = "";
-    let currentY = y;
-
-    for (let i = 0; i < words.length; i++) {
-      const testLine = line + words[i] + " ";
-      const metrics = ctx.measureText(testLine);
-      const testWidth = metrics.width;
-
-      if (testWidth > maxWidth && i > 0) {
-        ctx.fillText(line, x, currentY);
-        line = words[i] + " ";
-        currentY += lineHeight;
-      } else {
-        line = testLine;
-      }
-    }
-    ctx.fillText(line, x, currentY);
   };
 
   return (
@@ -230,7 +96,7 @@ export default function Share() {
             </Button>
 
             {/* Download Button */}
-            <Button onClick={handleDownload}>
+            <Button onClick={onDownload}>
               <DownloadIcon />
               Download
             </Button>

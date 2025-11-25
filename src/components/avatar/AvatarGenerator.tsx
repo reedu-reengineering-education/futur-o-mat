@@ -106,7 +106,7 @@ function AvatarGenerator() {
 
           {/* Editor Area */}
           <Button size={"sm"} onClick={handleSurprise}>
-            <Sparkles /> Zufall
+            <Sparkles /> Lass dich überraschen
           </Button>
           <BodyEditor
             avatarConfig={avatarConfig}
@@ -123,7 +123,7 @@ function AvatarGenerator() {
         <CardFooter className="justify-end">
           <Link to={`/quiz/information`}>
             <Button>
-              Weiter zum Quiz <ArrowRightIcon />
+              Finde heraus, was du gut kannst <ArrowRightIcon />
             </Button>
           </Link>
         </CardFooter>
