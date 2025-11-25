@@ -94,7 +94,7 @@ function AvatarGenerator() {
         <CardContent className="grid gap-4">
           {/* Avatar Display */}
           <div className="mb-6 flex flex-col items-center">
-            <div className="w-full max-w-sm mx-auto relative pt-8">
+            <div className="w-full max-w-sm mx-auto relative -mt-20">
               <AvatarCanvas
                 avatarConfig={avatarConfig}
                 width={800}
