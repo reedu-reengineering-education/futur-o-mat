@@ -33,7 +33,6 @@ export default function AvatarCanvas({
   ...props
 }: AvatarCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const previousSkinTone = useRef(avatarConfig.skinTone);
 
   // Sync internal ref → external ref
   useImperativeHandle(externalRef, () => canvasRef.current!, []);
@@ -49,7 +48,6 @@ export default function AvatarCanvas({
     return new Promise((resolve, reject) => {
       // Check cache first
       if (imageCache.current.has(src)) {
-        //    console.log(imageCache.current.has(src));
         resolve(imageCache.current.get(src)!);
         return;
       }
@@ -61,7 +59,6 @@ export default function AvatarCanvas({
         imageCache.current.set(src, img);
         resolve(img);
       };
-      //   console.log(img);
       img.onerror = () => {
         reject(new Error(`Failed to load image: ${src}`));
       };
@@ -75,7 +72,6 @@ export default function AvatarCanvas({
    */
   const getImageSources = useCallback((): string[] => {
     const sources: string[] = [];
-
     // Create a map of part IDs to their src paths
     const partMap = new Map<string, string>();
     allParts.forEach((part) => {
@@ -85,10 +81,9 @@ export default function AvatarCanvas({
     // Add selected parts in render order
     for (const category of RENDER_ORDER) {
       const partId = avatarConfig.selectedParts[category];
+
       if (partId) {
-        console.log(partId);
         const src = partMap.get(partId);
-        console.log(src);
         if (src) {
           sources.push(src);
         }
@@ -99,7 +94,6 @@ export default function AvatarCanvas({
     for (const itemId of avatarConfig.selectedItems) {
       const src = partMap.get(itemId);
       if (src) {
-        console.log(src);
         sources.push(src);
       }
     }
@@ -107,9 +101,7 @@ export default function AvatarCanvas({
     for (const category of LAST_RENDER) {
       const partId = avatarConfig.selectedParts[category];
       if (partId) {
-        console.log(partId);
         const src = partMap.get(partId);
-        console.log(src);
         if (src) {
           sources.push(src);
         }
@@ -157,7 +149,6 @@ export default function AvatarCanvas({
 
       // Get all image sources to render
       const imageSources = getImageSources();
-      console.log(imageSources);
 
       if (imageSources.length === 0) {
         return;
@@ -190,19 +181,6 @@ export default function AvatarCanvas({
   useEffect(() => {
     renderAvatar();
   }, [renderAvatar]);
-
-  useEffect(() => {
-    if (previousSkinTone.current !== avatarConfig.skinTone) {
-      console.log(
-        "🎨 Hautfarbe geändert - leere Image Cache",
-        avatarConfig.skinTone
-      );
-      imageCache.current.clear(); // Cache leeren
-      previousSkinTone.current = avatarConfig.skinTone;
-      renderRequestRef;
-      console.log("Request zum Renden:", renderRequestRef);
-    }
-  }, [avatarConfig.skinTone, renderAvatar]);
 
   return (
     <canvas

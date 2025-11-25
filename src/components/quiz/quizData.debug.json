@@ -1,30 +1,26 @@
 {
-    "questions": [
+  "questions": [
+    {
+      "id": 1,
+      "question": "Wenn mir jemand von seinen Problemen erzählt,",
+      "answers": [
         {
-            "id": 1,
-            "question": "Wenn mir jemand von seinen Problemen erzählt,",
-            "answers": [
-                {
-                    "text": "zeige ich mein Mitgefühl",
-                    "value": "",
-                    "strength": "EMPATHIE"
-                },
-                {
-                    "text": "erkläre ich, was jetzt zu tun ist",
-                    "value": "",
-                    "strength": "STRATEGISCHES_HANDELN"
-                },
-                {
-                    "text": "versuche ich, den/die andere/n aufzuheitern",
-                    "value": "",
-                    "strength": "HUMOR"
-                },
-                {
-                    "text": "höre ich zu und frage nach",
-                    "value": "",
-                    "strength": "KOMMUNIKATIONSFAEHIGKEIT"
-                }
-            ]
+          "text": "zeige ich mein Mitgefühl",
+          "strength": "EMPATHIE"
+        },
+        {
+          "text": "erkläre ich, was jetzt zu tun ist",
+          "strength": "STRATEGISCHES_HANDELN"
+        },
+        {
+          "text": "versuche ich, den/die andere/n aufzuheitern",
+          "strength": "HUMOR"
+        },
+        {
+          "text": "höre ich zu und frage nach",
+          "strength": "KOMMUNIKATIONSFAEHIGKEIT"
         }
-    ]
+      ]
+    }
+  ]
 }

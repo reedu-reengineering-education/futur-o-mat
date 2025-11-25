@@ -1,28 +1,21 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
 
 import Layout from "../layout";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardFooter } from "../ui/card";
 import AvatarCanvas from "../avatar/AvatarCanvas";
-import type { AvatarConfig } from "@/types/avatar";
 import { ArrowRight } from "lucide-react";
+import useAvatarState from "@/hooks/useAvatarState";
 
 export function QuizInformation() {
-  const [avatarBody, setAvatarBody] = useState<AvatarConfig>();
-
-  useEffect(() => {
-    const savedBody = localStorage.getItem("avatarConfig");
-    if (savedBody) setAvatarBody(JSON.parse(savedBody));
-  }, []);
-
+  const { avatarConfig } = useAvatarState();
   return (
     <Layout>
       <Card className="max-w-md">
         <CardContent className="grid gap-4">
-          {avatarBody && (
+          {avatarConfig && (
             <div className="flex justify-center">
-              <AvatarCanvas avatarConfig={avatarBody} className="w-60" />
+              <AvatarCanvas avatarConfig={avatarConfig} className="w-60" />
             </div>
           )}
           <p>

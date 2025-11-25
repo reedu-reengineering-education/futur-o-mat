@@ -81,15 +81,14 @@ export const DEFAULT_AVATAR_CONFIG = {
  * Rendering order for avatar layers (bottom to top)
  */
 export const RENDER_ORDER = [
+  "skintones",
   "bodytype",
   "head",
   "face",
   "hair",
   "clothes",
-  "brust",
   "shoes",
-  "accessoires",
   "handicap",
 ] as const;
 
-export const LAST_RENDER = ["brust", "accessoires"] as const;
+export const LAST_RENDER = ["accessoires", "brust", "skintones"] as const;

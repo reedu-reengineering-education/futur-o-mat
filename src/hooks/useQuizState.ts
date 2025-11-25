@@ -14,8 +14,8 @@ const isDevelopment = import.meta.env.DEV;
 const quizData = isDevelopment ? rawQuizDataDebug : rawQuizData;
 
 export interface QuizAnswer {
-  value: string;
-  strength: string;
+  value?: string;
+  strength?: string;
 }
 
 interface Answer {
@@ -56,8 +56,12 @@ const calculateQuizResult = (allAnswers: QuizAnswer[]) => {
   const strengthCount: Record<string, number> = {};
 
   allAnswers.forEach((a) => {
-    valueCount[a.value] = (valueCount[a.value] || 0) + 1;
-    strengthCount[a.strength] = (strengthCount[a.strength] || 0) + 1;
+    if (a.value) {
+      valueCount[a.value] = (valueCount[a.value] || 0) + 1;
+    }
+    if (a.strength) {
+      strengthCount[a.strength] = (strengthCount[a.strength] || 0) + 1;
+    }
   });
 
   const maxValueCount = Math.max(...Object.values(valueCount));

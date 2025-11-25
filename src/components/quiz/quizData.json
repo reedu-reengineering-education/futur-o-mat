@@ -6,22 +6,18 @@
       "answers": [
         {
           "text": "zeige ich mein Mitgefühl",
-          "value": "",
           "strength": "EMPATHIE"
         },
         {
           "text": "erkläre ich, was jetzt zu tun ist",
-          "value": "",
           "strength": "STRATEGISCHES_HANDELN"
         },
         {
           "text": "versuche ich, den/die andere/n aufzuheitern",
-          "value": "",
           "strength": "HUMOR"
         },
         {
           "text": "höre ich zu und frage nach",
-          "value": "",
           "strength": "KOMMUNIKATIONSFAEHIGKEIT"
         }
       ]
@@ -32,22 +28,18 @@
       "answers": [
         {
           "text": "arbeite ich mit anderen zusammen",
-          "value": "",
           "strength": "TEAMFAEHIGKEIT"
         },
         {
           "text": "setze ich meine vielen Ideen um",
-          "value": "",
           "strength": "KREATIVITAET"
         },
         {
           "text": "verbessere ich ein kleines bisschen die Welt",
-          "value": "",
           "strength": "VERANTWORTUNGSBEWUSSTSEIN"
         },
         {
           "text": "unterteile ich große Projekte in Aufgaben",
-          "value": "",
           "strength": "STRATEGISCHES_HANDELN"
         }
       ]
@@ -58,22 +50,18 @@
       "answers": [
         {
           "text": "dass ich lustig bin",
-          "value": "",
           "strength": "HUMOR"
         },
         {
           "text": "dass ich schlau bin",
-          "value": "",
           "strength": "WISSEN"
         },
         {
           "text": "dass ich mutig bin",
-          "value": "",
           "strength": "MUT"
         },
         {
           "text": "dass ich kreativ bin",
-          "value": "",
           "strength": "KREATIVITAET"
         }
       ]
@@ -84,22 +72,18 @@
       "answers": [
         {
           "text": "gebe ich jedem eine Chance, sich zu beteiligen",
-          "value": "",
           "strength": "TEAMFAEHIGKEIT"
         },
         {
           "text": "mache ich einen Plan, was zu tun ist",
-          "value": "",
           "strength": "STRATEGISCHES_HANDELN"
         },
         {
           "text": "trage ich das Ergebnis vor",
-          "value": "",
           "strength": "KOMMUNIKATIONSFAEHIGKEIT"
         },
         {
           "text": "sage ich, was ich schon alles zu dem Thema weiß",
-          "value": "",
           "strength": "WISSEN"
         }
       ]
@@ -110,22 +94,18 @@
       "answers": [
         {
           "text": "lerne ich gerne Neues",
-          "value": "",
           "strength": "WISSEN"
         },
         {
           "text": "erlebe ich gerne etwas Aufregendes",
-          "value": "",
           "strength": "MUT"
         },
         {
           "text": "mache ich das, was ich schon richtig gut kann",
-          "value": "",
           "strength": "KOMPETENZ"
         },
         {
           "text": "übe ich an etwas, was mich herausfordert",
-          "value": "",
           "strength": "AUSDAUER"
         }
       ]
@@ -136,22 +116,18 @@
       "answers": [
         {
           "text": "bleibe ich dran und schaffe es trotzdem",
-          "value": "",
           "strength": "AUSDAUER"
         },
         {
           "text": "wäge ich ab, ob es sich lohnt weiter zu machen",
-          "value": "",
           "strength": "URTEILSVERMOGEN"
         },
         {
           "text": "bleibe ich ruhig und sage mir, dass es wichtig ist",
-          "value": "",
           "strength": "VERANTWORTUNGSBEWUSSTSEIN"
         },
         {
           "text": "mache ich lieber etwas, was ich besonders gut kann",
-          "value": "",
           "strength": "KOMPETENZ"
         }
       ]
@@ -162,22 +138,18 @@
       "answers": [
         {
           "text": "Gutes und Schlechtes abzuwägen, bevor ich eine Entscheidung treffe",
-          "value": "",
           "strength": "URTEILSVERMOGEN"
         },
         {
           "text": "mit jedem ins Gespräch zu kommen",
-          "value": "",
           "strength": "KOMMUNIKATIONSFAEHIGKEIT"
         },
         {
           "text": "zu verstehen, wie andere fühlen und sich verhalten",
-          "value": "",
           "strength": "EMPATHIE"
         },
         {
           "text": "andere zum Lächeln oder Lachen zu bringen",
-          "value": "",
           "strength": "HUMOR"
         }
       ]
@@ -188,22 +160,18 @@
       "answers": [
         {
           "text": "auf die man sich verlassen kann",
-          "value": "",
           "strength": "VERANTWORTUNGSBEWUSSTSEIN"
         },
         {
           "text": "die zu ihrer Gruppe hält",
-          "value": "",
           "strength": "TEAMFAEHIGKEIT"
         },
         {
           "text": "die alles schaffen kann",
-          "value": "",
           "strength": "AUSDAUER"
         },
         {
           "text": "die etwas macht, auch wenn sie Angst hat",
-          "value": "",
           "strength": "MUT"
         }
       ]
@@ -214,22 +182,18 @@
       "answers": [
         {
           "text": "sie Rat für eine Entscheidung brauchen",
-          "value": "",
           "strength": "URTEILSVERMOGEN"
         },
         {
           "text": "sie jemanden brauchen, der zuhört und versteht",
-          "value": "",
           "strength": "EMPATHIE"
         },
         {
           "text": "sie Hilfe bei etwas brauchen, wo ich ein Profi bin",
-          "value": "",
           "strength": "KOMPETENZ"
         },
         {
           "text": "sie ungewöhnliche Ideen brauchen",
-          "value": "",
           "strength": "KREATIVITAET"
         }
       ]
@@ -240,23 +204,19 @@
       "answers": [
         {
           "text": "mich an Regeln zu halten und das Richtige zu tun",
-          "value": "KONFORMITAET",
-          "strength": ""
+          "value": "KONFORMITAET"
         },
         {
           "text": "meine eigenen Entscheidungen zu treffen",
-          "value": "SELBSTBESTIMMUNG",
-          "strength": ""
+          "value": "SELBSTBESTIMMUNG"
         },
         {
           "text": "die Werte und Traditionen meiner Familie zu leben",
-          "value": "TRADITION",
-          "strength": ""
+          "value": "TRADITION"
         },
         {
           "text": "das Leben auf jede Art zu genießen",
-          "value": "GENUSS",
-          "strength": ""
+          "value": "GENUSS"
         }
       ]
     },
@@ -266,23 +226,19 @@
       "answers": [
         {
           "text": "wir erfüllen, was die Lehrkraft vorgegeben hat",
-          "value": "KONFORMITAET",
-          "strength": ""
+          "value": "KONFORMITAET"
         },
         {
           "text": "ich zeige, wie gut ich bin",
-          "value": "LEISTUNG",
-          "strength": ""
+          "value": "LEISTUNG"
         },
         {
           "text": "wir uns gut verstehen und unterstützen",
-          "value": "FURSORGE",
-          "strength": ""
+          "value": "FURSORGE"
         },
         {
           "text": "ich entscheide, wer welche Aufgaben übernimmt",
-          "value": "MACHT",
-          "strength": ""
+          "value": "MACHT"
         }
       ]
     },
@@ -292,23 +248,19 @@
       "answers": [
         {
           "text": "mehr Offenheit füreinander",
-          "value": "VIELFALT",
-          "strength": ""
+          "value": "VIELFALT"
         },
         {
           "text": "mehr Sicherheit/Schutz für alle",
-          "value": "SICHERHEIT",
-          "strength": ""
+          "value": "SICHERHEIT"
         },
         {
           "text": "mehr Hilfsbereitschaft untereinander",
-          "value": "FURSORGE",
-          "strength": ""
+          "value": "FURSORGE"
         },
         {
           "text": "mehr Bewusstsein für die Natur",
-          "value": "NACHHALTIGKEIT",
-          "strength": ""
+          "value": "NACHHALTIGKEIT"
         }
       ]
     },
@@ -318,23 +270,19 @@
       "answers": [
         {
           "text": "dass die anderen auf mich hören und tun, was ich sage",
-          "value": "MACHT",
-          "strength": ""
+          "value": "MACHT"
         },
         {
           "text": "dass alle sich äußern und einbringen",
-          "value": "SINN_FUR_GEMEINSCHAFT",
-          "strength": ""
+          "value": "SINN_FUR_GEMEINSCHAFT"
         },
         {
           "text": "dass ich gut dastehe und gemocht werde",
-          "value": "ANERKENNUNG",
-          "strength": ""
+          "value": "ANERKENNUNG"
         },
         {
           "text": "dass wir offen und ehrlich miteinander sprechen",
-          "value": "TRANSPARENZ",
-          "strength": ""
+          "value": "TRANSPARENZ"
         }
       ]
     },
@@ -344,23 +292,19 @@
       "answers": [
         {
           "text": "so leben, wie meine Eltern es mir vorleben",
-          "value": "TRADITION",
-          "strength": ""
+          "value": "TRADITION"
         },
         {
           "text": "viele Abenteuer erleben und Risiken eingehen",
-          "value": "ABENTEUER",
-          "strength": ""
+          "value": "ABENTEUER"
         },
         {
           "text": "etwas machen, was die Welt bewahrt",
-          "value": "NACHHALTIGKEIT",
-          "strength": ""
+          "value": "NACHHALTIGKEIT"
         },
         {
           "text": "ein sicheres und gesundes Leben führen",
-          "value": "SICHERHEIT",
-          "strength": ""
+          "value": "SICHERHEIT"
         }
       ]
     },
@@ -370,23 +314,19 @@
       "answers": [
         {
           "text": "reich zu sein",
-          "value": "MACHT",
-          "strength": ""
+          "value": "MACHT"
         },
         {
           "text": "beliebt zu sein",
-          "value": "ANERKENNUNG",
-          "strength": ""
+          "value": "ANERKENNUNG"
         },
         {
           "text": "fröhlich zu sein",
-          "value": "GENUSS",
-          "strength": ""
+          "value": "GENUSS"
         },
         {
           "text": "erfolgreich zu sein",
-          "value": "LEISTUNG",
-          "strength": ""
+          "value": "LEISTUNG"
         }
       ]
     },
@@ -396,23 +336,19 @@
       "answers": [
         {
           "text": "dass keine/r hinter meinem Rücken etwas macht",
-          "value": "TRANSPARENZ",
-          "strength": ""
+          "value": "TRANSPARENZ"
         },
         {
           "text": "dass keine/r mich vor allen anderen beleidigt",
-          "value": "ANERKENNUNG",
-          "strength": ""
+          "value": "ANERKENNUNG"
         },
         {
           "text": "dass keine/r mich ausschließt, weil ich eine andere Meinung habe",
-          "value": "VIELFALT",
-          "strength": ""
+          "value": "VIELFALT"
         },
         {
           "text": "das keine/r mich im Stich lässt, wenn ich Hilfe brauche",
-          "value": "FURSORGE",
-          "strength": ""
+          "value": "FURSORGE"
         }
       ]
     },
@@ -422,23 +358,19 @@
       "answers": [
         {
           "text": "ich meine Ziele erreiche und etwas aus mir mache",
-          "value": "LEISTUNG",
-          "strength": ""
+          "value": "LEISTUNG"
         },
         {
           "text": "ich die Natur schütze und nachhaltig lebe",
-          "value": "NACHHALTIGKEIT",
-          "strength": ""
+          "value": "NACHHALTIGKEIT"
         },
         {
           "text": "ich mache, was von mir erwartet wird",
-          "value": "KONFORMITAET",
-          "strength": ""
+          "value": "KONFORMITAET"
         },
         {
           "text": "ich mich für soziale Gerechtigkeit einsetze",
-          "value": "SINN_FUR_GERECHTIGKEIT",
-          "strength": ""
+          "value": "SINN_FUR_GERECHTIGKEIT"
         }
       ]
     },
@@ -448,23 +380,19 @@
       "answers": [
         {
           "text": "die mutig ist und Herausforderungen sucht",
-          "value": "ABENTEUER",
-          "strength": ""
+          "value": "ABENTEUER"
         },
         {
           "text": "ihre Meinung unabhängig von anderen entwickelt",
-          "value": "SELBSTBESTIMMUNG",
-          "strength": ""
+          "value": "SELBSTBESTIMMUNG"
         },
         {
           "text": "Feste und Rituale ihrer Kultur/Familie/Religion lebt",
-          "value": "TRADITION",
-          "strength": ""
+          "value": "TRADITION"
         },
         {
           "text": "die ehrlich ist und Verantwortung für ihr Handeln übernimmt",
-          "value": "TRANSPARENZ",
-          "strength": ""
+          "value": "TRANSPARENZ"
         }
       ]
     },
@@ -474,18 +402,15 @@
       "answers": [
         {
           "text": "dass wir Neues und Aufregendes zusammen erleben",
-          "value": "ABENTEUER",
-          "strength": ""
+          "value": "ABENTEUER"
         },
         {
           "text": "dass wir schätzen, dass wir verschieden sind",
-          "value": "VIELFALT",
-          "strength": ""
+          "value": "VIELFALT"
         },
         {
           "text": "dass wir einfach Spaß haben",
-          "value": "GENUSS",
-          "strength": ""
+          "value": "GENUSS"
         }
       ]
     },
@@ -495,18 +420,15 @@
       "answers": [
         {
           "text": "mich in der Gesellschaft zu engagieren",
-          "value": "SINN_FUR_GERECHTIGKEIT",
-          "strength": ""
+          "value": "SINN_FUR_GERECHTIGKEIT"
         },
         {
           "text": "nach meinen Zielen und Überzeugungen zu handeln",
-          "value": "SELBSTBESTIMMUNG",
-          "strength": ""
+          "value": "SELBSTBESTIMMUNG"
         },
         {
           "text": "mich und andere vor Schwierigkeiten zu schützen",
-          "value": "SICHERHEIT",
-          "strength": ""
+          "value": "SICHERHEIT"
         }
       ]
     }

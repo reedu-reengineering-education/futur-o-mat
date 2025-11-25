@@ -28,7 +28,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
-import { AvatarManager } from "./avatarManager";
 import AvatarCanvas from "./AvatarCanvas";
 import useAvatarState from "@/hooks/useAvatarState";
 import { useAvatarParts } from "@/hooks/useAvatarParts";
@@ -65,81 +64,71 @@ function AvatarGenerator() {
   }, [handleSurprise]);
 
   return (
-    <AvatarManager avatarConfig={avatarConfig}>
-      {({ saveAvatarFace, saveAvatarBody }) => (
-        <Layout>
-          <Card className="max-w-md">
-            <CardHeader>
-              <CardTitle>Futur-O-Mat</CardTitle>
-              <CardDescription>
-                Mach dir die Zukunft, wie sie dir gefällt!
-              </CardDescription>
-              <CardAction>
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button variant="ghost" size={"icon"}>
-                      <InfoIcon className="h-4 w-4" />
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent>
-                    <DialogTitle>Deine Zukunft, in deinem Style! </DialogTitle>
-                    <DialogDescription>
-                      Mit dem Futur-O-Mat kannst du deinen Avatar bauen und die
-                      Welt nach deinen Vorstellungen gestalten. Probier's aus
-                      und finde raus, was du bewegen kannst! Die Webseite
-                      basiert auf der Idee des Handabdrucks von Germanwatch.
-                      Mehr Infos zum Futur-O-Mat findest du hier.
-                    </DialogDescription>
-                  </DialogContent>
-                </Dialog>
-              </CardAction>
-            </CardHeader>
-            <CardContent className="grid gap-4">
-              {/* Avatar Display */}
-              <div className="mb-6 flex flex-col items-center">
-                <div className="w-full max-w-sm mx-auto relative pt-8">
-                  <AvatarCanvas
-                    avatarConfig={avatarConfig}
-                    width={800}
-                    height={960}
-                    className="w-full h-auto rounded-lg"
-                  />
-                </div>
-              </div>
-
-              {/* Editor Area */}
-              <Button size={"sm"} onClick={handleSurprise}>
-                <Sparkles /> Zufall
-              </Button>
-              <BodyEditor
-                avatarConfig={avatarConfig}
-                allParts={allParts}
-                onUpdatePart={updatePart}
-                onToggleItem={toggleItem}
-                onSetSkinTone={setSkinTone}
-                onSetHairColor={setHairColor}
-                onSetBreastOption={setBreastOption}
-                onRemoveBrust={removeBrust}
-                onRemoveHair={removeHair}
-              />
-            </CardContent>
-            <CardFooter className="justify-end">
-              <Link
-                to={`/quiz/information`}
-                onClick={() => {
-                  saveAvatarFace();
-                  saveAvatarBody();
-                }}
-              >
-                <Button>
-                  Weiter zum Quiz <ArrowRightIcon />
+    <Layout>
+      <Card className="max-w-md">
+        <CardHeader>
+          <CardTitle>Futur-O-Mat</CardTitle>
+          <CardDescription>
+            Mach dir die Zukunft, wie sie dir gefällt!
+          </CardDescription>
+          <CardAction>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="ghost" size={"icon"}>
+                  <InfoIcon className="h-4 w-4" />
                 </Button>
-              </Link>
-            </CardFooter>
-          </Card>
-        </Layout>
-      )}
-    </AvatarManager>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogTitle>Deine Zukunft, in deinem Style! </DialogTitle>
+                <DialogDescription>
+                  Mit dem Futur-O-Mat kannst du deinen Avatar bauen und die Welt
+                  nach deinen Vorstellungen gestalten. Probier's aus und finde
+                  raus, was du bewegen kannst! Die Webseite basiert auf der Idee
+                  des Handabdrucks von Germanwatch. Mehr Infos zum Futur-O-Mat
+                  findest du hier.
+                </DialogDescription>
+              </DialogContent>
+            </Dialog>
+          </CardAction>
+        </CardHeader>
+        <CardContent className="grid gap-4">
+          {/* Avatar Display */}
+          <div className="mb-6 flex flex-col items-center">
+            <div className="w-full max-w-sm mx-auto relative pt-8">
+              <AvatarCanvas
+                avatarConfig={avatarConfig}
+                width={800}
+                height={960}
+                className="w-full h-auto rounded-lg"
+              />
+            </div>
+          </div>
+
+          {/* Editor Area */}
+          <Button size={"sm"} onClick={handleSurprise}>
+            <Sparkles /> Zufall
+          </Button>
+          <BodyEditor
+            avatarConfig={avatarConfig}
+            allParts={allParts}
+            onUpdatePart={updatePart}
+            onToggleItem={toggleItem}
+            onSetSkinTone={setSkinTone}
+            onSetHairColor={setHairColor}
+            onSetBreastOption={setBreastOption}
+            onRemoveBrust={removeBrust}
+            onRemoveHair={removeHair}
+          />
+        </CardContent>
+        <CardFooter className="justify-end">
+          <Link to={`/quiz/information`}>
+            <Button>
+              Weiter zum Quiz <ArrowRightIcon />
+            </Button>
+          </Link>
+        </CardFooter>
+      </Card>
+    </Layout>
   );
 }
 
