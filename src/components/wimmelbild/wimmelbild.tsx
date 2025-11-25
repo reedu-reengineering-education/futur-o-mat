@@ -78,6 +78,8 @@ const Wimmelbild: React.FC<WimmelbildProps> = ({ images }) => {
                         src={wb_image.source}
                         alt={wb_image.title}
                         className="w-full h-full object-cover"
+                        // preload or cache the image
+                        loading="eager"
                       />
                     </button>
                   ))}

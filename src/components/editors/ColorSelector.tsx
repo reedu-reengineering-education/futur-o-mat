@@ -6,6 +6,7 @@
  */
 
 import { SKIN_TONES, HAIR_COLORS } from "@/data/categories";
+import { Transgender } from "lucide-react";
 
 interface ColorSelectorProps {
   type: "skin" | "hair";
@@ -39,7 +40,7 @@ export function ColorSelector({
             {label}
           </label>
 
-          <div className="flex flex-wrap gap-3 sm:gap-4 justify-center sm:justify-start">
+          <div className="flex flex-wrap gap-2 sm:gap-4 justify-center sm:justify-start">
             {/* Farbkreise */}
             {colors.map((colorOption) => {
               const isSelected = selectedColor === colorOption.id;
@@ -52,7 +53,7 @@ export function ColorSelector({
                     relative group flex flex-col items-center gap-1.5 sm:gap-2
                     transition-all duration-200
                     touch-manipulation
-                    min-w-[60px] sm:min-w-[70px]
+                    min-w-10 sm:min-w-12
                     ${isSelected ? "scale-110" : "active:scale-105"}
                   `}
                   aria-label={`${label}: ${colorOption.id}`}
@@ -70,23 +71,6 @@ export function ColorSelector({
                     `}
                     style={{ backgroundColor: colorOption.color }}
                   />
-
-                  {/* Selection indicator */}
-                  {isSelected && (
-                    <div className="absolute -top-1 -right-1 w-5 h-5 sm:w-4 sm:h-4 bg-brand-accent rounded-full border-2 border-white flex items-center justify-center">
-                      <svg
-                        className="w-3 h-3 sm:w-2.5 sm:h-2.5 text-white"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                  )}
                 </button>
               );
             })}
@@ -99,7 +83,7 @@ export function ColorSelector({
                   relative group flex flex-col items-center gap-1.5 sm:gap-2
                   transition-all duration-200
                   touch-manipulation
-                  min-w-[60px] sm:min-w-[70px]
+                  min-w-10 sm:min-w-12
                   ${isBrustansatzActive ? "scale-110" : "active:scale-105"}
                 `}
                 aria-label="Brustansatz umschalten"
@@ -124,25 +108,9 @@ export function ColorSelector({
                       ${isBrustansatzActive ? "text-brand-primary" : "text-gray-500"}
                     `}
                   >
-                    ⚧
+                    <Transgender />
                   </span>
                 </div>
-
-                {isBrustansatzActive && (
-                  <div className="absolute -top-1 -right-1 w-5 h-5 sm:w-4 sm:h-4 bg-brand-accent rounded-full border-2 border-white flex items-center justify-center">
-                    <svg
-                      className="w-3 h-3 sm:w-2.5 sm:h-2.5 text-white"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                )}
               </button>
             )}
           </div>
