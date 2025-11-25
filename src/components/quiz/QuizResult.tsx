@@ -12,25 +12,60 @@ import Layout from "../layout";
 import { useQuizState } from "@/hooks/useQuizState";
 import AvatarCanvas from "../avatar/AvatarCanvas";
 import useAvatarState from "@/hooks/useAvatarState";
+import { useState } from "react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 
 export function QuizResult() {
   const { avatarConfig } = useAvatarState();
   const { result } = useQuizState();
 
+  const [isStrengthDialogOpen, setIsStrengthDialogOpen] = useState(false);
+  const [isValueDialogOpen, setIsValueDialogOpen] = useState(false);
+
   return (
     <Layout>
+      <Dialog
+        open={isStrengthDialogOpen}
+        onOpenChange={setIsStrengthDialogOpen}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Deine Stärke</DialogTitle>
+          </DialogHeader>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia eos
+          saepe suscipit dolor similique illo illum perferendis tenetur minima
+          consequatur. Soluta ducimus iure itaque fugiat praesentium expedita
+          sequi incidunt quidem!
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={isValueDialogOpen} onOpenChange={setIsValueDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Dein Wert</DialogTitle>
+          </DialogHeader>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia eos
+          saepe suscipit dolor similique illo illum perferendis tenetur minima
+          consequatur. Soluta ducimus iure itaque fugiat praesentium expedita
+          sequi incidunt quidem!
+        </DialogContent>
+      </Dialog>
       <Card className="w-md">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">Dein Ergebnis</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           {/* Avatar Bild */}
-          <div className="flex justify-center">
+          <div className="flex justify-center relative">
             <AvatarCanvas
               avatarConfig={avatarConfig}
               quizResult={result ?? undefined}
               showStrengh
               showValue
+              highlightStrengh
+              highlightValue
+              onStrengthClick={() => setIsStrengthDialogOpen(true)}
+              onValueClick={() => setIsValueDialogOpen(true)}
               className="w-60"
             />
           </div>
@@ -59,7 +94,7 @@ export function QuizResult() {
         </CardContent>
         <CardFooter className="flex justify-end">
           <Link to="/wimmelbild">
-            <Button size="lg">Gehe weiter zu deinem Herzensthema</Button>
+            <Button size="lg">Weiter zu deinem Herzensthema</Button>
           </Link>
         </CardFooter>
       </Card>
