@@ -12,6 +12,9 @@ interface ColorSelectorProps {
   selectedColor: string;
   onColorChange: (color: string) => void;
   visible?: boolean;
+  showBrustansatz?: boolean;
+  onBrustansatzToggle?: () => void;
+  isBrustansatzActive?: boolean;
 }
 
 export function ColorSelector({
@@ -19,6 +22,9 @@ export function ColorSelector({
   selectedColor,
   onColorChange,
   visible = true,
+  showBrustansatz = false,
+  onBrustansatzToggle,
+  isBrustansatzActive = false,
 }: ColorSelectorProps) {
   if (!visible) return null;
 
@@ -32,7 +38,9 @@ export function ColorSelector({
           <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-3">
             {label}
           </label>
+
           <div className="flex flex-wrap gap-3 sm:gap-4 justify-center sm:justify-start">
+            {/* Farbkreise */}
             {colors.map((colorOption) => {
               const isSelected = selectedColor === colorOption.id;
 
@@ -82,6 +90,61 @@ export function ColorSelector({
                 </button>
               );
             })}
+
+            {/* Brustansatz Button als Farbkreis */}
+            {showBrustansatz && onBrustansatzToggle && (
+              <button
+                onClick={onBrustansatzToggle}
+                className={`
+                  relative group flex flex-col items-center gap-1.5 sm:gap-2
+                  transition-all duration-200
+                  touch-manipulation
+                  min-w-[60px] sm:min-w-[70px]
+                  ${isBrustansatzActive ? "scale-110" : "active:scale-105"}
+                `}
+                aria-label="Brustansatz umschalten"
+                aria-pressed={isBrustansatzActive}
+                title="Brustansatz"
+              >
+                {/* Symbol Kreis - gleiche Größe wie Farbkreise */}
+                <div
+                  className={`
+                    w-12 h-12 sm:w-14 sm:h-14 rounded-full border-4 transition-all duration-200
+                    flex items-center justify-center
+                    ${
+                      isBrustansatzActive
+                        ? "border-brand-primary shadow-lg bg-brand-primary/10"
+                        : "border-gray-300 bg-gray-100 active:border-brand-primary/50"
+                    }
+                  `}
+                >
+                  <span
+                    className={`
+                      text-xl font-bold transition-colors duration-200
+                      ${isBrustansatzActive ? "text-brand-primary" : "text-gray-500"}
+                    `}
+                  >
+                    ⚧
+                  </span>
+                </div>
+
+                {isBrustansatzActive && (
+                  <div className="absolute -top-1 -right-1 w-5 h-5 sm:w-4 sm:h-4 bg-brand-accent rounded-full border-2 border-white flex items-center justify-center">
+                    <svg
+                      className="w-3 h-3 sm:w-2.5 sm:h-2.5 text-white"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                )}
+              </button>
+            )}
           </div>
         </div>
       </div>

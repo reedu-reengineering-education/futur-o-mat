@@ -14,8 +14,8 @@ const isDevelopment = import.meta.env.DEV;
 const quizData = isDevelopment ? rawQuizDataDebug : rawQuizData;
 
 export interface QuizAnswer {
-  value: string;
-  strength: string;
+  value?: string;
+  strength?: string;
 }
 
 interface Answer {
@@ -56,18 +56,22 @@ const calculateQuizResult = (allAnswers: QuizAnswer[]) => {
   const strengthCount: Record<string, number> = {};
 
   allAnswers.forEach((a) => {
-    valueCount[a.value] = (valueCount[a.value] || 0) + 1;
-    strengthCount[a.strength] = (strengthCount[a.strength] || 0) + 1;
+    if (a.value) {
+      valueCount[a.value] = (valueCount[a.value] || 0) + 1;
+    }
+    if (a.strength) {
+      strengthCount[a.strength] = (strengthCount[a.strength] || 0) + 1;
+    }
   });
 
   const maxValueCount = Math.max(...Object.values(valueCount));
   const topValues = Object.keys(valueCount).filter(
-    (v) => valueCount[v] === maxValueCount,
+    (v) => valueCount[v] === maxValueCount
   );
 
   const maxStrengthCount = Math.max(...Object.values(strengthCount));
   const topStrengths = Object.keys(strengthCount).filter(
-    (s) => strengthCount[s] === maxStrengthCount,
+    (s) => strengthCount[s] === maxStrengthCount
   );
 
   const selectedValue = topValues[Math.floor(Math.random() * topValues.length)];
@@ -113,5 +117,5 @@ export const useQuizState = create<UseQuizStateReturn>()(
       set(() => ({
         result: calculateQuizResult(useQuizState.getState().answers),
       })),
-  })),
+  }))
 );

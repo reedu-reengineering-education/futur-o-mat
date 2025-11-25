@@ -21,13 +21,18 @@ export default function Share() {
   const { avatarConfig } = useAvatarState();
   const { result } = useQuizState();
   const { image: wimmelbild } = useWimmelbildState();
+  const { handleDownload } = useAvatarDownload();
 
-  const { downloadCanvas } = useAvatarDownload();
   const ref = useRef<HTMLCanvasElement>(null);
 
   const { encodeState } = useShare();
 
-  // Haupt-Share-Seite mit 6 Buttons
+  const onDownload = () => {
+    if (ref.current) {
+      handleDownload(ref.current);
+    }
+  };
+
   return (
     <Layout>
       <Card className="w-md relative overflow-hidden">
@@ -91,42 +96,46 @@ export default function Share() {
             </Button>
 
             {/* Download Button */}
-            <Button onClick={() => downloadCanvas(ref.current!)}>
+            <Button onClick={onDownload}>
               <DownloadIcon />
               Download
             </Button>
 
-            {/* Weitere Quiz */}
-            <Button>Weitere Quiz</Button>
-
-            {/* SDG Wimmelbild */}
+            {/* Weitere Buttons... */}
             <Link
               target="_blank"
               rel="noopener noreferrer"
               to="https://www.germanwatch.org/de/das-sdg-wimmelbild-zukunft"
               className="w-full"
             >
-              <Button className="w-full">SDG Wimmelbild</Button>
+              <Button className="w-full">Wimmelbild Zukunft</Button>
             </Link>
 
-            {/* Handabdruck */}
             <Link
               target="_blank"
               rel="noopener noreferrer"
               to="https://www.handabdruck.eu/"
               className="w-full"
             >
-              <Button className="w-full">Handabdruck</Button>
+              <Button className="w-full">Handabdruck-Test</Button>
             </Link>
 
-            {/* Germanwatch */}
             <Link
               target="_blank"
               rel="noopener noreferrer"
               to="https://www.germanwatch.org/de"
               className="w-full"
             >
-              <Button className="w-full">Germanwatch</Button>
+              <Button className="w-full">Mehr zu Germanwatch</Button>
+            </Link>
+
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              to="https://www.germanwatch.org/de/handabdruck"
+              className="w-full"
+            >
+              <Button className="w-full">Mehr zum Handabdruck</Button>
             </Link>
           </div>
 

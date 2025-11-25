@@ -6,7 +6,7 @@ import {
   useImperativeHandle,
   type Ref,
 } from "react";
-import { RENDER_ORDER } from "../../data/categories";
+import { LAST_RENDER, RENDER_ORDER } from "../../data/categories";
 import { useAvatarParts } from "../../hooks/useAvatarParts";
 import { cn } from "@/lib/utils";
 import { type QuizResult } from "@/hooks/useQuizState";
@@ -59,7 +59,6 @@ export default function AvatarCanvas({
         imageCache.current.set(src, img);
         resolve(img);
       };
-
       img.onerror = () => {
         reject(new Error(`Failed to load image: ${src}`));
       };
@@ -73,7 +72,6 @@ export default function AvatarCanvas({
    */
   const getImageSources = useCallback((): string[] => {
     const sources: string[] = [];
-
     // Create a map of part IDs to their src paths
     const partMap = new Map<string, string>();
     allParts.forEach((part) => {
@@ -83,6 +81,7 @@ export default function AvatarCanvas({
     // Add selected parts in render order
     for (const category of RENDER_ORDER) {
       const partId = avatarConfig.selectedParts[category];
+
       if (partId) {
         const src = partMap.get(partId);
         if (src) {
@@ -96,6 +95,16 @@ export default function AvatarCanvas({
       const src = partMap.get(itemId);
       if (src) {
         sources.push(src);
+      }
+    }
+
+    for (const category of LAST_RENDER) {
+      const partId = avatarConfig.selectedParts[category];
+      if (partId) {
+        const src = partMap.get(partId);
+        if (src) {
+          sources.push(src);
+        }
       }
     }
 
@@ -169,54 +178,6 @@ export default function AvatarCanvas({
     }
   }, [width, height, getImageSources, loadImage]);
 
-  // /**
-  //  * Download the canvas as a PNG image with proper filename
-  //  */
-  // const downloadImage = useCallback(
-  //   (filename?: string) => {
-  //     const canvas = canvasRef.current;
-  //     if (!canvas) {
-  //       console.error("Canvas not available for download");
-  //       return;
-  //     }
-
-  //     try {
-  //       // Generate filename if not provided
-  //       const finalFilename = filename || generateFilename(avatarConfig);
-  //       downloadCanvas(canvas, finalFilename);
-  //     } catch (error) {
-  //       console.error("Failed to download image:", error);
-  //       onRenderError?.(
-  //         error instanceof Error ? error : new Error("Download failed")
-  //       );
-  //     }
-  //   },
-  //   [avatarConfig, generateFilename, downloadCanvas, onRenderError]
-  // );
-
-  // /**
-  //  * Get canvas data URL for sharing or preview
-  //  */
-  // const getCanvasDataUrl = useCallback((): string | null => {
-  //   const canvas = canvasRef.current;
-  //   if (!canvas) return null;
-
-  //   try {
-  //     return canvas.toDataURL("image/png");
-  //   } catch (error) {
-  //     console.error("Failed to get canvas data URL:", error);
-  //     return null;
-  //   }
-  // }, []);
-
-  // /**
-  //  * Get the canvas element directly
-  //  */
-  // const getCanvas = useCallback((): HTMLCanvasElement | null => {
-  //   return canvasRef.current;
-  // }, []);
-
-  // Re-render when avatar config changes
   useEffect(() => {
     renderAvatar();
   }, [renderAvatar]);

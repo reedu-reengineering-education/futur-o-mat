@@ -23,6 +23,7 @@ interface BodyEditorProps {
   onSetHairColor: (hairColor: string) => void;
   onSetBreastOption: (enabled: boolean) => void;
   onRemoveHair: () => void;
+  onRemoveBrust: () => void;
 }
 
 export function BodyEditor({
@@ -32,6 +33,8 @@ export function BodyEditor({
   onToggleItem,
   onSetSkinTone,
   onSetHairColor,
+  onSetBreastOption,
+  onRemoveBrust,
 }: BodyEditorProps) {
   const [activeCategory, setActiveCategory] = useState<string>("head");
   const [visitedCategories, setVisitedCategories] = useState<Set<string>>(
@@ -66,6 +69,7 @@ export function BodyEditor({
     bodyType,
   });
 
+  console.log(avatarConfig.skinTone, "Skin Tone BodyEditor 72");
   // Handle category change
   const handleCategoryChange = useCallback((category: string) => {
     setActiveCategory(category);
@@ -86,6 +90,29 @@ export function BodyEditor({
     [onUpdatePart, onToggleItem]
   );
 
+  const handleBrustansatzToggle = useCallback(() => {
+    const newBrustansatzState = !avatarConfig.brustAnsatz;
+
+    onSetBreastOption(newBrustansatzState);
+
+    if (newBrustansatzState) {
+      const brustPart = allParts.find((p) => p.category === "brust");
+      if (brustPart) {
+        onUpdatePart(brustPart);
+      } else {
+        console.warn("Brust-Part nicht gefunden");
+      }
+    } else {
+      onRemoveBrust();
+    }
+  }, [
+    allParts,
+    avatarConfig.brustAnsatz,
+    onSetBreastOption,
+    onUpdatePart,
+    onRemoveBrust,
+  ]);
+
   // Determine if current category is multi-select
   const isMultiSelect = useMemo(() => {
     const category = BODY_CATEGORIES.find((c) => c.id === activeCategory);
@@ -93,7 +120,7 @@ export function BodyEditor({
   }, [activeCategory]);
 
   // Show color selectors for head and hair categories
-  const showSkinToneSelector = activeCategory === "head";
+  const showSkinToneSelector = activeCategory === "bodytype";
   const showHairColorSelector = activeCategory === "hair";
 
   return (
@@ -113,6 +140,9 @@ export function BodyEditor({
           selectedColor={avatarConfig.skinTone}
           onColorChange={onSetSkinTone}
           visible={true}
+          showBrustansatz={true}
+          onBrustansatzToggle={handleBrustansatzToggle}
+          isBrustansatzActive={avatarConfig.brustAnsatz || false}
         />
       )}
 
@@ -122,6 +152,7 @@ export function BodyEditor({
           selectedColor={avatarConfig.hairColor}
           onColorChange={onSetHairColor}
           visible={true}
+          showBrustansatz={false}
         />
       )}
 
