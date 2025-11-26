@@ -12,8 +12,9 @@ import Layout from "../layout";
 import { useQuizState } from "@/hooks/useQuizState";
 import AvatarCanvas from "../avatar/AvatarCanvas";
 import useAvatarState from "@/hooks/useAvatarState";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
+import confetti from "canvas-confetti";
 
 export function QuizResult() {
   const { avatarConfig } = useAvatarState();
@@ -21,6 +22,48 @@ export function QuizResult() {
 
   const [isStrengthDialogOpen, setIsStrengthDialogOpen] = useState(false);
   const [isValueDialogOpen, setIsValueDialogOpen] = useState(false);
+
+  // Play confetti on mount
+  useEffect(() => {
+    const playConfetti = async () => {
+      const count = 200;
+      const defaults = {
+        origin: { y: 0.7 },
+      };
+
+      function fire(particleRatio: number, opts: confetti.Options) {
+        confetti({
+          ...defaults,
+          ...opts,
+          particleCount: Math.floor(count * particleRatio),
+        });
+      }
+
+      fire(0.25, {
+        spread: 26,
+        startVelocity: 55,
+      });
+      fire(0.2, {
+        spread: 60,
+      });
+      fire(0.35, {
+        spread: 100,
+        decay: 0.91,
+        scalar: 0.8,
+      });
+      fire(0.1, {
+        spread: 120,
+        startVelocity: 25,
+        decay: 0.92,
+        scalar: 1.2,
+      });
+      fire(0.1, {
+        spread: 120,
+        startVelocity: 45,
+      });
+    };
+    playConfetti();
+  }, []);
 
   return (
     <Layout>
