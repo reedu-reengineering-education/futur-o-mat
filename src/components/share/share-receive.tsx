@@ -1,7 +1,14 @@
 import { Link, useParams } from "@tanstack/react-router";
 import { useShare, type ShareParams } from "@/hooks/useShare";
 import Layout from "../layout";
-import { Card, CardContent, CardFooter } from "../ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../ui/card";
 import AvatarCanvas from "../avatar/AvatarCanvas";
 import { Button } from "../ui/button";
 import { UserPlus } from "lucide-react";
@@ -14,7 +21,7 @@ export default function ShareReceive() {
   if (!decoded) {
     return (
       <Layout>
-        <Card className="w-md">
+        <Card className="max-w-md">
           <CardContent>Ungültiger oder fehlender Share-Zustand.</CardContent>
         </Card>
       </Layout>
@@ -25,14 +32,20 @@ export default function ShareReceive() {
 
   return (
     <Layout>
-      <Card className="w-md">
-        <CardContent className="grid gap-4">
+      <Card className="max-w-md">
+        <CardContent className="grid gap-6">
+          <CardHeader>
+            <CardTitle>Futur-O-Mat</CardTitle>
+            <CardDescription>
+              Mach dir die Zukunft, wie sie dir gefällt!
+            </CardDescription>
+          </CardHeader>
           <div className="relative max-w-64 aspect-square rounded-2xl overflow-hidden ring-3 ring-primary ring-offset-2 flex items-center justify-center mx-auto">
             {shareParams.wimmelbild && (
               <img
                 src={shareParams.wimmelbild.source}
                 alt="Wimmelbild Hintergrund"
-                className="w-full h-full object-cover inset-0"
+                className="w-full h-full object-cover inset-0 opacity-90"
               />
             )}
             {shareParams.avatar && (

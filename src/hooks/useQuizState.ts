@@ -6,11 +6,12 @@
 
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
-import rawQuizData from "@/components/quiz/quizData.json";
-import rawQuizDataDebug from "@/components/quiz/quizData.debug.json";
+import rawQuizData from "@/assets/quizData.json";
+import rawQuizDataDebug from "@/assets/quizData.debug.json";
 
 // Use debug data in development mode
 const isDevelopment = import.meta.env.DEV;
+// const isDevelopment = false;
 const quizData = isDevelopment ? rawQuizDataDebug : rawQuizData;
 
 export interface QuizAnswer {
@@ -43,6 +44,7 @@ interface UseQuizStateReturn {
   questions: QuizData["questions"];
   getCurrentQuestion: (index: number) => Question;
   isLastQuestion: (index: number) => boolean;
+  quizLength?: number;
   answers: QuizAnswer[];
   setAnswers: (answers: QuizAnswer[]) => void;
   resetQuiz: () => void;
@@ -78,17 +80,9 @@ const calculateQuizResult = (allAnswers: QuizAnswer[]) => {
   const selectedStrength =
     topStrengths[Math.floor(Math.random() * topStrengths.length)];
 
-  //   const valuePartId = VALUE_TO_PART_ID[selectedValue];
-  //   const strengthPartId = STRENGTH_TO_PART_ID[selectedStrength];
-
-  //   const valuePart = allParts.find((p) => p.id === valuePartId) || null;
-  //   const strengthPart = allParts.find((p) => p.id === strengthPartId) || null;
-
   const results = {
     valueKey: selectedValue,
     strengthKey: selectedStrength,
-    // valuePart,
-    // strengthPart,
   };
 
   return results;
@@ -101,6 +95,7 @@ export const useQuizState = create<UseQuizStateReturn>()(
       (quizData as unknown as QuizData).questions[index],
     isLastQuestion: (index: number) =>
       index === (quizData as unknown as QuizData).questions.length - 1,
+    quizLength: (quizData as unknown as QuizData).questions.length,
     answers: [],
     setAnswers: (answers: QuizAnswer[]) =>
       set(() => ({

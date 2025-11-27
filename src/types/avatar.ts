@@ -12,6 +12,8 @@ export interface AvatarPart {
   skinTone: string;
   hairColor: string;
   bodyType: string;
+  // Optional subcategory to distinguish items within the same main category
+  subcategory?: string;
 }
 
 /**

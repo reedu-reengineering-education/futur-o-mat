@@ -71,7 +71,7 @@ function AvatarGenerator() {
           <CardDescription>
             Mach dir die Zukunft, wie sie dir gefällt!
           </CardDescription>
-          <CardAction>
+          <CardAction className="z-10">
             <Dialog>
               <DialogTrigger asChild>
                 <Button variant="ghost" size={"icon"}>
@@ -105,14 +105,15 @@ function AvatarGenerator() {
           </div>
 
           {/* Editor Area */}
-          <Button size={"sm"} onClick={handleSurprise}>
+          <Button size={"sm"} variant={"accent"} onClick={handleSurprise}>
             <Sparkles /> Lass dich überraschen
           </Button>
           <BodyEditor
             avatarConfig={avatarConfig}
             allParts={allParts}
             onUpdatePart={updatePart}
-            onToggleItem={toggleItem}
+            // pass allParts through so toggle can resolve subcategory conflicts
+            onToggleItem={(part) => toggleItem(part, allParts)}
             onSetSkinTone={setSkinTone}
             onSetHairColor={setHairColor}
             onSetBreastOption={setBreastOption}

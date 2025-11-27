@@ -6,6 +6,7 @@ import {
 } from "lz-string";
 import type { QuizResult } from "./useQuizState";
 import type { WimmelbildImage } from "./useWimmelbildState";
+import wimmelbilder from "@/assets/wimmelbilder.json";
 
 export interface ShareParams {
   avatar: AvatarConfig;
@@ -30,23 +31,14 @@ export function useShare(): UseShareReturn {
     try {
       // simplify keys for smaller size
       const simplifiedParams = {
-        a: {
-          sP: params.avatar.selectedParts,
-          sI: params.avatar.selectedItems,
-          sT: params.avatar.skinTone,
-          hC: params.avatar.hairColor,
-          bO: params.avatar.brustAnsatz,
-        },
-        r: {
-          vK: params.result.valueKey,
-          sK: params.result.strengthKey,
-        },
-        w: {
-          s: params.wimmelbild.source,
-          t: params.wimmelbild.title,
-          d: params.wimmelbild.description,
-          id: params.wimmelbild.id,
-        },
+        sP: params.avatar.selectedParts,
+        sI: params.avatar.selectedItems,
+        sT: params.avatar.skinTone,
+        hC: params.avatar.hairColor,
+        bO: params.avatar.brustAnsatz,
+        vK: params.result.valueKey,
+        sK: params.result.strengthKey,
+        w: params.wimmelbild.id,
       };
 
       return compressToEncodedURIComponent(JSON.stringify(simplifiedParams));
@@ -77,25 +69,23 @@ export function useShare(): UseShareReturn {
           return null;
         }
 
+        const wimmelbild =
+          wimmelbilder.find((e) => e.id === params.w) || wimmelbilder[0];
+
         // reconstruct full keys
         const shareParams: ShareParams = {
           avatar: {
-            selectedParts: params.a.sP,
-            selectedItems: params.a.sI,
-            skinTone: params.a.sT,
-            hairColor: params.a.hC,
-            brustAnsatz: params.a.bO,
+            selectedParts: params.sP,
+            selectedItems: params.sI,
+            skinTone: params.sT,
+            hairColor: params.hC,
+            brustAnsatz: params.bO,
           },
           result: {
-            valueKey: params.r.vK,
-            strengthKey: params.r.sK,
+            valueKey: params.vK,
+            strengthKey: params.sK,
           },
-          wimmelbild: {
-            source: params.w.s,
-            title: params.w.t,
-            description: params.w.d,
-            id: params.w.id,
-          },
+          wimmelbild,
         };
 
         return shareParams;
@@ -104,7 +94,7 @@ export function useShare(): UseShareReturn {
         return null;
       }
     },
-    [],
+    []
   );
 
   return {

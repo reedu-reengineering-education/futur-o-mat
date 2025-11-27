@@ -1,0 +1,31 @@
+export const VALUE_TO_PART_ID: Record<string, string> = {
+  SINN_FUR_GEMEINSCHAFT: "values_waage",
+  NACHHALTIGKEIT: "values_weltkugel",
+  FURSORGE: "values_yin_yang",
+  VIELFALT: "values_vielfalt",
+  TRANSPARENZ: "values_prisma",
+  MACHT: "values_krone",
+  LEISTUNG: "values_pokal",
+  GENUSS: "values_eis",
+  ABENTEUER: "values_berggipfel",
+  SELBSTBESTIMMUNG: "values_fluegel",
+  SICHERHEIT: "values_schloss",
+  TRADITION: "values_familienwappen",
+  KONFORMITAET: "values_konformitaet",
+  ANERKENNUNG: "value_handschlag",
+};
+
+export const STRENGTH_TO_PART_ID: Record<string, string> = {
+  EMPATHIE: "strengths_herz",
+  URTEILSVERMOGEN: "strengths_puzzle",
+  WISSEN: "strengths_gluehbirne",
+  TEAMFAEHIGKEIT: "strengths_zahnraeder",
+  STRATEGISCHES_HANDELN: "strengths_klemmbrett",
+  MUT: "strengths_schmetterling",
+  KREATIVITAET: "strengths_farbpalette",
+  KOMMUNIKATIONSFAEHIGKEIT: "strengths_mikrophon",
+  VERANTWORTUNGSBEWUSSTSEIN: "strengths_kompass",
+  HUMOR: "strengths_luftballon",
+  AUSDAUER: "strengths_karte",
+  KOMPETENZ: "strengths_aufgeschlagenes_buch",
+};

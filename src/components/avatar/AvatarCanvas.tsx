@@ -10,8 +10,9 @@ import { LAST_RENDER, RENDER_ORDER } from "../../data/categories";
 import { useAvatarParts } from "../../hooks/useAvatarParts";
 import { cn } from "@/lib/utils";
 import { type QuizResult } from "@/hooks/useQuizState";
-import { STRENGTH_TO_PART_ID, VALUE_TO_PART_ID } from "../quiz/Values";
+
 import type { AvatarConfig } from "@/types/avatar";
+import { STRENGTH_TO_PART_ID, VALUE_TO_PART_ID } from "../quiz/to-part-id";
 
 const PULSE_DURATION = 2000; // Duration of one pulse cycle in milliseconds
 const PULSE_MIN_OPACITY = 0.4; // Minimum opacity during pulse

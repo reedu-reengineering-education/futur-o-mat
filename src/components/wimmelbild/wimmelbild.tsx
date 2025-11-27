@@ -37,7 +37,7 @@ const Wimmelbild: React.FC<WimmelbildProps> = ({ images }) => {
 
   return (
     <Layout>
-      <Card className="w-md">
+      <Card className="max-w-md">
         <CardContent>
           {image && (
             <div className="grid gap-4">

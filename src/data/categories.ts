@@ -91,4 +91,4 @@ export const RENDER_ORDER = [
   "handicap",
 ] as const;
 
-export const LAST_RENDER = ["accessoires", "brust", "skintones"] as const;
+export const LAST_RENDER = ["brust", "accessoires", "skintones"] as const;
