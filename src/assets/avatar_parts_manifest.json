@@ -2,102 +2,122 @@
   {
     "id": "accessoires_jutebeutel_normal",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0000_Jutebeutel-Normal.png",
-    "category": "accessoires"
+    "category": "accessoires",
+    "subcategory": "bag"
   },
   {
     "id": "accessoires_handtasche_normal",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0001_Handtasche-Normal.png",
-    "category": "accessoires"
+    "category": "accessoires",
+    "subcategory": "bag"
   },
   {
     "id": "accessoires_jutebeutel_breit",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0001_Jutebeutel-Breit.png",
-    "category": "accessoires"
+    "category": "accessoires",
+    "subcategory": "bag"
   },
   {
     "id": "accessoires_handtasche_breit",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0002_Handtasche-Breit.png",
-    "category": "accessoires"
+    "category": "accessoires",
+    "subcategory": "bag"
   },
   {
     "id": "accessoires_jutebeutel_betont",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0002_Jutebeutel-Betont.png",
-    "category": "accessoires"
+    "category": "accessoires",
+    "subcategory": "bag"
   },
   {
     "id": "accessoires_jutebeutel_eng",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0002_Jutebeutel-Eng.png",
-    "category": "accessoires"
+    "category": "accessoires",
+    "subcategory": "bag"
   },
   {
     "id": "accessoires_bauchtasche_betont",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0003_Bauchtasche-Betont.png",
-    "category": "accessoires"
+    "category": "accessoires",
+    "subcategory": "bag"
   },
   {
     "id": "accessoires_bauchtasche_normal",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0003_Bauchtasche-Normal.png",
-    "category": "accessoires"
+    "category": "accessoires",
+    "subcategory": "bag"
   },
   {
     "id": "accessoires_handtasche_betont",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0003_Handtasche-Betont.png",
-    "category": "accessoires"
+    "category": "accessoires",
+    "subcategory": "bag"
   },
   {
     "id": "accessoires_handtasche_eng",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0003_Handtasche-Eng.png",
-    "category": "accessoires"
+    "category": "accessoires",
+    "subcategory": "bag"
   },
   {
     "id": "accessoires_bauchtasche_breit",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0004_Bauchtasche-Breit.png",
-    "category": "accessoires"
+    "category": "accessoires",
+    "subcategory": "bag"
   },
   {
     "id": "accessoires_bauchtasche_eng",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0005_Bauchtasche-Eng.png",
-    "category": "accessoires"
+    "category": "accessoires",
+    "subcategory": "bag"
   },
   {
     "id": "accessoires_schal",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0006_Schal.png",
-    "category": "accessoires"
+    "category": "accessoires",
+    "subcategory": "accessory"
   },
   {
     "id": "accessoires_sonnenbrille",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0007_Sonnenbrille.png",
-    "category": "accessoires"
+    "category": "accessoires",
+    "subcategory": "accessory"
   },
   {
     "id": "accessoires_tattoo",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0010_Tattoo.png",
-    "category": "accessoires"
+    "category": "accessoires",
+    "subcategory": "accessory"
   },
   {
     "id": "accessoires_kette_normal",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0011_Kette-Normal.png",
-    "category": "accessoires"
+    "category": "accessoires",
+    "subcategory": "accessory"
   },
   {
     "id": "accessoires_kette_breit",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0012_Kette-Breit.png",
-    "category": "accessoires"
+    "category": "accessoires",
+    "subcategory": "accessory"
   },
   {
     "id": "accessoires_kette_betont",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0013_Kette-Betont.png",
-    "category": "accessoires"
+    "category": "accessoires",
+    "subcategory": "accessory"
   },
   {
     "id": "accessoires_kette_eng",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0013_Kette-Eng.png",
-    "category": "accessoires"
+    "category": "accessoires",
+    "subcategory": "accessory"
   },
   {
     "id": "accessoires_uhr",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0014_Uhr.png",
-    "category": "accessoires"
+    "category": "accessoires",
+    "subcategory": "accessory"
   },
   {
     "id": "bodytype_hell_betont",
@@ -197,77 +217,92 @@
   {
     "id": "face_volle_lippen",
     "src": "assets/avatars/face/Futur-O-Mat__0000s_0000_Volle-Lippen.png",
-    "category": "face"
+    "category": "face",
+    "subcategory": "lip_shape"
   },
   {
     "id": "face_schmale_lippen",
     "src": "assets/avatars/face/Futur-O-Mat__0000s_0001_Schmale-Lippen.png",
-    "category": "face"
+    "category": "face",
+    "subcategory": "lip_shape"
   },
   {
     "id": "face_rote_lippen",
     "src": "assets/avatars/face/Futur-O-Mat__0000s_0002_Rote-Lippen.png",
-    "category": "face"
+    "category": "face",
+    "subcategory": "lip_shape"
   },
   {
     "id": "face_schmal",
     "src": "assets/avatars/face/Futur-O-Mat__0001s_0000_Schmal.png",
-    "category": "face"
+    "category": "face",
+    "subcategory": "nose"
   },
   {
     "id": "face_breit",
     "src": "assets/avatars/face/Futur-O-Mat__0001s_0001_Breit.png",
-    "category": "face"
+    "category": "face",
+    "subcategory": "nose"
   },
   {
     "id": "face_stupsig",
     "src": "assets/avatars/face/Futur-O-Mat__0001s_0002_Stupsig.png",
-    "category": "face"
+    "category": "face",
+    "subcategory": "nose"
   },
   {
     "id": "face_stoppel_bart",
     "src": "assets/avatars/face/Futur-O-Mat__0002s_0000_Stoppel-Bart.png",
-    "category": "face"
+    "category": "face",
+    "subcategory": "facial_hair"
   },
   {
     "id": "face_vollbart",
     "src": "assets/avatars/face/Futur-O-Mat__0002s_0001_Vollbart.png",
-    "category": "face"
+    "category": "face",
+    "subcategory": "facial_hair"
   },
   {
     "id": "face_schna_uzer",
     "src": "assets/avatars/face/Futur-O-Mat__0002s_0002_Schnaeuzer.png",
-    "category": "face"
+    "category": "face",
+    "subcategory": "facial_hair"
   },
   {
     "id": "face_buschig",
     "src": "assets/avatars/face/Futur-O-Mat__0007s_0000_Buschig.png",
-    "category": "face"
+    "category": "face",
+    "subcategory": "eyebrows"
   },
   {
     "id": "face_duenn",
     "src": "assets/avatars/face/Futur-O-Mat__0007s_0001_Duenn.png",
-    "category": "face"
+    "category": "face",
+    "subcategory": "eyebrows"
   },
   {
     "id": "face_haselnuss",
     "src": "assets/avatars/face/Futur-O-Mat__0008s_0000_Haselnuss.png",
-    "category": "face"
+    "category": "face",
+    "subcategory": "eye_color"
   },
   {
     "id": "face_gruen",
     "src": "assets/avatars/face/Futur-O-Mat__0008s_0001_Gruen.png",
-    "category": "face"
+    "category": "face",
+    "subcategory": "eye_color"
   },
   {
     "id": "face_blau",
     "src": "assets/avatars/face/Futur-O-Mat__0008s_0002_Blau.png",
-    "category": "face"
+    "category": "face",
+    "subcategory": "eye_color"
   },
   {
     "id": "face_grau",
     "src": "assets/avatars/face/Futur-O-Mat__0008s_0003_Grau.png",
-    "category": "face"
+    "category": "face",
+    "subcategory": "eye_color"
   },
   {
     "id": "hair_kaeppi",
@@ -747,282 +782,338 @@
   {
     "id": "clothes_leger_breit",
     "src": "assets/avatars/clothes/Futur-O-Mat__0018s_0000_Leger-Breit.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_turtleneck_breit",
     "src": "assets/avatars/clothes/Futur-O-Mat__0018s_0000_Turtleneck-Breit.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_leger_eng",
     "src": "assets/avatars/clothes/Futur-O-Mat__0018s_0001_Leger-Eng.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_turtleneck_normal",
     "src": "assets/avatars/clothes/Futur-O-Mat__0018s_0001_Turtleneck-Normal.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_leger_normal",
     "src": "assets/avatars/clothes/Futur-O-Mat__0018s_0002_Leger-Normal.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_turtleneck_eng",
     "src": "assets/avatars/clothes/Futur-O-Mat__0018s_0002_Turtleneck-Eng.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_leger_betont",
     "src": "assets/avatars/clothes/Futur-O-Mat__0018s_0003_Leger-Betont.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_turtleneck_betont",
     "src": "assets/avatars/clothes/Futur-O-Mat__0018s_0003_Turtleneck-Betont.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_hemd_breit",
     "src": "assets/avatars/clothes/Futur-O-Mat__0019s_0000_Hemd-Breit.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_hoodie_breit",
     "src": "assets/avatars/clothes/Futur-O-Mat__0019s_0000_Hoodie-Breit.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_hemd_eng",
     "src": "assets/avatars/clothes/Futur-O-Mat__0019s_0001_Hemd-Eng.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_hoodie_normal",
     "src": "assets/avatars/clothes/Futur-O-Mat__0019s_0001_Hoodie-Normal.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_hemd_normal",
     "src": "assets/avatars/clothes/Futur-O-Mat__0019s_0002_Hemd-Normal.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_hoodie_eng",
     "src": "assets/avatars/clothes/Futur-O-Mat__0019s_0002_Hoodie-Eng.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_hemd_betont",
     "src": "assets/avatars/clothes/Futur-O-Mat__0019s_0003_Hemd-Betont.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_hoodie_betont",
     "src": "assets/avatars/clothes/Futur-O-Mat__0019s_0003_Hoodie-Betont.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_bluse_breit",
     "src": "assets/avatars/clothes/Futur-O-Mat__0020s_0000_Bluse-Breit.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_sacko_breit",
     "src": "assets/avatars/clothes/Futur-O-Mat__0020s_0000_Sacko-Breit.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_bluse_eng",
     "src": "assets/avatars/clothes/Futur-O-Mat__0020s_0001_Bluse-Eng.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_sacko_normal",
     "src": "assets/avatars/clothes/Futur-O-Mat__0020s_0001_Sacko-Normal.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_bluse_normal",
     "src": "assets/avatars/clothes/Futur-O-Mat__0020s_0002_Bluse-Normal.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_sacko_eng",
     "src": "assets/avatars/clothes/Futur-O-Mat__0020s_0002_Sacko-Eng.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_bluse_betont",
     "src": "assets/avatars/clothes/Futur-O-Mat__0020s_0003_Bluse-Betont.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_sacko_betont",
     "src": "assets/avatars/clothes/Futur-O-Mat__0020s_0003_Sacko-Betont.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_knallig_breit",
     "src": "assets/avatars/clothes/Futur-O-Mat__0021s_0000_Knallig-Breit.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_weiss_breit",
     "src": "assets/avatars/clothes/Futur-O-Mat__0021s_0000_Weiss-Breit.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_knallig_normal",
     "src": "assets/avatars/clothes/Futur-O-Mat__0021s_0001_Knallig-Normal.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_weiss_normal",
     "src": "assets/avatars/clothes/Futur-O-Mat__0021s_0001_Weiss-Normal.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_knallig_eng",
     "src": "assets/avatars/clothes/Futur-O-Mat__0021s_0002_Knallig-Eng.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_wei__eng",
     "src": "assets/avatars/clothes/Futur-O-Mat__0021s_0002_Weiß-Eng.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_knallig_betont",
     "src": "assets/avatars/clothes/Futur-O-Mat__0021s_0003_Knallig-Betont.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_weiss_betont",
     "src": "assets/avatars/clothes/Futur-O-Mat__0021s_0003_Weiss-Betont.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "top"
   },
   {
     "id": "clothes_rock_eng",
     "src": "assets/avatars/clothes/Futur-O-Mat__0022s_0000_Rock-Eng.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "bottom"
   },
   {
     "id": "clothes_rock_breit",
     "src": "assets/avatars/clothes/Futur-O-Mat__0022s_0001_Rock-Breit.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "bottom"
   },
   {
     "id": "clothes_rock_normal",
     "src": "assets/avatars/clothes/Futur-O-Mat__0022s_0002_Rock-Normal.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "bottom"
   },
   {
     "id": "clothes_rock_betont",
     "src": "assets/avatars/clothes/Futur-O-Mat__0022s_0003_Rock-Betont.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "bottom"
   },
   {
     "id": "clothes_kleid_eng",
     "src": "assets/avatars/clothes/Futur-O-Mat__0023s_0000_Kleid-Eng.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "onepiece"
   },
   {
     "id": "clothes_kleid_breit",
     "src": "assets/avatars/clothes/Futur-O-Mat__0023s_0001_Kleid-Breit.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "onepiece"
   },
   {
     "id": "clothes_kleid_normal",
     "src": "assets/avatars/clothes/Futur-O-Mat__0023s_0002_Kleid-Normal.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "onepiece"
   },
   {
     "id": "clothes_kleid_betont",
     "src": "assets/avatars/clothes/Futur-O-Mat__0023s_0003_Kleid-Betont.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "onepiece"
   },
   {
     "id": "clothes_shorts",
     "src": "assets/avatars/clothes/Futur-O-Mat__0024s_0000_Shorts.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "bottom"
   },
   {
     "id": "clothes_jeans",
     "src": "assets/avatars/clothes/Futur-O-Mat__0024s_0001_Jeans.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "bottom"
   },
   {
     "id": "clothes_denimjeans",
     "src": "assets/avatars/clothes/Futur-O-Mat__0024s_0002_Denimjeans.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "bottom"
   },
   {
     "id": "clothes_elegant",
     "src": "assets/avatars/clothes/Futur-O-Mat__0024s_0003_Elegant.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "bottom"
   },
   {
     "id": "clothes_langrock_breit",
     "src": "assets/avatars/clothes/Futur-O-Mat__0026s_0000_Langrock-Breit.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "bottom"
   },
   {
     "id": "clothes_langrock_normal",
     "src": "assets/avatars/clothes/Futur-O-Mat__0026s_0001_Langrock-Normal.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "bottom"
   },
   {
     "id": "clothes_langrock_eng",
     "src": "assets/avatars/clothes/Futur-O-Mat__0026s_0002_Langrock-Eng.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "bottom"
   },
   {
     "id": "clothes_langrock_betont",
     "src": "assets/avatars/clothes/Futur-O-Mat__0026s_0003_Langrock-Betont.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "bottom"
   },
   {
     "id": "clothes_sommerkleid_breit",
     "src": "assets/avatars/clothes/Futur-O-Mat__0028s_0000_Sommerkleid-Breit.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "onepiece"
   },
   {
     "id": "clothes_sommerkleid_normal",
     "src": "assets/avatars/clothes/Futur-O-Mat__0028s_0001_Sommerkleid-Normal.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "onepiece"
   },
   {
     "id": "clothes_sommerkleid_eng",
     "src": "assets/avatars/clothes/Futur-O-Mat__0028s_0002_Sommerkleid-Eng.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "onepiece"
   },
   {
     "id": "clothes_sommerkleid_betont",
     "src": "assets/avatars/clothes/Futur-O-Mat__0028s_0003_Sommerkleid-Betont.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "onepiece"
   },
   {
     "id": "clothes_jumpsuit_breit",
     "src": "assets/avatars/clothes/Futur-O-Mat__0030s_0004_Jumpsuit-Breit.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "onepiece"
   },
   {
     "id": "clothes_jumpsuit_normal",
     "src": "assets/avatars/clothes/Futur-O-Mat__0030s_0005_Jumpsuit-Normal.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "onepiece"
   },
   {
     "id": "clothes_jumpsuit_eng",
     "src": "assets/avatars/clothes/Futur-O-Mat__0030s_0006_Jumpsuit-Eng.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "onepiece"
   },
   {
     "id": "clothes_jumpsuit_betont",
     "src": "assets/avatars/clothes/Futur-O-Mat__0030s_0007_Jumpsuit-Betont.png",
-    "category": "clothes"
+    "category": "clothes",
+    "subcategory": "onepiece"
   },
   {
     "id": "shoes_boots",

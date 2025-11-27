@@ -6,7 +6,8 @@ import { devtools } from "zustand/middleware";
 interface UseAvatarStateReturn {
   avatarConfig: AvatarConfig;
   updatePart: (part: AvatarPart) => void;
-  toggleItem: (part: AvatarPart) => void;
+  // toggleItem optionally accepts the full parts list to resolve subcategory conflicts
+  toggleItem: (part: AvatarPart, allParts?: AvatarPart[]) => void;
   setSkinTone: (skinTone: string) => void;
   setHairColor: (hairColor: string) => void;
   setBreastOption: (enabled: boolean) => void;
@@ -45,17 +46,74 @@ const useAvatarState = create<UseAvatarStateReturn>()(
         }));
       },
 
-      toggleItem: (part: AvatarPart) => {
+      toggleItem: (part: AvatarPart, allParts?: AvatarPart[]) => {
         set((state) => {
-          const isSelected = state.avatarConfig.selectedItems.includes(part.id);
+          const currentSelected = [...state.avatarConfig.selectedItems];
+          const isSelected = currentSelected.includes(part.id);
+
+          // If the part's category is multi-select but has a subcategory, ensure only one per subcategory
+          if (!isSelected && multiSelectCategories.includes(part.category)) {
+            const sub = part.subcategory;
+            if (sub && allParts && allParts.length > 0) {
+              // Build a map of id -> part for quick lookup
+              const idToPart: Record<string, AvatarPart> = {};
+              allParts.forEach((p) => (idToPart[p.id] = p));
+
+              // Special-case: onepiece should remove tops and bottoms
+              if (sub === "onepiece") {
+                for (const selectedId of [...currentSelected]) {
+                  const selPart = idToPart[selectedId];
+                  if (!selPart) continue;
+                  if (
+                    selPart.category === part.category &&
+                    (selPart.subcategory === "top" ||
+                      selPart.subcategory === "bottom")
+                  ) {
+                    const idx = currentSelected.indexOf(selectedId);
+                    if (idx >= 0) currentSelected.splice(idx, 1);
+                  }
+                }
+              }
+
+              // If selecting a top or bottom, remove existing onepiece
+              if (sub === "top" || sub === "bottom") {
+                for (const selectedId of [...currentSelected]) {
+                  const selPart = idToPart[selectedId];
+                  if (!selPart) continue;
+                  if (
+                    selPart.category === part.category &&
+                    selPart.subcategory === "onepiece"
+                  ) {
+                    const idx = currentSelected.indexOf(selectedId);
+                    if (idx >= 0) currentSelected.splice(idx, 1);
+                  }
+                }
+              }
+
+              // Remove existing selected items that belong to same category + same subcategory
+              for (const selectedId of [...currentSelected]) {
+                const selPart = idToPart[selectedId];
+                if (!selPart) continue;
+                if (
+                  selPart.category === part.category &&
+                  (selPart.subcategory || undefined) === sub
+                ) {
+                  const idx = currentSelected.indexOf(selectedId);
+                  if (idx >= 0) currentSelected.splice(idx, 1);
+                }
+              }
+            }
+          }
+
+          // Toggle the item: if selected remove, else add
+          const newSelected = isSelected
+            ? currentSelected.filter((id) => id !== part.id)
+            : [...currentSelected, part.id];
+
           return {
             avatarConfig: {
               ...state.avatarConfig,
-              selectedItems: isSelected
-                ? state.avatarConfig.selectedItems.filter(
-                    (id) => id !== part.id
-                  )
-                : [...state.avatarConfig.selectedItems, part.id],
+              selectedItems: newSelected,
             },
           };
         });
@@ -241,10 +299,23 @@ const useAvatarState = create<UseAvatarStateReturn>()(
 
           const numItems = Math.floor(Math.random() * 4);
           const shuffled = [...categoryParts].sort(() => Math.random() - 0.5);
-          const selectedItems = shuffled.slice(0, numItems);
-          selectedItems.forEach((part) =>
-            newConfig.selectedItems.push(part.id)
-          );
+
+          // If parts have subcategories, pick at most one per subcategory
+          const picked: AvatarPart[] = [];
+          const seenSubcats = new Set<string>();
+          for (const p of shuffled) {
+            const sub = p.subcategory;
+            if (sub) {
+              if (seenSubcats.has(sub)) continue;
+              seenSubcats.add(sub);
+              picked.push(p);
+            } else {
+              // no subcategory; it's safe to pick
+              picked.push(p);
+            }
+            if (picked.length >= numItems) break;
+          }
+          picked.forEach((part) => newConfig.selectedItems.push(part.id));
         });
 
         set(() => ({ avatarConfig: newConfig }));

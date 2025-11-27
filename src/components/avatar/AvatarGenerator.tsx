@@ -112,7 +112,8 @@ function AvatarGenerator() {
             avatarConfig={avatarConfig}
             allParts={allParts}
             onUpdatePart={updatePart}
-            onToggleItem={toggleItem}
+            // pass allParts through so toggle can resolve subcategory conflicts
+            onToggleItem={(part) => toggleItem(part, allParts)}
             onSetSkinTone={setSkinTone}
             onSetHairColor={setHairColor}
             onSetBreastOption={setBreastOption}

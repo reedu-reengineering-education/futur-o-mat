@@ -1,20 +1,16 @@
 import type { AvatarPart } from "@/types/avatar";
+import parts from "@/assets/avatar_parts_manifest.json";
 
 /**
  * Load avatar parts manifest from public directory
  */
 export async function loadAvatarParts(): Promise<AvatarPart[]> {
   try {
-    const response = await fetch("/avatar_parts_manifest.json");
-    if (!response.ok) {
-      throw new Error(`Failed to load avatar parts: ${response.statusText}`);
-    }
-    const parts = await response.json();
-
-    // Ensure all src paths start with / for proper loading
-    return parts.map((part: AvatarPart) => ({
+    // Ensure all src paths start with / for proper loading and infer subcategories
+    return (parts as AvatarPart[]).map((part: AvatarPart) => ({
       ...part,
       src: part.src.startsWith("/") ? part.src : `/${part.src}`,
+      subcategory: part.subcategory,
     }));
   } catch (error) {
     console.error("Error loading avatar parts manifest:", error);
@@ -27,7 +23,7 @@ export async function loadAvatarParts(): Promise<AvatarPart[]> {
  */
 export function filterPartsByCategory(
   parts: AvatarPart[],
-  category: string,
+  category: string
 ): AvatarPart[] {
   return parts.filter((part) => part.category === category);
 }
