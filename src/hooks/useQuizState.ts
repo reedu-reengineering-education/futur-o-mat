@@ -6,8 +6,8 @@
 
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
-import rawQuizData from "@/components/quiz/quizData.json";
-import rawQuizDataDebug from "@/components/quiz/quizData.debug.json";
+import rawQuizData from "@/assets/quizData.json";
+import rawQuizDataDebug from "@/assets/quizData.debug.json";
 
 // Use debug data in development mode
 const isDevelopment = import.meta.env.DEV;

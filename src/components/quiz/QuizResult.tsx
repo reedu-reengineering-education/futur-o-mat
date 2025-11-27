@@ -17,7 +17,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 import confetti from "canvas-confetti";
 import Arrow3 from "../icons/arrow-swirl-up";
 import Arrow4 from "../icons/arrow-up-right";
-import { STRENGTH_INFO, VALUE_INFO } from "./Values";
+import { STRENGTH_INFO, VALUE_INFO } from "@/assets/strengths-values.json";
 
 export function QuizResult() {
   const { avatarConfig } = useAvatarState();
@@ -25,6 +25,13 @@ export function QuizResult() {
 
   const [isStrengthDialogOpen, setIsStrengthDialogOpen] = useState(false);
   const [isValueDialogOpen, setIsValueDialogOpen] = useState(false);
+
+  const strengthInfo = result
+    ? STRENGTH_INFO[result.strengthKey as keyof typeof STRENGTH_INFO]
+    : null;
+  const valueInfo = result
+    ? VALUE_INFO[result.valueKey as keyof typeof VALUE_INFO]
+    : null;
 
   // Play confetti on mount
   useEffect(() => {
@@ -96,18 +103,18 @@ export function QuizResult() {
       >
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{STRENGTH_INFO[result.strengthKey].title}</DialogTitle>
+            <DialogTitle>{strengthInfo?.title}</DialogTitle>
           </DialogHeader>
-          {STRENGTH_INFO[result.strengthKey].description}
+          {strengthInfo?.description}
         </DialogContent>
       </Dialog>
 
       <Dialog open={isValueDialogOpen} onOpenChange={setIsValueDialogOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{VALUE_INFO[result.valueKey].title}</DialogTitle>
+            <DialogTitle>{valueInfo?.title}</DialogTitle>
           </DialogHeader>
-          {VALUE_INFO[result.valueKey].description}
+          {valueInfo?.description}
         </DialogContent>
       </Dialog>
       <Card className="max-w-md">
@@ -118,7 +125,7 @@ export function QuizResult() {
           <div className="flex flex-col">
             <p className="font-semibold ">Dein Wert</p>
             <p className="bg-primary rounded px-2 py-1 font-medium text-primary-foreground text-sm w-fit">
-              {VALUE_INFO[result.valueKey].title}
+              {valueInfo?.title}
             </p>
           </div>
           {/* Avatar Bild */}
@@ -142,7 +149,7 @@ export function QuizResult() {
 
           <div className="flex flex-col items-end">
             <p className="bg-primary rounded px-2 py-1 font-medium text-primary-foreground text-sm w-fit">
-              {STRENGTH_INFO[result.strengthKey].title}
+              {strengthInfo?.title}
             </p>
             <p className="font-semibold">Deine Stärke</p>
           </div>

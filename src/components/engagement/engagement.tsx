@@ -6,7 +6,10 @@ import Layout from "../layout";
 import AvatarCanvas from "../avatar/AvatarCanvas";
 import { useQuizState } from "@/hooks/useQuizState";
 import useAvatarState from "@/hooks/useAvatarState";
-import { STRENGTH_ENGAGEMENT, VALUE_ENGAGEMENT } from "./engagement_text";
+import {
+  VALUE_ENGAGEMENT,
+  STRENGTH_ENGAGEMENT,
+} from "@/assets/engagement.json";
 
 export default function Engagement() {
   const { avatarConfig } = useAvatarState();
@@ -16,10 +19,14 @@ export default function Engagement() {
   const valueKey = result?.valueKey;
   const strengthKey = result?.strengthKey;
 
-  const valueEngagement = valueKey ? VALUE_ENGAGEMENT[valueKey] : null;
-  const strengthEngagement = strengthKey
-    ? STRENGTH_ENGAGEMENT[strengthKey]
-    : null;
+  const valueEngagement =
+    valueKey && valueKey in VALUE_ENGAGEMENT
+      ? VALUE_ENGAGEMENT[valueKey as keyof typeof VALUE_ENGAGEMENT]
+      : null;
+  const strengthEngagement =
+    strengthKey && strengthKey in STRENGTH_ENGAGEMENT
+      ? STRENGTH_ENGAGEMENT[strengthKey as keyof typeof STRENGTH_ENGAGEMENT]
+      : null;
 
   return (
     <Layout>

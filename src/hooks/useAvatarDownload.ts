@@ -2,7 +2,7 @@
 import { useCallback } from "react";
 import { useWimmelbildState } from "./useWimmelbildState";
 import { useQuizState } from "./useQuizState";
-import { STRENGTH_SHARE, VALUE_SHARE } from "@/components/share/shareText";
+import { STRENGTH_SHARE, VALUE_SHARE } from "@/assets/share.json";
 
 export function useAvatarDownload() {
   const { result } = useQuizState();
@@ -11,8 +11,12 @@ export function useAvatarDownload() {
   const valueKey = result?.valueKey;
   const strengthKey = result?.strengthKey;
 
-  const valueShare = valueKey ? VALUE_SHARE[valueKey] : null;
-  const strengthShare = strengthKey ? STRENGTH_SHARE[strengthKey] : null;
+  const valueShare = valueKey
+    ? VALUE_SHARE[valueKey as keyof typeof VALUE_SHARE]
+    : null;
+  const strengthShare = strengthKey
+    ? STRENGTH_SHARE[strengthKey as keyof typeof STRENGTH_SHARE]
+    : null;
 
   // Hilfsfunktion für Textumbruch
   const wrapText = (

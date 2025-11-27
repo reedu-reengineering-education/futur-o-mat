@@ -1,84 +1,11 @@
 import Wimmelbild from "@/components/wimmelbild/wimmelbild";
 import { createFileRoute } from "@tanstack/react-router";
+import wimmelbilder from "@/assets/wimmelbilder.json";
 
 export const Route = createFileRoute("/wimmelbild")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  return (
-    <Wimmelbild
-      images={[
-        {
-          id: "1",
-          source: "/assets/background/kindergarten.jpg",
-          title: "Formale Lernorte",
-          description:
-            "Lernort für Kinder gestalten, der Raum für Neugier und Wachstum lässt - Kita/Hort",
-        },
-        {
-          id: "2",
-          source: "/assets/background/forum.jpg",
-          title: "Begegnung & Dialog",
-          description:
-            "Ort gestalten, an denen Menschen zusammenkommen und sich austauschen können - Kiosk / Share & Care",
-        },
-        {
-          id: "3",
-          source: "/assets/background/amphitheater.jpg",
-          title: "Kultur fördern",
-          description: "Kultur erlebbar machen - Amphitheater",
-        },
-        {
-          id: "4",
-          source: "/assets/background/bahnhof.jpg",
-          title: "Zukunftsfähige Mobilität",
-          description:
-            "Vernetzung fördern durch zukunftsfähige Mobilitätsangebote - Bahnhof oder Carsharing / Elektro-Parkplatz",
-        },
-        {
-          id: "5",
-          source: "/assets/background/permakultur.jpg",
-          title: "Solidarische ökologische Landwirtschaft",
-          description:
-            "Anpacken für eine solidarische Landwirtschaft in der Region",
-        },
-        {
-          id: "6",
-          source: "/assets/background/feldarbeit.jpg",
-          title: "Solidarische Landwirtschaft",
-          description:
-            "Anpacken für eine solidarische Landwirtschaft in der Region - Alternative Darstellung",
-        },
-        {
-          id: "7",
-          source: "/assets/background/recycling.jpg",
-          title: "Kreislaufwirtschaft / Wiederverwertung",
-          description:
-            "Nachhaltige Infrastruktur - die Basis unserer Gesellschaft - Recyclinghof",
-        },
-        {
-          id: "8",
-          source: "/assets/background/stadtfest.jpg",
-          title: "Diversität im Stadtbild",
-          description:
-            "Diversität im Stadtbild fördern und Zusammenhalt stärken - Als Gemeinschaft unsere Vielfalt feiern auf dem Straßenfest. Gemeinsam leben, das Leben genießen, Verbindung schaffen mit einem Fest. Engagement / festlicher Einsatz für die Stadt / Gesellschaft.",
-        },
-        {
-          id: "9",
-          source: "/assets/background/strand.jpg",
-          title: "Regeneration / Resilienz",
-          description:
-            "Orte gestalten, die Freiraum für Action und Erholung bieten - Entschleunigung am Strand, in der Natur Zusammenhalt stärken",
-        },
-        {
-          id: "10",
-          source: "/assets/background/localmarket.jpg",
-          title: "Gemeinschaftliches Wohnen",
-          description:
-            "Wohnhaus mit Repair-Café - Gemeinschaft leben und Nachhaltigkeit fördern",
-        },
-      ]}
-    />
-  );
+  return <Wimmelbild images={wimmelbilder} />;
 }
