@@ -5,6 +5,11 @@ import { useQuizState } from "./useQuizState";
 import { STRENGTH_SHARE, VALUE_SHARE } from "@/assets/share.json";
 import satori from "satori";
 
+const isDevelopment = import.meta.env.DEV;
+const fontPath = isDevelopment
+  ? "/node_modules/@fontsource/poppins/files"
+  : "/assets/fonts";
+
 export function useAvatarDownload() {
   const { result } = useQuizState();
   const { image: wimmelbild } = useWimmelbildState();
@@ -185,7 +190,7 @@ export function useAvatarDownload() {
             {
               name: "Poppins",
               data: await fetch(
-                "/node_modules/@fontsource/poppins/files/poppins-latin-400-normal.woff"
+                `${fontPath}/poppins-latin-400-normal.woff`
               ).then((res) => res.arrayBuffer()),
               weight: 400,
               style: "normal",
@@ -193,7 +198,7 @@ export function useAvatarDownload() {
             {
               name: "Poppins",
               data: await fetch(
-                "/node_modules/@fontsource/poppins/files/poppins-latin-700-normal.woff"
+                `${fontPath}/poppins-latin-700-normal.woff`
               ).then((res) => res.arrayBuffer()),
               weight: 700,
               style: "normal",
