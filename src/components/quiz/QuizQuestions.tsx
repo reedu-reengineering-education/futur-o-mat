@@ -18,6 +18,7 @@ export default function Quiz() {
   const {
     getCurrentQuestion,
     isLastQuestion: getIsLastQuestion,
+    quizLength,
     answers,
     setAnswers,
     resetQuiz,
@@ -70,10 +71,10 @@ export default function Quiz() {
             </Dialog>
           </div>
         </CardHeader>
-        <CardContent className="space-y-6 min-h-[500px] flex flex-col">
+        <CardContent className="grid gap-6">
           {/* Avatar Gesicht - Feste Position */}
-          <div className="flex justify-center shrink-0">
-            <div className="relative w-24 h-24 rounded-full bg-gray-100 shadow-md flex items-center justify-center overflow-hidden">
+          <div className="flex justify-center">
+            <div className="relative w-24 h-24 rounded-full bg-muted shadow-md flex items-center justify-center overflow-hidden">
               <AvatarCanvas
                 avatarConfig={avatarConfig}
                 className="w-[300%] max-w-none -ml-[100%] -mt-[50%] absolute top-0 left-0 right-0"
@@ -82,53 +83,50 @@ export default function Quiz() {
           </div>
 
           {/* Frage - Feste Höhe */}
-          <div className="bg-gray-50 p-6 rounded-2xl shadow-sm flex items-center justify-center min-h-[120px] max-h-[120px] overflow-y-auto shrink-0">
+          <div className="px-6 rounded-2xl flex items-center justify-center min-h-20 overflow-y-auto">
             <p className="text-lg font-medium text-center text-gray-800">
               {question.question}
             </p>
           </div>
 
           {/* Antworten - Flexible Höhe */}
-          <div className="flex flex-col gap-4 flex-1">
+          <div className="grid gap-4">
             {question.answers.map((answer, i) => {
               const isSelected = selected === i;
               return (
-                <button
+                <Button
                   key={i}
                   onClick={() => setSelected(i)}
-                  className={`flex justify-between items-center text-left p-4 rounded-2xl border-2 transition-all text-base sm:text-lg ${
-                    isSelected
-                      ? "border-primary bg-primary/10"
-                      : "border-gray-200 bg-white hover:border-primary/50"
-                  }`}
+                  variant={isSelected ? "default" : "secondary"}
+                  className="flex justify-between h-fit"
                 >
-                  <span className="text-gray-700">{answer.text}</span>
-                  {isSelected ? (
-                    <CheckCircle className="text-primary" />
-                  ) : (
-                    <Circle className="text-gray-200" />
-                  )}
-                </button>
+                  <span className="flex-1 pr-2 text-left wrap-break-word whitespace-normal">
+                    {answer.text}
+                  </span>
+                  {isSelected ? <CheckCircle /> : <Circle />}
+                </Button>
               );
             })}
           </div>
 
           {/* Fortschritts-Sterne - Feste Position */}
           <div className="flex justify-center flex-wrap gap-1 shrink-0">
-            {Array.from({ length: 10 }).map((_, i) => {
-              const filledStars = Math.floor((currentQuestion + 1) / 2);
-              return (
-                <Star
-                  key={i}
-                  size={22}
-                  className={`transition-colors ${
-                    i < filledStars
-                      ? "text-yellow-400 fill-yellow-400"
-                      : "text-gray-300"
-                  }`}
-                />
-              );
-            })}
+            {Array.from({ length: quizLength ? quizLength / 2 : 0 }).map(
+              (_, i) => {
+                const filledStars = Math.floor((currentQuestion + 1) / 2);
+                return (
+                  <Star
+                    key={i}
+                    size={22}
+                    className={`transition-colors ${
+                      i < filledStars
+                        ? "text-yellow-400 fill-yellow-400"
+                        : "text-gray-300"
+                    }`}
+                  />
+                );
+              }
+            )}
           </div>
         </CardContent>
         <CardFooter className="justify-end shrink-0">
@@ -138,7 +136,7 @@ export default function Quiz() {
             </Button>
           )}
           {isLastQuestion && (
-            <Link to={"/quiz/result"}>
+            <Link to={"/quiz/result"} disabled={selected === null}>
               <Button onClick={handleNext} disabled={selected === null}>
                 Zum Ergebnis
               </Button>

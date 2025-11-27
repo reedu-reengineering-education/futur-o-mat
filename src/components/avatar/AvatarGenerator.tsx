@@ -71,7 +71,7 @@ function AvatarGenerator() {
           <CardDescription>
             Mach dir die Zukunft, wie sie dir gefällt!
           </CardDescription>
-          <CardAction>
+          <CardAction className="z-10">
             <Dialog>
               <DialogTrigger asChild>
                 <Button variant="ghost" size={"icon"}>
@@ -105,7 +105,7 @@ function AvatarGenerator() {
           </div>
 
           {/* Editor Area */}
-          <Button size={"sm"} onClick={handleSurprise}>
+          <Button size={"sm"} variant={"accent"} onClick={handleSurprise}>
             <Sparkles /> Lass dich überraschen
           </Button>
           <BodyEditor

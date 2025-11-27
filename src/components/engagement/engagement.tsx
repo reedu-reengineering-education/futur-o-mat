@@ -23,14 +23,14 @@ export default function Engagement() {
 
   return (
     <Layout>
-      <Card className="w-md">
-        <CardContent className="grid gap-4">
+      <Card className="max-w-md">
+        <CardContent className="grid gap-6">
           <div className="relative max-w-64 aspect-square rounded-2xl overflow-hidden ring-3 ring-primary ring-offset-2 flex items-center justify-center mx-auto">
             {wimmelbild && (
               <img
                 src={wimmelbild.source}
                 alt="Wimmelbild Hintergrund"
-                className="w-full h-full object-cover inset-0"
+                className="w-full h-full object-cover inset-0 opacity-90"
               />
             )}
             {avatarConfig && (
@@ -46,7 +46,7 @@ export default function Engagement() {
 
           {/* Erster Text direkt daneben */}
           <div className="flex-1 text-gray-700 leading-relaxed space-y-4 text-base">
-            <h2 className="text-xl font-bold text-gray-800 mb-4">
+            <h2 className="font-semibold text-gray-800 mb-4">
               Du hast deine Stärken und Werte erkannt und dein Herzensthema
               gefunden. Nun kannst du in die Welt tragen, was schon in dir
               steckt!
@@ -55,7 +55,7 @@ export default function Engagement() {
           </div>
 
           {/* Durchgezogener dünner schwarzer Strich */}
-          <div className="w-full border-t border-gray-300 my-2"></div>
+          <hr className="text-gray-300" />
 
           {/* Zweiter Text unter dem Strich */}
           <div className="text-gray-700 leading-relaxed space-y-4 text-base">
