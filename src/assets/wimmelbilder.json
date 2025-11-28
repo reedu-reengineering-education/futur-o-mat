@@ -1,67 +1,67 @@
 [
   {
     "id": "1",
-    "source": "/assets/background/Kinderhort.jpg",
+    "source": "/assets/background/kinderhort.jpg",
     "title": "Lernräume fördern & Neugier wecken",
     "description": "Dir liegt es am Herzen, dass Kinder und Jugendliche Lernräume haben, die ihre Kreativität fördern und Raum für gemeinsame Entwicklung lassen."
   },
   {
     "id": "2",
-    "source": "/assets/background/ShareCare.jpg",
+    "source": "/assets/background/share-care.jpg",
     "title": "Treffpunkte schaffen & Miteinander sein",
     "description": "Du machst dich stark für Orte, an denen Menschen miteinander ins Gespräch kommen und Gemeinschaft erleben."
   },
   {
     "id": "3",
-    "source": "/assets/background/Amphitheater.jpg",
+    "source": "/assets/background/amphitheater.jpg",
     "title": "Menschen verbinden & Kultur stärken",
     "description": "Du willst dich einsetzen für eine vielfältige Kultur in deiner Stadt (z.B. in Theatern, Kinos), um unterschiedliche Geschichten und Perspektiven sichtbar zu machen."
   },
   {
     "id": "4",
-    "source": "/assets/background/Stadtfest.jpg",
+    "source": "/assets/background/stadtfest.jpg",
     "title": "Bunte Nachbarschaft & Zusammenhalt fördern",
     "description": "Du willst dich einsetzen für eine bunte Nachbarschaft, in der alle ihre Fähigkeiten einbringen können und neue Initiativen ins Leben rufen."
   },
   {
     "id": "5",
-    "source": "/assets/background/Tanke.jpg",
+    "source": "/assets/background/tanke.jpg",
     "title": "Guter Nahverkehr & Zukunft bewegen",
     "description": "Du willst moderne Mobilitätsangebote, die Menschen flexibel, nachhaltig und gemeinsam von A nach B bringen."
   },
   {
     "id": "6",
-    "source": "/assets/background/Ernte.jpg",
+    "source": "/assets/background/ernte.jpg",
     "title": "Solidarische Landwirtschaft in der Region",
     "description": "Du willst dich dafür einsetzen, dass unser Essen lecker, vielfältig und gesund ist und unter fairen Bedingungen in deiner Region produziert wird."
   },
   {
     "id": "7",
-    "source": "/assets/background/Recyclinghof.jpg",
+    "source": "/assets/background/recyclinghof.jpg",
     "title": "Aus Altem Neues machen & Kreativ recyceln",
     "description": "Dir liegt es am Herzen, dass alte Sachen nicht in den Müll wandern, sondern wir daraus coole neue Dinge schaffen und die Umwelt schützen."
   },
   {
     "id": "8",
-    "source": "/assets/background/Fabrik.jpg",
+    "source": "/assets/background/fabrik.jpg",
     "title": "Neue Technologien & Methoden wagen",
     "description": "Dir ist es wichtig, die Welt mit kreativen Denkweisen und coolen Erfindungen zu verändern."
   },
   {
     "id": "9",
-    "source": "/assets/background/Strand.jpg",
+    "source": "/assets/background/strand.jpg",
     "title": "Freiräume für alle & kostenlos",
     "description": "Ob Gemeinschaftsgarten, Skatepark oder chillen am Strand – dir sind Orte wichtig, die alle nutzen können, Spaß und Entspannung bringen."
   },
   {
     "id": "10",
-    "source": "/assets/background/Cafe.jpg",
+    "source": "/assets/background/cafe.jpg",
     "title": "Neue & gemeinschaftliche Wohnformen",
     "description": "Du wünscht dir, dass alle Menschen gut und bezahlbar leben können und sich in ihrem Zuhause wohl fühlen."
   },
   {
     "id": "11",
-    "source": "/assets/background/Bagger.jpg",
+    "source": "/assets/background/bagger.jpg",
     "title": "Industrie zukunftsfähig & nachhaltig gestalten",
     "description": "Du bist sofort dabei, wenn wir die Wirtschaft umgestalten. Dadurch entstehen neue coole Jobs, weniger Müll und es gibt mehr Chancen für alle."
   }
