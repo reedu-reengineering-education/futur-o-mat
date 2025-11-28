@@ -69,7 +69,6 @@ export function BodyEditor({
     bodyType,
   });
 
-  console.log(avatarConfig.skinTone, "Skin Tone BodyEditor 72");
   // Handle category change
   const handleCategoryChange = useCallback((category: string) => {
     setActiveCategory(category);

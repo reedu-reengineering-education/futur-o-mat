@@ -86,9 +86,14 @@ export const RENDER_ORDER = [
   "head",
   "face",
   "hair",
-  "clothes",
   "shoes",
+  "clothes",
   "handicap",
 ] as const;
 
 export const LAST_RENDER = ["brust", "accessoires", "skintones"] as const;
+
+/**
+ * Subcategory render order for clothes (bottom to top)
+ */
+export const CLOTHES_RENDER_ORDER = ["bottom", "top", "onepiece"] as const;

@@ -6,7 +6,11 @@ import {
   useImperativeHandle,
   type Ref,
 } from "react";
-import { LAST_RENDER, RENDER_ORDER } from "../../data/categories";
+import {
+  CLOTHES_RENDER_ORDER,
+  LAST_RENDER,
+  RENDER_ORDER,
+} from "../../data/categories";
 import { useAvatarParts } from "../../hooks/useAvatarParts";
 import { cn } from "@/lib/utils";
 import { type QuizResult } from "@/hooks/useQuizState";
@@ -90,55 +94,83 @@ export default function AvatarCanvas({
    */
   const getImageSources = useCallback((): string[] => {
     const sources: string[] = [];
-    // Create a map of part IDs to their src paths
-    const partMap = new Map<string, string>();
+    // Create a map of part IDs to their full part data
+    const partMap = new Map<
+      string,
+      { src: string; category: string; subcategory?: string }
+    >();
     allParts.forEach((part) => {
-      partMap.set(part.id, part.src);
+      partMap.set(part.id, {
+        src: part.src,
+        category: part.category,
+        subcategory: part.subcategory,
+      });
     });
 
-    // Add selected parts in render order
-    for (const category of RENDER_ORDER) {
-      const partId = avatarConfig.selectedParts[category];
+    // Create a combined render order (RENDER_ORDER + LAST_RENDER)
+    const fullRenderOrder = [...RENDER_ORDER, ...LAST_RENDER];
 
-      if (partId) {
-        const src = partMap.get(partId);
-        if (src) {
-          sources.push(src);
+    // Add selected parts and items in proper render order
+    for (const category of fullRenderOrder) {
+      // Special handling for clothes: render by subcategory order
+      if (category === "clothes") {
+        const partId = avatarConfig.selectedParts[category];
+
+        for (const subcategory of CLOTHES_RENDER_ORDER) {
+          // First, add single-select clothes for this subcategory
+          if (partId) {
+            const part = partMap.get(partId);
+            if (part && part.subcategory === subcategory) {
+              sources.push(part.src);
+            }
+          }
+
+          // Then, add multi-select clothes for this subcategory
+          for (const itemId of avatarConfig.selectedItems) {
+            const part = partMap.get(itemId);
+            if (
+              part &&
+              part.category === category &&
+              part.subcategory === subcategory
+            ) {
+              sources.push(part.src);
+            }
+          }
         }
-      }
-    }
+      } else {
+        // For other categories, use normal rendering
+        // First, add single-select parts for this category
+        const partId = avatarConfig.selectedParts[category];
+        if (partId) {
+          const part = partMap.get(partId);
+          if (part) {
+            sources.push(part.src);
+          }
+        }
 
-    // Add multi-select items (accessories, face features, etc.)
-    for (const itemId of avatarConfig.selectedItems) {
-      const src = partMap.get(itemId);
-      if (src) {
-        sources.push(src);
-      }
-    }
-
-    for (const category of LAST_RENDER) {
-      const partId = avatarConfig.selectedParts[category];
-      if (partId) {
-        const src = partMap.get(partId);
-        if (src) {
-          sources.push(src);
+        // Then, add multi-select items that belong to this category
+        for (const itemId of avatarConfig.selectedItems) {
+          const part = partMap.get(itemId);
+          if (part && part.category === category) {
+            sources.push(part.src);
+          }
         }
       }
     }
 
     if (showValue && quizResult?.valueKey) {
       const partId = VALUE_TO_PART_ID[quizResult.valueKey];
-      const src = partMap.get(partId);
-      if (src) {
-        sources.push(src);
+      const part = partMap.get(partId);
+      if (part) {
+        sources.push(part.src);
       }
     }
 
     if (showStrengh && quizResult?.strengthKey) {
       const partId = STRENGTH_TO_PART_ID[quizResult.strengthKey];
-      const src = partMap.get(partId);
-      if (src) {
-        sources.push(src);
+      const part = partMap.get(partId);
+      if (part) {
+        sources.push(part.src);
       }
     }
 
