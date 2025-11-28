@@ -14,7 +14,6 @@ import AvatarCanvas from "../avatar/AvatarCanvas";
 import useAvatarState from "@/hooks/useAvatarState";
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
-import confetti from "canvas-confetti";
 import Arrow3 from "../icons/arrow-swirl-up";
 import Arrow4 from "../icons/arrow-up-right";
 import { STRENGTH_INFO, VALUE_INFO } from "@/assets/strengths-values.json";
@@ -38,6 +37,9 @@ export function QuizResult() {
   // Play confetti on mount
   useEffect(() => {
     const playConfetti = async () => {
+      // Lazy load confetti only when needed
+      const confetti = (await import("canvas-confetti")).default;
+
       const count = 200;
       const defaults = {
         origin: { y: 0.7 },

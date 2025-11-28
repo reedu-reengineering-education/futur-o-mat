@@ -3,7 +3,6 @@ import { useCallback } from "react";
 import { useWimmelbildState } from "./useWimmelbildState";
 import { useQuizState } from "./useQuizState";
 import { STRENGTH_SHARE, VALUE_SHARE } from "@/assets/share.json";
-import satori from "satori";
 
 const isDevelopment = import.meta.env.DEV;
 const fontPath = isDevelopment
@@ -27,6 +26,9 @@ export function useAvatarDownload() {
   const handleDownload = useCallback(
     async (avatarCanvas: HTMLCanvasElement) => {
       if (!avatarCanvas) return;
+
+      // Lazy load satori only when needed
+      const { default: satori } = await import("satori");
 
       // Convert avatar canvas to data URL
       const avatarDataUrl = avatarCanvas.toDataURL("image/png");

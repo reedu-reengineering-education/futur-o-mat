@@ -36,10 +36,30 @@ export default defineConfig({
           return "assets/[name]-[hash].[ext]";
         },
 
-        // Optional: you can also configure JS and CSS file naming here if needed
-        // entryFileNames: 'assets/[name].js',
-        // chunkFileNames: 'assets/[name]-[hash].js',
+        // Split vendor libraries into separate chunks
+        manualChunks: (id) => {
+          // Split node_modules into vendor chunks
+          if (id.includes("node_modules")) {
+            // Large libraries get their own chunks
+            if (id.includes("satori")) {
+              return "vendor-satori";
+            }
+            if (id.includes("@tanstack/react-router")) {
+              return "vendor-router";
+            }
+            if (id.includes("@radix-ui")) {
+              return "vendor-radix";
+            }
+            if (id.includes("lucide-react")) {
+              return "vendor-icons";
+            }
+            // All other node_modules go into a general vendor chunk
+            return "vendor";
+          }
+        },
       },
     },
+    // Increase chunk size warning limit to 1000kb (optional)
+    chunkSizeWarningLimit: 1000,
   },
 });

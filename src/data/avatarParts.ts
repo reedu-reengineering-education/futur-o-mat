@@ -1,11 +1,15 @@
 import type { AvatarPart } from "@/types/avatar";
-import parts from "@/assets/avatar_parts_manifest.json";
 
 /**
  * Load avatar parts manifest from public directory
  */
 export async function loadAvatarParts(): Promise<AvatarPart[]> {
   try {
+    // Lazy load the manifest JSON only when needed
+    const { default: parts } = await import(
+      "@/assets/avatar_parts_manifest.json"
+    );
+
     // Ensure all src paths start with / for proper loading and infer subcategories
     return (parts as AvatarPart[]).map((part: AvatarPart) => ({
       ...part,
