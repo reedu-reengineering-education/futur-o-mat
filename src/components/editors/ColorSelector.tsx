@@ -7,6 +7,7 @@
 
 import { SKIN_TONES, HAIR_COLORS } from "@/data/categories";
 import { Transgender } from "lucide-react";
+import { useTexts } from "@/hooks/useTexts";
 
 interface ColorSelectorProps {
   type: "skin" | "hair";
@@ -27,6 +28,8 @@ export function ColorSelector({
   onBrustansatzToggle,
   isBrustansatzActive = false,
 }: ColorSelectorProps) {
+  const texts = useTexts();
+
   if (!visible) return null;
 
   const colors = type === "skin" ? SKIN_TONES : HAIR_COLORS;
@@ -86,9 +89,9 @@ export function ColorSelector({
                   min-w-10 sm:min-w-12
                   ${isBrustansatzActive ? "scale-110" : "active:scale-105"}
                 `}
-                aria-label="Brustansatz umschalten"
+                aria-label={texts.avatar.colorSelector.brustansatzLabel}
                 aria-pressed={isBrustansatzActive}
-                title="Brustansatz"
+                title={texts.avatar.colorSelector.brustansatzTitle}
               >
                 {/* Symbol Kreis - gleiche Größe wie Farbkreise */}
                 <div

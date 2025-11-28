@@ -17,8 +17,10 @@ import { STRENGTH_INFO, VALUE_INFO } from "@/assets/strengths-values.json";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 import Arrow3 from "../icons/arrow-swirl-up";
 import Arrow4 from "../icons/arrow-up-right";
+import { useTexts } from "@/hooks/useTexts";
 
 export default function ShareReceive() {
+  const texts = useTexts();
   const [isStrengthDialogOpen, setIsStrengthDialogOpen] = useState(false);
   const [isValueDialogOpen, setIsValueDialogOpen] = useState(false);
 
@@ -30,7 +32,7 @@ export default function ShareReceive() {
     return (
       <Layout>
         <Card className="max-w-md">
-          <CardContent>Ungültiger oder fehlender Share-Zustand.</CardContent>
+          <CardContent>{texts.shareReceive.invalidState}</CardContent>
         </Card>
       </Layout>
     );
@@ -69,14 +71,12 @@ export default function ShareReceive() {
       </Dialog>
       <Card className="max-w-md">
         <CardHeader>
-          <CardTitle>Futur-O-Mat</CardTitle>
-          <CardDescription>
-            Mach dir die Zukunft, wie sie dir gefällt!
-          </CardDescription>
+          <CardTitle>{texts.shareReceive.title}</CardTitle>
+          <CardDescription>{texts.shareReceive.description}</CardDescription>
         </CardHeader>
         <CardContent className="grid gap-12">
           <div className="flex flex-col">
-            <p className="font-semibold ">Wert</p>
+            <p className="font-semibold ">{texts.shareReceive.valueLabel}</p>
             <p className="bg-primary rounded px-2 py-1 font-medium text-primary-foreground text-sm w-fit">
               {valueInfo?.title}
             </p>
@@ -87,7 +87,7 @@ export default function ShareReceive() {
               {wimmelbild && (
                 <img
                   src={wimmelbild.source}
-                  alt="Wimmelbild Hintergrund"
+                  alt={texts.shareReceive.wimmelbildAlt}
                   className="w-full h-full object-cover inset-0 opacity-30"
                 />
               )}
@@ -110,13 +110,13 @@ export default function ShareReceive() {
             <p className="bg-primary rounded px-2 py-1 font-medium text-primary-foreground text-sm w-fit">
               {strengthInfo?.title}
             </p>
-            <p className="font-semibold">Stärke</p>
+            <p className="font-semibold">{texts.shareReceive.strengthLabel}</p>
           </div>
         </CardContent>
         <CardFooter>
           <Link to={"/"} className="w-full">
             <Button className="w-full">
-              Erstelle deinen eigenen Avatar <UserPlus />
+              {texts.shareReceive.createOwnButton} <UserPlus />
             </Button>
           </Link>
         </CardFooter>

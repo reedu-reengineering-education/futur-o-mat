@@ -31,8 +31,11 @@ import {
 import AvatarCanvas from "./AvatarCanvas";
 import useAvatarState from "@/hooks/useAvatarState";
 import { useAvatarParts } from "@/hooks/useAvatarParts";
+import { useTexts } from "@/hooks/useTexts";
 
 function AvatarGenerator() {
+  const texts = useTexts();
+
   // Avatar state management
   const {
     avatarConfig,
@@ -67,10 +70,8 @@ function AvatarGenerator() {
     <Layout>
       <Card className="max-w-md">
         <CardHeader>
-          <CardTitle>Futur-O-Mat</CardTitle>
-          <CardDescription>
-            Mach dir die Zukunft, wie sie dir gefällt!
-          </CardDescription>
+          <CardTitle>{texts.avatar.title}</CardTitle>
+          <CardDescription>{texts.avatar.description}</CardDescription>
           <CardAction className="z-10">
             <Dialog>
               <DialogTrigger asChild>
@@ -79,13 +80,9 @@ function AvatarGenerator() {
                 </Button>
               </DialogTrigger>
               <DialogContent>
-                <DialogTitle>Deine Zukunft, in deinem Style! </DialogTitle>
+                <DialogTitle>{texts.avatar.infoDialog.title}</DialogTitle>
                 <DialogDescription>
-                  Mit dem Futur-O-Mat kannst du deinen Avatar bauen und die Welt
-                  nach deinen Vorstellungen gestalten. Probier's aus und finde
-                  raus, was du bewegen kannst! Die Webseite basiert auf der Idee
-                  des Handabdrucks von Germanwatch. Mehr Infos zum Futur-O-Mat
-                  findest du hier.
+                  {texts.avatar.infoDialog.description}
                 </DialogDescription>
               </DialogContent>
             </Dialog>
@@ -106,7 +103,7 @@ function AvatarGenerator() {
 
           {/* Editor Area */}
           <Button size={"sm"} variant={"accent"} onClick={handleSurprise}>
-            <Sparkles /> Lass dich überraschen
+            <Sparkles /> {texts.avatar.surpriseButton}
           </Button>
           <BodyEditor
             avatarConfig={avatarConfig}
@@ -124,7 +121,7 @@ function AvatarGenerator() {
         <CardFooter className="justify-end">
           <Link to={`/quiz/information`}>
             <Button>
-              Finde heraus, was du gut kannst <ArrowRightIcon />
+              {texts.avatar.nextButton} <ArrowRightIcon />
             </Button>
           </Link>
         </CardFooter>

@@ -17,12 +17,14 @@ import {
   useWimmelbildState,
   type WimmelbildImage,
 } from "@/hooks/useWimmelbildState";
+import { useTexts } from "@/hooks/useTexts";
 
 interface WimmelbildProps {
   images: WimmelbildImage[];
 }
 
 const Wimmelbild: React.FC<WimmelbildProps> = ({ images }) => {
+  const texts = useTexts();
   const { image, setImage } = useWimmelbildState();
 
   const handleImageSelect = (image: WimmelbildImage) => {
@@ -57,7 +59,7 @@ const Wimmelbild: React.FC<WimmelbildProps> = ({ images }) => {
           {/* Untere Vorschau */}
           <div className="bg-gray-100 rounded-xl py-4 px-2 mt-8 max-w-full">
             <p className="text-sm text-gray-600 mb-4 text-center font-medium">
-              Verfügbare Wimmelbilder:
+              {texts.wimmelbild.availableImages}
             </p>
             <div className="flex">
               <ScrollArea className="w-1 flex-1">
@@ -89,7 +91,7 @@ const Wimmelbild: React.FC<WimmelbildProps> = ({ images }) => {
 
           <CardFooter className="flex justify-end mt-4">
             <Link to="/engagement">
-              <Button disabled={!image}>Auswählen</Button>
+              <Button disabled={!image}>{texts.wimmelbild.selectButton}</Button>
             </Link>
           </CardFooter>
         </CardContent>

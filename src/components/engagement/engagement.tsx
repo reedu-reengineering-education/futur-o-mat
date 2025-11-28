@@ -10,8 +10,10 @@ import {
   VALUE_ENGAGEMENT,
   STRENGTH_ENGAGEMENT,
 } from "@/assets/engagement.json";
+import { useTexts } from "@/hooks/useTexts";
 
 export default function Engagement() {
+  const texts = useTexts();
   const { avatarConfig } = useAvatarState();
   const { image: wimmelbild } = useWimmelbildState();
   const { result } = useQuizState();
@@ -55,9 +57,7 @@ export default function Engagement() {
           {/* Erster Text direkt daneben */}
           <div className="flex-1 text-gray-700 leading-relaxed space-y-4">
             <h2 className="font-semibold text-gray-800 mb-4">
-              Du hast deine Stärken und Werte erkannt und dein Herzensthema
-              gefunden. Nun kannst du in die Welt tragen, was schon in dir
-              steckt!
+              {texts.engagement.heading}
             </h2>
             <p>{valueEngagement?.description}</p>
           </div>
@@ -72,7 +72,7 @@ export default function Engagement() {
         </CardContent>
         <CardFooter className="flex justify-end">
           <Link to="/share">
-            <Button>Und nun?</Button>
+            <Button>{texts.engagement.nextButton}</Button>
           </Link>
         </CardFooter>
       </Card>

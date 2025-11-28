@@ -1,0 +1,106 @@
+{
+  "general": {
+    "appName": "Futur-O-Mat",
+    "appTagline": "Mach dir die Zukunft, wie sie dir gefällt!",
+    "buttons": {
+      "next": "Weiter",
+      "back": "Zurück",
+      "continue": "Fortfahren",
+      "download": "Download",
+      "share": "Teilen",
+      "select": "Auswählen",
+      "copyLink": "Link kopieren"
+    }
+  },
+  "avatar": {
+    "title": "Futur-O-Mat",
+    "description": "Mach dir die Zukunft, wie sie dir gefällt!",
+    "infoDialog": {
+      "title": "Deine Zukunft, in deinem Style!",
+      "description": "Mit dem Futur-O-Mat kannst du deinen Avatar bauen und die Welt nach deinen Vorstellungen gestalten. Probier's aus und finde raus, was du bewegen kannst! Die Webseite basiert auf der Idee des Handabdrucks von Germanwatch. Mehr Infos zum Futur-O-Mat findest du hier."
+    },
+    "surpriseButton": "Lass dich überraschen",
+    "nextButton": "Finde heraus, was du gut kannst",
+    "categories": {
+      "head": "Kopf",
+      "face": "Gesicht",
+      "hair": "Haare",
+      "bodytype": "Körper",
+      "clothes": "Kleidung",
+      "shoes": "Schuhe",
+      "accessoires": "Zubehör",
+      "handicap": "Hilfsmittel"
+    },
+    "colorSelector": {
+      "brustansatzLabel": "Brustansatz umschalten",
+      "brustansatzTitle": "Brustansatz"
+    }
+  },
+  "quiz": {
+    "information": {
+      "description": "Finde jetzt heraus, was dir richtig gut liegt und was dir wirklich wichtig ist. Dafür gibt es ein kurzes Quiz mit 20 Fragen. Am Ende ist dein Avatar mit deinen Stärken und Werten ausgestattet und bereit die Welt zu gestalten.",
+      "startButton": "Finde heraus, was du gut kannst"
+    },
+    "questions": {
+      "infoDialog": "Ergänze die Sätze mit dem Satzende, das am besten zu dir passt. Du kannst nur eine der Antwort-Möglichkeiten auswählen. Überlege nicht zu lange, entscheide aus dem Bauch heraus. Auch wenn alle Antworten zu dir passen oder keine ganz zutrifft, wähle das aus, was dich am meisten anspricht.",
+      "nextButton": "Nächste Frage",
+      "resultButton": "Zum Ergebnis"
+    },
+    "result": {
+      "title": "Dein Ergebnis",
+      "noResult": "Kein Ergebnis",
+      "noResultDescription": "Es wurde kein Ergebnis gefunden. Bitte mache zuerst das Quiz.",
+      "toQuizButton": "Zum Quiz",
+      "valueLabel": "Dein Wert",
+      "strengthLabel": "Deine Stärke",
+      "nextButton": "Weiter zu deinem Herzensthema"
+    }
+  },
+  "wimmelbild": {
+    "availableImages": "Verfügbare Wimmelbilder:",
+    "selectButton": "Auswählen",
+    "imageAlt": "Wimmelbild Hintergrund"
+  },
+  "engagement": {
+    "heading": "Du hast deine Stärken und Werte erkannt und dein Herzensthema gefunden. Nun kannst du in die Welt tragen, was schon in dir steckt!",
+    "nextButton": "Und nun?"
+  },
+  "share": {
+    "title": "Dein Ergebnis teilen",
+    "description": "Teile deinen Avatar und entdecke weitere Möglichkeiten",
+    "shareDialog": {
+      "title": "Teilen Link",
+      "description": "Kopiere den folgenden Link, um deinen Avatar zu teilen:",
+      "copyButton": "Link kopieren",
+      "copiedTooltip": "Den Link wurde in die Zwischenablage kopiert."
+    },
+    "nativeShare": {
+      "title": "Mein Futur-o-mat Avatar",
+      "text": "Schau dir meinen Avatar an und entdecke mehr über Nachhaltigkeit!"
+    },
+    "buttons": {
+      "share": "Teilen",
+      "download": "Download",
+      "wimmelbildZukunft": "Wimmelbild Zukunft",
+      "handabdruckTest": "Handabdruck-Test",
+      "moreGermanwatch": "Mehr zu Germanwatch",
+      "moreHandabdruck": "Mehr zum Handabdruck"
+    },
+    "additionalInfo": "Entdecke mehr über Nachhaltigkeit und deine Möglichkeiten",
+    "externalLinks": {
+      "wimmelbildZukunft": "https://www.germanwatch.org/de/das-sdg-wimmelbild-zukunft",
+      "handabdruckTest": "https://www.handabdruck.eu/",
+      "germanwatch": "https://www.germanwatch.org/de",
+      "handabdruck": "https://www.germanwatch.org/de/handabdruck"
+    }
+  },
+  "shareReceive": {
+    "title": "Futur-O-Mat",
+    "description": "Mach dir die Zukunft, wie sie dir gefällt!",
+    "valueLabel": "Wert",
+    "strengthLabel": "Stärke",
+    "createOwnButton": "Erstelle deinen eigenen Avatar",
+    "invalidState": "Ungültiger oder fehlender Share-Zustand.",
+    "wimmelbildAlt": "Wimmelbild Hintergrund"
+  }
+}

@@ -18,8 +18,10 @@ import confetti from "canvas-confetti";
 import Arrow3 from "../icons/arrow-swirl-up";
 import Arrow4 from "../icons/arrow-up-right";
 import { STRENGTH_INFO, VALUE_INFO } from "@/assets/strengths-values.json";
+import { useTexts } from "@/hooks/useTexts";
 
 export function QuizResult() {
+  const texts = useTexts();
   const { avatarConfig } = useAvatarState();
   const { result } = useQuizState();
 
@@ -80,14 +82,16 @@ export function QuizResult() {
       <Layout>
         <Card className="max-w-md">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl">Kein Ergebnis</CardTitle>
+            <CardTitle className="text-2xl">
+              {texts.quiz.result.noResult}
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Es wurde kein Ergebnis gefunden. Bitte mache zuerst das Quiz.</p>
+            <p>{texts.quiz.result.noResultDescription}</p>
           </CardContent>
           <CardFooter className="flex justify-end">
             <Link to="/quiz/questions">
-              <Button size="lg">Zum Quiz</Button>
+              <Button size="lg">{texts.quiz.result.toQuizButton}</Button>
             </Link>
           </CardFooter>
         </Card>
@@ -119,11 +123,11 @@ export function QuizResult() {
       </Dialog>
       <Card className="max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Dein Ergebnis</CardTitle>
+          <CardTitle className="text-2xl">{texts.quiz.result.title}</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-12">
           <div className="flex flex-col">
-            <p className="font-semibold ">Dein Wert</p>
+            <p className="font-semibold ">{texts.quiz.result.valueLabel}</p>
             <p className="bg-primary rounded px-2 py-1 font-medium text-primary-foreground text-sm w-fit">
               {valueInfo?.title}
             </p>
@@ -151,12 +155,12 @@ export function QuizResult() {
             <p className="bg-primary rounded px-2 py-1 font-medium text-primary-foreground text-sm w-fit">
               {strengthInfo?.title}
             </p>
-            <p className="font-semibold">Deine Stärke</p>
+            <p className="font-semibold">{texts.quiz.result.strengthLabel}</p>
           </div>
         </CardContent>
         <CardFooter className="flex justify-end">
           <Link to="/wimmelbild">
-            <Button size="lg">Weiter zu deinem Herzensthema</Button>
+            <Button size="lg">{texts.quiz.result.nextButton}</Button>
           </Link>
         </CardFooter>
       </Card>

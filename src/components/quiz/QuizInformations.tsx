@@ -6,8 +6,10 @@ import { Card, CardContent, CardFooter } from "../ui/card";
 import AvatarCanvas from "../avatar/AvatarCanvas";
 import { ArrowRight } from "lucide-react";
 import useAvatarState from "@/hooks/useAvatarState";
+import { useTexts } from "@/hooks/useTexts";
 
 export function QuizInformation() {
+  const texts = useTexts();
   const { avatarConfig } = useAvatarState();
   return (
     <Layout>
@@ -18,17 +20,12 @@ export function QuizInformation() {
               <AvatarCanvas avatarConfig={avatarConfig} className="w-60" />
             </div>
           )}
-          <p>
-            Finde jetzt heraus, was dir richtig gut liegt und was dir wirklich
-            wichtig ist. Dafür gibt es ein kurzes Quiz mit 20 Fragen. Am Ende
-            ist dein Avatar mit deinen Stärken und Werten ausgestattet und
-            bereit die Welt zu gestalten.
-          </p>
+          <p>{texts.quiz.information.description}</p>
         </CardContent>
         <CardFooter className="flex justify-end">
           <Link to={`/quiz/questions`}>
             <Button>
-              Finde heraus, was du gut kannst <ArrowRight />
+              {texts.quiz.information.startButton} <ArrowRight />
             </Button>
           </Link>
         </CardFooter>

@@ -8,8 +8,10 @@ import Layout from "../layout";
 import AvatarCanvas from "../avatar/AvatarCanvas";
 import { useQuizState, type QuizAnswer } from "@/hooks/useQuizState";
 import useAvatarState from "@/hooks/useAvatarState";
+import { useTexts } from "@/hooks/useTexts";
 
 export default function Quiz() {
+  const texts = useTexts();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
 
@@ -61,13 +63,7 @@ export default function Quiz() {
                   <InfoIcon className="h-4 w-4" />
                 </Button>
               </DialogTrigger>
-              <DialogContent>
-                Ergänze die Sätze mit dem Satzende, das am besten zu dir passt.
-                Du kannst nur eine der Antwort-Möglichkeiten auswählen. Überlege
-                nicht zu lange, entscheide aus dem Bauch heraus. Auch wenn alle
-                Antworten zu dir passen oder keine ganz zutrifft, wähle das aus,
-                was dich am meisten anspricht.
-              </DialogContent>
+              <DialogContent>{texts.quiz.questions.infoDialog}</DialogContent>
             </Dialog>
           </div>
         </CardHeader>
@@ -132,13 +128,13 @@ export default function Quiz() {
         <CardFooter className="justify-end shrink-0">
           {!isLastQuestion && (
             <Button onClick={handleNext} disabled={selected === null}>
-              Nächste Frage
+              {texts.quiz.questions.nextButton}
             </Button>
           )}
           {isLastQuestion && (
             <Link to={"/quiz/result"} disabled={selected === null}>
               <Button onClick={handleNext} disabled={selected === null}>
-                Zum Ergebnis
+                {texts.quiz.questions.resultButton}
               </Button>
             </Link>
           )}

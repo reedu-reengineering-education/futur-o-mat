@@ -25,8 +25,10 @@ import {
 } from "../ui/dialog";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import { isMobileDevice } from "@/utils/mobileOptimizations";
+import { useTexts } from "@/hooks/useTexts";
 
 export default function Share() {
+  const texts = useTexts();
   const { avatarConfig } = useAvatarState();
   const { result } = useQuizState();
   const { image: wimmelbild } = useWimmelbildState();
@@ -69,9 +71,9 @@ export default function Share() {
         <Dialog open={showUrlDialog} onOpenChange={setShowUrlDialog}>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Teilen Link</DialogTitle>
+              <DialogTitle>{texts.share.shareDialog.title}</DialogTitle>
               <DialogDescription>
-                Kopiere den folgenden Link, um deinen Avatar zu teilen:
+                {texts.share.shareDialog.description}
               </DialogDescription>
             </DialogHeader>
             <input
@@ -91,10 +93,10 @@ export default function Share() {
                   setShowTooltip(false);
                 }}
               >
-                Link kopieren
+                {texts.share.shareDialog.copyButton}
               </Button>
               <TooltipContent>
-                Den Link wurde in die Zwischenablage kopiert.
+                {texts.share.shareDialog.copiedTooltip}
               </TooltipContent>
             </Tooltip>
           </DialogContent>
@@ -112,10 +114,8 @@ export default function Share() {
           </div>
         )}
         <CardHeader>
-          <CardTitle>Dein Ergebnis teilen</CardTitle>
-          <CardDescription>
-            Teile deinen Avatar und entdecke weitere Möglichkeiten
-          </CardDescription>
+          <CardTitle>{texts.share.title}</CardTitle>
+          <CardDescription>{texts.share.description}</CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4 z-1">
           {/* Avatar */}
@@ -140,8 +140,8 @@ export default function Share() {
                 if (isMobileDevice() && navigator.share) {
                   navigator
                     .share({
-                      title: "Mein Futur-o-mat Avatar",
-                      text: "Schau dir meinen Avatar an und entdecke mehr über Nachhaltigkeit!",
+                      title: texts.share.nativeShare.title,
+                      text: texts.share.nativeShare.text,
                       url: shareUrl,
                     })
                     .catch((error) => console.error("Error sharing", error));
@@ -151,56 +151,64 @@ export default function Share() {
               }}
             >
               <Share2Icon />
-              Teilen
+              {texts.share.buttons.share}
             </Button>
 
             {/* Download Button */}
             <Button onClick={onDownload}>
               <DownloadIcon />
-              Download
+              {texts.share.buttons.download}
             </Button>
 
             {/* Weitere Buttons... */}
             <Link
               target="_blank"
               rel="noopener noreferrer"
-              to="https://www.germanwatch.org/de/das-sdg-wimmelbild-zukunft"
+              to={texts.share.externalLinks.wimmelbildZukunft}
               className="w-full"
             >
-              <Button className="w-full">Wimmelbild Zukunft</Button>
+              <Button className="w-full">
+                {texts.share.buttons.wimmelbildZukunft}
+              </Button>
             </Link>
 
             <Link
               target="_blank"
               rel="noopener noreferrer"
-              to="https://www.handabdruck.eu/"
+              to={texts.share.externalLinks.handabdruckTest}
               className="w-full"
             >
-              <Button className="w-full">Handabdruck-Test</Button>
+              <Button className="w-full">
+                {texts.share.buttons.handabdruckTest}
+              </Button>
             </Link>
 
             <Link
               target="_blank"
               rel="noopener noreferrer"
-              to="https://www.germanwatch.org/de"
+              to={texts.share.externalLinks.germanwatch}
               className="w-full"
             >
-              <Button className="w-full">Mehr zu Germanwatch</Button>
+              <Button className="w-full">
+                {texts.share.buttons.moreGermanwatch}
+              </Button>
             </Link>
 
             <Link
               target="_blank"
               rel="noopener noreferrer"
-              to="https://www.germanwatch.org/de/handabdruck"
+              to={texts.share.externalLinks.handabdruck}
               className="w-full"
             >
-              <Button className="w-full">Mehr zum Handabdruck</Button>
+              <Button className="w-full">
+                {texts.share.buttons.moreHandabdruck}
+              </Button>
             </Link>
           </div>
 
           {/* Additional Info */}
           <div className="text-center mt-4 text-gray-600 text-sm relative z-10">
-            <p>Entdecke mehr über Nachhaltigkeit und deine Möglichkeiten</p>
+            <p>{texts.share.additionalInfo}</p>
           </div>
         </CardContent>
       </Card>

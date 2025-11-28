@@ -3,19 +3,28 @@
  */
 
 import type { Category } from "@/types/avatar";
+import texts from "@/assets/app-texts.json";
 
 /**
  * Body customization categories for "Wer bist du?" (Who are you?) step
  */
 export const BODY_CATEGORIES: Category[] = [
-  { id: "head", name: "Kopf", multiSelect: false },
-  { id: "face", name: "Gesicht", multiSelect: true },
-  { id: "hair", name: "Haare", multiSelect: false },
-  { id: "bodytype", name: "Körper", multiSelect: false },
-  { id: "clothes", name: "Kleidung", multiSelect: true },
-  { id: "shoes", name: "Schuhe", multiSelect: false },
-  { id: "accessoires", name: "Zubehör", multiSelect: true },
-  { id: "handicap", name: "Hilfsmittel", multiSelect: true },
+  { id: "head", name: texts.avatar.categories.head, multiSelect: false },
+  { id: "face", name: texts.avatar.categories.face, multiSelect: true },
+  { id: "hair", name: texts.avatar.categories.hair, multiSelect: false },
+  {
+    id: "bodytype",
+    name: texts.avatar.categories.bodytype,
+    multiSelect: false,
+  },
+  { id: "clothes", name: texts.avatar.categories.clothes, multiSelect: true },
+  { id: "shoes", name: texts.avatar.categories.shoes, multiSelect: false },
+  {
+    id: "accessoires",
+    name: texts.avatar.categories.accessoires,
+    multiSelect: true,
+  },
+  { id: "handicap", name: texts.avatar.categories.handicap, multiSelect: true },
 ];
 
 /**
