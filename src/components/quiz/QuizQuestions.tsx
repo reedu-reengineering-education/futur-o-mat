@@ -97,7 +97,7 @@ export default function Quiz() {
                 <Button
                   key={i}
                   onClick={() => setSelected(i)}
-                  variant={isSelected ? "default" : "secondary"}
+                  variant={isSelected ? "default" : "outline"}
                   className="flex justify-between h-fit"
                 >
                   <span className="flex-1 pr-2 text-left wrap-break-word whitespace-normal">

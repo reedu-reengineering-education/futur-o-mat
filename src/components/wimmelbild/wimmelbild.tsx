@@ -38,24 +38,22 @@ const Wimmelbild: React.FC<WimmelbildProps> = ({ images }) => {
   return (
     <Layout>
       <Card className="max-w-md">
+        {image && (
+          <CardHeader>
+            <CardTitle>{image.title}</CardTitle>
+            <CardDescription>{image.description}</CardDescription>
+          </CardHeader>
+        )}
         <CardContent>
           {image && (
-            <div className="grid gap-4">
-              <CardHeader>
-                <CardTitle>{image.title}</CardTitle>
-                <CardDescription>{image.description}</CardDescription>
-              </CardHeader>
-
-              <div className="w-full h-auto mx-auto rounded-xl overflow-hidden ring-3 ring-primary ring-offset-2">
-                <img
-                  src={image.source}
-                  alt={image.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+            <div className="w-full h-auto mx-auto rounded-xl overflow-hidden ring-3 ring-primary ring-offset-2">
+              <img
+                src={image.source}
+                alt={image.title}
+                className="w-full h-full object-cover"
+              />
             </div>
           )}
-
           {/* Untere Vorschau */}
           <div className="bg-gray-100 rounded-xl py-4 px-2 mt-8 max-w-full">
             <p className="text-sm text-gray-600 mb-4 text-center font-medium">

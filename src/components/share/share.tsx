@@ -111,14 +111,13 @@ export default function Share() {
             />
           </div>
         )}
+        <CardHeader>
+          <CardTitle>Dein Ergebnis teilen</CardTitle>
+          <CardDescription>
+            Teile deinen Avatar und entdecke weitere Möglichkeiten
+          </CardDescription>
+        </CardHeader>
         <CardContent className="grid gap-4 z-1">
-          <CardHeader>
-            <CardTitle>Dein Ergebnis teilen</CardTitle>
-            <CardDescription>
-              Teile deinen Avatar und entdecke weitere Möglichkeiten
-            </CardDescription>
-          </CardHeader>
-
           {/* Avatar */}
           {avatarConfig && (
             <AvatarCanvas

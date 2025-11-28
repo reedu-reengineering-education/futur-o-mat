@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Button } from "../ui/button";
 import { useWimmelbildState } from "@/hooks/useWimmelbildState";
-import { Card, CardContent, CardFooter } from "../ui/card";
+import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
 import Layout from "../layout";
 import AvatarCanvas from "../avatar/AvatarCanvas";
 import { useQuizState } from "@/hooks/useQuizState";
@@ -31,6 +31,7 @@ export default function Engagement() {
   return (
     <Layout>
       <Card className="max-w-md">
+        <CardHeader />
         <CardContent className="grid gap-6">
           <div className="relative max-w-64 aspect-square rounded-2xl overflow-hidden ring-3 ring-primary ring-offset-2 flex items-center justify-center mx-auto">
             {wimmelbild && (
@@ -52,7 +53,7 @@ export default function Engagement() {
           </div>
 
           {/* Erster Text direkt daneben */}
-          <div className="flex-1 text-gray-700 leading-relaxed space-y-4 text-base">
+          <div className="flex-1 text-gray-700 leading-relaxed space-y-4">
             <h2 className="font-semibold text-gray-800 mb-4">
               Du hast deine Stärken und Werte erkannt und dein Herzensthema
               gefunden. Nun kannst du in die Welt tragen, was schon in dir
@@ -65,7 +66,7 @@ export default function Engagement() {
           <hr className="text-gray-300" />
 
           {/* Zweiter Text unter dem Strich */}
-          <div className="text-gray-700 leading-relaxed space-y-4 text-base">
+          <div className="text-gray-700 leading-relaxed space-y-4">
             <p>{strengthEngagement?.description}</p>
           </div>
         </CardContent>
