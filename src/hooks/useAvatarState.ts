@@ -35,15 +35,64 @@ const useAvatarState = create<UseAvatarStateReturn>()(
       avatarConfig: clone(DEFAULT_AVATAR_CONFIG) as AvatarConfig,
 
       updatePart: (part: AvatarPart) => {
-        set((state) => ({
-          avatarConfig: {
+        set((state) => {
+          const newConfig = {
             ...state.avatarConfig,
             selectedParts: {
               ...state.avatarConfig.selectedParts,
               [part.category]: part.id,
             },
-          },
-        }));
+          };
+
+          // If bodytype changed, swap clothes and accessories to match new body type
+          if (part.category === "bodytype") {
+            // Extract the new body type from the part ID
+            const bodyTypes = ["Breit", "Eng", "Normal", "Betont"];
+            let newBodyType = "Normal";
+
+            for (const type of bodyTypes) {
+              if (part.id.includes(type) || part.src.includes(type)) {
+                newBodyType = type;
+                break;
+              }
+            }
+
+            // Swap selectedItems to match the new body type
+            const swappedItems = state.avatarConfig.selectedItems.map(
+              (itemId) => {
+                // Check if this item has a body type indicator
+                const hasBodyTypeIndicator = bodyTypes.some((type) =>
+                  itemId.toLowerCase().includes(type.toLowerCase())
+                );
+
+                if (hasBodyTypeIndicator) {
+                  // Replace the old body type with the new one
+                  // Pattern: clothes_itemname_bodytype or accessoires_itemname_bodytype
+                  let swappedId = itemId;
+                  for (const oldType of bodyTypes) {
+                    if (itemId.toLowerCase().includes(oldType.toLowerCase())) {
+                      // Replace old body type with new one, using lowercase to match manifest naming
+                      const regex = new RegExp(oldType, "i");
+                      swappedId = itemId.replace(
+                        regex,
+                        newBodyType.toLowerCase()
+                      );
+                      break;
+                    }
+                  }
+                  return swappedId;
+                }
+
+                // If no body type indicator, keep it unchanged (universal item)
+                return itemId;
+              }
+            );
+
+            newConfig.selectedItems = swappedItems;
+          }
+
+          return { avatarConfig: newConfig };
+        });
       },
 
       toggleItem: (part: AvatarPart, allParts?: AvatarPart[]) => {
