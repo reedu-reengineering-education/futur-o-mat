@@ -1,7 +1,7 @@
 // wimmelbild.tsx
 
 import { Link } from "@tanstack/react-router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import Layout from "../layout";
 import {
@@ -18,6 +18,7 @@ import {
   type WimmelbildImage,
 } from "@/hooks/useWimmelbildState";
 import { useTexts } from "@/hooks/useTexts";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 
 interface WimmelbildProps {
   images: WimmelbildImage[];
@@ -26,12 +27,14 @@ interface WimmelbildProps {
 const Wimmelbild: React.FC<WimmelbildProps> = ({ images }) => {
   const texts = useTexts();
   const { image, setImage } = useWimmelbildState();
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleImageSelect = (image: WimmelbildImage) => {
     setImage(image);
   };
 
   useEffect(() => {
+    setIsOpen(true);
     if (images.length > 0) {
       setImage(images[0]);
     }
@@ -40,6 +43,14 @@ const Wimmelbild: React.FC<WimmelbildProps> = ({ images }) => {
   return (
     <Layout>
       <Card className="max-w-md">
+        <div className="flex w-full justify-end">
+          <Dialog open={isOpen} onOpenChange={setIsOpen}>
+            <DialogTrigger asChild></DialogTrigger>
+            <DialogContent>
+              <p>{texts.wimmelbild.infoText}</p>
+            </DialogContent>
+          </Dialog>
+        </div>
         {image && (
           <CardHeader>
             <CardTitle>{image.title}</CardTitle>
@@ -58,9 +69,6 @@ const Wimmelbild: React.FC<WimmelbildProps> = ({ images }) => {
           )}
           {/* Untere Vorschau */}
           <div className="bg-gray-100 rounded-xl py-4 px-2 mt-8 max-w-full">
-            <p className="text-sm text-gray-600 mb-4 text-center font-medium">
-              {texts.wimmelbild.availableImages}
-            </p>
             <div className="flex">
               <ScrollArea className="w-1 flex-1">
                 <div className="flex w-max space-x-4 py-4 px-2">

@@ -13,7 +13,7 @@
           "strength": "STRATEGISCHES_HANDELN"
         },
         {
-          "text": "versuche ich, den/die andere/n aufzuheitern",
+          "text": "versuche ich, den: die andere:n aufzuheitern ",
           "strength": "HUMOR"
         },
         {
@@ -39,29 +39,29 @@
           "strength": "VERANTWORTUNGSBEWUSSTSEIN"
         },
         {
-          "text": "unterteile ich große Projekte in Aufgaben",
+          "text": "unterteile ich etwas (große Projekte) in Aufgaben / Schritte ",
           "strength": "STRATEGISCHES_HANDELN"
         }
       ]
     },
     {
       "id": 3,
-      "question": "Andere würden über mich sagen,",
+      "question": "Andere würden über mich sagen, dass ich",
       "answers": [
         {
-          "text": "dass ich lustig bin",
+          "text": "lustig bin",
           "strength": "HUMOR"
         },
         {
-          "text": "dass ich schlau bin",
+          "text": "schlau bin",
           "strength": "WISSEN"
         },
         {
-          "text": "dass ich mutig bin",
+          "text": "mutig bin",
           "strength": "MUT"
         },
         {
-          "text": "dass ich kreativ bin",
+          "text": "kreativ bin ",
           "strength": "KREATIVITAET"
         }
       ]
@@ -105,14 +105,14 @@
           "strength": "KOMPETENZ"
         },
         {
-          "text": "übe ich an etwas, was mich herausfordert",
+          "text": "übe ich an etwas, worin ich mich verbessern will",
           "strength": "AUSDAUER"
         }
       ]
     },
     {
       "id": 6,
-      "question": "Wenn etwas schwierig wird, (z. B. Hausaufgaben, Sport etc.)",
+      "question": "Wenn etwas schwierig wird, (z.B. Hausaufgaben, Sport, Freundschaft)",
       "answers": [
         {
           "text": "bleibe ich dran und schaffe es trotzdem",
@@ -178,22 +178,22 @@
     },
     {
       "id": 9,
-      "question": "Freunde/Freundinnen fragen mich, wenn",
+      "question": "Freund:innen fragen mich, wenn sie",
       "answers": [
         {
-          "text": "sie Rat für eine Entscheidung brauchen",
+          "text": "Rat für eine Entscheidung brauchen",
           "strength": "URTEILSVERMOGEN"
         },
         {
-          "text": "sie jemanden brauchen, der zuhört und versteht",
+          "text": "jemanden brauchen, der zuhört und versteht",
           "strength": "EMPATHIE"
         },
         {
-          "text": "sie Hilfe bei etwas brauchen, wo ich ein Profi bin",
+          "text": "Hilfe bei etwas brauchen, wodrin ich ein Profi bin",
           "strength": "KOMPETENZ"
         },
         {
-          "text": "sie ungewöhnliche Ideen brauchen",
+          "text": "ungewöhnliche Ideen brauchen",
           "strength": "KREATIVITAET"
         }
       ]
@@ -251,7 +251,7 @@
           "value": "VIELFALT"
         },
         {
-          "text": "mehr Sicherheit/Schutz für alle",
+          "text": "mehr Sicherheit für alle ",
           "value": "SICHERHEIT"
         },
         {
@@ -266,22 +266,22 @@
     },
     {
       "id": 13,
-      "question": "Im Umgang mit anderen ist mir wichtig,",
+      "question": "Im Umgang mit andere ist mir wichtig, dass",
       "answers": [
         {
-          "text": "dass die anderen auf mich hören und tun, was ich sage",
+          "text": "die anderen auf mich hören und tun, was ich sage ",
           "value": "MACHT"
         },
         {
-          "text": "dass alle sich äußern und einbringen",
+          "text": "alle sich äußern und einbringen",
           "value": "SINN_FUR_GEMEINSCHAFT"
         },
         {
-          "text": "dass ich gut dastehe und gemocht werde",
+          "text": "ich gut dastehe und gemocht werde ",
           "value": "ANERKENNUNG"
         },
         {
-          "text": "dass wir offen und ehrlich miteinander sprechen",
+          "text": "wir offen und ehrlich miteinander sprechen",
           "value": "TRANSPARENZ"
         }
       ]
@@ -317,11 +317,11 @@
           "value": "MACHT"
         },
         {
-          "text": "beliebt zu sein",
+          "text": "gemocht zu werden",
           "value": "ANERKENNUNG"
         },
         {
-          "text": "fröhlich zu sein",
+          "text": "glücklich zu sein",
           "value": "GENUSS"
         },
         {
@@ -332,44 +332,44 @@
     },
     {
       "id": 16,
-      "question": "Bei meinen Freunden/Freundinnen hoffe ich,",
+      "question": "Bei meinen Freund:innen hoffe ich, dass keine:r",
       "answers": [
         {
-          "text": "dass keine/r hinter meinem Rücken etwas macht",
+          "text": "hinter meinem Rücken etwas macht",
           "value": "TRANSPARENZ"
         },
         {
-          "text": "dass keine/r mich vor allen anderen beleidigt",
+          "text": "mich vor allen anderen beleidigt",
           "value": "ANERKENNUNG"
         },
         {
-          "text": "dass keine/r mich ausschließt, weil ich eine andere Meinung habe",
+          "text": "mich ausschließt, weil ich eine andere Meinung habe",
           "value": "VIELFALT"
         },
         {
-          "text": "das keine/r mich im Stich lässt, wenn ich Hilfe brauche",
+          "text": "mich im Stich lässt, wenn ich Hilfe brauche ",
           "value": "FURSORGE"
         }
       ]
     },
     {
       "id": 17,
-      "question": "Ich werde mich gut fühlen, wenn",
+      "question": "Ich werde mich gut fühlen, wenn ich",
       "answers": [
         {
-          "text": "ich meine Ziele erreiche und etwas aus mir mache",
+          "text": "meine Ziele erreiche und etwas aus mir mache",
           "value": "LEISTUNG"
         },
         {
-          "text": "ich die Natur schütze und nachhaltig lebe",
+          "text": "die Natur schütze und nachhaltig lebe",
           "value": "NACHHALTIGKEIT"
         },
         {
-          "text": "ich mache, was von mir erwartet wird",
+          "text": "mache, was von mir erwartet wird",
           "value": "KONFORMITAET"
         },
         {
-          "text": "ich mich für soziale Gerechtigkeit einsetze",
+          "text": "mich für soziale Gerechtigkeit einsetze",
           "value": "SINN_FUR_GERECHTIGKEIT"
         }
       ]
@@ -379,7 +379,7 @@
       "question": "Andere sollen in mir eine Person sehen, die",
       "answers": [
         {
-          "text": "die mutig ist und Herausforderungen sucht",
+          "text": "mutig ist und Herausforderungen sucht",
           "value": "ABENTEUER"
         },
         {
@@ -387,29 +387,29 @@
           "value": "SELBSTBESTIMMUNG"
         },
         {
-          "text": "Feste und Rituale ihrer Kultur/Familie/Religion lebt",
+          "text": "Feste und Rituale ihrer Kultur lebt ",
           "value": "TRADITION"
         },
         {
-          "text": "die ehrlich ist und Verantwortung für ihr Handeln übernimmt",
+          "text": "ehrlich ist und Verantwortung für ihre Handeln übernimmt",
           "value": "TRANSPARENZ"
         }
       ]
     },
     {
       "id": 19,
-      "question": "In Freundschaften ist mir wichtig,",
+      "question": "In Freundschaften ist mir wichtig, dass ",
       "answers": [
         {
-          "text": "dass wir Neues und Aufregendes zusammen erleben",
+          "text": "wir Neues und Aufregendes zusammen erleben ",
           "value": "ABENTEUER"
         },
         {
-          "text": "dass wir schätzen, dass wir verschieden sind",
+          "text": "wir uns trotz verschiedener Meinungen mögen",
           "value": "VIELFALT"
         },
         {
-          "text": "dass wir einfach Spaß haben",
+          "text": "wir einfach Spaß haben",
           "value": "GENUSS"
         }
       ]

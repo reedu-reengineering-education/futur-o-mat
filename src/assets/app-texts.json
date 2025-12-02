@@ -57,9 +57,9 @@
     }
   },
   "wimmelbild": {
-    "availableImages": "Verfügbare Wimmelbilder:",
     "selectButton": "Auswählen",
-    "imageAlt": "Wimmelbild Hintergrund"
+    "imageAlt": "Wimmelbild Hintergrund",
+    "infoText": "Such dir nun eines der folgenden Bilder aus. Welches Thema liegt dir besonders am Herzen?"
   },
   "engagement": {
     "heading": "Du hast deine Stärken und Werte erkannt und dein Herzensthema gefunden. Nun kannst du in die Welt tragen, was schon in dir steckt!",
@@ -84,14 +84,16 @@
       "wimmelbildZukunft": "Wimmelbild Zukunft",
       "handabdruckTest": "Handabdruck-Test",
       "moreGermanwatch": "Mehr zu Germanwatch",
-      "moreHandabdruck": "Mehr zum Handabdruck"
+      "moreHandabdruck": "Mehr zum Handabdruck",
+      "newStart": "Neustarten"
     },
     "additionalInfo": "Entdecke mehr über Nachhaltigkeit und deine Möglichkeiten",
     "externalLinks": {
       "wimmelbildZukunft": "https://www.germanwatch.org/de/das-sdg-wimmelbild-zukunft",
       "handabdruckTest": "https://www.handabdruck.eu/",
       "germanwatch": "https://www.germanwatch.org/de",
-      "handabdruck": "https://www.germanwatch.org/de/handabdruck"
+      "handabdruck": "https://www.germanwatch.org/de/handabdruck",
+      "neuStart": "/"
     }
   },
   "shareReceive": {
