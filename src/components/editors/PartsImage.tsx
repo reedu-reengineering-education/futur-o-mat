@@ -1,7 +1,8 @@
 import { useEffect, useRef, type ImgHTMLAttributes } from "react";
+import { croppedImageCache } from "../../utils/preloadImages";
 
 function findVisibleBounds(
-  imageData: ImageData,
+  imageData: ImageData
 ): { left: number; top: number; width: number; height: number } | null {
   const { width, height, data } = imageData;
   let minX = width,
@@ -39,11 +40,18 @@ function findVisibleBounds(
 
 export default function PartsImage(props: ImgHTMLAttributes<HTMLImageElement>) {
   const ref = useRef<HTMLImageElement>(null);
+  const originalSrc = props.src as string;
+
+  // Check cache and use cached version if available
+  const cachedSrc = croppedImageCache.get(originalSrc);
+  const srcToUse = cachedSrc || originalSrc;
 
   useEffect(() => {
-    // Fit image to visible bounds on load
+    // If we already have a cached version, no need to process
+    if (cachedSrc) return;
+
     const img = ref.current;
-    if (!img) return;
+    if (!img || !originalSrc) return;
 
     const handleImageLoad = () => {
       // Create a temporary canvas to process the image
@@ -60,7 +68,7 @@ export default function PartsImage(props: ImgHTMLAttributes<HTMLImageElement>) {
         0,
         0,
         tempCanvas.width,
-        tempCanvas.height,
+        tempCanvas.height
       );
       const bounds = findVisibleBounds(imageData);
 
@@ -81,11 +89,16 @@ export default function PartsImage(props: ImgHTMLAttributes<HTMLImageElement>) {
           0,
           0,
           bounds.width,
-          bounds.height,
+          bounds.height
         );
 
         // Replace image source with cropped image
-        img.src = croppedCanvas.toDataURL("image/png");
+        const croppedDataUrl = croppedCanvas.toDataURL("image/png");
+
+        // Cache the result
+        croppedImageCache.set(originalSrc, croppedDataUrl);
+
+        img.src = croppedDataUrl;
       }
     };
 
@@ -93,7 +106,7 @@ export default function PartsImage(props: ImgHTMLAttributes<HTMLImageElement>) {
     return () => {
       img.removeEventListener("load", handleImageLoad);
     };
-  }, []);
+  }, [originalSrc, cachedSrc]);
 
-  return <img ref={ref} {...props} />;
+  return <img ref={ref} {...props} src={srcToUse} />;
 }
