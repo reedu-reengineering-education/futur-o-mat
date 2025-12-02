@@ -301,14 +301,33 @@ const useAvatarState = create<UseAvatarStateReturn>()(
           const shuffled = [...categoryParts].sort(() => Math.random() - 0.5);
 
           // If parts have subcategories, pick at most one per subcategory
+          // For clothes: enforce onepiece vs top/bottom constraint
           const picked: AvatarPart[] = [];
           const seenSubcats = new Set<string>();
+          let hasOnepiece = false;
+          let hasTopOrBottom = false;
+
           for (const p of shuffled) {
             const sub = p.subcategory;
             if (sub) {
+              // Skip if we already have this subcategory
               if (seenSubcats.has(sub)) continue;
+
+              // For clothes category, enforce onepiece vs top/bottom constraint
+              if (category === "clothes") {
+                if (sub === "onepiece" && hasTopOrBottom) continue;
+                if ((sub === "top" || sub === "bottom") && hasOnepiece)
+                  continue;
+              }
+
               seenSubcats.add(sub);
               picked.push(p);
+
+              // Track what we've picked for clothes
+              if (category === "clothes") {
+                if (sub === "onepiece") hasOnepiece = true;
+                if (sub === "top" || sub === "bottom") hasTopOrBottom = true;
+              }
             } else {
               // no subcategory; it's safe to pick
               picked.push(p);
