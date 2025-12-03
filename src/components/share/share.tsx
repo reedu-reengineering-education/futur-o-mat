@@ -10,6 +10,8 @@ import {
   CardTitle,
 } from "../ui/card";
 import AvatarCanvas from "../avatar/AvatarCanvas";
+import Arrow3 from "../icons/arrow-swirl-up";
+import Arrow4 from "../icons/arrow-up-right";
 import { DownloadIcon, Share2Icon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useShare } from "@/hooks/useShare";
@@ -26,6 +28,7 @@ import {
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import { isMobileDevice } from "@/utils/mobileOptimizations";
 import { useTexts } from "@/hooks/useTexts";
+import { STRENGTH_INFO, VALUE_INFO } from "@/assets/strengths-values.json";
 
 export default function Share() {
   const texts = useTexts();
@@ -39,6 +42,13 @@ export default function Share() {
   const [showTooltip, setShowTooltip] = useState<boolean>(false);
 
   const [shareUrl, setShareUrl] = useState<string>("");
+
+  const strengthInfo = result
+    ? STRENGTH_INFO[result.strengthKey as keyof typeof STRENGTH_INFO]
+    : null;
+  const valueInfo = result
+    ? VALUE_INFO[result.valueKey as keyof typeof VALUE_INFO]
+    : null;
 
   useEffect(() => {
     if (avatarConfig && result && wimmelbild) {
@@ -120,19 +130,41 @@ export default function Share() {
         <CardContent className="grid gap-4 z-1">
           {/* Avatar */}
           {avatarConfig && (
-            <AvatarCanvas
-              avatarConfig={avatarConfig}
-              quizResult={result ?? undefined}
-              className="w-60 mx-auto"
-              showStrengh
-              showValue
-              ref={ref}
-            />
+            <div>
+              <div className="flex flex-col">
+                <p className="font-semibold ">{texts.quiz.result.valueLabel}</p>
+                <p className="bg-primary rounded px-2 py-1 font-medium text-primary-foreground text-sm w-fit">
+                  {valueInfo?.title}
+                </p>
+              </div>
+
+              <div className="flex justify-center relative">
+                <Arrow4 className="absolute -left-4 h-10 rotate-25 text-primary scale-y-[-1]" />
+
+                <AvatarCanvas
+                  avatarConfig={avatarConfig}
+                  quizResult={result ?? undefined}
+                  showStrengh
+                  showValue
+                  className="w-60"
+                />
+
+                <Arrow3 className="absolute bottom-7 right-0 h-18 text-primary -rotate-70" />
+              </div>
+
+              <div className="flex flex-col items-end">
+                <p className="bg-primary rounded px-2 py-1 font-medium text-primary-foreground text-sm w-fit">
+                  {strengthInfo?.title}
+                </p>
+                <p className="font-semibold">
+                  {texts.quiz.result.strengthLabel}
+                </p>
+              </div>
+            </div>
           )}
 
           {/* Buttons Grid - Mobile optimiert */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 relative z-10">
-            {/* Teilen Button */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 p-4">
             <Button
               onClick={() => {
                 if (!shareUrl) return;
@@ -160,12 +192,14 @@ export default function Share() {
               {texts.share.buttons.download}
             </Button>
 
-            {/* Weitere Buttons... */}
+            <div className="text-center text-gray-600 text-sm py-1 md:col-span-2 ">
+              <p>{texts.share.additionalInfo}</p>
+            </div>
+
             <Link
               target="_blank"
               rel="noopener noreferrer"
               to={texts.share.externalLinks.wimmelbildZukunft}
-              className="w-full"
             >
               <Button className="w-full">
                 {texts.share.buttons.wimmelbildZukunft}
@@ -176,7 +210,6 @@ export default function Share() {
               target="_blank"
               rel="noopener noreferrer"
               to={texts.share.externalLinks.handabdruckTest}
-              className="w-full"
             >
               <Button className="w-full">
                 {texts.share.buttons.handabdruckTest}
@@ -187,7 +220,6 @@ export default function Share() {
               target="_blank"
               rel="noopener noreferrer"
               to={texts.share.externalLinks.germanwatch}
-              className="w-full"
             >
               <Button className="w-full">
                 {texts.share.buttons.moreGermanwatch}
@@ -198,17 +230,20 @@ export default function Share() {
               target="_blank"
               rel="noopener noreferrer"
               to={texts.share.externalLinks.handabdruck}
-              className="w-full"
             >
               <Button className="w-full">
                 {texts.share.buttons.moreHandabdruck}
               </Button>
             </Link>
-          </div>
 
-          {/* Additional Info */}
-          <div className="text-center mt-4 text-gray-600 text-sm relative z-10">
-            <p>{texts.share.additionalInfo}</p>
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              to={texts.share.externalLinks.neuStart}
+              className="md:col-span-2"
+            >
+              <Button className="w-full">{texts.share.buttons.newStart}</Button>
+            </Link>
           </div>
         </CardContent>
       </Card>

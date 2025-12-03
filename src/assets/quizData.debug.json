@@ -6,23 +6,23 @@
       "answers": [
         {
           "text": "zeige ich mein Mitgefühl",
-          "strength": "EMPATHIE",
-          "value": "FURSORGE"
+          "strength": "MUT",
+          "value": "VIELFALT"
         },
         {
           "text": "erkläre ich, was jetzt zu tun ist",
           "strength": "STRATEGISCHES_HANDELN",
-          "value": "MACHT"
+          "value": "SICHERHEIT"
         },
         {
-          "text": "versuche ich, den/die andere/n aufzuheitern",
+          "text": "versuche ich, den: die andere:n aufzuheitern ",
           "strength": "HUMOR",
           "value": "NACHHALTIGKEIT"
         },
         {
           "text": "höre ich zu und frage nach",
           "strength": "KOMMUNIKATIONSFAEHIGKEIT",
-          "value": "SINN_FUR_GEMEINSCHAFT"
+          "value": "TRADITION"
         }
       ]
     }

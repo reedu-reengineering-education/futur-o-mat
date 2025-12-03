@@ -125,10 +125,15 @@ export function QuizResult() {
       </Dialog>
       <Card className="max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">{texts.quiz.result.title}</CardTitle>
+          <CardTitle className="text-xs font-medium">
+            {texts.quiz.result.title}
+          </CardTitle>
         </CardHeader>
         <CardContent className="grid gap-12">
-          <div className="flex flex-col">
+          <div
+            onClick={() => setIsValueDialogOpen(true)}
+            className="flex flex-col"
+          >
             <p className="font-semibold ">{texts.quiz.result.valueLabel}</p>
             <p className="bg-primary rounded px-2 py-1 font-medium text-primary-foreground text-sm w-fit">
               {valueInfo?.title}
@@ -136,7 +141,10 @@ export function QuizResult() {
           </div>
           {/* Avatar Bild */}
           <div className="flex justify-center relative">
-            <Arrow4 className="absolute -top-6 -left-4 h-12 rotate-25 text-primary scale-y-[-1]" />
+            <Arrow4
+              onClick={() => setIsValueDialogOpen(true)}
+              className="absolute -top-6 -left-4 h-12 rotate-25 text-primary scale-y-[-1]"
+            />
 
             <AvatarCanvas
               avatarConfig={avatarConfig}
@@ -150,10 +158,16 @@ export function QuizResult() {
               className="w-60"
             />
 
-            <Arrow3 className="absolute bottom-0 right-0 h-20 text-primary -rotate-55" />
+            <Arrow3
+              onClick={() => setIsStrengthDialogOpen(true)}
+              className="absolute bottom-0 right-0 h-20 text-primary -rotate-55"
+            />
           </div>
 
-          <div className="flex flex-col items-end">
+          <div
+            onClick={() => setIsStrengthDialogOpen(true)}
+            className="flex flex-col items-end"
+          >
             <p className="bg-primary rounded px-2 py-1 font-medium text-primary-foreground text-sm w-fit">
               {strengthInfo?.title}
             </p>

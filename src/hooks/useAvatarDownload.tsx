@@ -136,7 +136,7 @@ export function useAvatarDownload() {
                       textAlign: "center",
                     }}
                   >
-                    Dein Wert
+                    Dein Wert: {valueKey}
                   </h2>
                   <p
                     style={{
@@ -166,7 +166,7 @@ export function useAvatarDownload() {
                       textAlign: "center",
                     }}
                   >
-                    Deine Stärke
+                    Deine Stärke: {strengthKey}
                   </h2>
                   <p
                     style={{

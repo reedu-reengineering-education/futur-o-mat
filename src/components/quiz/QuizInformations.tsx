@@ -21,6 +21,7 @@ export function QuizInformation() {
             </div>
           )}
           <p>{texts.quiz.information.description}</p>
+          <p>{texts.quiz.questions.infoDialog}</p>
         </CardContent>
         <CardFooter className="flex justify-end">
           <Link to={`/quiz/questions`}>
