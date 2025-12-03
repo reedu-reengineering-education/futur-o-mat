@@ -164,7 +164,7 @@ export default function Share() {
           )}
 
           {/* Buttons Grid - Mobile optimiert */}
-          <div className="grid grid-cols-2 gap-3 p-0.5 sm:gap-4 sm:p-4">
+          <div className="grid grid-cols-1 gap-3 p-4">
             <Button
               onClick={() => {
                 if (!shareUrl) return;
@@ -182,17 +182,17 @@ export default function Share() {
                 }
               }}
             >
-              <Share2Icon className="" />
+              <Share2Icon className="col-span-2" />
               {texts.share.buttons.share}
             </Button>
 
             {/* Download Button */}
-            <Button onClick={onDownload}>
+            <Button className="col-span-2" onClick={onDownload}>
               <DownloadIcon />
               {texts.share.buttons.download}
             </Button>
 
-            <div className="text-center mt-4 text-gray-600 text-sm relative col-span-2 ">
+            <div className="text-center mt-4 text-gray-600 text-sm w-full col-span-2 ">
               <p>{texts.share.additionalInfo}</p>
             </div>
 
@@ -200,9 +200,9 @@ export default function Share() {
               target="_blank"
               rel="noopener noreferrer"
               to={texts.share.externalLinks.wimmelbildZukunft}
-              className=""
+              className="w-full col-span-2"
             >
-              <Button className="w-full">
+              <Button className="w-full whitespace-normal text-center">
                 {texts.share.buttons.wimmelbildZukunft}
               </Button>
             </Link>
@@ -211,7 +211,7 @@ export default function Share() {
               target="_blank"
               rel="noopener noreferrer"
               to={texts.share.externalLinks.handabdruckTest}
-              className=""
+              className="w-full col-span-2"
             >
               <Button className="w-full">
                 {texts.share.buttons.handabdruckTest}
@@ -222,7 +222,7 @@ export default function Share() {
               target="_blank"
               rel="noopener noreferrer"
               to={texts.share.externalLinks.germanwatch}
-              className=""
+              className="w-full col-span-2"
             >
               <Button className="w-full whitespace-nowrap text-xs sm:text-sm px-2 overflow-visible scale-100 sm:scale-100">
                 {texts.share.buttons.moreGermanwatch}
@@ -233,7 +233,7 @@ export default function Share() {
               target="_blank"
               rel="noopener noreferrer"
               to={texts.share.externalLinks.handabdruck}
-              className=""
+              className="w-full col-span-2"
             >
               <Button className="w-full whitespace-nowrap text-xs sm:text-sm px-2 overflow-visible scale-100 sm:scale-100">
                 {texts.share.buttons.moreHandabdruck}
