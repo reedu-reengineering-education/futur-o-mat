@@ -164,8 +164,7 @@ export default function Share() {
           )}
 
           {/* Buttons Grid - Mobile optimiert */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 relative z-10">
-            {/* Teilen Button */}
+          <div className="grid grid-cols-2 gap-3 p-0.5 sm:gap-4 sm:p-4">
             <Button
               onClick={() => {
                 if (!shareUrl) return;
@@ -183,7 +182,7 @@ export default function Share() {
                 }
               }}
             >
-              <Share2Icon />
+              <Share2Icon className="" />
               {texts.share.buttons.share}
             </Button>
 
@@ -201,7 +200,7 @@ export default function Share() {
               target="_blank"
               rel="noopener noreferrer"
               to={texts.share.externalLinks.wimmelbildZukunft}
-              className="w-full"
+              className=""
             >
               <Button className="w-full">
                 {texts.share.buttons.wimmelbildZukunft}
@@ -212,7 +211,7 @@ export default function Share() {
               target="_blank"
               rel="noopener noreferrer"
               to={texts.share.externalLinks.handabdruckTest}
-              className="w-full"
+              className=""
             >
               <Button className="w-full">
                 {texts.share.buttons.handabdruckTest}
@@ -223,9 +222,9 @@ export default function Share() {
               target="_blank"
               rel="noopener noreferrer"
               to={texts.share.externalLinks.germanwatch}
-              className="w-full"
+              className=""
             >
-              <Button className="w-full">
+              <Button className="w-full whitespace-nowrap text-xs sm:text-sm px-2 overflow-visible scale-100 sm:scale-100">
                 {texts.share.buttons.moreGermanwatch}
               </Button>
             </Link>
@@ -234,9 +233,9 @@ export default function Share() {
               target="_blank"
               rel="noopener noreferrer"
               to={texts.share.externalLinks.handabdruck}
-              className="w-full"
+              className=""
             >
-              <Button className="w-full">
+              <Button className="w-full whitespace-nowrap text-xs sm:text-sm px-2 overflow-visible scale-100 sm:scale-100">
                 {texts.share.buttons.moreHandabdruck}
               </Button>
             </Link>

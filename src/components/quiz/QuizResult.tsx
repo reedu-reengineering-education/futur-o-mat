@@ -125,7 +125,9 @@ export function QuizResult() {
       </Dialog>
       <Card className="max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">{texts.quiz.result.title}</CardTitle>
+          <CardTitle className="text-xs font-medium">
+            {texts.quiz.result.title}
+          </CardTitle>
         </CardHeader>
         <CardContent className="grid gap-12">
           <div
