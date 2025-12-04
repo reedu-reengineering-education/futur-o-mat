@@ -18,7 +18,13 @@ import {
   type WimmelbildImage,
 } from "@/hooks/useWimmelbildState";
 import { useTexts } from "@/hooks/useTexts";
-import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
+import { DialogDescription } from "@radix-ui/react-dialog";
 
 interface WimmelbildProps {
   images: WimmelbildImage[];
@@ -47,7 +53,9 @@ const Wimmelbild: React.FC<WimmelbildProps> = ({ images }) => {
           <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild></DialogTrigger>
             <DialogContent>
+              <DialogTitle></DialogTitle>
               <p>{texts.wimmelbild.infoText}</p>
+              <DialogDescription></DialogDescription>
             </DialogContent>
           </Dialog>
         </div>
