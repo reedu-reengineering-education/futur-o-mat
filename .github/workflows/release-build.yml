@@ -1,24 +1,34 @@
-name: Quick Vite Build
+name: release_build
 
 on:
   release:
     types: [created]
 
 jobs:
-  build:
+  bauen:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Code holen
+        uses: actions/checkout@v3
+
+      - name: Node.js installieren
+        uses: actions/setup-node@v3
         with:
           node-version: "20"
-      - run: npm ci
-      - run: npm run build
-      - run: cd dist && zip -r ../app.zip .
-      - uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pakete installieren
+        run: npm ci
+
+      - name: App bauen
+        run: npm run build
+
+      - name: ZIP erstellen
+        run: |
+          cd dist
+          zip -r ../futur-o-mat.zip .
+
+      - name: ZIP hochladen
+        uses: softprops/action-gh-release@v1
         with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./app.zip
-          asset_name: app.zip
+          files: futur-o-mat.zip
