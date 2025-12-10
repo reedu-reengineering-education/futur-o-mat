@@ -69,9 +69,23 @@ export default function Share() {
 
   const ref = useRef<HTMLCanvasElement>(null);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const canvas = document.querySelector("canvas");
+      if (canvas) {
+        ref.current = canvas as HTMLCanvasElement;
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const onDownload = () => {
     if (ref.current) {
       handleDownload(ref.current);
+    } else {
+      console.log(ref.current);
+      console.log("GEHT NICHT");
     }
   };
 
@@ -146,7 +160,7 @@ export default function Share() {
                   quizResult={result ?? undefined}
                   showStrengh
                   showValue
-                  className="w-60"
+                  className="w-60 avatar-for-downloade"
                 />
 
                 <Arrow3 className="absolute bottom-7 right-0 h-18 text-primary -rotate-70" />

@@ -346,42 +346,78 @@ const useAvatarState = create<UseAvatarStateReturn>()(
             });
           }
 
-          const numItems = Math.floor(Math.random() * 4);
+          const baseNumItems = Math.floor(Math.random() * 4);
           const shuffled = [...categoryParts].sort(() => Math.random() - 0.5);
 
-          // If parts have subcategories, pick at most one per subcategory
-          // For clothes: enforce onepiece vs top/bottom constraint
+          // Required subcategories for this category
+          const requieredSubCategories = [
+            "lip_shape",
+            "nose",
+            "eyebrows",
+            "eye_color",
+          ].filter((sub) =>
+            // Prüfe ob diese subcategory in dieser Kategorie überhaupt vorkommt
+            shuffled.some((p) => p.subcategory === sub)
+          );
+
           const picked: AvatarPart[] = [];
           const seenSubcats = new Set<string>();
           let hasOnepiece = false;
           let hasTopOrBottom = false;
 
-          for (const p of shuffled) {
-            const sub = p.subcategory;
-            if (sub) {
-              // Skip if we already have this subcategory
-              if (seenSubcats.has(sub)) continue;
+          // PHASE 1: Required subcategories GARANTIEREN (unabhängig von numItems)
+          for (const requiredSub of requieredSubCategories) {
+            if (seenSubcats.has(requiredSub)) continue;
 
-              // For clothes category, enforce onepiece vs top/bottom constraint
+            const requiredPart = shuffled.find(
+              (p) => p.subcategory === requiredSub
+            );
+            if (requiredPart) {
+              picked.push(requiredPart);
+              seenSubcats.add(requiredSub);
+
+              // Für clothes: spezielle Logik
               if (category === "clothes") {
-                if (sub === "onepiece" && hasTopOrBottom) continue;
-                if ((sub === "top" || sub === "bottom") && hasOnepiece)
-                  continue;
+                if (requiredSub === "onepiece") hasOnepiece = true;
+                if (requiredSub === "top" || requiredSub === "bottom")
+                  hasTopOrBottom = true;
               }
-
-              seenSubcats.add(sub);
-              picked.push(p);
-
-              // Track what we've picked for clothes
-              if (category === "clothes") {
-                if (sub === "onepiece") hasOnepiece = true;
-                if (sub === "top" || sub === "bottom") hasTopOrBottom = true;
-              }
-            } else {
-              // no subcategory; it's safe to pick
-              picked.push(p);
             }
-            if (picked.length >= numItems) break;
+          }
+
+          // PHASE 2: Optionale Teile bis max numItems
+          // Berechne wie viele optionale Teile noch möglich sind
+          const remainingSlots = Math.max(0, baseNumItems - picked.length);
+
+          if (remainingSlots > 0) {
+            for (const p of shuffled) {
+              if (picked.length >= baseNumItems) break;
+
+              const sub = p.subcategory;
+              if (sub) {
+                // Skip if we already have this subcategory
+                if (seenSubcats.has(sub)) continue;
+
+                if (category === "clothes") {
+                  // For clothes category, enforce onepiece vs top/bottom constraint
+                  if (sub === "onepiece" && hasTopOrBottom) continue;
+                  if ((sub === "top" || sub === "bottom") && hasOnepiece)
+                    continue;
+                }
+
+                seenSubcats.add(sub);
+                picked.push(p);
+
+                // Track what we've picked for clothes
+                if (category === "clothes") {
+                  if (sub === "onepiece") hasOnepiece = true;
+                  if (sub === "top" || sub === "bottom") hasTopOrBottom = true;
+                }
+              } else {
+                // no subcategory; it's safe to pick
+                picked.push(p);
+              }
+            }
           }
           picked.forEach((part) => newConfig.selectedItems.push(part.id));
         });
