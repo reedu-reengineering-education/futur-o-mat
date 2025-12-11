@@ -83,9 +83,6 @@ export default function Share() {
   const onDownload = () => {
     if (ref.current) {
       handleDownload(ref.current);
-    } else {
-      console.log(ref.current);
-      console.log("GEHT NICHT");
     }
   };
 
@@ -160,7 +157,7 @@ export default function Share() {
                   quizResult={result ?? undefined}
                   showStrengh
                   showValue
-                  className="w-60 avatar-for-downloade"
+                  className="w-60"
                 />
 
                 <Arrow3 className="absolute bottom-7 right-0 h-18 text-primary -rotate-70" />
