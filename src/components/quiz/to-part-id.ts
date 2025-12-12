@@ -12,7 +12,7 @@ export const VALUE_TO_PART_ID: Record<string, string> = {
   SICHERHEIT: "values_schloss",
   TRADITION: "values_familienwappen",
   KONFORMITAET: "values_konformitaet",
-  ANERKENNUNG: "value_handschlag",
+  ANERKENNUNG: "values_handschlag",
 };
 
 export const STRENGTH_TO_PART_ID: Record<string, string> = {

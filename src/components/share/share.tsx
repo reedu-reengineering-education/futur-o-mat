@@ -69,6 +69,17 @@ export default function Share() {
 
   const ref = useRef<HTMLCanvasElement>(null);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const canvas = document.querySelector("canvas");
+      if (canvas) {
+        ref.current = canvas as HTMLCanvasElement;
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const onDownload = () => {
     if (ref.current) {
       handleDownload(ref.current);

@@ -39,13 +39,13 @@
     "id": "accessoires_bauchtasche_betont",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0003_Bauchtasche-Betont.png",
     "category": "accessoires",
-    "subcategory": "bag"
+    "subcategory": "fannyPack"
   },
   {
     "id": "accessoires_bauchtasche_normal",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0003_Bauchtasche-Normal.png",
     "category": "accessoires",
-    "subcategory": "bag"
+    "subcategory": "fannyPack"
   },
   {
     "id": "accessoires_handtasche_betont",
@@ -63,61 +63,61 @@
     "id": "accessoires_bauchtasche_breit",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0004_Bauchtasche-Breit.png",
     "category": "accessoires",
-    "subcategory": "bag"
+    "subcategory": "fannyPack"
   },
   {
     "id": "accessoires_bauchtasche_eng",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0005_Bauchtasche-Eng.png",
     "category": "accessoires",
-    "subcategory": "bag"
+    "subcategory": "fannyPack"
   },
   {
     "id": "accessoires_schal",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0006_Schal.png",
     "category": "accessoires",
-    "subcategory": "accessory"
+    "subcategory": "scarf"
   },
   {
     "id": "accessoires_sonnenbrille",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0007_Sonnenbrille.png",
     "category": "accessoires",
-    "subcategory": "accessory"
+    "subcategory": "sunglasses"
   },
   {
     "id": "accessoires_tattoo",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0010_Tattoo.png",
     "category": "accessoires",
-    "subcategory": "accessory"
+    "subcategory": "tattoo"
   },
   {
     "id": "accessoires_kette_normal",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0011_Kette-Normal.png",
     "category": "accessoires",
-    "subcategory": "accessory"
+    "subcategory": "necklace"
   },
   {
     "id": "accessoires_kette_breit",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0012_Kette-Breit.png",
     "category": "accessoires",
-    "subcategory": "accessory"
+    "subcategory": "necklace"
   },
   {
     "id": "accessoires_kette_betont",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0013_Kette-Betont.png",
     "category": "accessoires",
-    "subcategory": "accessory"
+    "subcategory": "necklace"
   },
   {
     "id": "accessoires_kette_eng",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0013_Kette-Eng.png",
     "category": "accessoires",
-    "subcategory": "accessory"
+    "subcategory": "necklace"
   },
   {
     "id": "accessoires_uhr",
     "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0014_Uhr.png",
     "category": "accessoires",
-    "subcategory": "accessory"
+    "subcategory": "clock"
   },
   {
     "id": "bodytype_hell_betont",
