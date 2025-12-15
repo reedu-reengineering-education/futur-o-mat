@@ -137,6 +137,48 @@ export default function AvatarCanvas({
             }
           }
         }
+      } else if (category === "tattoo") {
+        // Special handling for tattoos: render only tattoo accessories
+        const partId = avatarConfig.selectedParts["accessoires"];
+        if (partId) {
+          const part = partMap.get(partId);
+          if (part && part.subcategory === "tattoo") {
+            sources.push(part.src);
+          }
+        }
+
+        // Then, add multi-select tattoo accessories
+        for (const itemId of avatarConfig.selectedItems) {
+          const part = partMap.get(itemId);
+          if (
+            part &&
+            part.category === "accessoires" &&
+            part.subcategory === "tattoo"
+          ) {
+            sources.push(part.src);
+          }
+        }
+      } else if (category === "accessoires") {
+        // Regular accessories handling: render all non-tattoo accessories
+        const partId = avatarConfig.selectedParts[category];
+        if (partId) {
+          const part = partMap.get(partId);
+          if (part && part.subcategory !== "tattoo") {
+            sources.push(part.src);
+          }
+        }
+
+        // Then, add multi-select non-tattoo accessories
+        for (const itemId of avatarConfig.selectedItems) {
+          const part = partMap.get(itemId);
+          if (
+            part &&
+            part.category === category &&
+            part.subcategory !== "tattoo"
+          ) {
+            sources.push(part.src);
+          }
+        }
       } else {
         // For other categories, use normal rendering
         // First, add single-select parts for this category

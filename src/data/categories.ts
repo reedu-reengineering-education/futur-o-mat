@@ -95,8 +95,8 @@ export const RENDER_ORDER = [
   "head",
   "face",
   "shoes",
+  "tattoo", // tattoos need to render before clothes. This is not a official category in the manifest
   "clothes",
-
   "handicap",
 ] as const;
 
