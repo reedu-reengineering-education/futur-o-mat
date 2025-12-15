@@ -120,6 +120,16 @@
     "subcategory": "clock"
   },
   {
+    "id": "accessoires_cat",
+    "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0015_Katze.png",
+    "category": "accessoires"
+  },
+  {
+    "id": "accessoires_dog",
+    "src": "assets/avatars/accessoires/Futur-O-Mat__0003s_0016_Hund.png",
+    "category": "accessoires"
+  },
+  {
     "id": "bodytype_hell_betont",
     "src": "assets/avatars/bodytype/Futur-O-Mat__0026s_Hell_Betont.png",
     "category": "bodytype"
@@ -317,6 +327,11 @@
   {
     "id": "hair_beanie",
     "src": "assets/avatars/hair/Futur-O-Mat__0002_Beanie.png",
+    "category": "hair"
+  },
+  {
+    "id": "hair_hijab",
+    "src": "assets/avatars/hair/Futur-O-Mat__0003_Hijab.png",
     "category": "hair"
   },
   {
